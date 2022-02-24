@@ -1,0 +1,36 @@
+/ summernote start
+     $(document).ready(function() {
+          $('.summernote').summernote({
+                height: 230,
+                minHeight: null,
+                maxHeight: null,
+                focus: false,
+                callbacks: {
+                    onImageUpload: function(files, editor, welEditable) {
+                    for (var i = files.length - 1; i >= 0; i--) {
+                    sendFile(files[i], this);
+                    }
+                    },
+                },
+          });
+    });
+    function sendFile(file, el) {
+            var form_data = new FormData();
+            form_data.append('file', file);
+            $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: form_data,
+            type: "POST",
+            url: "<?php echo url(ADMIN_FOLDER);?>/summernotefilesave",
+            cache: false,
+            contentType: false,
+            enctype: 'multipart/form-data',
+            processData: false,
+            success: function(url) {
+            $(el).summernote('editor.insertImage', url);
+            }
+            });
+        }
+    // summernote end

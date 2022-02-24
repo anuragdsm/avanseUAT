@@ -20,6 +20,7 @@ import com.avanse.springboot.DTO.forms.applyNow.EducationInstitutionLoanDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ExecutiveEducationLoanDTO;
 import com.avanse.springboot.DTO.forms.applyNow.PartnerWithUsDTO;
 import com.avanse.springboot.DTO.forms.applyNow.SchoolFeeFinancingDTO;
+import com.avanse.springboot.DTO.forms.applyNow.SkillEnhancementDTO;
 import com.avanse.springboot.DTO.forms.contactUs.CustomerDTO;
 import com.avanse.springboot.DTO.forms.contactUs.InstituteDTO;
 import com.avanse.springboot.DTO.forms.contactUs.InvestorDTO;
@@ -136,6 +137,15 @@ public class PageController {
 		return modelAndView;
 	}
 	
+	
+	  @GetMapping("/apply-now") 
+	  public ModelAndView getApplyNowForm(Model model) {
+	  ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-now");
+	  model.addAttribute("applyNowGeneralDTO", new ApplyNowGeneralDTO()); 
+	  return modelAndView;
+	  
+	  }
+	 
 	@GetMapping("/apply-for-education-institution-loan")
 	public ModelAndView getEducationInstitutionLoan(Model model) {
 		ModelAndView modelAndView =  new ModelAndView("dynamicPages/education-institution-loan");
@@ -176,10 +186,12 @@ public class PageController {
 		return modelAndView;
 	}
 	
-	
-	
-	
-	
+	@GetMapping("/apply-for-skill-enhancement")
+	public ModelAndView getApplyForSkillEnhancementPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-for-skill-enhancement");
+		model.addAttribute("skillEnhancementDTO", new SkillEnhancementDTO());
+		return modelAndView;
+	}
 	
 	/*
 	 * @GetMapping("/viewDynamicPages/{extractedFileName}") public ModelAndView

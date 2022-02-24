@@ -14,18 +14,21 @@ import com.avanse.springboot.DTO.forms.applyNow.EducationInstitutionLoanDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ExecutiveEducationLoanDTO;
 import com.avanse.springboot.DTO.forms.applyNow.PartnerWithUsDTO;
 import com.avanse.springboot.DTO.forms.applyNow.SchoolFeeFinancingDTO;
+import com.avanse.springboot.DTO.forms.applyNow.SkillEnhancementDTO;
 import com.avanse.springboot.model.forms.applyNow.ApplyNowGeneral;
 import com.avanse.springboot.model.forms.applyNow.ETutoring;
 import com.avanse.springboot.model.forms.applyNow.EducationInstitutionLoan;
 import com.avanse.springboot.model.forms.applyNow.ExecutiveEducationLoan;
 import com.avanse.springboot.model.forms.applyNow.PartnerWithUs;
 import com.avanse.springboot.model.forms.applyNow.SchoolFeeFinancing;
+import com.avanse.springboot.model.forms.applyNow.SkillEnhancement;
 import com.avanse.springboot.service.applyNow.ApplyNowGeneralService;
 import com.avanse.springboot.service.applyNow.ETutoringService;
 import com.avanse.springboot.service.applyNow.EducationInstitutionLoanService;
 import com.avanse.springboot.service.applyNow.ExecutiveEducationLoanService;
 import com.avanse.springboot.service.applyNow.PartnerWithUsService;
 import com.avanse.springboot.service.applyNow.SchoolFeeFinancingService;
+import com.avanse.springboot.service.applyNow.SkillEnhancementService;
 
 @Controller
 public class ApplyNowAllController {
@@ -48,15 +51,12 @@ public class ApplyNowAllController {
 	@Autowired
 	SchoolFeeFinancingService schoolFeeFinancingService;
 	
+	@Autowired
+	SkillEnhancementService skillEnhancementService;
 	
-	@GetMapping("/apply-now")
-	public String applyNowGeneralGet(Model model){
-		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-now");
-		model.addAttribute("applyNowGeneralDTO", new ApplyNowGeneralDTO());
+	
+	
 
-		return "dynamicPages/apply-now";
-	}
-	
 	@PostMapping("/apply-now/add")
 	public String applyNowGeneralAddPost(@ModelAttribute("applyNowGeneralDTO") ApplyNowGeneralDTO applyNowGeneralDTO) {
 		ApplyNowGeneral applyNowGeneral = new ApplyNowGeneral();
@@ -154,6 +154,22 @@ public class ApplyNowAllController {
 		schoolFeeFinancing.setPhoneNumber(schoolFeeFinancingDTO.getPhoneNumber());
 		schoolFeeFinancing.setNameOfTheSchool(schoolFeeFinancingDTO.getNameOfTheSchool());
 		schoolFeeFinancingService.addSchoolFeeFinancingLead(schoolFeeFinancing);
+		return "dynamicPages/thankyou";
+		
+	}
+	
+	@PostMapping("/apply-for-skill-enhancement/add")
+	public String skillEnhancementAddPost(@ModelAttribute("skillEnhancementDTO") SkillEnhancementDTO skillEnhancementDTO) {
+		SkillEnhancement skillEnhancement = new SkillEnhancement();
+		skillEnhancement.setCity(skillEnhancementDTO.getCity());
+		skillEnhancement.setCourseName(skillEnhancementDTO.getCourseName());
+		skillEnhancement.setCourseProvider(skillEnhancementDTO.getCourseProvider());
+		skillEnhancement.setEmail(skillEnhancementDTO.getEmail());
+		skillEnhancement.setFirstName(skillEnhancementDTO.getFirstName());
+		skillEnhancement.setLastName(skillEnhancementDTO.getLastName());
+		skillEnhancement.setLoanAmount(skillEnhancementDTO.getLoanAmount());
+		skillEnhancement.setPhoneNumber(skillEnhancementDTO.getPhoneNumber());
+		skillEnhancementService.addSkillEnhancement(skillEnhancement);
 		return "dynamicPages/thankyou";
 		
 	}

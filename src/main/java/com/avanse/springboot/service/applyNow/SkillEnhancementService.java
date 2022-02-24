@@ -16,7 +16,7 @@ public class SkillEnhancementService {
 	@Autowired
 	SkillEnhancementRepository skillEnhancementRepository;
 	
-	public static final int SKILL_ENHANCEMENT_LEADS_PER_PAGE = 4;
+	public static final int SKILL_ENHANCEMENT_LEADS_PER_PAGE = 10;
 	
 	public List<SkillEnhancement> getAllSkillEnhancementsLeads(){
 		return skillEnhancementRepository.findAll();

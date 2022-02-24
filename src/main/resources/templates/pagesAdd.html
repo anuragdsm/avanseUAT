@@ -57,8 +57,9 @@
 						<form th:action="@{/admin/pages/add}" class="form-horizontal"
 							method="post" th:object="${pageDTO}"
 							enctype="multipart/form-data">
-							<input type="hidden" name="id" th:field="*{id}">
-								<input hidden name="pageUpdateCheck" th:if="${isPageUpdate == 'true'}" type="text" value="true">​
+							<input type="hidden" name="id" th:field="*{id}"> <input
+								hidden name="pageUpdateCheck" th:if="${isPageUpdate == 'true'}"
+								type="text" value="true">​
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label">Page
 									Title (Required)</label>
@@ -75,7 +76,8 @@
 
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-8 control-label">Custom
-									URI (Required) Eg. (/abcd/xyz/) Do not forget to start with forward slash("/")</label>
+									URI (Required) Eg. (/abcd/xyz/) Do not forget to start with
+									forward slash("/")</label>
 								<div class="row">
 									<div class="col-sm-5">
 										<input onkeyup="checkUriForAvailability()" type="text"
@@ -125,6 +127,59 @@
 							
 							
 							</script>
+							<div th:if="${isHeaderDisabled=='false'||isHeaderDisabled == null}" class="form-check">
+								<input checked type="checkbox" onchange="headerStateManage()"
+											name="withoutHeaderCheck" 
+											id="withoutHeaderCheck" value="templateWithoutHeader"> <label class="form-check-label"
+									for="withoutHeaderCheck"> Enable Header </label>
+							</div>
+							<div th:if="${isHeaderDisabled=='true'}" class="form-check">
+								<input type="checkbox" onchange="headerStateManage()"
+											name="withoutHeaderCheck" 
+											id="withoutHeaderCheck" value="templateWithoutHeader"> <label class="form-check-label"
+									for="withoutHeaderCheck"> Enable Header </label>
+							</div>
+
+						<!-- 	<div class="form-group">
+								<div class="row">
+									<div class="col-2">
+										<label for="withoutHeaderCheck">Enable Header </label> <input
+											checked type="checkbox" onchange="headerStateManage()"
+											name="withoutHeaderCheck" class="form-control "
+											id="withoutHeaderCheck" value="templateWithoutHeader">
+									</div>
+								</div>
+
+							</div> -->
+
+							<script type="text/javascript">
+								function headerStateManage() {
+									if(document.getElementById('withoutHeaderCheck').checked==false) {
+										document.getElementById('banner_heading').disabled=true;
+										document.getElementById('banner_heading').style.opacity='40%';
+										document.getElementById('sub_title').disabled=true;
+										document.getElementById('sub_title').style.opacity='40%';
+										document.getElementById('bannerImagePreview').hidden=true;
+										document.getElementById('bannerImagePreview').style.opacity='40%';
+										document.getElementById('bannerImage').disabled=true;
+										document.getElementById('bannerImage').style.opacity='40%';
+										document.getElementById('image_alt').disabled=true;
+										document.getElementById('image_alt').style.opacity='40%';
+									} else {
+										document.getElementById('banner_heading').disabled=false;
+										document.getElementById('banner_heading').style.opacity='100%';
+										document.getElementById('sub_title').disabled=false;
+										document.getElementById('sub_title').style.opacity='100%';
+										document.getElementById('bannerImagePreview').hidden=false;
+										document.getElementById('bannerImagePreview').style.opacity='100%';
+										document.getElementById('bannerImage').disabled=false;
+										document.getElementById('bannerImage').style.opacity='100%';
+										document.getElementById('image_alt').disabled=false;
+										document.getElementById('image_alt').style.opacity='100%';
+									}
+									
+								}
+							</script>
 							​
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label">Heading
@@ -148,14 +203,14 @@
 									Desktop</h6>
 							</div>
 							<style>
-									.myInnerDiv {
-										position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);
-										width: 80%;
-									}
-							</style>
+.myInnerDiv {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+}
+</style>
 							​
 							<div class="form-group">
 								<div class="col-sm-8">
@@ -164,28 +219,23 @@
 										<div class="row">
 											<div class="col-7">
 												<div class="myInnerDiv">
-												<input type="file" class="custom-file-input"
-													name="bannerImageFile" id="bannerImage"
-													onchange="bannerImageChange(event)"
-													accept="image/jpeg,image/gif,image/x-png,video/*" /> 
-													
-													<label th:if="${isPageUpdate == 'true'}"
-													for="bannerImage" class="custom-file-label">
-														Current Image
-														<span style="color: green;" th:text="${pageDTO.bannerImageName}">
-														</span>
-													</label>
-													<label th:if="${isPageUpdate != 'true'}"
-													for="bannerImage" class="custom-file-label">Choose
-													File</label>
+													<input type="file" class="custom-file-input"
+														name="bannerImageFile" id="bannerImage"
+														onchange="bannerImageChange(event)"
+														accept="image/jpeg,image/gif,image/x-png,video/*" /> <label
+														th:if="${isPageUpdate == 'true'}" for="bannerImage"
+														class="custom-file-label"> Current Image <span
+														style="color: green;" th:text="${pageDTO.bannerImageName}">
+													</span>
+													</label> <label th:if="${isPageUpdate != 'true'}" for="bannerImage"
+														class="custom-file-label">Choose File</label>
 												</div>
 											</div>
 											<div class="col-5">
 												<img id="bannerImagePreview"
 													th:if="${isPageUpdate == 'true'}"
 													th:src="'/viewPagesAssets/img/userAddedBannerImages/'+${pageDTO.bannerImageName}"
-													height="100px" width="150px"> 
-												<img
+													height="100px" width="150px"> <img
 													id="bannerImagePreview" th:if="${isPageUpdate != 'true'}"
 													src="" height="100px" width="150px">
 											</div>
@@ -211,10 +261,10 @@
 							
 							
 							</script>
-							
-							
-							
-							
+
+
+
+
 							​ ​ ​
 							<div class="form-group">
 								<label for="inputEmail3" class="col-sm-2 control-label">Banner

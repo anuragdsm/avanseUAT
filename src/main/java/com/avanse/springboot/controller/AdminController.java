@@ -190,10 +190,10 @@ public class AdminController {
 
 	@Autowired
 	HeaderService headerService;
-	
+
 	@Autowired
 	TypeDetailsCourseRepository typeDetailsCourseRepository;
-	
+
 	@Autowired
 	TypeDetailsCourseService typeDetailsCourseService;
 
@@ -205,11 +205,11 @@ public class AdminController {
 	 */
 	@GetMapping("/admin")
 	public String adminDashboard(Model model) {
-		
+
 		Long noOfUniversities = universityService.numberOfUniversities();
 		Long noOfCourses = courseService.numberOfCourses();
 		Long noOfPages = pageService.numberOfPages();
-		Long noOfPosts = postService.numberOfPosts();		
+		Long noOfPosts = postService.numberOfPosts();
 		System.out.println("Number of University is " + noOfUniversities);
 		model.addAttribute("numOfUniversities", noOfUniversities);
 		model.addAttribute("numOfCourses", noOfCourses);
@@ -217,7 +217,7 @@ public class AdminController {
 		model.addAttribute("numOfPosts", noOfPosts);
 		System.out.println("User Added Image Directory is " + userAddedImagesDir);
 		return "adminDashboard";
-		
+
 	}
 
 	@GetMapping("/admin/manage")
@@ -322,12 +322,10 @@ public class AdminController {
 
 		return "universities";
 	}
-	
-	
 
 	/*
 	 * Pagination code disabled
-	*/
+	 */
 //	@GetMapping("/admin/universities/page/{pageNum}")
 //	public String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
 //		org.springframework.data.domain.Page<University> page = universityService.listByPageInDescending(pageNum);
@@ -420,23 +418,29 @@ public class AdminController {
 
 			String insummer = "";
 			if (summer != null)
-				insummer = "summerIntake-"+summer;
+				insummer = "summerIntake-" + summer;
 			String inwinter = "";
 			if (winter != null)
-				inwinter = "winterIntake-"+winter;
+				inwinter = "winterIntake-" + winter;
 			String infall = "";
 			if (fall != null)
-				infall = "fallIntake-"+fall;
+				infall = "fallIntake-" + fall;
 			String inspring = "";
 			if (spring != null)
-				inspring = "springIntake-"+spring;
-			String finalIntakeString=insummer + "," + inwinter + "," + infall + "," + inspring;
-			while(finalIntakeString.endsWith(",")) {finalIntakeString=finalIntakeString.substring(0, finalIntakeString.length()-1);}
-			while (finalIntakeString.startsWith(",")) {finalIntakeString=finalIntakeString.substring(1, finalIntakeString.length()-1);}
-			while(finalIntakeString.matches(".*?,,+.*")) {finalIntakeString=finalIntakeString.replaceAll("[,][,]", ",");}
-			
+				inspring = "springIntake-" + spring;
+			String finalIntakeString = insummer + "," + inwinter + "," + infall + "," + inspring;
+			while (finalIntakeString.endsWith(",")) {
+				finalIntakeString = finalIntakeString.substring(0, finalIntakeString.length() - 1);
+			}
+			while (finalIntakeString.startsWith(",")) {
+				finalIntakeString = finalIntakeString.substring(1, finalIntakeString.length() - 1);
+			}
+			while (finalIntakeString.matches(".*?,,+.*")) {
+				finalIntakeString = finalIntakeString.replaceAll("[,][,]", ",");
+			}
+
 			university.setIntakePeriod(finalIntakeString);
-		}	
+		}
 		/*
 		 * Create the imageUUID and using the nio package get the filename and the path
 		 */
@@ -595,7 +599,7 @@ public class AdminController {
 	@GetMapping("/admin/courses")
 	public String getFirstCoursePage(Model model) {
 
-		List<University>universities = universityService.getAllUniversity();
+		List<University> universities = universityService.getAllUniversity();
 		model.addAttribute("universities", universityService.getAllUniversity());
 		model.addAttribute("courses", courseService.getAllCourses());
 		return "courses";
@@ -667,8 +671,9 @@ public class AdminController {
 		course.setFees(courseDTO.getFees());
 		course.setStaticContent(courseDTO.getStaticContent());
 		List<TypeDetailsCourse> tList = new ArrayList<>();
-		for(String s:courseTypes) {
-			TypeDetailsCourse tdc = new TypeDetailsCourse();tdc.setName(s);
+		for (String s : courseTypes) {
+			TypeDetailsCourse tdc = new TypeDetailsCourse();
+			tdc.setName(s);
 			typeDetailsCourseService.addTypeDetailsCourse(tdc);
 			tList.add(tdc);
 		}
@@ -713,8 +718,10 @@ public class AdminController {
 		model.addAttribute("updateCourseCheck", "true");
 		List<TypeDetailsCourse> types = course.getTypes();
 		List<String> currentCoursesTypesString = new ArrayList<>();
-		for(TypeDetailsCourse cour : types) {currentCoursesTypesString.add(cour.getName());}
-		model.addAttribute("currentCourseTypes",currentCoursesTypesString);		
+		for (TypeDetailsCourse cour : types) {
+			currentCoursesTypesString.add(cour.getName());
+		}
+		model.addAttribute("currentCourseTypes", currentCoursesTypesString);
 		/*
 		 * Pass the university list to the dropdown on courseAdd.html
 		 */
@@ -881,11 +888,11 @@ public class AdminController {
 	public String jobsAddPost(@ModelAttribute("jobDTO") JobDTO jobDTO,
 			@RequestParam("selectedLocations") String[] locationsIds,
 			@RequestParam(value = "updateOperation", required = false) String isUpdating) {
-		Job job ;
-		if(jobDTO.getId()==null) {
+		Job job;
+		if (jobDTO.getId() == null) {
 			job = new Job();
 		}
-		
+
 		else {
 			job = jobService.getJobById(jobDTO.getId()).get();
 		}
@@ -900,11 +907,9 @@ public class AdminController {
 
 		String dateOfJobCreated = new SimpleDateFormat("dd MMMM, yyyy").format(new Date());
 		job.setJobCreatedDate(dateOfJobCreated);
-		
+
 		List<Job> allJobs = jobRespository.findAll();
 		Iterator<Job> iterator = allJobs.iterator();
-		
-	
 
 		jobService.addJob(job);
 
@@ -1124,8 +1129,9 @@ public class AdminController {
 //	@ResponseBody
 	@PostMapping(path = "/admin/pages/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public String pagesAddPost(@ModelAttribute("pageDTO") PageDTO pageDTO, HttpServletRequest request,
-			@RequestParam(value = "pageUpdateCheck",required = false) String pageUpdateCheck,
-			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
+			@RequestParam(value = "pageUpdateCheck", required = false) String pageUpdateCheck,
+			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile,
+			@RequestParam(name = "withoutHeaderCheck", required = false) String withoutHeaderCheck) {
 
 		/*
 		 * Create a new time stamp and initialize the timestamp with null Check if the
@@ -1136,7 +1142,7 @@ public class AdminController {
 //		Page page = new Page();
 		Page page;
 
-		if (bannerImageFile != null) {
+		if (bannerImageFile != null && !bannerImageFile.isEmpty()) {
 			try {
 				System.out.println(
 						"Testing------------>" + newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
@@ -1156,18 +1162,21 @@ public class AdminController {
 		} else {
 			System.out.println("Update Page Operation happening..................");
 			page = pageService.getPageById(pageDTO.getId()).get();
+			if (page.getBannerImageName() != null)
+				pageDTO.setBannerImageName(page.getBannerImageName());
 		}
 
 		page.setId(pageDTO.getId());
 		page.setPageTitle(pageDTO.getPageTitle().strip());
 		page.setCustomUri(pageDTO.getCustomUri().strip());
-	
+
 		page.setBannerHeading(pageDTO.getBannerHeading());
 		page.setBannerSubHeading(pageDTO.getBannerSubHeading());
 		page.setMainSection(pageDTO.getMainSection());
 		if (bannerImageFile != null && !bannerImageFile.isEmpty()) {
 			page.setBannerImageName(bannerImageFile.getOriginalFilename());
-		} 
+			pageDTO.setBannerImageName(page.getBannerImageName());
+		}
 //		else if(bannerImageFile == null && pageUpdateCheck != null && pageUpdateCheck.equals("true")) {
 //			System.out.println("Check 2 ----------------------------------------->");
 //			page.setBannerImageName(pageService.getPageById(pageDTO.getId()).get().getBannerImageName());
@@ -1196,24 +1205,20 @@ public class AdminController {
 		preProcessFileName = preProcessFileName.strip();
 
 		System.out.println("The Pre Process of file name " + preProcessFileName);
-		
-		
+
 		/*
 		 * String preProcessFileName = postDTO.getPostTitle().toLowerCase().strip();
-
-		preProcessFileName = preProcessFileName.replaceAll("( )+", " ");
-
-		preProcessFileName = preProcessFileName.replaceAll("[^a-zA-Z0-9]", " ");
-
-		preProcessFileName = preProcessFileName.strip();
-
-		System.out.println("The Pre Process of file name " + preProcessFileName);
-
-		String htmlFileName = preProcessFileName.replaceAll(" ", "-");
-		*/
-		
-
-		
+		 * 
+		 * preProcessFileName = preProcessFileName.replaceAll("( )+", " ");
+		 * 
+		 * preProcessFileName = preProcessFileName.replaceAll("[^a-zA-Z0-9]", " ");
+		 * 
+		 * preProcessFileName = preProcessFileName.strip();
+		 * 
+		 * System.out.println("The Pre Process of file name " + preProcessFileName);
+		 * 
+		 * String htmlFileName = preProcessFileName.replaceAll(" ", "-");
+		 */
 
 		String htmlFileName = preProcessFileName.replaceAll(" ", "-");
 		List<Page> allPages = pageRepository.findAll();
@@ -1272,6 +1277,12 @@ public class AdminController {
 		 */
 		pageDTO.setPageLink(currentPageLink);
 		page.setPageLink(pageDTO.getPageLink());
+		if(withoutHeaderCheck != null && withoutHeaderCheck.equals("templateWithoutHeader")) {
+			page.setBannerHeading(null);pageDTO.setBannerHeading(page.getBannerHeading());
+			page.setBannerImageAlt(null);pageDTO.setBannerImageAlt(page.getBannerImageAlt());
+			page.setBannerImageName(null);pageDTO.setBannerImageName(page.getBannerImageName());
+			page.setBannerSubHeading(null);pageDTO.setBannerSubHeading(page.getBannerSubHeading());
+		}
 		pageService.addPage(page);
 //		htmlPage
 
@@ -1281,14 +1292,24 @@ public class AdminController {
 		 */
 
 		System.out.println("\n\n\n\n\n\n Main Section preview" + pageDTO.getMainSection());
+		String codeInFile;
+		if (withoutHeaderCheck != null && withoutHeaderCheck.equals("templateWithoutHeader")) {
+			codeInFile = htmlBoilerPlate(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(), pageDTO.getBannerHeading(),
+					pageDTO.getBannerSubHeading(), pageDTO.getMetaDescription(), pageDTO.getMainSection(),
+					pageDTO.getJsCode(), pageDTO.getCssCode(), pageDTO.getBannerImageName(),
+					pageDTO.getBannerImageAlt());
+			System.out.println("The following code will be there in the file " + codeInFile);
+			pageDTO.setConsolidatedHTMLCode(codeInFile);
+			page.setConsolidatedHTMLCode(pageDTO.getConsolidatedHTMLCode());
+		} else {
 
-		String codeInFile = htmlBoilerPlate(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(),
-				pageDTO.getBannerHeading(), pageDTO.getBannerSubHeading(), pageDTO.getMetaDescription(),
-				pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode(),
-				bannerImageFile.getOriginalFilename(), pageDTO.getBannerImageAlt());
-		System.out.println("The following code will be there in the file " + codeInFile);
-		pageDTO.setConsolidatedHTMLCode(codeInFile);
-		page.setConsolidatedHTMLCode(pageDTO.getConsolidatedHTMLCode());
+			codeInFile = htmlBoilerPlateWithoutHeader(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(),
+					pageDTO.getMetaDescription(), pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode());
+			System.out.println("The following code will be there in the file " + codeInFile);
+			pageDTO.setConsolidatedHTMLCode(codeInFile);
+			page.setConsolidatedHTMLCode(pageDTO.getConsolidatedHTMLCode());
+
+		}
 
 		try {
 			pushCodeInFile(codeInFile, pageDTO.getFileName());
@@ -1312,51 +1333,63 @@ public class AdminController {
 	}
 
 	private String htmlBoilerPlate(String metaTitle, String metaKeyword, String bannerHeading, String bannerSubheading,
-			String metaDescription, String mainSection, String jsCode, String cSSCode, String bannerImageFileName, String bannerAltText) {
+			String metaDescription, String mainSection, String jsCode, String cSSCode, String bannerImageFileName,
+			String bannerAltText) {
 		// TODO Auto-generated method stub
 		/*
 		 * initial code
 		 */
-		
-		
+
 		String boilerPlate = "<!DOCTYPE html>\r\n"
 				+ "<html lang=\"en\" xmlns:layout=\"http://www.ultraq.net.nz/thymeleaf/layout\"\r\n"
-				+ "	layout:decorate=\"_LivePagelayout\">\r\n"
-				+ "<head>\r\n" + "<title>" + metaTitle + "</title>\r\n"
-						+ "  <meta name=\"description\"  content=\" " + metaDescription + "  \" />" + "\r\n"
-						+ "  <meta name=\"keywords\"  content=\" " + metaKeyword + "  \" />" + "\r\n"
-						+ "<script type=\"text/javascript\" src=\"/viewPagesAssets/js/customGlobalHeader/globalHeader.js\"></script>"
-						+ "<style>\r\n" + cSSCode + "</style>\r\n"
-				+ "<body id=\"page-top\">\r\n"
-				+ "\r\n"
-				+ "	<!-- Content Wrapper -->\r\n"
-				+ "	<div layout:fragment=\"contentPlus\">\r\n"
-				+ "  <section class=\"top_avanse_banner_area abroad_top_bg\">\r\n"
-				+ "            \r\n"
+				+ "	layout:decorate=\"_LivePagelayout\">\r\n" + "<head>\r\n" + "<title>" + metaTitle + "</title>\r\n"
+				+ "  <meta name=\"description\"  content=\" " + metaDescription + "  \" />" + "\r\n"
+				+ "  <meta name=\"keywords\"  content=\" " + metaKeyword + "  \" />" + "\r\n"
+				+ "<script type=\"text/javascript\" src=\"/viewPagesAssets/js/customGlobalHeader/globalHeader.js\"></script>"
+				+ "<style>\r\n" + cSSCode + "</style>\r\n" + "<body id=\"page-top\">\r\n" + "\r\n"
+				+ "	<!-- Content Wrapper -->\r\n" + "	<div layout:fragment=\"contentPlus\">\r\n"
+				+ "  <section class=\"top_avanse_banner_area abroad_top_bg\">\r\n" + "            \r\n"
 				+ "            <div class=\"container\">\r\n"
 				+ "                <div class=\"row align-items-center\">\r\n"
 				+ "                    <div class=\"col-lg-7\">\r\n"
 				+ "                        <div class=\"h_avaneses_content\">\r\n"
-				+ "                            <h2 class=\"wow fadeInLeft\" data-wow-delay=\"0.4s\"> "+bannerHeading+"</h2>\r\n"
-				+ "                            <h3 class=\"wow fadeInLeft\" data-wow-delay=\"0.6s\"> "+bannerSubheading+"</h3>\r\n"
-				+ "                        </div>\r\n"
-				+ "                    </div>\r\n"
-				+ "                    <div class=\"col-lg-5\">\r\n"
+				+ "                            <h2 class=\"wow fadeInLeft\" data-wow-delay=\"0.4s\"> " + bannerHeading
+				+ "</h2>\r\n" + "                            <h3 class=\"wow fadeInLeft\" data-wow-delay=\"0.6s\"> "
+				+ bannerSubheading + "</h3>\r\n" + "                        </div>\r\n"
+				+ "                    </div>\r\n" + "                    <div class=\"col-lg-5\">\r\n"
 				+ "                        <div class=\"h_avanse_img\">\r\n"
-				+ "                            <img src=\"/viewPagesAssets/img/userAddedBannerImages/"+bannerImageFileName+"\" alt=\"" +bannerAltText+ "\">\r\n"
-				+ "                        </div>\r\n"
-				+ "                    </div>\r\n"
-				+ "                </div>\r\n"
-				+ "            </div>\r\n"
+				+ "                            <img src=\"/viewPagesAssets/img/userAddedBannerImages/"
+				+ bannerImageFileName + "\" alt=\"" + bannerAltText + "\">\r\n" + "                        </div>\r\n"
+				+ "                    </div>\r\n" + "                </div>\r\n" + "            </div>\r\n"
 				+ "        </section>"
 
 				+ mainSection + "\r\n"
 
-				+ "    <!-- Optional JavaScript -->\r\n" + jsCode + "\r\n"
-				+" 	</body> " + "\r\n" ;
+				+ "    <!-- Optional JavaScript -->\r\n" + jsCode + "\r\n" + " 	</body> " + "\r\n";
 
 		return boilerPlate;
 	}
+
+	private String htmlBoilerPlateWithoutHeader(String metaTitle, String metaKeyword, String metaDescription,
+			String mainSection, String jsCode, String cSSCode) {
+		// TODO Auto-generated method stub
+		/*
+		 * initial code
+		 */
+
+		String boilerPlate = "<!DOCTYPE html>\r\n"
+				+ "<html lang=\"en\" xmlns:layout=\"http://www.ultraq.net.nz/thymeleaf/layout\"\r\n"
+				+ "	layout:decorate=\"_LivePagelayout\">\r\n" + "<head>\r\n" + "<title>" + metaTitle + "</title>\r\n"
+				+ "  <meta name=\"description\"  content=\" " + metaDescription + "  \" />" + "\r\n"
+				+ "  <meta name=\"keywords\"  content=\" " + metaKeyword + "  \" />" + "\r\n"
+				+ "<script type=\"text/javascript\" src=\"/viewPagesAssets/js/customGlobalHeader/globalHeader.js\"></script>"
+				+ "<style>\r\n" + cSSCode + "</style>\r\n" + "<body id=\"page-top\">\r\n" + "\r\n"
+				+ "	<!-- Content Wrapper -->\r\n" + "	<div layout:fragment=\"contentPlus\">\r\n" + mainSection
+				+ "\r\n" + "    <!-- Optional JavaScript -->\r\n" + jsCode + "\r\n" + " 	</body> " + "\r\n";
+
+		return boilerPlate;
+	}
+
 	/*
 	 * Function to delete a page from the database and the server
 	 * 
@@ -1434,6 +1467,11 @@ public class AdminController {
 		pageDTO.setMetaTitle(page.getMetaTitle());
 		pageDTO.setMetaKeyword(page.getMetaKeyword());
 		pageDTO.setMetaDescription(page.getMetaDescription());
+		if(page.getBannerHeading()==null) {
+			model.addAttribute("isheaderDisabled", "true");
+		} else {
+			model.addAttribute("isheaderDisabled", "false");
+		}
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("isPageUpdate", "true");
 		return "pagesAdd";
@@ -1498,8 +1536,6 @@ public class AdminController {
 		return "posts";
 	}
 
-
-
 	@GetMapping("/admin/posts/add")
 	public String postsGet(Model model) {
 		model.addAttribute("postDTO", new PostDTO());
@@ -1542,6 +1578,8 @@ public class AdminController {
 
 		else {
 			post = postService.getPostById(postDTO.getId()).get();
+			if (post.getFeaturedImageName() != null)
+				postDTO.setFeaturedImageName(post.getFeaturedImageName());
 		}
 
 		Date date = new Date();
@@ -1554,7 +1592,8 @@ public class AdminController {
 		post.setMainSection(postDTO.getMainSection());
 		if (featuredImageFile != null && !featuredImageFile.isEmpty()) {
 			post.setFeaturedImageName(featuredImageFile.getOriginalFilename());
-		} 
+			postDTO.setFeaturedImageName(post.getFeaturedImageName());
+		}
 //		else if (isUpdating != null) {
 //			System.out.println(
 //					"Image test edit ---> " + postService.getPostById(postDTO.getId()).get().getFeaturedImageName()
@@ -1708,7 +1747,7 @@ public class AdminController {
 		System.out.println("\n\n\n\n\n\n Main Section preview" + postDTO.getMainSection());
 
 		String codeInFile = htmlBlogLayout(postDTO.getMetaTitle(), postDTO.getHeading(), postDTO.getSubHeading(),
-				postDTO.getMetaDescription(), postDTO.getMainSection(), featuredImageFile.getOriginalFilename());
+				postDTO.getMetaDescription(), postDTO.getMainSection(), postDTO.getFeaturedImageName());
 		System.out.println("The following code will be there in the blog file " + codeInFile);
 		postDTO.setConsolidatedHTMLCode(codeInFile);
 		post.setConsolidatedHTMLCode(postDTO.getConsolidatedHTMLCode());
@@ -1918,7 +1957,7 @@ public class AdminController {
 		postDTO.setMetaTitle(post.getMetaTitle());
 //		postDTO.setMetaDescription(post.getMetaTitle());
 		postDTO.setMetaDescription(post.getMetaDescription());
-		
+
 		model.addAttribute("isPostUpdate", "true");
 
 		model.addAttribute("postDTO", postDTO);
@@ -2213,23 +2252,18 @@ public class AdminController {
 		InstitutesCSVExporter exporter = new InstitutesCSVExporter();
 		exporter.export(listOfInstitutes, response);
 	}
-	
-	
-	
+
 	@ResponseBody
 	@GetMapping("/admin/api/getAllPagesUrls")
-	public ResponseEntity<?> getAllAddedPageUrls(){
+	public ResponseEntity<?> getAllAddedPageUrls() {
 		List<String[]> allUrisForPages = pageService.getAllUrisForPages();
 		return ResponseEntity.ok(allUrisForPages);
 	}
-	
-	
 
-	/*Test
+	/*
+	 * Test
 	 * 
-	 * */
-	
-
+	 */
 
 //	End of class
 }

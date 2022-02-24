@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+
+		<section class="pt-3 pb-3" style="background: #02afb3">
+
+			<div class="container">
+				<div class="breadcrumb_content text-center">
+					<h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">Read
+						Our Blogs</h1>
+					<p class="f_400 w_color f_size_21 l_height28">Lorem Ipsum is
+						simply dummy text of the printing and typesetting industry.</p>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="blog_area sec_pad">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8">
+
+
+						<div id="blogPostsPannel" class="col-lg-12">
+
+							<div id="blogPostItem" class="blog_list_item mb_50">
+
+								<img id="blogPostImage" class="img-fluid"
+									src="/viewPagesAssets/img/userAddedFeaturedImages/post.jpg"
+									alt="">
+								<div class="blog_content">
+									<div id="blogPostDate" class="post_date">
+										<h2>
+											14 <span>March</span>
+										</h2>
+									</div>
+									<a id="blogPostLink" href="">
+										<h5 id="blogPostHeading"
+											class="f_p f_size_20 f_500 t_color mb_20">Lorem Ipsum is
+											simply dummy text of the printing and typesetting industry.</h5>
+									</a>
+									<p id="blogPostContent" class="f_400 mb_20">Contrary to
+										popular belief, Lorem Ipsum is not simply random text. It has
+										roots in a piece of classical Latin literature from 45 BC,
+										making it over 2000 years old.</p>
+									<a id="blogPostLinkReadMore" href="/viewPagesAssets/post.html"
+										class="learn_btn_two">Read More <i class="ti-arrow-right"></i></a>
+								</div>
+
+							</div>
+
+							<div class="blog_list_item mb_50">
+								<img class="img-fluid"
+									src="/viewPagesAssets/img/blog-grid/blog_list2.jpg" alt="">
+								<div class="blog_content">
+									<div class="post_date">
+										<h2>
+											10 <span>April</span>
+										</h2>
+									</div>
+
+									<a href="/viewPagesAssets/post.html">
+										<h5 class="f_p f_size_20 f_500 t_color mb_20">Lorem Ipsum
+											is simply dummy text of the printing and typesetting
+											industry.</h5>
+									</a>
+									<p class="f_400 mb_20">Contrary to popular belief, Lorem
+										Ipsum is not simply random text. It has roots in a piece of
+										classical Latin literature from 45 BC, making it over 2000
+										years old.</p>
+									<a href="/viewPagesAssets/post.html" class="learn_btn_two">Read
+										More <i class="ti-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="blog_list_item mb_50">
+								<img class="img-fluid"
+									src="/viewPagesAssets/img/blog-grid/blog_list3.jpg" alt="">
+								<div class="blog_content">
+									<div class="post_date">
+										<h2>
+											14 <span>July</span>
+										</h2>
+									</div>
+
+									<a href="/viewPagesAssets/post.html">
+										<h5 class="f_p f_size_20 f_500 t_color mb_20">Lorem Ipsum
+											is simply dummy text of the printing and typesetting
+											industry.</h5>
+									</a>
+									<p class="f_400 mb_20">Contrary to popular belief, Lorem
+										Ipsum is not simply random text. It has roots in a piece of
+										classical Latin literature from 45 BC, making it over 2000
+										years old.</p>
+									<a href="/viewPagesAssets/post.html" class="learn_btn_two">Read
+										More <i class="ti-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+
+						</div>
+
+						<ul
+							class="list-unstyled page-numbers shop_page_number text-left mt_30">
+							<li><button id="previousPage" class="next page-numbers"
+									onclick="previous()">
+									<i class="ti-arrow-left"></i>
+								</button></li>
+							<li><span id="currentPageNo" aria-current="page"
+								class="page-numbers current">1</span></li>
+							<li><button id="nextPage" class="next page-numbers"
+									onclick="next()">
+									<i class="ti-arrow-right"></i>
+								</button></li>
+						</ul>
+
+						<script type="text/javascript">
+                        	let blogElement=document.getElementById('blogPostItem');
+                        	let blogPostsPannel = document.getElementById('blogPostsPannel');
+                        	let blogCount;
+                        	let maxPageNo;
+                        	blogPostsPannel.innerHTML='';
+                        	//console.log(blogElement.outerHTML);
+                        	let http= new XMLHttpRequest();
+                            http.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostCountInDb');
+                            http.onloadend=()=>{blogCount=http.responseText;maxPageNo=Math.ceil(blogCount/4);console.log('skdksalk-->',maxPageNo);checkButtons();};
+                            http.send();
+                        	function setPostsWithPageNo() {
+                        		let currentPageNo=document.getElementById('currentPageNo').innerText;
+                        		let upperLimit=4;  
+                        		let lowerLimit= ((currentPageNo-1)*4);
+                        		let httpTwo = new XMLHttpRequest();
+                        		httpTwo.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostsInRange/'+lowerLimit+'/'+upperLimit);
+                        		//http.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostsInRange/'+3+'/'+4);
+                        		httpTwo.onloadend=()=>{let postList=JSON.parse(httpTwo.responseText);//console.log('TESTING------->',postList);
+                        							blogPostsPannel.innerHTML='';
+	                        							for(let post of postList) {
+	                        								blogPostsPannel.innerHTML=blogPostsPannel.innerHTML+blogElement.outerHTML;
+	                        								document.getElementById('blogPostItem').id=document.getElementById('blogPostItem').id+post.id;
+	                        								document.getElementById('blogPostImage').id=document.getElementById('blogPostImage').id+post.id;
+	                        								document.getElementById('blogPostImage'+post.id).src='/viewPagesAssets/img/userAddedFeaturedImages/'+post.featuredImageName;
+	                        								document.getElementById('blogPostDate').id=document.getElementById('blogPostDate').id+post.id;
+	                        								document.getElementById('blogPostDate'+post.id).firstElementChild.innerHTML=post.dateOfPostCreation.split(' ')[0]+' <span>'+post.dateOfPostCreation.split(' ')[1].split(',')[0]+'</span>';
+	                        								document.getElementById('blogPostLink').id=document.getElementById('blogPostLink').id+post.id;
+	                        								document.getElementById('blogPostLink'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
+	                        								document.getElementById('blogPostHeading').id=document.getElementById('blogPostHeading').id+post.id;
+	                        								document.getElementById('blogPostHeading'+post.id).innerHTML=post.heading;
+	                        								document.getElementById('blogPostContent').id=document.getElementById('blogPostContent').id+post.id;
+	                        								document.getElementById('blogPostContent'+post.id).innerHTML=setCharacterLimit(post.mainSection);
+	                        								document.getElementById('blogPostLinkReadMore').id=document.getElementById('blogPostLinkReadMore').id+post.id;
+	                        								document.getElementById('blogPostLinkReadMore'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
+	                        								
+	                        							}
+	                        							checkButtons();
+                        							};
+                        		httpTwo.send();
+                        	}
+                        	function next() {
+                        		document.getElementById('currentPageNo').innerHTML=Number(document.getElementById('currentPageNo').innerText)+1;
+                        		setPostsWithPageNo();
+                        		window.scrollTo(0,0);
+                        		checkButtons();
+                        		}
+                        	
+                        	function previous() {document.getElementById('currentPageNo').innerHTML=Number(document.getElementById('currentPageNo').innerText)-1;setPostsWithPageNo();window.scrollTo(0,0);checkButtons();}
+                        	function setCharacterLimit(content) {if(content.length>200) return content.slice(0,199); else return content;}
+                        	function checkButtons() {
+                        		let currentPageNo=Number(document.getElementById('currentPageNo').innerText);
+	                        		if(maxPageNo==currentPageNo) {
+	                        			document.getElementById('nextPage').disabled=true;if(currentPageNo==1) document.getElementById('previousPage').disabled=true; else  document.getElementById('previousPage').disabled=false;
+	                        		} else if(currentPageNo==1) {document.getElementById('previousPage').disabled=true; if(maxPageNo==1) document.getElementById('nextPage').disabled=true; else document.getElementById('nextPage').disabled=false;}
+	                        		else if(currentPageNo<maxPageNo) {document.getElementById('nextPage').disabled=false;document.getElementById('previousPage').disabled=false;}
+                        		}
+                        	setPostsWithPageNo();
+                        	checkButtons();
+                        </script>
+
+					</div>
+
+					<div class="col-lg-4">
+						<div class="blog-sidebar">
+						
+						<div class="widget sidebar_widget widget_search">
+                                <form action="#" class="search-form input-group">
+                                    <input type="search" class="form-control widget_input" placeholder="Search">
+                                    <button type="submit"><i class="ti-search"></i></button>
+                                </form>
+                            </div>
+
+
+							<div class="widget sidebar_widget widget_categorie mt_60">
+								<div class="widget_title">
+									<h3 class="f_p f_size_20 t_color3">Categories</h3>
+									<div class="border_bottom"></div>
+								</div>
+								<ul th:each="postCategory, iStat : ${postCategories}"
+									class="list-unstyled">
+									<li><a href="#"><span th:href="${postCategory.name}"
+											th:text="${postCategory.name}">Education</span></a></li>
+
+								</ul>
+							</div>
+							<div class="widget sidebar_widget widget_recent_post mt_60">
+								<div class="widget_title">
+									<h3 class="f_p f_size_20 t_color3">Recent posts</h3>
+									<div class="border_bottom"></div>
+								</div>
+
+								<div class="media post_item" th:each="post , iStat : ${posts}">
+									<!-- <img src="/viewPagesAssets/img/blog-grid/post_1.jpg" alt=""> -->
+									<img width="90px" height="80"
+										th:src="@{/viewPagesAssets/img/userAddedFeaturedImages/{featuredImageName}(featuredImageName=${post.featuredImageName})}"
+										alt="">
+
+									<div class="media-body">
+										<a href="#"
+											th:href="@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}">
+											<h3 class="f_size_16 f_p f_400" th:text="${post.postTitle}">Pro</h3>
+										</a>
+										<div class="entry_post_info">
+
+											<a
+												th:href="@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}"
+												th:text="${post.dateOfPostCreation}">March 14, 2020</a>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</div>
+	

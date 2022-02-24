@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="content">
+
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- Page Heading -->
+					<div
+						class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+							<h6 class="m-0 font-weight-bold text-primary">
+							<a href="javascript:history.back()"
+								class="btn btn-info btn-icon-split btn-sm float-right mr-3">
+								<span class="icon text-white-50"> <i
+									class="fas fa-arrow-left"></i>
+							</span> <span class="text">Back</span>
+							</a>
+						</h6>
+					</div>
+					<!-- Content Row -->
+					<div class="row">
+						<!-- Earnings (Monthly) Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-primary shadow h-100 py-2">
+								<div class="card-body" href="#">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Universities</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"  th:text = "${numOfUniversities}">5</div>
+											<!-- Trying for the count                                      
+                                             -->
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-university fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Pending Requests Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body" href="#">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Courses</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800" th:text = "${numOfCourses}">12</div>
+											<!-- T 
+                                             -->
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Pending Requests Card Example -->
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body" href="#">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Pages</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800" th:text = "${numOfPages}">12</div>
+											<!-- T 
+                                             -->
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-3 col-md-6 mb-4">
+							<div class="card border-left-warning shadow h-100 py-2">
+								<div class="card-body" href="#">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Posts</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800" th:text = "${numOfPosts}">12</div>
+											<!-- T 
+                                             -->
+										</div>
+										<div class="col-auto">
+											<i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Content Row -->
+				</div>
+				<!-- End of Content Wrapper -->
+			</div>
+		</div>
+	</div>
+

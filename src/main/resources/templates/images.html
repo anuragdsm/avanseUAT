@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+	<div layout:fragment="content">
+	
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+	<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Images</h1>
+			<h6 class="m-0 font-weight-bold text-primary">
+							<a href="javascript:history.back()"
+								class="btn btn-info btn-icon-split btn-sm float-right mr-3">
+								<span class="icon text-white-50"> <i
+									class="fas fa-arrow-left"></i>
+							</span> <span class="text">Back</span>
+							</a>
+						</h6>
+		</div>
+		<!-- Content Row -->
+		<div class="row">
+				<div class="container-fluid">
+
+
+					<!--  -->
+
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1"
+						role="dialog" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog modal-xl" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Add Image</h5>
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+								
+								<form  method="post"
+							 enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-sm-5">
+									
+									<h3>Image</h3>
+									<div class="custom-file">
+										<input onchange="imageUpload1(event)" type="file" class="custom-file-input"
+											name="image" accept="image/jpeg, image/png"
+											id="image" multiple  /> <label id="labelOfFiles" class="custom-file-label"
+											for="image">Choose file</label>
+									</div>
+									<br><br>
+									<h3>File Names</h3>
+									<div id="fileNames" class="col-5" style="overflow: auto; max-height: 300px;">
+										<p>sdfsdf</p>
+													
+									</div>
+							
+									<script type="text/javascript">
+											let collectionOfFiles;
+											function imageUpload1(event) {
+									            console.log('Image Upload happening here............');
+									            collectionOfFiles=event.target.files;
+									            let imageElement=document.getElementById('image');
+									            let outerBox=document.getElementById('imagePreviewOuterBox');
+									            
+									            let fileNameDiv = document.getElementById('fileNames');
+									            
+									            console.log(imageElement.children);
+									            console.log(event);
+									            outerBox.innerHTML="";
+									            fileNameDiv.innerHTML="";
+									            
+									            count=0;
+									            for(let f of event.target.files) {
+									            	let reader=new FileReader();
+									            	reader.readAsDataURL(f);
+									            	reader.onload = ()=>{
+									            		outerBox.innerHTML=outerBox.innerHTML+'<div class="form-group"><img type="hidden" src="'+reader.result+'" id="imgPreview'+count+'" height="300px" width="600px" style="margin-top: 20px" alt=" "></div>';
+									            		fileNameDiv.innerHTML = fileNameDiv.innerHTML+ '<p>'+f.name+'</p>';
+									            		count++;
+											            		if(event.target.files.length==count) {
+											            			document.getElementById('labelOfFiles').innerHTML=event.target.files.length+" Files Selected";
+											            		}
+									            		}
+									            }
+									            /* reader.readAsDataURL(event.target.files[0]);
+									            reader.onload = ()=>{document.getElementById('imgPreview').src=reader.result;} */
+									            
+									        }
+									</script>
+									<input type="hidden" name="imgName">
+								</div>
+								<div id="imagePreviewOuterBox" class="col-7" style="overflow: auto;max-height: 400px;">
+										<div class="form-group">
+												<img type="hidden" src="#" id="imgPreview" height="300px"
+													width="600px"
+													style="margin-top: 20px" alt=" ">
+										</div>
+								</div>
+							</div>
+						</form>
+								
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">Close</button>
+									<button onclick="saveImages()" type="button" class="btn btn-primary">Save
+										changes</button>
+								</div>
+								<script type="text/javascript">
+									function saveImages() {
+										console.log('Uploading Images to the server....');
+										imagesForm=new FormData();
+										//imagesForm.append('imageList',collectionOfFiles);
+										for(let f of collectionOfFiles) {
+											imagesForm.append('imageList',f,f.name);
+										}
+										let http= new XMLHttpRequest();
+										console.log(http);
+										http.open('POST','http://localhost:8080/admin/images');
+										http.send(imagesForm);
+										console.log(http.responseText);
+										window.location.replace('http://localhost:8080/admin/images');
+									}
+								</script>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!--  -->
+
+					<a th:href="@{/admin/images/add}" style="margin: 20px 0"
+						class="btn btn-primary" data-toggle="modal"
+						data-target="#exampleModal">Add New Image</a>
+					<table class="table">
+						<thead class="thead-light">
+							<tr>
+								<th scope="col">SN</th>
+								<th scope="col">Preview</th>
+								<th scope="col">Image Name</th>
+								<th scope="col">Link</th>
+								<th scope="col">Size</th>
+								<th scope="col">Delete</th>
+
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr th:each="image, iStat : ${images}">
+								<th scope="row" th:text="${iStat.index + 1}">1</th>
+
+							<td><img height="100px" width="100px"
+									th:src="@{/images/userAddedImages/}+${image.fileName}"></td>
+									
+								<td th:text="${image.fileName}">My image</td>
+								
+								<td th:text="${image.link}">link</td>
+
+								<td th:text="${image.size}+' KB' ">Image Size</td>
+								<!-- <td th:text="${image.uploadedOn}">Uploaded On</td> -->
+
+								<td><a
+									th:href="@{/admin/image/delete/{id}(id=${image.id})}"
+									class="btn btn-danger">Delete</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+
+			<!-- Content Row -->
+
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="/vendor/jquery/jquery.min.js"></script>
+		<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="/js/sb-admin-2.min.js"></script>
+
+
+
+</body>
+
+</html>
+		</html>

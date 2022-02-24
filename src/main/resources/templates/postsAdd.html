@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Post Add</title>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/summernote/summernote/summernote-bs4.min.css"
+	rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+
+	<div id="wrapper">
+
+		<div layout:fragment="content">
+
+			<h6 class="m-0 font-weight-bold text-primary">
+				<a href="javascript:history.back()"
+					class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+					class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+				</span> <span class="text">Back</span>
+				</a>
+			</h6>
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+				<!-- Page Heading -->
+				<div
+					class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">Create Post</h1>
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- Button trigger modal -->
+				<button hidden id="modalButtonForSpinner" type="button"
+					class="btn btn-primary" data-toggle="modal"
+					data-target="#staticBackdrop">Launch static backdrop modal
+				</button>
+
+				<!-- Modal -->
+				<div style="left: 10%; top: 30%;" class="modal fade"
+					id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+					tabindex="-1" aria-labelledby="staticBackdropLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-body">
+							<div class="spinner-border text-primary"
+								style="height: 150px; width: 150px;" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+				<!-- Section Content Start -->
+				<!-- DataTales Example -->
+				<div class="card shadow mb-4">
+
+					<div class="card-body">
+						<form th:action="@{/admin/posts/add}" class="form-horizontal"
+							method="post" th:object="${postDTO}"
+							enctype="multipart/form-data">
+							<input type="hidden" name="id" th:field="*{id}"> <input
+								type="hidden" required="" name="old_slug" value="">
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Post Details</h6>
+							</div>
+							​
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Post
+									Title (Required)</label>
+								<div class="col-sm-10">
+									<input type="text" required th:field="*{postTitle}"
+										class="form-control get_url_name" id="post_title"
+										name="post_title">
+								</div>
+							</div>
+							​
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Heading
+								</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="heading"
+										name="heading" value="" th:field="*{heading}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Sub
+									Heading</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="subHeading"
+										name="sub_heading" value="" th:field="*{subHeading}">
+								</div>
+							</div>
+
+							<div class="form-group">
+
+
+								<!-- When new post is being created this post will be rendered -->
+								<div th:if="${postCategoriesSelectedForThisPost==null}"
+									class="col-sm-10">
+									<label class="col-sm-2 control-label">Categories to
+										attach</label>
+									<div th:each="postCategory, iStat : ${postCategories}">
+										<input type="checkbox" th:id="${postCategory.id}"
+											th:name="selectedCategories" th:value="${postCategory.id}">
+										<label th:for="${postCategory.id}"
+											th:text="${postCategory.name}" class="col-sm-2 control-label">Category</label>
+									</div>
+								</div>
+
+								<!-- While Updating this block will be rendered -->
+								<div th:if="${postCategoriesSelectedForThisPost!=null}"
+									class="col-sm-10">
+									<input name="updateOperation" type="text"
+										value="updateOperationInputText" hidden> <label
+										class="col-sm-2 control-label">Categories to attach</label>
+									<div th:each="postCategory, iStat : ${postCategories}">
+										<input type="checkbox" th:id="${postCategory.id}"
+											th:name="selectedCategories" th:value="${postCategory.id}"
+											th:checked="${#lists.contains(postCategoriesSelectedForThisPost,postCategory)}">
+										<label th:for="${postCategory.id}"
+											th:text="${postCategory.name}" class="col-sm-2 control-label">Category</label>
+									</div>
+								</div>
+
+
+							</div>
+
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Featured
+									Image</h6>
+							</div>
+							
+							<style>
+									.myInnerDiv {
+										position: absolute;
+										top: 50%;
+										left: 50%;
+										transform: translate(-50%, -50%);
+										width: 80%;
+									}
+							</style>
+
+
+
+							<div class="form-group">
+								<div class="col-sm-8">
+									<h5>Featured Image</h5>
+									<div class="custom-file">
+										<div class="row">
+											<div class="col-7">
+												<div class="myInnerDiv">
+													<input type="file" class="custom-file-input"
+														name="featuredImageFile" id="featuredImage"
+														onchange="featuredImageChange(event)"
+														accept="image/jpeg,image/gif,image/x-png,video/*" /> <label
+														th:if="${isPostUpdate == 'true'}" for="featuredImage"
+														class="custom-file-label"> Current Image <span
+														style="color: green;"
+														th:text="${postDTO.featuredImageName}"> </span>
+													</label> <label th:if="${isPostUpdate != 'true'}"
+														for="featuredImage" class="custom-file-label">Choose
+														File</label>
+												</div>
+											</div>
+											<div class="col-5">
+												<img id="featuredImagePreview"
+													th:if="${isPostUpdate == 'true'}"
+													th:src="'/viewPagesAssets/img/userAddedFeaturedImages/'+${postDTO.featuredImageName}"
+													height="100px" width="150px"> <img
+													id="featuredImagePreview" th:if="${isPostUpdate != 'true'}"
+													src="" height="100px" width="150px">
+											</div>
+										</div>
+
+
+										<p class="help-block">Size (width and height) :1920 X 500</p>
+									</div>
+								</div>
+
+							</div>
+
+
+							<script type="text/javascript">
+									function featuredImageChange(event) {
+										console.log(event);
+										let fr = new FileReader();
+										fr.readAsDataURL(event.target.files[0]);
+										fr.onloadend=()=>{
+											document.getElementById('featuredImagePreview').src=fr.result;
+										}
+										
+										
+									}
+							
+							
+							</script>
+
+
+
+							<!-- ​
+							<div class="form-group">
+								<div class="col-sm-10">
+
+									<img src="" height="100px"> <br /> Delete <input
+										th:field="*{featuredImageName}" type="checkbox"
+										name="image_delete" value="1"> <input type="file"
+										name="featuredImageFile" id="image"
+										accept="image/jpeg,image/gif,image/x-png,video/*">
+									<p class="help-block">Size (width and height) :1920 X 500</p>
+								</div>
+							</div>
+							​ ​ ​
+ -->
+
+
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Featured
+									Image Alt</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="image_alt"
+										name="image_alt" value="" th:field="*{featuredImageAltText}">
+								</div>
+							</div>
+
+
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Content</h6>
+							</div>
+
+							​
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Main Section
+									(Required)</label> ​
+								<div class="col-sm-10">
+									<textarea class="form-control summernote" id="summernote"
+										name="main_section" th:field="*{mainSection}"></textarea>
+									​
+								</div>
+							</div>
+
+
+							<!-- 	​
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">Header
+										Title</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="header_title"
+											name="header_title" value="" th:field="*{headerTitle}">
+									</div>
+								</div>
+
+ -->
+
+
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">SEO</h6>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Meta
+									Title</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="meta_title"
+										name="meta_title" value="" th:field="*{metaTitle}">
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Meta
+									Description</label>
+
+								<div class="col-sm-10">
+									<textarea class="form-control" id="meta_description"
+										name="meta_description" th:field="*{metaDescription}"></textarea>
+
+								</div>
+							</div>
+
+
+							<input type="hidden" name="submit_type" id="submit_type"
+								value="1">
+							<div class="box-footer pull-right">
+								<button type="submit" class="btn btn-success btn-icon-split"
+									onclick="">
+									<span class="icon text-white-50"> <i
+										class="fas fa-check"></i>
+									</span> <span class="text">Save</span>
+								</button>
+
+								<button type="reset" class="btn btn-secondary ">Reset</button>
+
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Section Content End -->
+				​
+				<div></div>
+			</div>
+			<!-- /.container-fluid -->
+
+		</div>
+	</div>
+	<!-- End of Main Content -->
+	</div>
+	<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+</body>
+</html>

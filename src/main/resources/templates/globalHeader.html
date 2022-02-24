@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Header Add</title>
+
+<script src="/vendor/CodeFlask/build/codeflask.min.js"></script>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/summernote/summernote/summernote-bs4.min.css"
+	rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+
+	<div id="wrapper">
+
+		<div layout:fragment="content">
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+			<h6 class="m-0 font-weight-bold text-primary">
+							<a href="javascript:history.back()"
+								class="btn btn-info btn-icon-split btn-sm float-right mr-3">
+								<span class="icon text-white-50"> <i
+									class="fas fa-arrow-left"></i>
+							</span> <span class="text">Back</span>
+							</a>
+						</h6>
+
+
+				<div class="container">
+					<h3>Custom Global Header</h3>
+					
+					
+					
+
+					<!-- <div class="row"> -->
+						<div class="col-sm-10">
+							<div class="form-group">
+
+									
+									<div class="test" style="width: 500px; height: 300px;">//Feel free to play with the code. :) </div>
+									<script>
+										const flask = new CodeFlask('.test', {
+											language : 'js',
+											lineNumbers : true,
+											areaId : 'thing1',
+											ariaLabelledby : 'header1',
+											handleTabs : true
+										});
+
+										window['flask'] = flask;
+									</script>
+									
+							</div>
+						</div>
+						
+						<script type="text/javascript">
+							function updateMyGlobalHeader() {
+								let globalHeaderForm= new FormData();
+								let linkForSubmission="http://"+window.location.href.split('/',3)[2]+"/admin/globalHeader";
+								globalHeaderForm.append('globalHeaderCode',flask.getCode());
+								let http = new XMLHttpRequest();
+								http.open('POST',linkForSubmission);
+								http.send(globalHeaderForm);
+								window.location.replace(linkForSubmission);
+							}
+						</script>
+						<button type="submit" onclick="updateMyGlobalHeader()" class="btn btn-primary" style="">Submit</button>
+						
+						<br>
+						<div class="col-sm-10">
+							
+							<div class="form-group">
+										<br>
+									<h3>Already Implemented Code</h3>
+									<div class="readOnlyArea" style="width: 500px; height:150px; overflow: auto;margin-bottom: 20px">// Already Implemented Code</div>
+									<script>
+										const flaskReadOnly = new CodeFlask('.readOnlyArea', {
+											language : 'js',
+											lineNumbers : true,
+											areaId : 'thing2',
+											ariaLabelledby : 'header2',
+											handleTabs : true,
+											 readonly: true
+										});
+
+										window['flaskReadOnly'] = flaskReadOnly;
+									</script>
+							
+							
+							</div>
+							<script type="text/javascript">
+									let alreadyImplementedCode = '';
+									console.log('testing...........',window.location.href);
+									let simpleVariable = window.location.href.split('/',3);
+									let urlForGlobalHeaderFile = 'http://'+simpleVariable[2]+'/viewPagesAssets/js/customGlobalHeader/globalHeader.js';
+									let http = new XMLHttpRequest();
+									http.open('GET',urlForGlobalHeaderFile);
+									http.send();
+									http.onloadend=()=>{
+										console.log(http.responseText);
+										flaskReadOnly.updateCode(http.responseText);
+									}
+									
+									
+							
+							</script>
+							
+							
+						</div>
+						
+					<!-- </div> -->
+									
+						
+						
+
+						
+					
+				</div>
+				<!-- Content Row -->
+			</div>
+			<!-- End of Content Wrapper -->
+		</div>
+
+	</div>
+
+
+	<!-- End of Page Wrapper -->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+	<!-- Page level plugins -->
+	<script src="/vendor/chart.js/Chart.min.js"></script>
+	<!-- Page level custom scripts -->
+	<script src="/js/demo/chart-area-demo.js"></script>
+	<script src="/js/demo/chart-pie-demo.js"></script>
+</body>
+</html>

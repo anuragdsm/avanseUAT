@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Page Add</title>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/summernote/summernote/summernote-bs4.min.css"
+	rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+
+	<div id="wrapper">
+
+		<div layout:fragment="content">
+
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+				<!-- Page Heading -->
+				<div
+					class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">Create Pages</h1>
+					<h6 class="m-0 font-weight-bold text-primary">
+						<a href="javascript:history.back()"
+							class="btn btn-info btn-icon-split btn-sm float-right mr-3">
+							<span class="icon text-white-50"> <i
+								class="fas fa-arrow-left"></i>
+						</span> <span class="text">Back</span>
+						</a>
+					</h6>
+
+				</div>
+				<!-- Section Content Start -->
+				<!-- DataTales Example -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3"></div>
+					<div class="card-body">
+						<form th:action="@{/admin/pages/add}" class="form-horizontal"
+							method="post" th:object="${pageDTO}"
+							enctype="multipart/form-data">
+							<input type="hidden" name="id" th:field="*{id}">
+								<input hidden name="pageUpdateCheck" th:if="${isPageUpdate == 'true'}" type="text" value="true">​
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Page
+									Title (Required)</label>
+								<div class="col-sm-10">
+									<input type="text" required th:field="*{pageTitle}"
+										class="form-control get_url_name" id="page_title"
+										name="page_title">
+								</div>
+							</div>
+
+
+
+
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-8 control-label">Custom
+									URI (Required) Eg. (/abcd/xyz/) Do not forget to start with forward slash("/")</label>
+								<div class="row">
+									<div class="col-sm-5">
+										<input onkeyup="checkUriForAvailability()" type="text"
+											required th:field="*{customUri}"
+											class="form-control get_url_name" id="customURL"
+											name="page_title"> <span hidden
+											id="duplicateUriWarning" style="color: red;">URI
+											Already In Use</span>
+									</div>
+
+								</div>
+							</div>
+
+
+							<script type="text/javascript">
+							
+							function checkUriForAvailability() {
+								console.log("Current Value in Box = ", document.getElementById('customURL').value);
+								let http = new XMLHttpRequest();
+								
+								let allPageUris;
+								
+								http.open('GET', "http://"+window.location.href.split('/',3)[2] + "/admin/api/getAllPagesUrls")
+								http.onloadend=()=>{
+									
+									allPageUris = JSON.parse(http.responseText);
+									console.log()
+									let check=false;
+									for(let pageUri of allPageUris) {
+										if(pageUri[1]==document.getElementById('customURL').value) {
+											console.log('Repeated URL Entered');
+											document.getElementById('duplicateUriWarning').hidden=false;
+											document.getElementById('saveButton').disabled=true;
+											check=true;
+										}
+									}
+									if(check==false) {document.getElementById('duplicateUriWarning').hidden=true;document.getElementById('saveButton').disabled=false;}									
+								}
+								
+								http.send();
+								
+								
+							}
+							
+							
+							
+							
+							
+							</script>
+							​
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Heading
+								</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="banner_heading"
+										name="sub_title" value="" th:field="*{bannerHeading}">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Sub
+									Heading</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="sub_title"
+										name="sub_title" value="" th:field="*{bannerSubHeading}">
+								</div>
+							</div>
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Banner Image
+									Desktop</h6>
+							</div>
+							<style>
+									.myInnerDiv {
+										position: absolute;
+										top: 50%;
+										left: 50%;
+										transform: translate(-50%, -50%);
+										width: 80%;
+									}
+							</style>
+							​
+							<div class="form-group">
+								<div class="col-sm-8">
+									<h5>Banner Image</h5>
+									<div class="custom-file">
+										<div class="row">
+											<div class="col-7">
+												<div class="myInnerDiv">
+												<input type="file" class="custom-file-input"
+													name="bannerImageFile" id="bannerImage"
+													onchange="bannerImageChange(event)"
+													accept="image/jpeg,image/gif,image/x-png,video/*" /> 
+													
+													<label th:if="${isPageUpdate == 'true'}"
+													for="bannerImage" class="custom-file-label">
+														Current Image
+														<span style="color: green;" th:text="${pageDTO.bannerImageName}">
+														</span>
+													</label>
+													<label th:if="${isPageUpdate != 'true'}"
+													for="bannerImage" class="custom-file-label">Choose
+													File</label>
+												</div>
+											</div>
+											<div class="col-5">
+												<img id="bannerImagePreview"
+													th:if="${isPageUpdate == 'true'}"
+													th:src="'/viewPagesAssets/img/userAddedBannerImages/'+${pageDTO.bannerImageName}"
+													height="100px" width="150px"> 
+												<img
+													id="bannerImagePreview" th:if="${isPageUpdate != 'true'}"
+													src="" height="100px" width="150px">
+											</div>
+										</div>
+
+
+										<p class="help-block">Size (width and height) :1920 X 500</p>
+									</div>
+								</div>
+
+							</div>
+							<script type="text/javascript">
+									function bannerImageChange(event) {
+										console.log(event);
+										let fr = new FileReader();
+										fr.readAsDataURL(event.target.files[0]);
+										fr.onloadend=()=>{
+											document.getElementById('bannerImagePreview').src=fr.result;
+										}
+										
+										
+									}
+							
+							
+							</script>
+							
+							
+							
+							
+							​ ​ ​
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Banner
+									Image Alt</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="image_alt"
+										name="image_alt" value="" th:field="*{bannerImageAlt}">
+								</div>
+							</div>
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Content</h6>
+							</div>
+
+							​
+							<div class="form-group">
+								<label class="col-sm-2 control-label">Main Section
+									(Required)</label> ​
+								<div class="col-sm-10">
+									<textarea class="form-control summernote" id="summernote"
+										name="main_section" th:field="*{mainSection}"></textarea>
+									​
+								</div>
+							</div>
+
+
+
+
+
+							<!-- 	​
+								<div class="form-group">
+									<label for="inputEmail3" class="col-sm-2 control-label">Header
+										Title</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="header_title"
+											name="header_title" value="" th:field="*{headerTitle}">
+									</div>
+								</div>
+
+ -->
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">Custom CSS
+									and JS</h6>
+							</div>
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">CSS
+									Code</label>
+
+
+
+
+								<div class="col-sm-10">
+									<textarea class="form-control" id="css_code" name="css_code"
+										th:field="*{cssCode}"></textarea>
+
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">JS
+									Code</label>
+
+								<div class="col-sm-10">
+									<textarea class="form-control" id="js_code" name="js_code"
+										th:field="*{jsCode}"></textarea>
+
+
+								</div>
+							</div>
+
+							<div class="card-header py-3 mb-4">
+								<h6 class="m-0 font-weight-bold text-primary">SEO</h6>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Meta
+									Title</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control " id="meta_title"
+										name="meta_title" value="" th:field="*{metaTitle}">
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Meta
+									Keywords</label>
+
+								<div class="col-sm-10">
+									<textarea class="form-control" id="meta_keywords"
+										name="meta_keywords" th:field="*{metaKeyword}"></textarea>
+
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="inputEmail3" class="col-sm-2 control-label">Meta
+									Description</label>
+
+								<div class="col-sm-10">
+									<textarea class="form-control" id="meta_description"
+										name="meta_description" th:field="*{metaDescription}"></textarea>
+
+								</div>
+							</div>
+
+
+							<input type="hidden" name="submit_type" id="submit_type"
+								value="1">
+							<div class="box-footer pull-right">
+								<button type="submit" class="btn btn-success btn-icon-split"
+									onclick="" id="saveButton">
+									<span class="icon text-white-50"> <i
+										class="fas fa-check"></i>
+									</span> <span class="text">Save</span>
+								</button>
+
+								<button type="reset" class="btn btn-secondary ">Reset</button>
+
+
+
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<script type="text/javascript">
+				function onSubmit() {
+					if(document.getElementById('mainForm').checkValidity()) {
+						document.getElementById('modalButtonForSpinner').click();
+						setTimeout(() => {
+							document.getElementById('mainForm').submit();
+							},5000);
+					}
+				}
+				
+				</script>
+
+				<!-- Section Content End -->
+				​
+
+				<div></div>
+			</div>
+
+
+			<!-- /.container-fluid -->
+
+		</div>
+	</div>
+	<!-- End of Main Content -->
+
+
+
+	</div>
+	<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>University Add</title>
+
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/summernote/summernote/summernote-bs4.min.css"
+	rel="stylesheet">
+
+
+</head>
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+
+	<div id="wrapper">
+
+		<div layout:fragment="content">
+
+			<h6 class="m-0 font-weight-bold text-primary">
+				<a href="javascript:history.back()"
+					class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+					class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+				</span> <span class="text">Back</span>
+				</a>
+			</h6>
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+
+				<!-- Page Heading -->
+				<div
+					class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">University Management</h1>
+
+				</div>
+
+				<!-- Button trigger modal -->
+				<button hidden id="modalButtonForSpinner" type="button"
+					class="btn btn-primary" data-toggle="modal"
+					data-target="#staticBackdrop">Launch static backdrop modal
+				</button>
+
+				<!-- Modal -->
+				<div style="left: 10%; top: 30%;" class="modal fade"
+					id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+					tabindex="-1" aria-labelledby="staticBackdropLabel"
+					aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-body">
+							<div class="spinner-border text-primary"
+								style="height: 150px; width: 150px;" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Content Row -->
+				<div class="row">
+					<div class="container-fluid">
+
+						<form id="mainForm" th:action="@{/admin/universities/add}"
+							method="post" th:object="${universityDTO}"
+							enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-sm-5">
+									<input type="hidden" name="id" th:field="*{id}">
+									<div class="form-group">
+										<label for="name"><h5>University Name</h5></label> <input
+											type="text" class="form-control" required th:field="*{name}"
+											name="name" id="name" placeholder="Enter University name">
+									</div>
+									<div class="form-group">
+										<label for="location"><h5>Country</h5></label>
+
+										<!-- <input type="text"
+											class="form-control" required th:field="*{location}"
+											name="location" id="location" placeholder="Enter Location"> -->
+
+										<div th:if="${updateUniversityCheck=='true'}">
+											<input hidden id="updateUniversityAlreadySelectedLocationId"
+												type="text" th:value="${universityDTO.location}" />
+
+
+										</div>
+										<select required class="form-control" id="countryListSelect"
+											name="location">
+											<option value="">Select Country</option>
+										</select>
+										<script>
+												let cSelect=document.getElementById('countryListSelect');
+												let countryApiList;
+												console.log(window.location.href.split('/',3)[2]);
+												fetch("http://"+window.location.href.split('/',3)[2]+"/jsons/countries.json")
+										        .then((value) => {
+											          value.json().then((data) => {
+												        	 console.log(data);
+												        	 countryApiList = data;
+												        	 countryApiList.sort((a,b)=>{if(a.name>b.name) return 1; else if(a.name==b.name) return 0; else return -1;});
+												        	 console.log(countryApiList[0].name);
+												        	 
+												        	 if(document.getElementById('updateUniversityAlreadySelectedLocationId')!=undefined){
+												        		 for(let i=0;i<countryApiList.length;i++) {
+												        			 if(document.getElementById('updateUniversityAlreadySelectedLocationId').value== countryApiList[i].name) {
+												        				 cSelect.innerHTML=cSelect.innerHTML+'<option value="'+countryApiList[i].name+'" selected>'+countryApiList[i].name+'</option>';
+												        			 } else {
+												        				 cSelect.innerHTML=cSelect.innerHTML+'<option value="'+countryApiList[i].name+'">'+countryApiList[i].name+'</option>'; 
+												        			 }
+													        		 
+													        		 
+													        	 }
+												        	 }
+												        	 
+												        	 else{
+												        		 
+												        		 for(let i=0;i<countryApiList.length;i++) {
+													        		 cSelect.innerHTML=cSelect.innerHTML+'<option value="'+countryApiList[i].name+'">'+countryApiList[i].name+'</option>';
+													        	 } 
+												        	 }												        	 
+												          });
+												        })
+										        .catch((error) => {
+										          console.log("error for countries api call", error);
+										        });
+											</script>
+									</div>
+
+									<div class="form-group">
+										<div th:if="${updateUniversityCheck=='true'}">
+											<input hidden id="updateUniversityAlreadySelectedEstablishedId"
+												type="text" th:value="${universityDTO.establishedYear}" />
+
+										</div>
+																				
+										<label for="establishedYear"><h5>Established Year</h5></label>
+			
+										<select class="form-control" required
+											th:field="*{establishedYear}" name="establishedYear"
+											id="establishedYear" placeholder="Year">
+											<option value="">Select Year of Establishment</option>
+										</select>
+										<script type="text/javascript">
+											let date = new Date();
+											let latestYear = date.getFullYear();
+											let establishedYearBox = document
+													.getElementById('establishedYear');
+											if(document.getElementById('updateUniversityAlreadySelectedEstablishedId')!=undefined) {
+												for (let i = latestYear; i >= 1900; i--) {
+													if(document.getElementById('updateUniversityAlreadySelectedEstablishedId').value==i) {
+														establishedYearBox.innerHTML = establishedYearBox.innerHTML
+														+ '<option value='+i+' selected>'
+														+ i + '</option>';
+													} else {
+														establishedYearBox.innerHTML = establishedYearBox.innerHTML
+														+ '<option value='+i+'>'
+														+ i + '</option>';
+													}
+													
+												}
+											} else {
+												for (let i = latestYear; i >= 1900; i--) {
+													establishedYearBox.innerHTML = establishedYearBox.innerHTML
+															+ '<option value='+i+'>'
+															+ i + '</option>';
+												}
+											}
+											
+										</script>
+									</div>
+									<div class="form-group">
+										<label for="description"><h5>University
+												Description</h5></label>
+										<textarea class="form-control" rows="5"
+											th:field="*{description}" name="description" id="description"></textarea>
+									</div>
+
+									<div class="form-group">
+										<label for="accomodation"><h5>Accommodation
+												Availability</h5></label>
+
+										<div th:if="${updateUniversityCheck=='true'}">
+											<div class="input-group-radio">
+												<div th:if="${universityDTO.accomodation == 'Yes'}">
+													<input name="accomodation" id="accomodationOption1"
+														value="Yes" type="radio" checked> <label
+														for="accomodationOption1">Yes</label>
+												</div>
+												<div th:if="${universityDTO.accomodation != 'Yes'}">
+													<input name="accomodation" id="accomodationOption1"
+														value="Yes" type="radio"> <label
+														for="accomodationOption1">Yes</label>
+												</div>
+											</div>
+											<div class="input-group-radio">
+
+												<div th:if="${universityDTO.accomodation == 'No'}">
+													<input name="accomodation" id="accomodationOption2"
+														type="radio" value="No" checked> <label
+														for="accomodationOption2">No</label>
+												</div>
+
+												<div th:if="${universityDTO.accomodation != 'No'}">
+													<input name="accomodation" id="accomodationOption2"
+														type="radio" value="No"> <label
+														for="accomodationOption2">No</label>
+												</div>
+
+											</div>
+
+											<div class="input-group-radio">
+												<div th:if="${universityDTO.accomodation == 'N/A'}">
+													<input name="accomodation" type="radio"
+														id="accomodationOption3" value="N/A" checked> <label
+														for="accomodationOption3">N/A</label>
+												</div>
+
+												<div th:if="${universityDTO.accomodation != 'N/A'}">
+													<input name="accomodation" type="radio"
+														id="accomodationOption3" value="N/A"> <label
+														for="accomodationOption3">N/A</label>
+												</div>
+											</div>
+
+
+
+										</div>
+										<div th:if="${updateUniversityCheck!='true'}">
+											<div class="input-group-radio">
+												<input name="accomodation" id="accomodationOption1"
+													value="Yes" type="radio"> <label
+													for="accomodationOption1">Yes</label>
+											</div>
+											<div class="input-group-radio">
+												<input name="accomodation" id="accomodationOption2"
+													type="radio" value="No"> <label
+													for="accomodationOption2">No</label>
+											</div>
+											<div class="input-group-radio">
+												<input name="accomodation" type="radio"
+													id="accomodationOption3" value="N/A"> <label
+													for="accomodationOption3">N/A</label>
+											</div>
+										</div>
+
+									</div>
+
+
+								</div>
+
+
+								<div class="col-sm-5">
+
+
+
+
+									<style>
+.my-vertical-center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+</style>
+
+
+									<div class="form-group">
+
+										<!-- <div class="container">
+											<div id="rowsHolder">
+												<div id="RowData" class="row">
+												
+													<div class="col">
+														<label for="intakePeriodStart">Intake Period Start</label> 
+														<select class="form-control" id="intakePeriodStart" name="intakeFrom">
+															<option>January</option>
+															<option>Feburary</option>
+															<option>March</option>
+															<option>April</option>
+															<option>May</option>
+															<option>June</option>
+															<option>July</option>
+															<option>August</option>
+															<option>September</option>
+															<option>October</option>
+															<option>November</option>
+															<option>December</option>
+														</select>
+													</div>
+													<div class="col">
+														<label for="intakePeriodTo">Intake Period To</label>
+														<select class="form-control" id="intakePeriodTo" name="intakeTo">
+															<option>January</option>
+															<option>Feburary</option>
+															<option>March</option>
+															<option>April</option>
+															<option>May</option>
+															<option>June</option>
+															<option>July</option>
+															<option>August</option>
+															<option>September</option>
+															<option>October</option>
+															<option>November</option>
+															<option>December</option>
+														</select>
+													</div>
+													<div class="col">
+															<div class="my-vertical-center">
+																<a class="btn btn-secondary" onclick="addNewIntakeRow()" >Add Another Intake</a>
+															</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<script>
+											let initialRowData = document.getElementById('RowData').outerHTML;
+											function addNewIntakeRow() {
+												 document.getElementById('rowsHolder').lastElementChild.lastElementChild.outerHTML="";
+												/* let childlist=document.getElementById('rowsHolder').children;
+												console.log(childlist);
+									            childlist[childlist.length-1].children[2].outerHTML=""; */
+												/* document.getElementById('rowsHolder').lastChild.lastChild.remove(); */
+									            document.getElementById('rowsHolder').innerHTML=document.getElementById('rowsHolder').innerHTML+initialRowData; 
+											}
+										</script> -->
+										<div class="form-group">
+											<label for="accomodation"><h5>Intakes</h5></label>
+											<div class="container">
+
+												<div class="row">
+													<div class="col-4">
+														<input id="summerInput"
+															onclick="checkBoxClickForIntake('summer')"
+															type="checkbox"> <label for="summerInput">Summer
+															Intake</label>
+													</div>
+													<div class="col">
+														<select disabled id="summer" name="summer"><option
+																value="January">January</option>
+															<option value="February">February</option>
+															<option value="March">March</option>
+															<option value="April">April</option>
+															<option value="May">May</option>
+															<option value="June">June</option>
+															<option value="July">July</option>
+															<option value="August">August</option>
+															<option value="September">September</option>
+															<option value="October">October</option>
+															<option value="November">November</option>
+															<option value="December">December</option></select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-4">
+														<input id="winterInput"
+															onclick="checkBoxClickForIntake('winter')"
+															type="checkbox"> <label for="winterInput">Winter
+															Intake</label>
+													</div>
+													<div class="col-4">
+														<select disabled id="winter" name="winter"><option
+																value="January">January</option>
+															<option value="February">February</option>
+															<option value="March">March</option>
+															<option value="April">April</option>
+															<option value="May">May</option>
+															<option value="June">June</option>
+															<option value="July">July</option>
+															<option value="August">August</option>
+															<option value="September">September</option>
+															<option value="October">October</option>
+															<option value="November">November</option>
+															<option value="December">December</option></select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-4">
+														<input id="fallInput"
+															onclick="checkBoxClickForIntake('fall')" type="checkbox">
+														<label for="fallInput">Fall Intake</label>
+													</div>
+													<div class="col-4">
+														<select disabled id="fall" name="fall"><option
+																value="January">January</option>
+															<option value="February">February</option>
+															<option value="March">March</option>
+															<option value="April">April</option>
+															<option value="May">May</option>
+															<option value="June">June</option>
+															<option value="July">July</option>
+															<option value="August">August</option>
+															<option value="September">September</option>
+															<option value="October">October</option>
+															<option value="November">November</option>
+															<option value="December">December</option></select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-4">
+														<input id="springInput"
+															onclick="checkBoxClickForIntake('spring')"
+															type="checkbox"> <label for="springInput">Spring
+															Intake</label>
+													</div>
+													<div class="col-4">
+														<select disabled id="spring" name="spring"><option
+																value="January">January</option>
+															<option value="February">February</option>
+															<option value="March">March</option>
+															<option value="April">April</option>
+															<option value="May">May</option>
+															<option value="June">June</option>
+															<option value="July">July</option>
+															<option value="August">August</option>
+															<option value="September">September</option>
+															<option value="October">October</option>
+															<option value="November">November</option>
+															<option value="December">December</option></select>
+													</div>
+												</div>
+											</div>
+
+											<script type="text/javascript">
+												function checkBoxClickForIntake(typeOfClick) {
+													if(document.getElementById(typeOfClick+'Input').checked) {
+														document.getElementById(typeOfClick).disabled=false;
+													} else {
+														document.getElementById(typeOfClick).disabled=true;
+													}
+												}
+										</script>
+										
+										<div th:if="${updateUniversityCheck == 'true'}">
+											
+											<input id="updateUniversityAlreadySelectedIntakePeriod" hidden type="text" th:value="${universityDTO.intakePeriod}">
+											<script>
+													let alreadySelectedIntakePeriod = document.getElementById('updateUniversityAlreadySelectedIntakePeriod').value;
+															let alreadySelIntakePerString=alreadySelectedIntakePeriod.split(',');
+															console.log('TESTING---------------------->',alreadySelIntakePerString);
+															
+															function fun(monthStr) {
+																if(monthStr.toLowerCase()=='january'){return 0;}
+														        if(monthStr.toLowerCase()=='feburary'){return 1;}
+														        if(monthStr.toLowerCase()=='march'){return 2;}
+														        if(monthStr.toLowerCase()=='april'){return 3;}
+														        if(monthStr.toLowerCase()=='may'){return 4;}
+														        if(monthStr.toLowerCase()=='june'){return 5;}
+														        if(monthStr.toLowerCase()=='july'){return 6;}
+														        if(monthStr.toLowerCase()=='august'){return 7;}
+														        if(monthStr.toLowerCase()=='september'){return 8;}
+														        if(monthStr.toLowerCase()=='october'){return 9;}
+														        if(monthStr.toLowerCase()=='november'){return 10;}
+														        if(monthStr.toLowerCase()=='december'){return 11;}
+														        }
+															for(let intake of alreadySelIntakePerString) {
+																if(intake.startsWith('summerIntake')) {document.getElementById('summerInput').click();document.getElementById('summer').children[fun(intake.split('summerIntake-')[1])].selected=true;}
+																if(intake.startsWith('winterIntake')) {document.getElementById('winterInput').click();document.getElementById('winter').children[fun(intake.split('winterIntake-')[1])].selected=true;}
+																if(intake.startsWith('fallIntake')) {document.getElementById('fallInput').click();document.getElementById('fall').children[fun(intake.split('fallIntake-')[1])].selected=true;}
+																if(intake.startsWith('springIntake')) {document.getElementById('springInput').click();document.getElementById('spring').children[fun(intake.split('springIntake-')[1])].selected=true;}
+															}
+											
+											</script>
+										
+										</div>
+										
+
+										</div>
+										<div class="form-group">
+											<label for="applicationProcess"><h5>Application
+													Process</h5></label> <input type="text" class="form-control" required
+												th:field="*{applicationProcess}" name="applicationProcess"
+												id="applicationProcess" placeholder="">
+										</div>
+										<h5>University Image</h5>
+										<div class="custom-file">
+											<input type="file" class="custom-file-input"
+												name="universityImage" accept="image/jpeg, image/png"
+												id="universityImage" /> 
+												<label th:if="${updateUniversityCheck !='true'}" class="custom-file-label"
+												for="universityImage">Choose file</label>
+												<label th:if="${updateUniversityCheck =='true'}" class="custom-file-label"
+												for="universityImage">Current Image (<span th:text="${universityDTO.imageName}" style="color: green;"></span>)</label>
+										</div>
+										<div class="form-group">
+											
+											<img type="hidden" src="#" id="imgPreview" height="100px"
+												width="100px"
+												th:src="@{${'/universityImages/' + universityDTO.imageName}}"
+												style="margin-top: 20px" alt=" ">
+										</div>
+										<input hidden type="text" name="imgName"
+											th:value="${universityDTO.imageName}">
+										<button type="submit" class="btn btn-primary"
+											onclick="onSubmit()">Submit</button>
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+				<script type="text/javascript">
+				function onSubmit() {
+					if(document.getElementById('mainForm').checkValidity()) {
+						document.getElementById('modalButtonForSpinner').click();
+						setTimeout(() => {
+							document.getElementById('mainForm').submit();
+							},15000);
+					}
+				}
+				
+				</script>
+
+				<!-- Content Row -->
+
+
+
+			</div>
+			<!-- End of Content Wrapper -->
+
+		</div>
+		<!-- End of Page Wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
+
+
+	</div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="/vendor/chart.js/Chart.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/js/demo/chart-area-demo.js"></script>
+	<script src="/js/demo/chart-pie-demo.js"></script>
+
+	</script>
+
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#imgPreview').attr('src', e.target.result).width(100)
+							.height(100);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$('#universityImage').change(function() {
+			readURL(this);
+		});
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
+	</script>
+</body>
+</html>

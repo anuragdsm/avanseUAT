@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Avanse Dashboard</title>
+<!-- Custom fonts for this template-->
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+	
+	
+<!-- Custom styles for this template-->
+<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
+
+
+<link href="/vendor/summernote/summernote/summernote-bs4.min.css"
+	rel="stylesheet">
+
+
+</head>
+<body id="page-top">
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript"
+		src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
+			<!-- Sidebar - Brand -->
+			<a href="#" th:href="@{/admin}"
+				class="sidebar-brand d-flex align-items-center justify-content-center">
+				<img id="avanseLogo" src="/images/logo.png">
+			</a>
+			<!-- Nav Item - Dashboard -->
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item active"><a class="nav-link collapsed"
+				href="#" data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo">
+					<hr class="sidebar-divider"> <i class="fas fa-headset"></i> <span>Forms
+						Data</span>
+			</a>
+
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Contact Us:</h6>
+						<a class="collapse-item active"
+							th:href="@{/admin/contactUs/customers}">Customer</a> <a
+							class="collapse-item" th:href="@{/admin/contactUs/institutes}">Education
+							Institution</a> <a class="collapse-item" href="cards.html">Media</a>
+						<a class="collapse-item" href="cards.html">Investor</a> <a
+							class="collapse-item" href="cards.html">Partner With Us</a>
+					</div>
+				</div></li>
+
+
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities1"
+				aria-expanded="true" aria-controls="collapseUtilities"> <!-- <hr class="sidebar-divider"> -->
+					<i class="fas fa-paperclip"></i> <span>Page</span>
+			</a>
+				<div id="collapseUtilities1" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Manage Pages:</h6>
+						<a class="collapse-item  active" th:href="@{/admin/pages/add}"><strong>Add
+								New Page</strong></a> <a class="collapse-item" th:href="@{/admin/pages}">View
+							Pages</a>
+
+					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Other:</h6>
+						<a class="collapse-item" th:href="@{/admin/awards}"><strong>
+								Awards</strong></a> <a class="collapse-item" th:href="@{/admin/testimonials}">
+							Testimonials</a>
+
+					</div>
+				</div></li>
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities2"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-blog"></i> <span>Post/Blog</span>
+			</a>
+				<div id="collapseUtilities2" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Manage Posts:</h6>
+
+						<a class="collapse-item  active" href="#"
+							th:href="@{/admin/posts/add}"><b>New Post</b></a> <a
+							class="collapse-item" href="#" th:href="@{/admin/posts}">View
+							Posts</a>
+					</div>
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Manage Category:</h6>
+						<a class="collapse-item" th:href="@{/admin/postCategories/add}"><strong>
+								Add Category</strong></a> <a class="collapse-item" href="#"
+							th:href="@{/admin/postCategories}">View Categories</a>
+					</div>
+				</div></li>
+
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link" href="#"
+				th:href="@{/admin/images}" data-target="#collapseUtilities4"
+				aria-controls="collapseUtilities"> <i class="far fa-images"></i>
+					<span>Upload Images</span>
+			</a></li>
+
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities6"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-university"></i> <span>Universities</span>
+			</a>
+				<div id="collapseUtilities6" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Manage Universities:</h6>
+						<a class="collapse-item  active" a href="#"
+							th:href="@{/admin/universities/add}"><b>Add new</b></a> <a
+							class="collapse-item" a href="#" th:href="@{/admin/universities}">View</a>
+
+					</div>
+				</div></li>
+
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseUtilities7"
+				aria-expanded="true" aria-controls="collapseUtilities"> <i
+					class="fas fa-user-graduate"></i> <span>Courses</span>
+			</a>
+				<div id="collapseUtilities7" class="collapse"
+					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Manage Courses:</h6>
+						<a class="collapse-item  active" th:href="@{/admin/courses/add}">Add
+							Course</a> <a class="collapse-item" th:href="@{/admin/courses}">Show
+							Courses</a>
+					</div>
+				</div></li>
+
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapsePages6"
+				aria-expanded="true" aria-controls="collapsePages">
+					<hr class="sidebar-divider"> <i class="fab fa-searchengin"></i>
+					<span>SEO</span>
+			</a>
+				<div id="collapsePages6" class="collapse"
+					aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Edit Header:</h6>
+
+						<a class="collapse-item" href="#" th:href="@{/admin/globalHeader}"><b>Global
+								Header</b></a>
+
+
+					</div>
+				</div></li>
+
+			<!-- Nav Item - HR Collapse Menu -->
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapsePages1"
+				aria-expanded="true" aria-controls="collapsePages"> <!-- Divider -->
+					<hr class="sidebar-divider"> <i class="far fa-building"></i> <span>Careers</span>
+			</a>
+				<div id="collapsePages1" class="collapse"
+					aria-labelledby="headingPages" data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Applications:</h6>
+						<a class="collapse-item" href="#"
+							th:href="@{/admin/jobApplications}"><b>View Applications</b></a>
+					</div>
+
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Job Posting:</h6>
+						<a class="collapse-item" href="#" th:href="@{/admin/jobs/add}"><b>Post
+								Job</b></a> <a class="collapse-item" href="#" th:href="@{/admin/jobs}">View
+							Jobs</a>
+					</div>
+
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Cities:</h6>
+						<a class="collapse-item" href="#"
+							th:href="@{/admin/locations/add}"><b>Add new Location</b></a> <a
+							class="collapse-item" href="#" th:href="@{/admin/locations}">View
+							Locations</a>
+					</div>
+				</div></li>
+
+			<script>
+				let x = 0;
+				function changeLogo() {
+					if (x == 0) {
+						x = 1;
+						document.getElementById('avanseLogo').src = "http://"
+								+ window.location.href.split('/', 3)[2]
+								+ "/images/avanseLogoSmallWhite.png";
+						document.getElementById('avanseLogo').style.height = "30px";
+						document.getElementById('avanseLogo').style.width = "30px";
+					} else {
+						x = 0;
+						document.getElementById('avanseLogo').src = "http://"
+								+ window.location.href.split('/', 3)[2]
+								+ "/images/logo.png";
+						document.getElementById('avanseLogo').style.height = "auto";
+						document.getElementById('avanseLogo').style.width = "auto";
+					}
+
+				}
+			</script>
+
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button type="button" onclick="changeLogo()"
+					class="rounded-circle border-0" id="sidebarToggle"
+					aria-controls="accordionSidebar" aria-expanded="true"></button>
+			</div>
+
+
+
+		</ul>
+		<!-- End of Sidebar -->
+
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav
+					class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow ">
+
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop"
+						class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+
+					<!-- Topbar Search -->
+					<!-- 
+					
+					<form
+						class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+						<div class="input-group">
+							<input type="text" class="form-control bg-light border-0 small"
+								placeholder="Search for..." aria-label="Search"
+								aria-describedby="basic-addon2">
+							<div class="input-group-append">
+								<button class="btn btn-primary" type="button">
+									<i class="fas fa-search fa-sm"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+ -->
+					<!-- Topbar Navbar -->
+					<ul class="navbar-nav ml-auto">
+
+						<!-- Nav Item - Search Dropdown (Visible Only XS) -->
+						<li class="nav-item dropdown no-arrow d-sm-none"><a
+							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
+						</a> <!-- Dropdown - Messages -->
+							<div
+								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+								aria-labelledby="searchDropdown">
+								<form class="form-inline mr-auto w-100 navbar-search">
+									<div class="input-group">
+										<input type="text"
+											class="form-control bg-light border-0 small"
+											placeholder="Search for..." aria-label="Search"
+											aria-describedby="basic-addon2">
+										<div class="input-group-append">
+											<button class="btn btn-primary" type="button">
+												<i class="fas fa-search fa-sm"></i>
+											</button>
+										</div>
+									</div>
+								</form>
+							</div></li>
+
+
+						<!-- Nav Item - Messages -->
+						<div class="topbar-divider d-none d-sm-block"></div>
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">admin</span>
+								<img class="images-profile rounded-circle"
+								src="/images/undraw_profile.svg">
+						</a> <!-- Dropdown - User Information -->
+							<div
+								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+								aria-labelledby="userDropdown">
+
+								<a class="dropdown-item" href="#" th:href="@{/logout}"
+									data-toggle="modal" data-target="#logoutModal"> <i
+									class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Logout
+								</a>
+							</div></li>
+					</ul>
+				</nav>
+				<!-- End of Topbar -->
+
+				<div layout:fragment="content">
+					<p>Changing contents</p>
+				</div>
+
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Your Website 2022</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
+		</div>
+		<!-- End of Content Wrapper -->
+
+	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a class="btn btn-primary" href="#" th:href=@{/logout}>Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="/js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+
+
+
+
+
+	<!-- 	<script src="/vendor/chart.js/Chart.min.js"></script>
+ -->
+	<!-- Page level custom scripts layout -->
+	<!-- 
+	<script src="/js/demo/chart-area-demo.js"></script>
+	<script src="/js/demo/chart-pie-demo.js"></script>
+	<script src="/js/demo/chart-bar-demo.js"></script> -->
+
+	<!-- for data Tables  -->
+	<script src="/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="/js/demo/datatables-demo.js"></script>
+
+	<script src="/vendor/summernote/summernote/summernote-bs4.min.js"></script>
+
+
+	<!-- 	<script type="text/javascript">
+	
+	$('#summernote').summernote({
+	    height: ($(window).height() - 300),
+	    callbacks: {
+	        onImageUpload: function(image) {
+	            uploadImage(image[0]);
+	        }
+	    }
+	});
+
+	function uploadImage(image) {
+	    var data = new FormData();
+	    data.append("image", image);
+	    $.ajax({
+	    	
+	    	/* your url to deal with the images is below  */
+	        url: 'localhost:8080/images/userAddedImages',
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        data: data,
+	        type: "post",
+	        success: function(url) {
+	            var image = $('<img>').attr('src', 'http://' + url);
+	            $('#summernote').summernote("insertNode", image[0]);
+	        },
+	        error: function(data) {
+	            console.log(data);
+	        }
+	    });
+	}
+	
+	
+	</script> -->
+
+
+
+
+	<script>
+		$('.summernote').summernote(
+				{
+					placeholder : 'Hello stand alone ui',
+					tabsize : 2,
+					height : 120,
+					toolbar : [ [ 'style', [ 'style' ] ],
+							[ 'font', [ 'bold', 'underline', 'clear' ] ],
+							[ 'color', [ 'color' ] ],
+							[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+							[ 'table', [ 'table' ] ],
+							[ 'insert', [ 'link', 'picture', 'video' ] ],
+							[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
+				});
+	</script>
+
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#imgPreview').attr('src', e.target.result).width(400)
+							.height(300);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$('#universityImage').change(function() {
+			readURL(this);
+		});
+		$(".custom-file-input").on(
+				"change",
+				function() {
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+				});
+	</script>
+
+	<!-- Image Preview in testimonials -->
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#imgPreview').attr('src', e.target.result).width(250)
+							.height(250);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$('#testimonialImage').change(function() {
+			readURL(this);
+		});
+		$(".custom-file-input").on(
+				"change",
+				function() {
+
+					var fileName = $(this).val().split("\\").pop();
+					$(this).siblings(".custom-file-label").addClass("selected")
+							.html(fileName);
+
+				});
+	</script>
+
+
+
+</body>
+</html>

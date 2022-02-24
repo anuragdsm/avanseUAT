@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Posts</title>
+
+
+
+</head>
+<body id="page-top">
+
+	<div id="wrapper">
+
+
+		<!-- Content Wrapper -->
+		<div layout:fragment="content">
+
+			<h6 class="m-0 font-weight-bold text-primary">
+				<a href="javascript:history.back()"
+					class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+					class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+				</span> <span class="text">Back</span>
+				</a>
+			</h6>
+
+			<!-- Begin Page Content -->
+			<div class="container-fluid">
+
+				<!-- Page Heading -->
+				<div
+					class="d-sm-flex align-items-center justify-content-between mb-4">
+					<h1 class="h3 mb-0 text-gray-800">Posts Management</h1>
+
+				</div>
+
+				<script th:inline="javascript" type="text/javascript">
+					let contextPath = 'http://localhost:8080';
+
+					function togglePostStatus(id) {
+						console.log('toggling id = ' + id);
+
+						let customSwitch = 'customSwitch' + id;
+
+						console.log(document.getElementById(customSwitch));
+
+						console
+								.log(document.getElementById(customSwitch).checked);
+
+						if (document.getElementById(customSwitch).checked == true
+								|| document.getElementById(customSwitch).checked == null) {
+
+							document.getElementById(customSwitch).checked = false;
+
+							/* deactivate in controller */
+							console.log('Deactivating..');
+
+							let http = new XMLHttpRequest();
+							let url = contextPath + '/' + 'admin/'
+									+ 'activateDeactivatePost' + '/' + id + '/'
+									+ 'DeactivatePost';
+
+							http.open("GET", url, false);
+							http.send(null);
+							console.log(http.responseText);
+							document.getElementById('postStatus' + id).innerHTML = 'Post Inactive';
+						}
+
+						else {
+
+							document.getElementById(customSwitch).checked = true;
+							let http = new XMLHttpRequest();
+							let url = contextPath + '/' + 'admin/'
+									+ 'activateDeactivatePost' + '/' + id + '/'
+									+ 'ActivatePost';
+							console.log('Activating..')
+							http.open("GET", url, false);
+							http.send(null);
+							console.log(http.responseText);
+							document.getElementById('postStatus' + id).innerHTML = 'Post Active';
+						}
+
+					}
+				</script>
+
+				<!-- Content Row -->
+				<div class="row">
+					<div class="container-fluid">
+						<a th:href="@{/admin/posts/add}" style="margin: 20px 0"
+							class="btn btn-primary">Create Post</a>
+
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">SN</th>
+											<th scope="col">Post Title</th>
+											<th scope="col">Created on</th>
+											<th scope="col">Category</th>
+											<th scope="col">Status</th>
+											<th scope="col">Edit Page</th>
+											<th scope="col">Delete</th>
+
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr th:each="post, iStat : ${posts}">
+											<th scope="row" th:text="${iStat.index + 1}">1</th>
+											<td><a href="#"
+												th:href="@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}"
+												th:text="${post.postTitle}">Home </td>
+
+											<!-- 
+										<td><img src="" height="100px" width="100px"
+										th:src="@{${'/images/universityImages/' + university.imageName}}"></td>
+
+										-->
+											<td th:text="${post.dateOfCreation}">22-3-2022</td>
+											<td>
+												<table>
+													<tr
+														th:each="postCategory, iStat  :  ${post.postCategoryList}">
+														<td style="border-top: 0px;"><a
+															th:text="${postCategory.name}"
+															class="btn btn-outline-secondary"></a></td>
+													</tr>
+												</table>
+											</td>
+
+
+
+											<!-- <td th:text="${post.dateOfCreation}">22-3-2022</td> -->
+
+											<!-- <td th:text="${page.lastModified}">22-3-2022</td> -->
+
+											<!-- This one to be replaced by date modified -->
+
+											<td>
+												<div class="custom-control custom-switch"
+													th:onclick="'togglePostStatus('+${post.id}+')'">
+													<input th:inline="text" type="checkbox"
+														th:if="${post.isPostActive==true}" checked
+														class="custom-control-input"
+														th:id="'customSwitch'+${post.id}"> <input
+														type="checkbox" th:if="${post.isPostActive==false}"
+														class="custom-control-input"
+														th:id="'customSwitch'+${post.id}"> <label
+														class="custom-control-label"
+														th:for="'customSwitch'+${post.id}"><span
+														th:id="'pageStatus'+${post.id}"
+														th:text="${post.isPostActive==true ?'Post Active':'Post Inactive'}"></span></label>
+												</div>
+											</td>
+
+											<td><a href=""
+												th:href="@{/admin/post/edit/{id}(id=${post.id})}"
+												class="btn btn-warning">Edit</a></td>
+
+											<td><a href=""
+												th:href="@{/admin/post/delete/{id}(id=${post.id})}"
+												class="btn btn-danger">Delete</a></td>
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Content Row -->
+
+			</div>
+			<!-- End of Content Wrapper -->
+		</div>
+	</div>
+	<!-- End of Page Wrapper -->
+
+
+</body>
+
+</html>

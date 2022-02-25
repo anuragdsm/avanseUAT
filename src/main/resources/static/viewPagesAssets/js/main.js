@@ -1838,29 +1838,25 @@ $(document).ready(function(){
     document.getElementById("cityname").innerHTML = " " + x;
   }
 
-  $(document).ready(function(){
-    $(".course_detail").on("click",function(){
-        var $this = $(this);
-        $this.next(".coudetail").slideToggle();
-        if($this.text() === "View Detail"){
-            $this.text("Close");
-        }else{
-          $this.text("View Detail");
-        }
-    })
-});
+//   schedule of charges
 
-// $('.course_detail').click(function() {
-//     var index = $(this).index();
-//     if($(this).hasClass('active')) {
-//       $(this).removeClass('active');
-//             $('.coudetail').eq(index).addClass('fadeOutDown')
-//     } else {
-//         $('.course_detail').removeClass('active');
-//         $(this).addClass('active')
-//       $('.coudetail').hide().eq(index).show().removeClass('fadeOutDown')
-//     }
-//   });
-  
-//   //animate.css effect
-//   $('.coudetail').addClass('animated fadeInUp');
+//   $(document).ready(function(){
+//     $(".schedule-item").on("click",function(){
+//         var $this = $(this);
+//         $this.next(".schedule-info").slideToggle();
+       
+//     })
+// });
+// course detail
+//   $(document).ready(function(){
+//     $(".course_detail").on("click",function(){
+//         var $this = $(this);
+//         $this.next(".coudetail").slideToggle();
+//         if($this.text() === "View Detail"){
+//             $this.text("Close");
+//         }else{
+//           $this.text("View Detail");
+//         }
+//     })
+// });
+

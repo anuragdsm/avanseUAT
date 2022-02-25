@@ -25,6 +25,8 @@ import com.avanse.springboot.DTO.forms.contactUs.CustomerDTO;
 import com.avanse.springboot.DTO.forms.contactUs.InstituteDTO;
 import com.avanse.springboot.DTO.forms.contactUs.InvestorDTO;
 import com.avanse.springboot.DTO.forms.contactUs.MediaDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
 import com.avanse.springboot.model.Page;
 import com.avanse.springboot.model.Post;
 import com.avanse.springboot.model.PostCategory;
@@ -192,6 +194,20 @@ public class PageController {
 		model.addAttribute("skillEnhancementDTO", new SkillEnhancementDTO());
 		return modelAndView;
 	}
+	
+	@GetMapping("/associate-with-us")
+	public ModelAndView getAssociateWithUsPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/associate-with-us");
+		model.addAttribute("associateWithUsDTO", new AssociateWithUsDTO());
+		return modelAndView;
+	}
+	@GetMapping("/csr")
+	public ModelAndView getCSRPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/csr");
+		model.addAttribute("csrLeadsDTO", new CSRLeadsDTO());
+		return modelAndView;
+	}
+	
 	
 	/*
 	 * @GetMapping("/viewDynamicPages/{extractedFileName}") public ModelAndView

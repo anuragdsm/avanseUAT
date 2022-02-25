@@ -224,8 +224,8 @@
 								class="ti-arrow-right"></i></a>
 						</div>
 					</div>
-					
-					
+
+
 					<div class="col-lg-4 mb-5 text-center">
 						<div class=" home-offer-box py-5 pl-3 pr-3">
 							<img src="/viewPagesAssets/img/icon/loan-home.png">
@@ -239,7 +239,7 @@
 								class="ti-arrow-right"></i></a>
 						</div>
 					</div>
-					
+
 				</div>
 
 			</div>
@@ -299,6 +299,99 @@
 						<h4 class="c_dark pt-5">The Ideal Student Guide</h4>
 
 					</div>
+
+
+
+					<!-- template course search boxes  -->
+
+					<div class="col-lg-12 col-sm-12 pt-3">
+						<div class="course_abroad_form shadow">
+							<div class="row pt-4 pb-3">
+								<div class="col-lg-4 py-3 lg-border-right">
+									<form action="#" class="contact_form_box " method="post"
+										id="contactForm">
+										<div class="form-group ">
+											<div class="row">
+												<div class="col-11">
+													<select class="form-control" id="country_name">
+														<option value="--">Select Country</option>
+														<option value="australia">Australia</option>
+														<option value="canada">Canada</option>
+														<option value="germany">Germany</option>
+														<option value="new-zealand">New Zealand</option>
+														<option value="singapore">Singapore</option>
+														<option value="uk">UK</option>
+														<option value="usa">USA</option>
+													</select>
+													
+												</div>
+												<!-- <div class="col-3">
+													<button onclick="goToCountryPage()"
+														class="btn btn-submit search-button-home" type="submit">GO</button>
+
+												</div> -->
+
+											</div>
+										</div>
+									</form>
+
+								</div>
+								<div class="col-lg-4 py-3 lg-border-right">
+									<form action="#" class="contact_form_box " method="post"
+										id="contactForm">
+										<div class="form-group ">
+											<div class="row">
+												<div class="col-9">
+													<select class="form-control" id="country_name">
+														<option value="--">Select Course</option>
+														<option value="">Advanced Diploma of Business</option>
+														<option value="">B.Eng in Computer Systems
+															Engineering</option>
+														<option value="">Bachelor of Arts (Sociology)</option>
+													</select>
+													<button class="btn btn-submit search-button-home"
+														type="submit">GO</button>
+												</div>
+
+											</div>
+
+
+										</div>
+									</form>
+								</div>
+								<div class="col-lg-4 py-3">
+									<form action="#" class="contact_form_box " method="post"
+										id="contactForm">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-9">
+													<select class="form-control" id="country_name">
+														<option value="--">Select University</option>
+														<option value="">Academies Australasia
+															Polytechnic</option>
+														<option value="">Asia Pacific International
+															College</option>
+														<option value="">Australian National University</option>
+													</select>
+													<button class="btn btn-submit search-button-home"
+														type="submit">GO</button>
+												</div>
+
+											</div>
+
+
+										</div>
+									</form>
+								</div>
+							</div>
+
+							</form>
+						</div>
+
+					</div>
+
+					<!-- template course search boxes  -->
+
 					<div class="col-lg-12 col-sm-12 pt-3">
 						<div class="course_abroad_form shadow">
 							<div class="row">
@@ -570,16 +663,18 @@
 												alt="">
 										</div>
 										<div class="media-body">
-											<h5 class="w_color f_500" th:text = "${testimonial.name}">Nikhil Walimbe</h5>
-											<h6 class="w_color f_400" th:text = "${testimonial.info}">Management MSc. Queen Mary
-												University of London, England</h6>
+											<h5 class="w_color f_500" th:text="${testimonial.name}">Nikhil
+												Walimbe</h5>
+											<h6 class="w_color f_400" th:text="${testimonial.info}">Management
+												MSc. Queen Mary University of London, England</h6>
 										</div>
 									</div>
 
 								</div>
-								<p class="w_color" th:text = "${testimonial.message}">After submitting all my documents, my
-									education loan was sanctioned within two days. Thank you Avanse
-									Financial Services for such an amazing and prompt service.</p>
+								<p class="w_color" th:text="${testimonial.message}">After
+									submitting all my documents, my education loan was sanctioned
+									within two days. Thank you Avanse Financial Services for such
+									an amazing and prompt service.</p>
 								<a href="#" class="learn_btn_two text-white">Read More <i
 									class="ti-arrow-right"></i></a>
 								<div class="shap_one"></div>

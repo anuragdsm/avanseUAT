@@ -70,6 +70,10 @@ public class PageController {
 		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
 		return "dynamicPages/index";
 	}
+	@GetMapping(value={"/study-abroad"})
+	public String studyAbroadPage(Model model) {
+		return "dynamicPages/study-abroad";
+	}
 	@GetMapping("/career")
 	public String careerPage() {
 		return "dynamicPages/career";

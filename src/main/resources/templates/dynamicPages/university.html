@@ -40,10 +40,10 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-7 my-auto ml-auto">
-              <h2 class="f_size_30 f_600 pb-3">
-                Acadia University <span class="c_cyan f_size_20">- Canada</span>
+              <h2 th:text = "${university.name}" class="f_size_30 f_600 pb-3">
+                Acadia University <span class="c_cyan f_size_20" th:text="${university.location}">- Canada</span>
               </h2>
-              <p class="f_400">
+              <p th:text="${university.description}" class="f_400">
                 Established in 1838, Acadia University is a highly-ranked
                 liberal arts university in Nova Scotia, Canada. Initially
                 established as Horton Academy in 1828, the university served as

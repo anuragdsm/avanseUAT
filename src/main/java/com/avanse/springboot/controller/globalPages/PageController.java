@@ -93,6 +93,11 @@ public class PageController {
 		model.addAttribute("course", courseService.getCourseById(courseId).get());
 		return "dynamicPages/courseDetail";
 	}
+	@GetMapping("/UID/{universityId}")
+	public String universityDetailsPage(@PathVariable long universityId, Model model) {
+		model.addAttribute("university", universityService.getUniversityById(universityId).get());
+		return "dynamicPages/university";
+	}
 	
 	
 	  @GetMapping(value =

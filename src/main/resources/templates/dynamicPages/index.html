@@ -301,97 +301,6 @@
 					</div>
 
 
-
-					<!-- template course search boxes  -->
-
-					<div class="col-lg-12 col-sm-12 pt-3">
-						<div class="course_abroad_form shadow">
-							<div class="row pt-4 pb-3">
-								<div class="col-lg-4 py-3 lg-border-right">
-									<form action="#" class="contact_form_box " method="post"
-										id="contactForm">
-										<div class="form-group ">
-											<div class="row">
-												<div class="col-11">
-													<select class="form-control" id="country_name">
-														<option value="--">Select Country</option>
-														<option value="australia">Australia</option>
-														<option value="canada">Canada</option>
-														<option value="germany">Germany</option>
-														<option value="new-zealand">New Zealand</option>
-														<option value="singapore">Singapore</option>
-														<option value="uk">UK</option>
-														<option value="usa">USA</option>
-													</select>
-													
-												</div>
-												<!-- <div class="col-3">
-													<button onclick="goToCountryPage()"
-														class="btn btn-submit search-button-home" type="submit">GO</button>
-
-												</div> -->
-
-											</div>
-										</div>
-									</form>
-
-								</div>
-								<div class="col-lg-4 py-3 lg-border-right">
-									<form action="#" class="contact_form_box " method="post"
-										id="contactForm">
-										<div class="form-group ">
-											<div class="row">
-												<div class="col-9">
-													<select class="form-control" id="country_name">
-														<option value="--">Select Course</option>
-														<option value="">Advanced Diploma of Business</option>
-														<option value="">B.Eng in Computer Systems
-															Engineering</option>
-														<option value="">Bachelor of Arts (Sociology)</option>
-													</select>
-													<button class="btn btn-submit search-button-home"
-														type="submit">GO</button>
-												</div>
-
-											</div>
-
-
-										</div>
-									</form>
-								</div>
-								<div class="col-lg-4 py-3">
-									<form action="#" class="contact_form_box " method="post"
-										id="contactForm">
-										<div class="form-group">
-											<div class="row">
-												<div class="col-9">
-													<select class="form-control" id="country_name">
-														<option value="--">Select University</option>
-														<option value="">Academies Australasia
-															Polytechnic</option>
-														<option value="">Asia Pacific International
-															College</option>
-														<option value="">Australian National University</option>
-													</select>
-													<button class="btn btn-submit search-button-home"
-														type="submit">GO</button>
-												</div>
-
-											</div>
-
-
-										</div>
-									</form>
-								</div>
-							</div>
-
-							</form>
-						</div>
-
-					</div>
-
-					<!-- template course search boxes  -->
-
 					<div class="col-lg-12 col-sm-12 pt-3">
 						<div class="course_abroad_form shadow">
 							<div class="row">
@@ -399,60 +308,42 @@
 									<!-- <form th:action="@{/viewDynamicPages/}" class="contact_form_box " method="post" id="contactForm"> -->
 									<div class="form-group ">
 										<div class="row">
-											<div class="col-9">
-												<select class="form-control" id="country_name">
-													<option value="australia">Australia</option>
+											<div class="col-11">
+												<select class="form-control" id="country_name" onchange="setCoursesAndUniversities()">
+													<option value="">Select Country</option>
+													<option value="Australia">Australia</option>
 													<option value="Canada">Canada</option>
-													<option value="germany">Germany</option>
-													<option value="new-zealand">New Zealand</option>
-													<option value="singapore">Singapore</option>
-													<option value="uk">UK</option>
-													<option value="usa">USA</option>
+													<option value="Germany">Germany</option>
+													<option value="New Zealand">New Zealand</option>	
+													<option value="Singapore">Singapore</option>
+													<option value="United Kingdom">UK</option>
+													<option value="United States of America">USA</option>
 												</select>
 											</div>
-											<div class="col-3">
-												<button onclick="goToCountryPage()"
-													class="btn btn-submit search-button-home">
-													<i class="ti-search f_size_24"></i>
-												</button>
-											</div>
+											
 										</div>
 									</div>
-									<!-- </form> -->
-									<script type="text/javascript">
-                                    	function goToCountryPage() {
-                                    		if(document.getElementById('country_name').value!='') {
-                                    			let currentNav=window.location.href;
-                                    			console.log(currentNav.split('/'));
-                                    			let destUrl=currentNav.split('/')[0];
-                                    			for(let i=1;i<currentNav.split('/').length-1;i++) {
-                                    				destUrl=destUrl+'/'+currentNav.split('/')[i];
-                                    			}
-                                    			
-                                    			window.location.assign(destUrl+'/Country/'+document.getElementById('country_name').value);
-                                    		}
-                                    	}
-                                    </script>
 								</div>
+								
 								<div class="col-lg-4 py-5 lg-border-right">
 									<!-- <form action="#" class="contact_form_box " method="post" id="contactForm"> -->
 									<div class="form-group ">
 										<div class="row">
 											<div class="col-9">
 												<select class="form-control" id="course_id">
-													<option value="">Selecte Course</option>
+													<option value="">Select Course</option>
 													<option value="">Advanced Diploma of Business</option>
 													<option value="">B.Eng in Computer Systems
 														Engineering</option>
 													<option value="">Bachelor of Arts (Sociology)</option>
 												</select>
-											</div>
-											<div class="col-3">
 												<button onclick="onCourseSearchButtonClick()"
 													class="btn btn-submit search-button-home" type="submit">
-													<i class="ti-search f_size_24"></i>
+													GO
 												</button>
+												
 											</div>
+											
 										</div>
 
 
@@ -461,11 +352,13 @@
 									<script type="text/javascript">
 			                                    let http= new XMLHttpRequest();
 			                                    let fullCourseList;
+			                                    let countrySpecificCourseList;
 			                                    http.open('POST','http://'+window.location.href.split('/',3)[2]+'/public/api/homePage/getAllCourses');
 			                                    http.onloadend= () => {
 			                                       let allCourseList=JSON.parse(http.responseText);
 			                                       fullCourseList=allCourseList;
 			                                       let count=document.getElementById('course_id').childElementCount;
+			                                       if(document.getElementById('country_name').value == ''||document.getElementById('country_name').value == null)
 			                                       for(let i=1;i<count;i++) {
 			                                    	   document.getElementById('course_id').lastElementChild.remove();
 			                                       }
@@ -476,6 +369,7 @@
 			                                       
 			                                    }
 			                                    http.send();
+			                                   
 			                                   function onCourseSearchButtonClick() {
 			                                	   if(document.getElementById('course_id').value!='') {
 			                                		   if(document.getElementById('university_id').value!='') {
@@ -483,9 +377,8 @@
 			                                			   let currenturlinpieces=window.location.href.split('/');
 			                                			   let selUniId = document.getElementById('university_id').value.split('UniversityID:')[1];
 					                                	   currenturlinpieces[currenturlinpieces.length-1]
-					                                	   ='Country/'+document.getElementById('country_name').value
-					                                	   +'/'+document.getElementById('course_id').value.split('CourseID:')[1]
-					                                	   +'/'+selUniId;
+					                                	   ='courseDetail/' +'/'+document.getElementById('course_id').value.split('CourseID:')[1]
+					                              
 					                                	   console.log(currenturlinpieces);
 					                                	   let targeturl=currenturlinpieces[0]+'/';
 					                                	   for(let i=1;i<currenturlinpieces.length;i++) {
@@ -495,7 +388,7 @@
 			                                		   } else {
 			                                			   /* Go to Country Page with Course Id only */
 			                                			   let currenturlinpieces=window.location.href.split('/');
-					                                	   currenturlinpieces[currenturlinpieces.length-1]='Country/'+document.getElementById('country_name').value+'/'+document.getElementById('course_id').value.split('CourseID:')[1];
+					                                	   currenturlinpieces[currenturlinpieces.length-1]= 'courseDetail' +'/'+document.getElementById('course_id').value.split('CourseID:')[1]
 					                                	   console.log(currenturlinpieces);
 					                                	   let targeturl=currenturlinpieces[0]+'/';
 					                                	   for(let i=1;i<currenturlinpieces.length;i++) {
@@ -522,13 +415,13 @@
 														College</option>
 													<option value="">Australian National University</option>
 												</select>
-											</div>
-											<div class="col-3">
 												<button onclick="universitySearchClicked()"
 													class="btn btn-submit search-button-home" type="submit">
-													<i class="ti-search f_size_24"></i>
+													GO
 												</button>
+												
 											</div>
+											
 										</div>
 
 
@@ -576,8 +469,7 @@
 			                                    		let selcountry = document.getElementById('country_name').value;
 			                                    		let currenturlinpieces=window.location.href.split('/');
 					                                	   currenturlinpieces[currenturlinpieces.length-1]
-					                                	   	='Country/'+selcountry
-					                                	  	+'/UID='+selUniId;
+					                                	   	= 'UID/'+selUniId;
 					                                	   console.log(currenturlinpieces);
 					                                	   let targeturl=currenturlinpieces[0]+'/';
 					                                	   for(let i=1;i<currenturlinpieces.length;i++) {
@@ -586,6 +478,55 @@
 					                                	   window.location.assign(targeturl);
 			                                    	}
 		                                    	}
+		                                    }
+		                                    
+		                                    function setCoursesAndUniversities() {
+		                                    	
+		                                    	countrySpecificCourseList = [];
+		                                    	countrySpecificUniversityList = [];
+		                                    		fullUniversityList.forEach((university) =>{
+		                                    			if(university.location == document.getElementById('country_name').value) {
+		                                    				countrySpecificUniversityList.push(university);
+		                                    				university.courses.forEach((c) => countrySpecificCourseList.push(c));
+		                                    			}
+		                                    		});
+		                                    	
+		                                    	if(document.getElementById('country_name').value != '') {
+	                                    		   let count=document.getElementById('course_id').childElementCount;
+	                                    		   for(let i=1;i<count;i++) {
+			                                    	   document.getElementById('course_id').lastElementChild.remove();
+			                                       }
+			                                       for(let course of countrySpecificCourseList) {
+			                                    	   document.getElementById('course_id').innerHTML=document.getElementById('course_id').innerHTML + 
+			                                    	   '<option id="CourseID:'+course.id+'" value="CourseID:'+course.id+'">'+course.title+'</option>';
+			                                       }
+			                                       let countUniOps=document.getElementById('university_id').childElementCount;
+			                                       for(let i=1;i<countUniOps;i++) {
+			                                    	   document.getElementById('university_id').lastElementChild.remove();
+			                                       }
+			                                       for(let university of countrySpecificUniversityList) {
+			                                    	   document.getElementById('university_id').innerHTML=document.getElementById('university_id').innerHTML + 
+			                                    	   '<option id="UniversityID:'+university.id+'" value="UniversityID:'+university.id+'">'+university.name+'</option>';
+			                                       }
+		                                    	} else {
+	                                    		   let count=document.getElementById('course_id').childElementCount;
+	                                    		   for(let i=1;i<count;i++) {
+			                                    	   document.getElementById('course_id').lastElementChild.remove();
+			                                       }
+			                                       for(let course of fullCourseList) {
+			                                    	   document.getElementById('course_id').innerHTML=document.getElementById('course_id').innerHTML + 
+			                                    	   '<option id="CourseID:'+course.id+'" value="CourseID:'+course.id+'">'+course.title+'</option>';
+			                                       }
+			                                       let countUniOps=document.getElementById('university_id').childElementCount;
+			                                       for(let i=1;i<countUniOps;i++) {
+			                                    	   document.getElementById('university_id').lastElementChild.remove();
+			                                       }
+			                                       for(let university of fullUniversityList) {
+			                                    	   document.getElementById('university_id').innerHTML=document.getElementById('university_id').innerHTML + 
+			                                    	   '<option id="UniversityID:'+university.id+'" value="UniversityID:'+university.id+'">'+university.name+'</option>';
+			                                       }
+		                                    	}
+		                                    		
 		                                    }
 		                                    
                                     </script>

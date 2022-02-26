@@ -38,6 +38,8 @@ public class Page implements Serializable {
 	
 	private Boolean isPageActive=true;	
 	
+	private String enableHeader;
+	
 	private String customUri;
 
 	

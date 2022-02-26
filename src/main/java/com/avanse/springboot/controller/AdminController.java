@@ -1130,8 +1130,7 @@ public class AdminController {
 	@PostMapping(path = "/admin/pages/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public String pagesAddPost(@ModelAttribute("pageDTO") PageDTO pageDTO, HttpServletRequest request,
 			@RequestParam(value = "pageUpdateCheck", required = false) String pageUpdateCheck,
-			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile,
-			@RequestParam(name = "withoutHeaderCheck", required = false) String withoutHeaderCheck) {
+			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
 
 		/*
 		 * Create a new time stamp and initialize the timestamp with null Check if the
@@ -1169,7 +1168,7 @@ public class AdminController {
 		page.setId(pageDTO.getId());
 		page.setPageTitle(pageDTO.getPageTitle().strip());
 		page.setCustomUri(pageDTO.getCustomUri().strip());
-
+		page.setEnableHeader(pageDTO.getEnableHeader());
 		page.setBannerHeading(pageDTO.getBannerHeading());
 		page.setBannerSubHeading(pageDTO.getBannerSubHeading());
 		page.setMainSection(pageDTO.getMainSection());
@@ -1277,7 +1276,7 @@ public class AdminController {
 		 */
 		pageDTO.setPageLink(currentPageLink);
 		page.setPageLink(pageDTO.getPageLink());
-		if(withoutHeaderCheck != null && withoutHeaderCheck.equals("templateWithoutHeader")) {
+		if( (pageDTO.getEnableHeader() != null && !pageDTO.getEnableHeader().equals("true")) || pageDTO.getEnableHeader() == null) {
 			page.setBannerHeading(null);pageDTO.setBannerHeading(page.getBannerHeading());
 			page.setBannerImageAlt(null);pageDTO.setBannerImageAlt(page.getBannerImageAlt());
 			page.setBannerImageName(null);pageDTO.setBannerImageName(page.getBannerImageName());
@@ -1293,7 +1292,7 @@ public class AdminController {
 
 		System.out.println("\n\n\n\n\n\n Main Section preview" + pageDTO.getMainSection());
 		String codeInFile;
-		if (withoutHeaderCheck != null && withoutHeaderCheck.equals("templateWithoutHeader")) {
+		if (pageDTO.getEnableHeader() != null  && pageDTO.getEnableHeader().equals("true")) {
 			codeInFile = htmlBoilerPlate(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(), pageDTO.getBannerHeading(),
 					pageDTO.getBannerSubHeading(), pageDTO.getMetaDescription(), pageDTO.getMainSection(),
 					pageDTO.getJsCode(), pageDTO.getCssCode(), pageDTO.getBannerImageName(),
@@ -1467,11 +1466,7 @@ public class AdminController {
 		pageDTO.setMetaTitle(page.getMetaTitle());
 		pageDTO.setMetaKeyword(page.getMetaKeyword());
 		pageDTO.setMetaDescription(page.getMetaDescription());
-		if(page.getBannerHeading()==null) {
-			model.addAttribute("isheaderDisabled", "true");
-		} else {
-			model.addAttribute("isheaderDisabled", "false");
-		}
+		pageDTO.setEnableHeader(page.getEnableHeader());
 		model.addAttribute("pageDTO", pageDTO);
 		model.addAttribute("isPageUpdate", "true");
 		return "pagesAdd";

@@ -12,6 +12,8 @@ public class PageDTO {
 	private Date lastModified;
 	private Boolean isPageActive;
 	private String customUri;
+	private String enableHeader;
+
 
 	
 

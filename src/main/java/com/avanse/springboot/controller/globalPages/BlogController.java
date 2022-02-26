@@ -47,6 +47,17 @@ public class BlogController {
 	public List<Post> getPostsInRange(@PathVariable("lowerLimit") long lowerLimit, @PathVariable("upperLimit") long upperLimit) {
 		return postService.getPostsInRange(lowerLimit, upperLimit);
 	}
+	@GetMapping(path = "/public/api/post/getPostsSearchResults/{searchKey}")
+	@ResponseBody
+	@CrossOrigin("*")
+	public List<Post> getPostSearchResults(@PathVariable("searchKey") String searchKey) {
+		return postService.getSearchResultsInBlogs(searchKey);
+	}
+	
+	
+	
+	
+	
 	
 	
 }

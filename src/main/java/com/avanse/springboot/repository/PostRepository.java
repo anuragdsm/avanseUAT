@@ -24,4 +24,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 	Optional<List<Post>> getPostsInRange(@Param("lowerLimit") long lowerLimit,@Param("upperLimit") long upperLimit);
 
 
+	Optional<List<Post>> findByHeadingLikeOrMainSectionLike(String searchKey, String searchKeyTwo);
+
+
 }

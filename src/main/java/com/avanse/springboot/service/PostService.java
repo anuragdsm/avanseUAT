@@ -134,4 +134,10 @@ public class PostService {
 		return postRepository.getPostsInRange(lowerLimit, upperLimit).get();
 	}
 
+
+	public List<Post> getSearchResultsInBlogs(String searchKey) {
+		
+		return postRepository.findByHeadingLikeOrMainSectionLike("%"+searchKey+"%", "%"+searchKey+"%").get();
+	}
+
 }

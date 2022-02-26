@@ -140,14 +140,19 @@
 								<!-- When new post is being created this post will be rendered -->
 								<div th:if="${postCategoriesSelectedForThisPost==null}"
 									class="col-sm-10">
-									<label class="col-sm-2 control-label">Categories to
-										attach</label>
-									<div th:each="postCategory, iStat : ${postCategories}">
-										<input type="checkbox" th:id="${postCategory.id}"
-											th:name="selectedCategories" th:value="${postCategory.id}">
-										<label th:for="${postCategory.id}"
-											th:text="${postCategory.name}" class="col-sm-2 control-label">Category</label>
+
+									<div id="divContainingAllPostCategoriesCheckBoxes">
+										<label class="col-sm-2 control-label">Select
+											Categories to enable submit</label>
+										<div th:each="postCategory, iStat : ${postCategories}">
+											<input onchange="enableSaveButton()" type="checkbox"
+												th:id="${postCategory.id}" th:name="selectedCategories"
+												th:value="${postCategory.id}"> <label
+												th:for="${postCategory.id}" th:text="${postCategory.name}"
+												class="col-sm-2 control-label">Category</label>
+										</div>
 									</div>
+
 								</div>
 
 								<!-- While Updating this block will be rendered -->
@@ -156,14 +161,43 @@
 									<input name="updateOperation" type="text"
 										value="updateOperationInputText" hidden> <label
 										class="col-sm-2 control-label">Categories to attach</label>
-									<div th:each="postCategory, iStat : ${postCategories}">
-										<input type="checkbox" th:id="${postCategory.id}"
-											th:name="selectedCategories" th:value="${postCategory.id}"
-											th:checked="${#lists.contains(postCategoriesSelectedForThisPost,postCategory)}">
-										<label th:for="${postCategory.id}"
-											th:text="${postCategory.name}" class="col-sm-2 control-label">Category</label>
+
+									<div id="divContainingAllPostCategoriesCheckBoxes">
+										<div th:each="postCategory, iStat : ${postCategories}">
+											<input onchange="enableSaveButton()" type="checkbox"
+												th:id="${postCategory.id}" th:name="selectedCategories"
+												th:value="${postCategory.id}"
+												th:checked="${#lists.contains(postCategoriesSelectedForThisPost,postCategory)}">
+											<label th:for="${postCategory.id}"
+												th:text="${postCategory.name}"
+												class="col-sm-2 control-label">Category</label>
+										</div>
 									</div>
+
 								</div>
+
+								<script type="text/javascript">
+									console.log(document.getElementById('divContainingAllPostCategoriesCheckBoxes').getElementsByTagName('input'));
+									function enableSaveButton() {
+										console.log('enableSaveButton executed.......');
+										let cateCheckboxDiv = document.getElementById('divContainingAllPostCategoriesCheckBoxes');
+										let enableCheck=false;
+										
+										for(let i=0;i<cateCheckboxDiv.getElementsByTagName('input').length;i++) {
+											let inp=cateCheckboxDiv.getElementsByTagName('input').item(i);
+											
+											if(inp.checked == true) {
+												enableCheck = true;
+												}
+											if(i == (cateCheckboxDiv.getElementsByTagName('input').length-1)) {
+												if(enableCheck) {document.getElementById('postSaveButton').disabled=false;}
+												else {document.getElementById('postSaveButton').disabled=true;}
+											}
+										}
+										
+									}
+								
+								</script>
 
 
 							</div>
@@ -173,16 +207,16 @@
 								<h6 class="m-0 font-weight-bold text-primary">Featured
 									Image</h6>
 							</div>
-							
+
 							<style>
-									.myInnerDiv {
-										position: absolute;
-										top: 50%;
-										left: 50%;
-										transform: translate(-50%, -50%);
-										width: 80%;
-									}
-							</style>
+.myInnerDiv {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+}
+</style>
 
 
 
@@ -330,8 +364,8 @@
 							<input type="hidden" name="submit_type" id="submit_type"
 								value="1">
 							<div class="box-footer pull-right">
-								<button type="submit" class="btn btn-success btn-icon-split"
-									onclick="">
+								<button id="postSaveButton" disabled type="submit"
+									class="btn btn-success btn-icon-split">
 									<span class="icon text-white-50"> <i
 										class="fas fa-check"></i>
 									</span> <span class="text">Save</span>
@@ -340,6 +374,14 @@
 								<button type="reset" class="btn btn-secondary ">Reset</button>
 
 							</div>
+
+
+
+							<script type="text/javascript">
+						
+								enableSaveButton();
+					
+							</script>
 						</form>
 					</div>
 				</div>
@@ -352,6 +394,7 @@
 
 		</div>
 	</div>
+
 	<!-- End of Main Content -->
 	</div>
 	<!-- End of Content Wrapper -->

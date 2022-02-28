@@ -44,8 +44,7 @@
 				<script th:inline="javascript" type="text/javascript">
 					/* let contextPath = 'http://localhost:8080'; */
 
-					let contextPath = 'http://'
-							+ window.location.href.split('/', 3)[2];
+					let contextPath = window.location.origin;
 					function toggleCourseStatus(id) {
 						console.log('toggling id = ' + id);
 
@@ -53,8 +52,7 @@
 
 						console.log(document.getElementById(customSwitch));
 
-						console
-								.log(document.getElementById(customSwitch).checked);
+						console.log(document.getElementById(customSwitch).checked);
 
 						if (document.getElementById(customSwitch).checked == true
 								|| document.getElementById(customSwitch).checked == null) {

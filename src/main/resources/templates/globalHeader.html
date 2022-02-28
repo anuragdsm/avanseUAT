@@ -76,7 +76,7 @@
 						<script type="text/javascript">
 							function updateMyGlobalHeader() {
 								let globalHeaderForm= new FormData();
-								let linkForSubmission="http://"+window.location.href.split('/',3)[2]+"/admin/globalHeader";
+								let linkForSubmission= window.location.origin+"/admin/globalHeader";
 								globalHeaderForm.append('globalHeaderCode',flask.getCode());
 								let http = new XMLHttpRequest();
 								http.open('POST',linkForSubmission);
@@ -111,8 +111,7 @@
 							<script type="text/javascript">
 									let alreadyImplementedCode = '';
 									console.log('testing...........',window.location.href);
-									let simpleVariable = window.location.href.split('/',3);
-									let urlForGlobalHeaderFile = 'http://'+simpleVariable[2]+'/viewPagesAssets/js/customGlobalHeader/globalHeader.js';
+									let urlForGlobalHeaderFile = window.location.origin+'/viewPagesAssets/js/customGlobalHeader/globalHeader.js';
 									let http = new XMLHttpRequest();
 									http.open('GET',urlForGlobalHeaderFile);
 									http.send();

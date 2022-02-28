@@ -244,15 +244,13 @@
 				function changeLogo() {
 					if (x == 0) {
 						x = 1;
-						document.getElementById('avanseLogo').src = "http://"
-								+ window.location.href.split('/', 3)[2]
+						document.getElementById('avanseLogo').src = window.location.origin
 								+ "/images/avanseLogoSmallWhite.png";
 						document.getElementById('avanseLogo').style.height = "30px";
 						document.getElementById('avanseLogo').style.width = "30px";
 					} else {
 						x = 0;
-						document.getElementById('avanseLogo').src = "http://"
-								+ window.location.href.split('/', 3)[2]
+						document.getElementById('avanseLogo').src = window.location.origin
 								+ "/images/logo.png";
 						document.getElementById('avanseLogo').style.height = "auto";
 						document.getElementById('avanseLogo').style.width = "auto";
@@ -554,8 +552,5 @@
 
 				});
 	</script>
-
-
-
 </body>
 </html>

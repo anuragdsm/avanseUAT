@@ -130,7 +130,7 @@
                         	blogPostsPannel.innerHTML='';
                         	//console.log(blogElement.outerHTML);
                         	let http= new XMLHttpRequest();
-                            http.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostCountInDb');
+                            http.open('GET',window.location.origin+'/public/api/post/getPostCountInDb');
                             http.onloadend=()=>{blogCount=http.responseText;maxPageNo=Math.ceil(blogCount/4);console.log('skdksalk-->',maxPageNo);checkButtons();};
                             http.send();
                         	function setPostsWithPageNo() {
@@ -138,7 +138,7 @@
                         		let upperLimit=4;  
                         		let lowerLimit= ((currentPageNo-1)*4);
                         		let httpTwo = new XMLHttpRequest();
-                        		httpTwo.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostsInRange/'+lowerLimit+'/'+upperLimit);
+                        		httpTwo.open('GET',window.location.origin+'/public/api/post/getPostsInRange/'+lowerLimit+'/'+upperLimit);
                         		//http.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostsInRange/'+3+'/'+4);
                         		httpTwo.onloadend=()=>{
                         							let postList=JSON.parse(httpTwo.responseText);//console.log('TESTING------->',postList);
@@ -152,13 +152,13 @@
 	                        								document.getElementById('blogPostDate').id=document.getElementById('blogPostDate').id+post.id;
 	                        								document.getElementById('blogPostDate'+post.id).firstElementChild.innerHTML=post.dateOfPostCreation.split(' ')[0]+' <span>'+post.dateOfPostCreation.split(' ')[1].split(',')[0]+'</span>';
 	                        								document.getElementById('blogPostLink').id=document.getElementById('blogPostLink').id+post.id;
-	                        								document.getElementById('blogPostLink'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
+	                        								document.getElementById('blogPostLink'+post.id).href=window.location.origin+'/blog/'+post.extractedFileName;
 	                        								document.getElementById('blogPostHeading').id=document.getElementById('blogPostHeading').id+post.id;
 	                        								document.getElementById('blogPostHeading'+post.id).innerHTML=post.heading;
 	                        								document.getElementById('blogPostContent').id=document.getElementById('blogPostContent').id+post.id;
 	                        								document.getElementById('blogPostContent'+post.id).innerHTML=setCharacterLimit(post.mainSection);
 	                        								document.getElementById('blogPostLinkReadMore').id=document.getElementById('blogPostLinkReadMore').id+post.id;
-	                        								document.getElementById('blogPostLinkReadMore'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
+	                        								document.getElementById('blogPostLinkReadMore'+post.id).href=window.location.origin+'/blog/'+post.extractedFileName;
 	                        								
 	                        							}
 	                        							checkButtons();
@@ -191,38 +191,45 @@
                         		console.log('search executing............');
                         		let searchKey = document.getElementById('inputSearchBox').value;
                         		if(document.getElementById('inputSearchBox').value=='') {setPostsWithPageNo();}
-                        		let searchResults;
-                        		let httpThree =  new XMLHttpRequest();
-                        		httpThree.open('GET','http://'+window.location.href.split('/',3)[2]+'/public/api/post/getPostsSearchResults/'+document.getElementById('inputSearchBox').value);
-                        		httpThree.onloadend=()=>{
-        							let postList=JSON.parse(httpThree.responseText);//console.log('TESTING------->',postList);
-        							blogPostsPannel.innerHTML='';
-            							for(let post of postList) {
-            								
-            								blogPostsPannel.innerHTML=blogPostsPannel.innerHTML+blogElement.outerHTML;
-            								document.getElementById('blogPostItem').id=document.getElementById('blogPostItem').id+post.id;
-            								document.getElementById('blogPostImage').id=document.getElementById('blogPostImage').id+post.id;
-            								document.getElementById('blogPostImage'+post.id).src='/viewPagesAssets/img/userAddedFeaturedImages/'+post.featuredImageName;
-            								document.getElementById('blogPostDate').id=document.getElementById('blogPostDate').id+post.id;
-            								document.getElementById('blogPostDate'+post.id).firstElementChild.innerHTML=post.dateOfPostCreation.split(' ')[0]+' <span>'+post.dateOfPostCreation.split(' ')[1].split(',')[0]+'</span>';
-            								document.getElementById('blogPostLink').id=document.getElementById('blogPostLink').id+post.id;
-            								document.getElementById('blogPostLink'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
-            								document.getElementById('blogPostHeading').id=document.getElementById('blogPostHeading').id+post.id;
-            								document.getElementById('blogPostHeading'+post.id).innerHTML=post.heading.replace(new RegExp(searchKey, "ig"),'<span style="background-color: yellow;">'+post.heading.substring(post.heading.search(new RegExp(searchKey, "ig")),searchKey.length)+'</span>');
-            								document.getElementById('blogPostContent').id=document.getElementById('blogPostContent').id+post.id;
-            								document.getElementById('blogPostContent'+post.id).innerHTML=setCharacterLimit(post.mainSection.replace(searchKey,'<span style="background-color: yellow;">'+searchKey+'</span>'));
-            								document.getElementById('blogPostLinkReadMore').id=document.getElementById('blogPostLinkReadMore').id+post.id;
-            								document.getElementById('blogPostLinkReadMore'+post.id).href='http://'+window.location.href.split('/',3)[2]+'/blog/'+post.extractedFileName;
-            								
+                        		else {
+                        			let searchResults;
+                            		let httpThree =  new XMLHttpRequest();
+                            		httpThree.open('GET',window.location.origin+'/public/api/post/getPostsSearchResults/'+document.getElementById('inputSearchBox').value);
+                            		httpThree.onloadend=()=>{
+            							let postList=JSON.parse(httpThree.responseText);//console.log('TESTING------->',postList);
+            							blogPostsPannel.innerHTML='';
+            								if(postList.length == 0) {
+            									blogPostsPannel.innerHTML=
+            										'<h3>No Posts Found for the text \'<b>'+searchKey+'</b>\'</h3><h4 onclick="document.getElementById(\'inputSearchBox\').value=\'\';onSearchText();"><a href=""><span style="font-size:30px;">&#8592;</span> Return back to see other Posts</a></h4>';
+            								} else {
+            									
+            									blogPostsPannel.innerHTML='<h3>Posts Found for the text \'<b>'+searchKey+'</b>\'</h3><h4 onclick="document.getElementById(\'inputSearchBox\').value=\'\';onSearchText();"><a href=""><span style="font-size:30px;">&#8592;</span> Return back to see other Posts</a></h4>';
+            									for(let post of postList) {
+                    								
+                    								blogPostsPannel.innerHTML=blogPostsPannel.innerHTML+blogElement.outerHTML;
+                    								document.getElementById('blogPostItem').id=document.getElementById('blogPostItem').id+post.id;
+                    								document.getElementById('blogPostImage').id=document.getElementById('blogPostImage').id+post.id;
+                    								document.getElementById('blogPostImage'+post.id).src='/viewPagesAssets/img/userAddedFeaturedImages/'+post.featuredImageName;
+                    								document.getElementById('blogPostDate').id=document.getElementById('blogPostDate').id+post.id;
+                    								document.getElementById('blogPostDate'+post.id).firstElementChild.innerHTML=post.dateOfPostCreation.split(' ')[0]+' <span>'+post.dateOfPostCreation.split(' ')[1].split(',')[0]+'</span>';
+                    								document.getElementById('blogPostLink').id=document.getElementById('blogPostLink').id+post.id;
+                    								document.getElementById('blogPostLink'+post.id).href= window.location.origin+'/blog/'+post.extractedFileName;
+                    								document.getElementById('blogPostHeading').id=document.getElementById('blogPostHeading').id+post.id;
+                    								document.getElementById('blogPostHeading'+post.id).innerHTML=post.heading.replace(new RegExp(searchKey, "ig"),'<span style="background-color: yellow;">'+post.heading.substring(post.heading.search(new RegExp(searchKey, "ig")),searchKey.length)+'</span>');
+                    								document.getElementById('blogPostContent').id=document.getElementById('blogPostContent').id+post.id;
+                    								document.getElementById('blogPostContent'+post.id).innerHTML=setCharacterLimit(post.mainSection.replace(searchKey,'<span style="background-color: yellow;">'+searchKey+'</span>'));
+                    								document.getElementById('blogPostLinkReadMore').id=document.getElementById('blogPostLinkReadMore').id+post.id;
+                    								document.getElementById('blogPostLinkReadMore'+post.id).href=window.location.origin+'/blog/'+post.extractedFileName;
+                    								
+                    							}
+            								}
+                							
+                							
             							}
-            							
-        							}
-                        		httpThree.send();
+                            		httpThree.send();
+                        		}
+                        		
                         	}
-                        
-                        
-                        
-                        
                         </script>
 
 					</div>
@@ -233,11 +240,26 @@
 						<div class="widget sidebar_widget widget_search">
 								<div class="search-form input-group">
                                 <!-- <form action="#" class="search-form input-group"> -->
-                                    <input onchange="onSearchText()" id="inputSearchBox" type="search" class="form-control widget_input" placeholder="Search">
-                                    <button><i class="ti-search"></i></button>
+                                    <input id="inputSearchBox" type="search" class="form-control widget_input" placeholder="Search">
+                                    <button id="postSearchbtn" onclick="onSearchText()"><i class="ti-search"></i></button>
                                 <!-- </form> -->
                                 </div>
                             </div>
+                            
+                            <input id="redirectFromPostSearchKeyInput" th:if="${searchKey != null}" hidden type="text" th:value="${searchKey}">
+                            
+                            <script type="text/javascript">
+	                            window.onload=()=>{
+	                            	console.log('testing..........................')
+	                        		if(document.getElementById('redirectFromPostSearchKeyInput') != null) {
+	                        			document.getElementById('inputSearchBox').value=document.getElementById('redirectFromPostSearchKeyInput').value;
+	                        			document.getElementById('postSearchbtn').click();
+	                        		}
+	                        	}
+                            
+                            
+                            
+                            </script>
 
 
 							<div class="widget sidebar_widget widget_categorie mt_60">

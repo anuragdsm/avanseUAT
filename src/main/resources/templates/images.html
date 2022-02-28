@@ -126,10 +126,10 @@
 										}
 										let http= new XMLHttpRequest();
 										console.log(http);
-										http.open('POST','http://localhost:8080/admin/images');
+										http.open('POST',window.location.origin+'/admin/images');
 										http.send(imagesForm);
 										console.log(http.responseText);
-										window.location.replace('http://localhost:8080/admin/images');
+										window.location.replace(window.location.origin+'/admin/images');
 									}
 								</script>
 							</div>

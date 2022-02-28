@@ -193,7 +193,7 @@
                 <script type="text/javascript">
 		                let request = new XMLHttpRequest();
 		                let mylistOfUniversities;
-		                let url="http://"+window.location.href.split('/',3)[2]+"/public/api/homePage/getUniversitesInfos";
+		                let url=window.location.origin+"/public/api/homePage/getUniversitesInfos";
 		                console.log(url);
 		                let x = ['Canada'];
 		                console.log(JSON.stringify(x));
@@ -256,7 +256,7 @@
 		            				   document.getElementById('universityDetailSection').innerHTML = universityDetailSectionContent;
 		            				   document.getElementById('universityInfoUniversityName').innerHTML=university.name;
 		            				   document.getElementById('universityInfoUniversityDescription').innerHTML=university.description;
-		            				   document.getElementById('universityImage').src='http://'+window.location.href.split('/',3)[2]+'/images/universityImages/'+university.imageName;
+		            				   document.getElementById('universityImage').src=window.location.origin+'/images/universityImages/'+university.imageName;
 		            			   }
 		            		   }
 		            	   }
@@ -266,7 +266,7 @@
 		            	   if(document.getElementById('courseSelected').value!='') {
 		            		   let value = document.getElementById('courseSelected').value;
 		            		   courseId = value.split("CourseID:")[1];
-		            		   url='http://'+window.location.href.split('/',3)[2]+'/courseDetail/'+courseId;
+		            		   url=window.location.origin+'/courseDetail/'+courseId;
 		            		   window.location.assign(url);
 		            	   }
 		               }

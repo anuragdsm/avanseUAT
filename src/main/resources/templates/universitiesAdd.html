@@ -108,7 +108,7 @@
 												let cSelect=document.getElementById('countryListSelect');
 												let countryApiList;
 												console.log(window.location.href.split('/',3)[2]);
-												fetch("http://"+window.location.href.split('/',3)[2]+"/jsons/countries.json")
+												fetch(window.location.origin+"/jsons/countries.json")
 										        .then((value) => {
 											          value.json().then((data) => {
 												        	 console.log(data);

@@ -51,7 +51,7 @@
 
 
 			<script th:inline="javascript" type="text/javascript">
-				let contextPath = 'http://localhost:8080';
+				let contextPath = window.location.origin;
 
 				function togglePageStatus(id) {
 					console.log('toggling id = ' + id);
@@ -225,7 +225,7 @@
 	</div>
 
 	<script th:inline="javascript" type="text/javascript">
-		let contextPath = 'http://localhost:8080';
+		let contextPath = window.location.origin;
 
 		function togglePageStatus(id) {
 

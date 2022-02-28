@@ -26,7 +26,14 @@
 
 
 			<script th:inline="javascript" type="text/javascript">
-				let contextPath = 'http://localhost:8080';
+
+			/* let contextPath = 'http://localhost:8080';
+			 */
+			
+			let contextPath = window.location.origin;
+			 
+				
+			
 
 				function toggleUniversityStatus(id) {
 					console.log('toggling id = ' + id);

@@ -15,8 +15,8 @@
            
             <div class="container">
                 <div class="breadcrumb_content text-center">
-                    <h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20"></h1>
-                    <p class="f_400 w_color f_size_21 l_height28"></p>
+                    <h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">sadsd ddf</h1>
+                    <p class="f_400 w_color f_size_21 l_height28">asdfsdf</p>
                 </div>
             </div>
         </section>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-lg-8 blog_sidebar_left">
                         <div class=" mb_50">
-                            <img id="myFeaturedImage" class="img-fluid" src="/viewPagesAssets/img/userAddedFeaturedImages/null" alt="">
+                            <img id="myFeaturedImage" class="img-fluid" src="/viewPagesAssets/img/userAddedFeaturedImages/associate-with-us-top-banner.png" alt="">
                             <div class="blog_content">
                                 <div class="post_date">
                                     <h2>28 <span>February</span></h2>
@@ -40,7 +40,7 @@
                                 <!-- <a href="#">
                                     <h5 class="f_p f_size_20 f_500 t_color mb-30">Lorem Ipsum is simply dummy text of the printing and typesetting</h5>
                                 </a> -->
-                                <p class="f_400 mb-30"></p>                                <!--<blockquote class="blockquote mb_40">
+                                <p class="f_400 mb-30"><p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Proin eget tortor risus. Sed porttitor lectus nibh. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Pellentesque in ipsum id orci porta dapibus. Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla porttitor accumsan tincidunt. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Quisque velit nisi, pretium ut lacinia in, elementum id enim.<br></p></p>                                <!--<blockquote class="blockquote mb_40">
                                     <h6 class="mb-0 f_size_18 l_height30 f_p f_400">Elizabeth ummm I'm telling bodge
                                         spend a penny say wellies say James Bond, bubble and squeak a such a fibber you
                                         mug quaint cack what.!</h6>
@@ -98,6 +98,51 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="blog-sidebar">
+                        
+	                        <div onmouseleave="hideResultBox()" onmouseenter="showResultBox()" class="widget sidebar_widget widget_search">
+	                                <form action="/blog" method="get" class="search-form input-group">
+	                                    <input name="searchKey" type="search" class="form-control widget_input" placeholder="Search">
+	                                    <button type="submit"><i class="ti-search"></i></button>
+	                                </form>
+	                         </div>
+	                         <div hidden onmouseenter="showResultBox()" onmouseleave="hideResultBox()" id="resultBox" class="widget sidebar_widget widget_search" 
+	                         	style="position: absolute;z-index: 999;
+	                         	background-color: white;height: 60vh; 
+	                         	width: 17.24vw;overflow: auto;box-shadow: 0px 0px 6px 1px gray;">
+	                         	
+	                         	<div class="container border">
+	                         		<div style="cursor: pointer;">
+	                         		<div class="row">
+	                         			<div class="col-sm-3">
+				                         	<div id="imageContainer">
+				                         		<img style="height: 80px;width: 80px;" src="http://localhost:8080/viewPagesAssets/img/userAddedFeaturedImages/associate-with-us-top-banner.png">
+		                         			</div>
+	                         			</div>
+	                         			<div class="col-sm-9">
+		                         				<h1 id="headingContainer" style="font-size:25px; text-decoration-line: underline;">sadsd ddf</h1>
+		                         			
+		                         				<h1 id="subHeadingContainer" style="font-size:15px; text-decoration-line: underline;">asdfsdf</h1>
+		                         			
+	                         			</div>
+	                         		</div>
+	                         		</div>
+	                         	</div>
+	                         
+	                         
+	                         </div>
+	                         <script type="text/javascript">
+	                        function showResultBox() {
+	                        	document.getElementById('resultBox').hidden=false;
+	                        }
+	                        function hideResultBox() {
+	                        	document.getElementById('resultBox').hidden=true;
+	                        }
+	                        
+	                         
+	                         
+	                         </script>
+                        
+                        
                             <div class="widget sidebar_widget widget_categorie mt_60">
                                 <div class="widget_title">
                                     <h3 class="f_p f_size_20 t_color3">Categories</h3>

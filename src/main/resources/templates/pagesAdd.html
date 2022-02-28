@@ -94,9 +94,13 @@
 								console.log("Current Value in Box = ", document.getElementById('customURL').value);
 								let http = new XMLHttpRequest();
 								
-								let allPageUris;
+								let allPageUris ;
 								
+								/* 
 								http.open('GET', "http://"+window.location.href.split('/',3)[2] + "/admin/api/getAllPagesUrls")
+
+ */								
+								http.open('GET', window.location.origin + "/admin/api/getAllPagesUrls")
 								http.onloadend=()=>{
 									
 									allPageUris = JSON.parse(http.responseText);

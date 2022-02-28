@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.avanse.springboot.DTO.forms.applyNow.ApplyNowGeneralDTO;
@@ -129,10 +130,13 @@ public class PageController {
 	}
 	
 	@GetMapping("/blog")
-	public ModelAndView getBlogPage(Model model) {
+	public ModelAndView getBlogPage(Model model, 
+			@RequestParam(value = "searchKey",required = false) String searchKey) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/blog");
+		System.out.println("testing.........searchkey : "+searchKey);
 		model.addAttribute("postCategories", postCategoryService.getAllPostCategories());
 		model.addAttribute("posts", postService.getAllPosts());
+		model.addAttribute("searchKey", searchKey);
 		return modelAndView;
 	}
 	

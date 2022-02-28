@@ -1200,7 +1200,7 @@
 			                                    let http= new XMLHttpRequest();
 			                                    let fullCourseList;
 			                                    let countrySpecificCourseList;
-			                                    http.open('POST','http://'+window.location.href.split('/',3)[2]+'/public/api/homePage/getAllCourses');
+			                                    http.open('POST',window.location.origin+'/public/api/homePage/getAllCourses');
 			                                    http.onloadend= () => {
 			                                       let allCourseList=JSON.parse(http.responseText);
 			                                       fullCourseList=allCourseList;
@@ -1280,7 +1280,7 @@
 								<script type="text/javascript">
 		                                    let http2= new XMLHttpRequest();
 		                                    let fullUniversityList;
-		                                    http2.open('POST','http://'+window.location.href.split('/',3)[2]+'/public/api/homePage/getAllUniversites');
+		                                    http2.open('POST',window.location.origin+'/public/api/homePage/getAllUniversites');
 		                                    http2.onloadend = () => {
 		                                       let allUniversityList=JSON.parse(http2.responseText);
 		                                       fullUniversityList=allUniversityList;

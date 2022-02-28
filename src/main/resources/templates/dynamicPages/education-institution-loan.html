@@ -37,12 +37,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" placeholder="Mobile No.">
+                                    <input type="number" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" placeholder="Mobile No.">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" name="email" id="email" th:field="*{email}" placeholder="Email Id">
+                                    <input type="email" name="email" id="email" th:field="*{email}" placeholder="Email Id">
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -52,8 +52,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <select class="form-control" th:field="*{loanType}" id="">
-                                        <option value="--">Loan Type</option>
+                                    <select class="form-control" th:field="*{loanType}" id="" name="loanType" required>
+                                        <option value="">Loan Type</option>
                                         <option value="Education Loan for Students">Education Loan for Students</option>
                                         <option value="Loan for Educational Institute">Loan for Educational Institute</option>
                                     </select>
@@ -62,8 +62,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{loanAmount}" id="">
-                                        <option value="--">Loan Amount ₹</option>
+                                    <select class="form-control" th:field="*{loanAmount}" id="" name="loanAmount" required>
+                                        <option value="">Loan Amount ₹</option>
                                         <option value="Less than ₹ 25 lacs">Less than ₹ 25 lacs</option>
                                         <option value="25 lacs to ₹ 50 lacs">₹ 25 lacs to ₹ 50 lacs</option>
                                         <option value="Above ₹ 50 lacs">Above ₹ 50 lacs</option>
@@ -73,8 +73,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{loanUsage}" id="">
-                                        <option value="--">Loan Usage</option>
+                                    <select class="form-control" th:field="*{loanUsage}" id="" name="loanUsage" required>
+                                        <option value="">Loan Usage</option>
                                         <option value="Working Capital Need">Working Capital Need</option>
                                         <option value="Capital Expenditure">Capital Expenditure</option>                                        
                                     </select>
@@ -82,8 +82,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{institutionType}" id="">
-                                        <option value="--">Institution Type</option>
+                                    <select class="form-control" th:field="*{institutionType}" id="" name="institutionType" required>
+                                        <option value="">Institution Type</option>
                                         <option value="K12 and above">K12 and above</option>
                                         <option value="College">College</option>                                        
                                     </select>
@@ -91,8 +91,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{CurriculumBoard}" id="">
-                                        <option value="--">Curriculum Board</option>
+                                    <select class="form-control" th:field="*{CurriculumBoard}" id="" aria-colcount="CurriculumBoard" name="CurriculumBoard" required>
+                                        <option value="">Curriculum Board</option>
                                         <option value="Affiliated">Affiliated</option>
                                         <option value="ICSE">ICSE</option>                                        
                                         <option value="CBSE">CBSE</option>                                        
@@ -102,8 +102,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{vintage}" id="">
-                                        <option value="--">Vintage</option>
+                                    <select class="form-control" th:field="*{vintage}" id="" name="vintage" required>
+                                        <option value="">Vintage</option>
                                         <option value="Less than 3 years">Less than 3 years</option>
                                         <option value="3 to 5 years">3 to 5 years</option>                                        
                                         <option value="5 years+">5 years+</option>                                        
@@ -112,8 +112,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{studentStrength}" id="">
-                                        <option value="--">Student Strength</option>
+                                    <select class="form-control" th:field="*{studentStrength}" id="" name="studentStrength" required>
+                                        <option value="">Student Strength</option>
                                         <option value="Less than 300">Less than 300</option>
                                         <option value="300 to 500">300 to 500</option>                                        
                                         <option value="500 +">500 +</option>                                        

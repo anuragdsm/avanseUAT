@@ -3,6 +3,8 @@ package com.avanse.springboot.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import com.avanse.springboot.repository.UserRepository;
 import com.avanse.springboot.service.CustomUserDetailService;
 
@@ -21,6 +23,12 @@ public class UserController {
 	
 	@Autowired
 	private CustomUserDetailService customUserDetailService;
+	
+	
+	@GetMapping("/admin/update-password")
+	public String updatePassword() {
+		return "/update-password";
+	}
 	
 //	@RequestMapping("users")
 //	public List<User>getUsers(){	

@@ -430,266 +430,265 @@
 								</ul>
 							</div>
 							<div class="tab-content developer_tab_content mt-4">
-								<div class="tab-pane fade active show" id="customer"
-									role="tabpanel" aria-labelledby="customer-tab">
-									<form onsubmit="validateCaptcha()" th:action="@{/thankyou}"
-										th:object="${customerDTO}" class="contact_form_box"
-										name="customerDTO" value="customer" method="post" id="myForm"
-										novalidate="novalidate">
-										<div class="row">
-											<div class="col-lg-4">
-												<input hidden type="text" name="leadType" value="customer">
-												<div class="form-group text_box">
-													<input type="radio" id="loanStatusOption1"
-														name="loanStatus" value="I have an Avanse education loan">
-													<label>I have an Avanse education loan</label>
-												</div>
-											</div>
-											<div class="col-lg-5">
-												<div class="form-group text_box">
-													<input type="radio" id="loanStatusOption2"
-														name="loanStatus"
-														value="I have applied for an Avanse education loan">
-													<label>I have applied for an Avanse education loan</label>
-												</div>
-											</div>
-											<div class="col-lg-3">
-												<div class="form-group text_box">
-													<input type="radio" id="loanStatusOption3"
-														name="loanStatus" value="Others"> <label>Others</label>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="name" name="name" th:field="*{name}"
-														placeholder="Your Name">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="number" th:field="*{phoneNumber}"
-														name="phoneNumber" placeholder="Contact Number">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" name="email" th:field="*{email}"
-														id="email" placeholder="E-mail ID">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="city" th:field="*{city}" name="city"
-														placeholder="City">
-												</div>
-											</div>
-											<div class="col-lg-12">
-												<div class="form-group text_box">
-													<input type="text" id="loanaccount"
-														th:field="*{loanAccountNumber}" name="loanAccountNumber"
-														placeholder="Loan Account Number (wherever applicable)">
-												</div>
-											</div>
-
-											<div class="col-lg-12  text-center ">
-												<div id="captcha"></div>
-												<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-											</div>
-
-											<div class="col-lg-12 text-center pt-5">
-												<button type="submit" class="btn_three">Submit</button>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div class="tab-pane fade" id="eduinst" role="tabpanel"
-									aria-labelledby="eduinst-tab">
-									
-									<form th:action="@{/thankyou}" th:object="${instituteDTO}"
-										class="contact_form_box" method="post" id="myForm"
-										novalidate="novalidate">
-										<div class="row">
-											<div class="col-lg-4">
-												<input type="text" hidden name="leadType" value="institute">
-												<div class="form-group text_box">
-													<input type="radio" id="loanTypeOption1" name="loanType"
-														value="Institutional Loan"> <label>Institutional
-														Loan</label>
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group text_box">
-													<input type="radio" id="loanTypeOption2" name="loanType"
-														value="Sponsorships"> <label>Sponsorships</label>
-												</div>
-											</div>
-											<div class="col-lg-4">
-												<div class="form-group text_box">
-													<input type="radio" id="loanTypeOption3" name="loanType"
-														value="Others"> <label>Others</label>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="name" name="name"
-														th:field="*{nameOfPerson}" placeholder="Your Name">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="institution" name="institution"
-														th:field="*{nameOfInstitute}"
-														placeholder="Name of the Institution">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="number" name="phoneNumber"
-														th:field="*{phoneNumber}" placeholder="Contact Number">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" name="email" th:field="*{email}"
-														id="email" placeholder="E-mail ID">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="city" th:field="*{city}" name="city"
-														placeholder="City">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="subject" name="subject-line"
-														th:field="*{subjectLine}" placeholder="Subject Line">
-												</div>
-											</div>
-
-											
-
-											<div class="col-lg-12 text-center pt-5">
-												<button type="submit" class="btn_three">Send
-													Message</button>
-											</div>
-										</div>
-
-									</form>
-								</div>
-								<div class="tab-pane fade" id="media" role="tabpanel"
-									aria-labelledby="media-tab">
-									<form th:action="@{/thankyou}" th:object="${mediaDTO}"
-										class="contact_form_box" method="post" id="myForm"
-										novalidate="novalidate">
-										<div class="row">
-											<div class="col-lg-6">
-												<input type="text" hidden name="leadType" value="media">
-
-												<div class="form-group text_box">
-													<input type="text" id="name" name="name" th:field="*{name}"
-														placeholder="Your Name">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="mediahouse" name="mediahouse"
-														th:field="*{mediaHouse}"
-														placeholder="Name of the Media House You Represent">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="number" name="number"
-														th:field="*{phoneNumber}" placeholder="Contact Number">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" name="email" id="email"
-														th:field="*{emailId}" placeholder="E-mail ID">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="city" name="city" th:field="*{city}"
-														placeholder="City">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="subject" th:field="*{subjectLine}"
-														name="subject-line" placeholder="Subject Line">
-												</div>
-											</div>
-
-										
-
-											<div class="col-lg-12 text-center pt-5">
-												<button type="submit" class="btn_three">Send
-													Message</button>
-											</div>
-										</div>
-
-									</form>
-								</div>
-
-
-								<div class="tab-pane " id="investors" role="tabpanel"
-									aria-labelledby="investors-tab">
-									<form th:action="@{/thankyou}" th:object="${investorDTO}"
-										class="contact_form_box" method="post"
-										id="myForm" novalidate="novalidate">
-
-										<input type="text" hidden name="leadType" value="investor">
-
-										<div class="row">
-
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="name" name="name" th:field="*{name}"
-														placeholder="Your Name">
-												</div>
-											</div>
-
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="number" name="number"
-														th:field="*{phoneNumber}" placeholder="Contact Number">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" name="email" id="email"
-														th:field="*{emailId}" placeholder="E-mail ID">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="city" name="city" th:field="*{city}"
-														placeholder="City">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group text_box">
-													<input type="text" id="subject" th:field="*{subjectLine}"
-														name="subject-line" placeholder="Subject Line">
-												</div>
-											</div>
-
-										
-
-											<div class="col-lg-12 text-center pt-5">
-												<button type="submit" class="btn_three">Send
-													Message</button>
-											</div>
-										</div>
-
-									</form>
-								</div>
-
-
-							</div>
+                                <div class="tab-pane fade active show" id="customer"
+                                    role="tabpanel" aria-labelledby="customer-tab">
+                                    <form onsubmit="validateCaptcha()" th:action="@{/thankyou}"
+                                        th:object="${customerDTO}" class="contact_form_box"
+                                        name="customerDTO" value="customer" method="post" id="myForm"
+                                        novalidate="novalidate">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <input hidden type="text" name="leadType" value="customer">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanStatusOption1"
+                                                        name="loanStatus" value="I have an Avanse education loan" required>
+                                                    <label>I have an Avanse education loan</label>
+                                                    <label for="loanStatus" class="error" style="display: none;">This field is required.</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanStatusOption2"
+                                                        name="loanStatus"
+                                                        value="I have applied for an Avanse education loan" required>
+                                                    <label>I have applied for an Avanse education loan</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanStatusOption3"
+                                                        name="loanStatus" value="Others" required> <label>Others</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="name" name="name" th:field="*{name}"
+                                                        placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="number" id="number" th:field="*{phoneNumber}"
+                                                        name="phoneNumber" placeholder="Contact Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="email" name="email" th:field="*{email}"
+                                                        id="email" placeholder="E-mail ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="city" th:field="*{city}" name="city"
+                                                        placeholder="City">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="loanaccount"
+                                                        th:field="*{loanAccountNumber}" name="loanAccountNumber"
+                                                        placeholder="Loan Account Number (wherever applicable)">
+                                                </div>
+                                            </div>
+                            
+                                            <div class="col-lg-12  text-center ">
+                                                <div id="captcha"></div>
+                                                <input type="text" placeholder="Captcha" id="cpatchaTextBox" />
+                                            </div>
+                            
+                                            <div class="col-lg-12 text-center pt-5">
+                                                <button type="submit" class="btn_three">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="eduinst" role="tabpanel"
+                                    aria-labelledby="eduinst-tab">
+                                    
+                                    <form th:action="@{/thankyou}" th:object="${instituteDTO}"
+                                        class="contact_form_box" method="post" id="eduinstontactForm"
+                                        novalidate="novalidate">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <input type="text" hidden name="leadType" value="institute">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanTypeOption1" name="loanType"
+                                                        value="Institutional Loan" required> <label>Institutional
+                                                        Loan</label>
+                                                        <p><label for="loanType" class="error" style="display: none;">This field is required.</label></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanTypeOption2" name="loanType"
+                                                        value="Sponsorships" required> <label>Sponsorships</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group text_box">
+                                                    <input type="radio" id="loanTypeOption3" name="loanType"
+                                                        value="Others" required> <label>Others</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="name" name="name"
+                                                        th:field="*{nameOfPerson}" placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="institution" name="institution"
+                                                        th:field="*{nameOfInstitute}"
+                                                        placeholder="Name of the Institution">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="number" id="number" name="phoneNumber"
+                                                        th:field="*{phoneNumber}" placeholder="Contact Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="email" name="email" th:field="*{email}"
+                                                        id="email" placeholder="E-mail ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="city" th:field="*{city}" name="city"
+                                                        placeholder="City">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="subject" name="subjectLine"
+                                                        th:field="*{subjectLine}" placeholder="Subject Line">
+                                                </div>
+                                            </div>
+                            
+                                            
+                            
+                                            <div class="col-lg-12 text-center pt-5">
+                                                <button type="submit" class="btn_three">Submit</button>
+                                            </div>
+                                        </div>
+                            
+                                    </form>
+                                </div>
+                                <div class="tab-pane fade" id="media" role="tabpanel"
+                                    aria-labelledby="media-tab">
+                                    <form th:action="@{/thankyou}" th:object="${mediaDTO}"
+                                        class="contact_form_box" method="post" id="mediacontactForm"
+                                        novalidate="novalidate">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="text" hidden name="leadType" value="media">
+                            
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="name" name="name" th:field="*{name}"
+                                                        placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="mediahouse" name="mediahouse"
+                                                        th:field="*{mediaHouse}"
+                                                        placeholder="Name of the Media House You Represent">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="number" id="number" name="number"
+                                                        th:field="*{phoneNumber}" placeholder="Contact Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="email" name="email" id="email"
+                                                        th:field="*{emailId}" placeholder="E-mail ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="city" name="city" th:field="*{city}"
+                                                        placeholder="City">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="subject" th:field="*{subjectLine}"
+                                                        name="subjectLine" placeholder="Subject Line">
+                                                </div>
+                                            </div>
+                            
+                                        
+                            
+                                            <div class="col-lg-12 text-center pt-5">
+                                                <button type="submit" class="btn_three">Submit</button>
+                                            </div>
+                                        </div>
+                            
+                                    </form>
+                                </div>
+                            
+                            
+                                <div class="tab-pane " id="investors" role="tabpanel"
+                                    aria-labelledby="investors-tab">
+                                    <form th:action="@{/thankyou}" th:object="${investorDTO}"
+                                        class="contact_form_box" method="post"
+                                        id="investorscontactForm" novalidate="novalidate">
+                            
+                                        <input type="text" hidden name="leadType" value="investor">
+                            
+                                        <div class="row">
+                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="name" name="name" th:field="*{name}"
+                                                        placeholder="Your Name">
+                                                </div>
+                                            </div>
+                            
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="number" id="number" name="number"
+                                                        th:field="*{phoneNumber}" placeholder="Contact Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="email" name="email" id="email"
+                                                        th:field="*{emailId}" placeholder="E-mail ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="city" name="city" th:field="*{city}"
+                                                        placeholder="City">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group text_box">
+                                                    <input type="text" id="subject" th:field="*{subjectLine}"
+                                                        name="subjectLine" placeholder="Subject Line">
+                                                </div>
+                                            </div>
+                            
+                                        
+                            
+                                            <div class="col-lg-12 text-center pt-5">
+                                                <button type="submit" class="btn_three">Submit</button>
+                                            </div>
+                                        </div>
+                            
+                                    </form>
+                                </div>
+                            
+                            
+                            </div>
 						</div>
 					</div>
 

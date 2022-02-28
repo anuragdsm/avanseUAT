@@ -38,13 +38,13 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="form-group text_box">
-									<input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}"
+									<input type="number" id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}"
 										placeholder="Mobile No.">
 								</div>
 							</div>
 							<div class="col-lg-6">
 								<div class="form-group text_box">
-									<input type="text" name="email" id="email" th:field= "*{email}"
+									<input type="email" name="email" id="email" th:field= "*{email}"
 										placeholder="Email Id">
 								</div>
 							</div>
@@ -56,8 +56,8 @@
 
 							<div class="col-lg-6">
 								<div class="form-group text_box ">
-									<select class="form-control" th:field="*{loanAmount}" id="">
-										<option value="--">Loan Amount ₹</option>
+									<select class="form-control" th:field="*{loanAmount}" id="" name="loanAmount">
+										<option value="">Loan Amount ₹</option>
 										<option value="₹ 50000">₹ 50000</option>
 										<option value="₹ 50,000 to ₹ 1 lacs">₹ 50,000 to ₹ 1 lacs</option>
 										<option value="₹ 1 lacs to ₹ 2 lacs">₹ 1 lacs to ₹ 2 lacs</option>

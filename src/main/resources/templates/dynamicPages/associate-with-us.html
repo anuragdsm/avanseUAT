@@ -395,13 +395,13 @@
                             
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" id="contactNumber"
+                                    <input type="number" id="contactNumber"
 								name="contactNumber" th:field = "*{contactNumber}" placeholder="Contact Number">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" name="email"
+                                    <input type="email" name="email"
 								id="email" th:field = "*{email}" placeholder="E-mail ID">
                                 </div>
                             </div>
@@ -411,7 +411,7 @@
                                 <div class="form-group text_box ">
                                     
                                     <select class="form-control"
-								id="city_name">
+								id="city_name" name="city">
                                         <option value=""
 									selected="selected" th:field="*{city}" >Select a City</option>
                                           <option value="Delhi">Delhi</option>

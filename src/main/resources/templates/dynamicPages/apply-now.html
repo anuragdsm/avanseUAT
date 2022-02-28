@@ -25,105 +25,107 @@
 					For Education Loan</h2>
 				<h4 class="f_p   text-center wow fadeInUp mb_60">Fill in the
 					details and help us connect with you.</h4>
-				<div class="apply-now-form pb-5">
-					<form  onsubmit="validateCaptcha()"
-						th:action="@{/apply-now/add}"
-						th:object="${applyNowGeneralDTO}" class="contact_form_box"
-						method="post" id="myForm" novalidate="novalidate">
-						<div class="row">
-
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" id="fname" name="firstName"
-										th:field="*{firstName}" placeholder="First Name">
+					<div class="apply-now-form py-5 shadow pr-5 pl-5">
+						<form  onsubmit="validateCaptcha()"
+							th:action="@{/apply-now/add}"
+							th:object="${applyNowGeneralDTO}" class="contact_form_box"
+							method="post" id="myForm" novalidate="novalidate">
+							<div class="row">
+	
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="text" id="fname" name="firstName"
+											th:field="*{firstName}" placeholder="First Name">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="text" id="lname" name="lname"
+											th:field="*{lastName}" placeholder="Last Name">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="number" maxlength="10"  id="number"  name="number"
+											th:field="*{contactNumber}" placeholder="Contact Number">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="email" name="email" id="email"
+											th:field="*{emailId}" placeholder="E-mail ID">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="text" id="city" name="city" th:field="*{city}"
+											placeholder="City">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="text" id="placeOfStudy" name="placeOfStudy"
+											th:field="*{placeOfStudy}" placeholder="Place of Study">
+	
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group text_box">
+										<input type="date" id="year" th:name="timeOfStudy"
+											placeholder="Duration of Study" required>
+									</div>
+								</div>
+	
+								<div class="col-lg-6">
+									<div class="form-group text_box ">
+										<select class="form-control" th:field="*{loanAmount}"
+											id="country_name" name="loanAmount">
+											<option value="">Select Loan Amount</option>
+											<option value="5 Lacs to 10 Lacs">₹ 5 Lacs to 10 Lacs</option>
+											<option value="10 Lacs to 20 Lacs">₹ 10 Lacs to 20
+												Lacs</option>
+											<option value="20 Lacs to 30 Lacs">₹ 20 Lacs to 30
+												Lacs</option>
+											<option value="30 Lacs to 40 Lacs">₹ 30 Lacs to 40
+												Lacs</option>
+											<option value="40 Lacs to 50 Lacs">₹ 40 Lacs to 50
+												Lacs</option>
+											<option value="50 Lacs and above">₹ 50 Lacs and above</option>
+	
+										</select>
+									</div>
+								</div>
+	
+								<div class="col-lg-12">
+									<p>Admission Status</p>
+									<label class="pr_20"><input type="radio" id="applied1"
+										th:name="admissionStatus" value="Not Applied" name="admissionStatus" required> Not
+										Applied</label> <label class="pr_20"><input type="radio"
+										id="applied2" th:name="admissionStatus" value="Confirmed" name="admissionStatus" required>
+										Confirmed </label> <label class="pr_20"><input type="radio"
+										id="applied3" th:name="admissionStatus" value="Applied" name="admissionStatus" required>
+										Applied</label>
+										<p><label for="admissionStatus" class="error" style="display:none;">This field is required.</label></p>
+								</div>
+								<div class="col-lg-12">
+									<input type="checkbox" id="checkbox" th:name="permission" name="permission"
+										value="Agreed To use data for communication" required> <span
+										class="f_size_14 c_cyan">I authorize Avanse Financial
+										Services to connect with me over call and Whatsapp overriding
+										my registration with NDNC </span>
+										<p><label for="permission" class="error" style="display: none;">This field is required.</label></p>
+								</div>
+								<div class="col-lg-12  text-center ">
+									<div id="captcha"></div>
+									<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
+								</div>
+								<div class="col-lg-12 text-center pt-5">
+									<button type="submit" class="btn_three f_size_22">Submit</button>
 								</div>
 							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" id="lname" name="lname"
-										th:field="*{lastName}" placeholder="Last Name">
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" maxlength="10"  id="number"  name="number"
-										th:field="*{contactNumber}" placeholder="Contact Number">
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" name="email" id="email"
-										th:field="*{emailId}" placeholder="E-mail ID">
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" id="city" name="city" th:field="*{city}"
-										placeholder="City">
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="text" id="placeOfStudy" name="placeOfStudy"
-										th:field="*{placeOfStudy}" placeholder="Place of Study">
-
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="form-group text_box">
-									<input type="date" id="year" th:name="timeOfStudy"
-										placeholder="Duration of Study">
-								</div>
-							</div>
-
-							<div class="col-lg-6">
-								<div class="form-group text_box ">
-									<select class="form-control" th:field="*{loanAmount}"
-										id="country_name">
-										<option value="--">Select Loan Amount</option>
-										<option value="5 Lacs to 10 Lacs">₹ 5 Lacs to 10 Lacs</option>
-										<option value="10 Lacs to 20 Lacs">₹ 10 Lacs to 20
-											Lacs</option>
-										<option value="20 Lacs to 30 Lacs">₹ 20 Lacs to 30
-											Lacs</option>
-										<option value="30 Lacs to 40 Lacs">₹ 30 Lacs to 40
-											Lacs</option>
-										<option value="40 Lacs to 50 Lacs">₹ 40 Lacs to 50
-											Lacs</option>
-										<option value="50 Lacs and above">₹ 50 Lacs and above</option>
-
-									</select>
-								</div>
-							</div>
-
-							<div class="col-lg-12">
-								<p>Admission Status</p>
-								<label class="pr_20"><input type="radio" id="applied1"
-									th:name="admissionStatus" value="Not Applied"> Not
-									Applied</label> <label class="pr_20"><input type="radio"
-									id="applied2" th:name="admissionStatus" value="Confirmed">
-									Confirmed </label> <label class="pr_20"><input type="radio"
-									id="applied3" th:name="admissionStatus" value="Applied">
-									Applied</label>
-							</div>
-							<div class="col-lg-12">
-								<input type="checkbox" id="checkbox" th:name="permission"
-									value="Agreed To use data for communication"> <span
-									class="f_size_14 c_cyan">I authorize Avanse Financial
-									Services to connect with me over call and Whatsapp overriding
-									my registration with NDNC </span>
-							</div>
-							<div class="col-lg-12  text-center ">
-								<div id="captcha"></div>
-								<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-							</div>
-							<div class="col-lg-12 text-center pt-5">
-								<button type="submit" class="btn_three f_size_22">Submit</button>
-							</div>
-						</div>
-											
-					</form>
-				</div>
+												
+						</form>
+					</div>
 				<div class="text-center pt-5">
 					<h2 class="f_size_40 f_500 t_color3 l_height45 text-center">
 						Customized <span class="c_cyan">Solutions</span> For Your <br />

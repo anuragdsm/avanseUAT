@@ -25,8 +25,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box ">
-                                    <select class="form-control" th:field="*{partnerType}" id="">
-                                        <option value="--"> Partner Type</option>
+                                    <select class="form-control" th:field="*{partnerType}" id="" name="partnerType">
+                                        <option value=""> Partner Type</option>
                                         <option value="Education Institute">Education Institute</option>
                                         <option value="Consultant for Higher Studies Abroad">Consultant for Higher Studies Abroad</option>
                                         <option value="Consultant for Higher Studies in India">Consultant for Higher Studies in India</option>
@@ -49,12 +49,12 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" id="mobileNumber" name="mobileNumber" th:field="*{mobileNumber}" placeholder="Mobile No.">
+                                    <input type="number" id="mobileNumber" name="mobileNumber" th:field="*{mobileNumber}" placeholder="Mobile No.">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group text_box">
-                                    <input type="text" name="email" id="email" th:field= "*{email}" placeholder="Email Id">
+                                    <input type="email" name="email" id="email" th:field= "*{email}" placeholder="Email Id">
                                 </div>
                             </div>
                             <div class="col-lg-6">

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<meta charset="utf-8">
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div layout:fragment="content">
+
+
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div
+				class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-0 text-gray-800">Apply Now E-Tutoring Form leads Management</h1>
+				<h6 class="m-0 font-weight-bold text-primary">
+					<a href="javascript:history.back()"
+						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+						class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+					</span> <span class="text">Back</span>
+					</a>
+				</h6>
+			</div>
+
+
+			<!-- Content Row -->
+			<div class="row">
+				<div class="container-fluid">
+
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">SN</th>
+										<th scope="col">First Name</th>
+										<th scope="col">Last Name</th>
+										<th scope="col">Contact Number</th>
+										<th scope="col">Email ID</th>
+										<th scope="col">City</th>
+										<th scope="col">Place Of Study</th>
+										<th scope="col">Loan Amount</th>
+										<th scope="col">Admission Status</th>
+										<th scope="col">Time Of Study</th>
+
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr th:each="applyNowGeneral, iStat : ${applyNowGeneralLeads}">
+										<th scope="row" th:text="${iStat.index+1}">1</th>
+										<td th:text="*{name}">first</td>
+										<td><img src="" height="100px" width="100px"
+											th:src="@{${'/images/universityImages/' + university.imageName}}"></td>
+										<td th:text="${university.location}">Delhi</td>
+										<td th:text="${university.establishedYear}">2002</td>
+										<td><a href="#" data-toggle="modal"
+											th:data-target="'#myModal'+${university.id}">University
+												Description</a> <!-- Modal -->
+											<div class="modal fade" th:id="'myModal'+${university.id}"
+												role="dialog">
+												<div class="modal-dialog modal-xl">
+
+													<!-- Modal content-->
+													<div class="modal-content">
+														<div class="modal-header">
+															<h4 class="modal-title" th:text="${university.name}">University
+																Name</h4>
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+														</div>
+														<div class="modal-body">
+
+															<p th:utext="${university.description}">Some text in
+																the modal.</p>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default"
+																data-dismiss="modal">Close</button>
+														</div>
+													</div>
+												</div>
+											</div></td>
+
+										<td th:text="${university.accomodation}">Accomodadtion</td>
+
+										<td><a href=""
+											th:href="@{/admin/university/update/{id}(id=${university.id})}"
+											class="btn btn-warning">Update</a></td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			
+
+		</div>
+
+
+		<!-- End of Content Wrapper -->
+
+	</div>
+

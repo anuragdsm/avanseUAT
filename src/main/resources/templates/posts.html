@@ -106,7 +106,11 @@
 											<th scope="col">Post Title</th>
 											<th scope="col">Created on</th>
 											<th scope="col">Category</th>
+											
+											<!-- 
 											<th scope="col">Status</th>
+											 -->
+											
 											<th scope="col">Edit Page</th>
 											<th scope="col">Delete</th>
 
@@ -145,6 +149,9 @@
 
 											<!-- This one to be replaced by date modified -->
 
+
+
+<!-- 
 											<td>
 												<div class="custom-control custom-switch"
 													th:onclick="'togglePostStatus('+${post.id}+')'">
@@ -161,6 +168,9 @@
 														th:text="${post.isPostActive==true ?'Post Active':'Post Inactive'}"></span></label>
 												</div>
 											</td>
+											
+											 -->
+											
 
 											<td><a href=""
 												th:href="@{/admin/post/edit/{id}(id=${post.id})}"

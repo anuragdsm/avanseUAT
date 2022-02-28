@@ -1,6 +1,5 @@
 package com.avanse.springboot.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,8 +15,6 @@ import lombok.AllArgsConstructor;
 public class UserController {
 
 	
-//	Declare log4j object
-	private static Logger log = Logger.getLogger(UserController.class); 
 
 	@Autowired
 	private UserRepository userRepository;

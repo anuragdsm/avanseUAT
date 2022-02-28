@@ -37,20 +37,11 @@ public class MediaService {
 		return mediaRepository.findById(id);
 	}
 	
-	
 	public void deleteMedia(long id) {
 		mediaRepository.deleteById(id);
 	}
 	
-	
 	public long numberOfMediaLeads() {
 		return mediaRepository.count();
 	}
-	
-	
-	
-	
-	
-	
-	
 }

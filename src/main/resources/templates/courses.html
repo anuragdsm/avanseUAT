@@ -117,7 +117,9 @@
 
 											<th scope="col">Description</th>
 											<th scope="col">Documents Required</th>
-											<th scope="col">Status</th>
+											
+											<!-- 
+											<th scope="col">Status</th> -->
 
 
 											<th scope="col">Update</th>
@@ -174,6 +176,8 @@
 
 
 											<td th:text="${course.documentsRequired}">Degree</td>
+					
+											<!-- 
 											<td>
 												<div class="custom-control custom-switch"
 													th:onclick="'toggleCourseStatus('+${course.id}+')'">
@@ -190,13 +194,14 @@
 														th:text="${course.isCourseActive==true ?'Course Active':'Course Inactive'}"></span></label>
 												</div>
 											</td>
+											 -->
+											
+											
+											
 											<td><a href=""
 												th:href="@{/admin/course/update/{id}(id=${course.id})}"
 												class="btn btn-warning">Update</a></td>
-											<td><a href=""
-												th:href="@{/admin/course/delete/{id}(id=${course.id})}"
-												class="btn btn-danger">Delete</a></td>
-
+											
 
 
 											<td><button type="button" class="btn btn-danger"

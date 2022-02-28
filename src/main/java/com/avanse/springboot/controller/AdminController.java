@@ -64,8 +64,10 @@ import com.avanse.springboot.model.University;
 import com.avanse.springboot.model.forms.contactUs.Customer;
 import com.avanse.springboot.model.forms.contactUs.Institute;
 import com.avanse.springboot.model.forms.contactUs.Investor;
+import com.avanse.springboot.model.forms.contactUs.Media;
 import com.avanse.springboot.model.forms.contactUs.exports.CustomersCSVExporter;
 import com.avanse.springboot.model.forms.contactUs.exports.InstitutesCSVExporter;
+import com.avanse.springboot.model.forms.contactUs.exports.MediaLeadsCSVExporter;
 import com.avanse.springboot.repository.AwardRepository;
 import com.avanse.springboot.repository.CourseRepository;
 import com.avanse.springboot.repository.HeaderRepository;
@@ -92,6 +94,7 @@ import com.avanse.springboot.service.TypeDetailsCourseService;
 import com.avanse.springboot.service.UniversityService;
 import com.avanse.springboot.service.forms.contactUs.CustomerService;
 import com.avanse.springboot.service.forms.contactUs.InstituteService;
+import com.avanse.springboot.service.forms.contactUs.MediaService;
 
 import lombok.AllArgsConstructor;
 
@@ -2246,6 +2249,17 @@ public class AdminController {
 		List<Institute> listOfInstitutes = instituteService.getAllInstitutes();
 		InstitutesCSVExporter exporter = new InstitutesCSVExporter();
 		exporter.export(listOfInstitutes, response);
+	}
+	
+	@Autowired
+	MediaService mediaService;
+	
+	@GetMapping("/admin/mediaLeads/csv")
+	public void exportMediaLeadsToCSV(HttpServletResponse response) throws IOException {
+		List<Media> listOfMediaLeads = mediaService.getAllMediaLeads();
+		
+		MediaLeadsCSVExporter exporter = new MediaLeadsCSVExporter();
+		exporter.export(listOfMediaLeads, response);
 	}
 
 	@ResponseBody

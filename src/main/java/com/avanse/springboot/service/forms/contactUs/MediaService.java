@@ -18,7 +18,7 @@ public class MediaService {
 	@Autowired
 	MediaRepository mediaRepository;
 	
-	public static final int MEDIA_LEADS_PER_PAGE= 4;
+	public static final int MEDIA_LEADS_PER_PAGE= 20;
 
 	public List<Media> getAllMediaLeads(){
 		return mediaRepository.findAll();

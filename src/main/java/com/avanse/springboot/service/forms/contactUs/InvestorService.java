@@ -16,7 +16,7 @@ import com.avanse.springboot.repository.forms.contactUs.InvestorRepository;
 @Service
 public class InvestorService {
 
-	public static final int INVESTORS_PER_PAGE = 4;
+	public static final int INVESTORS_PER_PAGE = 20;
 	
 	@Autowired
 	InvestorRepository investorRepository;

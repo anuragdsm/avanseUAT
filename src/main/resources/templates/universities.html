@@ -97,7 +97,11 @@
 										<th scope="col">Description</th>
 										<th scope="col">Accomodation</th>
 										<th scope="col">Update</th>
+										
+										<!-- 
 										<th scope="col">Status</th>
+										 -->
+										
 										<th scope="col">Delete</th>
 
 									</tr>
@@ -105,19 +109,12 @@
 								<tbody>
 
 									<tr th:each="university, iStat : ${universities}">
-
-
 										<th scope="row" th:text="${iStat.index+1}">1</th>
-
 										<td th:text="${university.name}">Delhi University</td>
 										<td><img src="" height="100px" width="100px"
 											th:src="@{${'/images/universityImages/' + university.imageName}}"></td>
-
 										<td th:text="${university.location}">Delhi</td>
 										<td th:text="${university.establishedYear}">2002</td>
-
-
-
 										<td><a href="#" data-toggle="modal"
 											th:data-target="'#myModal'+${university.id}">University
 												Description</a> <!-- Modal -->
@@ -157,6 +154,11 @@
  -->
 										<td th:text="${university.accomodation}">Accomodadtion</td>
 
+
+<!-- Activate Deactivate Premium feature -->
+										
+
+<!-- 										
 										<td>
 											<div class="custom-control custom-switch"
 												th:onclick="'toggleUniversityStatus('+${university.id}+')'">
@@ -175,13 +177,56 @@
 											</div>
 										</td>
 
+ -->
+
+
 										<td><a href=""
 											th:href="@{/admin/university/update/{id}(id=${university.id})}"
 											class="btn btn-warning">Update</a></td>
 
-										<td><a href=""
-											th:href="@{/admin/university/delete/{id}(id=${university.id})}"
-											class="btn btn-danger">Delete</a></td>
+										
+
+
+										<td><button type="button" class="btn btn-danger"
+												data-toggle="modal" th:data-target="'#deleteModal'+${university.id}"
+												th:href="@{/admin/university/delete/{id}(id=${university.id})}">
+												Delete</button>
+
+										<!-- Modal -->
+										<div class="modal fade" th:id="'deleteModal'+${university.id}" tabindex="-1"
+											aria-labelledby="deleteModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="deleteModalLabel">Delete
+															University</h5>
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">Are you sure you want to
+														delete this item?</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"
+															data-dismiss="modal">Close</button>
+
+														<a class="btn btn-danger" href="#"
+															th:href=@{/admin/university/delete/{id}(id=${university.id})}>Confirm
+															Delete</a>
+													</div>
+												</div>
+											</div>
+										</div></td>
+
+
+
+
+
+
+
+
+
 									</tr>
 								</tbody>
 							</table>

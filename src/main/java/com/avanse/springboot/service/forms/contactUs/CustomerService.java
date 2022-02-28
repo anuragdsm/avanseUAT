@@ -17,7 +17,7 @@ import com.avanse.springboot.repository.forms.contactUs.CustomerRepository;
 @Service
 public class CustomerService {
 	
-	public static final int CUSTOMERS_PER_PAGE = 4;
+	public static final int CUSTOMERS_PER_PAGE = 20;
 	
 	@Autowired
 	CustomerRepository customerRepository;

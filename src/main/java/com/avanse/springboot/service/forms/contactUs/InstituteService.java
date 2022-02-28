@@ -15,7 +15,7 @@ import com.avanse.springboot.repository.forms.contactUs.InstituteRepository;
 @Service
 public class InstituteService {
 	
-	public static final int INSTITUTES_PER_PAGE = 4;
+	public static final int INSTITUTES_PER_PAGE = 20;
 	
 	@Autowired
 	InstituteRepository instituteRepository;

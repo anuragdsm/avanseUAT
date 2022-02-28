@@ -42,10 +42,10 @@
 
 
 				<script th:inline="javascript" type="text/javascript">
-				
-				/* let contextPath = 'http://localhost:8080'; */
+					/* let contextPath = 'http://localhost:8080'; */
 
-					let contextPath = 'http://'+window.location.href.split('/',3)[2];
+					let contextPath = 'http://'
+							+ window.location.href.split('/', 3)[2];
 					function toggleCourseStatus(id) {
 						console.log('toggling id = ' + id);
 
@@ -196,6 +196,41 @@
 											<td><a href=""
 												th:href="@{/admin/course/delete/{id}(id=${course.id})}"
 												class="btn btn-danger">Delete</a></td>
+
+
+
+											<td><button type="button" class="btn btn-danger"
+													data-toggle="modal"
+													th:data-target="'#deleteModal'+${course.id}"
+													th:href="@{/admin/course/delete/{id}(id=${course.id})}">
+													Delete</button> <!-- Modal -->
+												<div class="modal fade"
+													th:id="'deleteModal'+${course.id}" tabindex="-1"
+													aria-labelledby="deleteModalLabel" aria-hidden="true">
+													<div class="modal-dialog">
+														<div class="modal-content">
+															<div class="modal-header">
+																<h5 class="modal-title" id="deleteModalLabel">Delete
+																	Course</h5>
+																<button type="button" class="close" data-dismiss="modal"
+																	aria-label="Close">
+																	<span aria-hidden="true">&times;</span>
+																</button>
+															</div>
+															<div class="modal-body">Are you sure you want to
+																delete this item?</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary"
+																	data-dismiss="modal">Close</button>
+
+																<a class="btn btn-danger" href="#"
+																	th:href=@{/admin/course/delete/{id}(id=${course.id})}>Confirm
+																	Delete</a>
+															</div>
+														</div>
+													</div>
+												</div></td>
+
 
 
 										</tr>

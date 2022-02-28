@@ -505,9 +505,8 @@
 								<div class="tab-pane fade" id="eduinst" role="tabpanel"
 									aria-labelledby="eduinst-tab">
 									
-									<script>createCaptcha();</script>
-									<form onsubmit="validateCaptcha()" th:action="@{/thankyou}" th:object="${instituteDTO}"
-										class="contact_form_box" method="post" id="eduinstcontactForm"
+									<form th:action="@{/thankyou}" th:object="${instituteDTO}"
+										class="contact_form_box" method="post" id="myForm"
 										novalidate="novalidate">
 										<div class="row">
 											<div class="col-lg-4">
@@ -568,10 +567,7 @@
 												</div>
 											</div>
 
-											<div class="col-lg-12  text-center ">
-												<div id="captcha"></div>
-												<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-											</div>
+											
 
 											<div class="col-lg-12 text-center pt-5">
 												<button type="submit" class="btn_three">Send
@@ -583,8 +579,8 @@
 								</div>
 								<div class="tab-pane fade" id="media" role="tabpanel"
 									aria-labelledby="media-tab">
-									<form onsubmit="validateCaptcha()" th:action="@{/thankyou}" th:object="${mediaDTO}"
-										class="contact_form_box" method="post" id="mediacontactForm"
+									<form th:action="@{/thankyou}" th:object="${mediaDTO}"
+										class="contact_form_box" method="post" id="myForm"
 										novalidate="novalidate">
 										<div class="row">
 											<div class="col-lg-6">
@@ -627,10 +623,7 @@
 												</div>
 											</div>
 
-											<div class="col-lg-12  text-center ">
-												<div id="captcha"></div>
-												<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-											</div>
+										
 
 											<div class="col-lg-12 text-center pt-5">
 												<button type="submit" class="btn_three">Send
@@ -644,9 +637,9 @@
 
 								<div class="tab-pane " id="investors" role="tabpanel"
 									aria-labelledby="investors-tab">
-									<form onsubmit="validateCaptcha()" th:action="@{/thankyou}" th:object="${investorDTO}"
+									<form th:action="@{/thankyou}" th:object="${investorDTO}"
 										class="contact_form_box" method="post"
-										id="investorscontactForm" novalidate="novalidate">
+										id="myForm" novalidate="novalidate">
 
 										<input type="text" hidden name="leadType" value="investor">
 
@@ -684,10 +677,7 @@
 												</div>
 											</div>
 
-											<div class="col-lg-12  text-center ">
-												<div id="captcha"></div>
-												<input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-											</div>
+										
 
 											<div class="col-lg-12 text-center pt-5">
 												<button type="submit" class="btn_three">Send

@@ -1279,11 +1279,16 @@ public class AdminController {
 		 */
 		pageDTO.setPageLink(currentPageLink);
 		page.setPageLink(pageDTO.getPageLink());
-		if( (pageDTO.getEnableHeader() != null && !pageDTO.getEnableHeader().equals("true")) || pageDTO.getEnableHeader() == null) {
-			page.setBannerHeading(null);pageDTO.setBannerHeading(page.getBannerHeading());
-			page.setBannerImageAlt(null);pageDTO.setBannerImageAlt(page.getBannerImageAlt());
-			page.setBannerImageName(null);pageDTO.setBannerImageName(page.getBannerImageName());
-			page.setBannerSubHeading(null);pageDTO.setBannerSubHeading(page.getBannerSubHeading());
+		if ((pageDTO.getEnableHeader() != null && !pageDTO.getEnableHeader().equals("true"))
+				|| pageDTO.getEnableHeader() == null) {
+			page.setBannerHeading(null);
+			pageDTO.setBannerHeading(page.getBannerHeading());
+			page.setBannerImageAlt(null);
+			pageDTO.setBannerImageAlt(page.getBannerImageAlt());
+			page.setBannerImageName(null);
+			pageDTO.setBannerImageName(page.getBannerImageName());
+			page.setBannerSubHeading(null);
+			pageDTO.setBannerSubHeading(page.getBannerSubHeading());
 		}
 		pageService.addPage(page);
 //		htmlPage
@@ -1295,7 +1300,7 @@ public class AdminController {
 
 		System.out.println("\n\n\n\n\n\n Main Section preview" + pageDTO.getMainSection());
 		String codeInFile;
-		if (pageDTO.getEnableHeader() != null  && pageDTO.getEnableHeader().equals("true")) {
+		if (pageDTO.getEnableHeader() != null && pageDTO.getEnableHeader().equals("true")) {
 			codeInFile = htmlBoilerPlate(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(), pageDTO.getBannerHeading(),
 					pageDTO.getBannerSubHeading(), pageDTO.getMetaDescription(), pageDTO.getMainSection(),
 					pageDTO.getJsCode(), pageDTO.getCssCode(), pageDTO.getBannerImageName(),
@@ -1857,7 +1862,7 @@ public class AdminController {
 
 				+ "                                <div th:each=\"relatedPost, iStat: ${relatedThreePosts} \"  class=\"col-lg-4 col-sm-6\">\r\n"
 
-				+ "                                   <a th:href=\"'/viewPost/'+${relatedPost.extractedFileName}\">\r\n"
+				+ "                                   <a th:href=\"'/blog/'+${relatedPost.extractedFileName}\">\r\n"
 				+ "                                    <div class=\"blog_post_item\">\r\n"
 				+ "                                        <div class=\"blog_img\">\r\n"
 				+ "                                            <img th:src=\"'/viewPagesAssets/img/userAddedFeaturedImages/'+${relatedPost.featuredImageName}\" alt=\"\">\r\n"
@@ -1874,9 +1879,45 @@ public class AdminController {
 				+ "                                </div>\r\n"
 
 				+ "                            </div>\r\n" + "                        </div>\r\n"
-				+ "                        \r\n" + "                        \r\n" + "                    </div>\r\n"
+				+ "                        \r\n" + "                    </div>\r\n"
 				+ "                    <div class=\"col-lg-4\">\r\n"
 				+ "                        <div class=\"blog-sidebar\">\r\n"
+
+				+ "<div onmouseleave=\"hideResultBox()\" onmouseenter=\"showResultBox()\" class=\"widget sidebar_widget widget_search\">\r\n"
+				+ "	                                <form action=\"/blog\" method=\"get\" class=\"search-form input-group\">\r\n"
+				+ "	                                    <input name=\"searchKey\" type=\"search\" class=\"form-control widget_input\" placeholder=\"Search\">\r\n"
+				+ "	                                    <button type=\"submit\"><i class=\"ti-search\"></i></button>\r\n"
+				+ "	                                </form>\r\n" + "	                         </div>\r\n"
+				+ "	                         <div hidden onmouseenter=\"showResultBox()\" onmouseleave=\"hideResultBox()\" id=\"resultBox\" class=\"widget sidebar_widget widget_search\" \r\n"
+				+ "	                         	style=\"position: absolute;z-index: 999;\r\n"
+				+ "	                         	background-color: white;height: 60vh; \r\n"
+				+ "	                         	width: 17.24vw;overflow: auto;box-shadow: 0px 0px 6px 1px gray;\">\r\n"
+				+ "	                         	\r\n"
+				+ "	                         	<div class=\"container border\">\r\n"
+				+ "	                         		<div style=\"cursor: pointer;\">\r\n"
+				+ "	                         		<div class=\"row\">\r\n"
+				+ "	                         			<div class=\"col-sm-3\">\r\n"
+				+ "				                         	<div id=\"imageContainer\">\r\n"
+				+ "				                         		<img style=\"height: 80px;width: 80px;\" src=\"http://localhost:8080/viewPagesAssets/img/userAddedFeaturedImages/associate-with-us-top-banner.png\">\r\n"
+				+ "		                         			</div>\r\n"
+				+ "	                         			</div>\r\n"
+				+ "	                         			<div class=\"col-sm-9\">\r\n"
+				+ "		                         				<h1 id=\"headingContainer\" style=\"font-size:25px; text-decoration-line: underline;\">sadsd ddf</h1>\r\n"
+				+ "		                         			\r\n"
+				+ "		                         				<h1 id=\"subHeadingContainer\" style=\"font-size:15px; text-decoration-line: underline;\">asdfsdf</h1>\r\n"
+				+ "		                         			\r\n" + "	                         			</div>\r\n"
+				+ "	                         		</div>\r\n" + "	                         		</div>\r\n"
+				+ "	                         	</div>\r\n" + "	                         \r\n"
+				+ "	                         \r\n" + "	                         </div>\r\n"
+				+ "	                         <script type=\"text/javascript\">\r\n"
+				+ "	                        function showResultBox() {\r\n"
+				+ "	                        	document.getElementById('resultBox').hidden=true;\r\n"
+				+ "	                        }\r\n" + "	                        function hideResultBox() {\r\n"
+				+ "	                        	document.getElementById('resultBox').hidden=true;\r\n"
+				+ "	                        }\r\n" + "	                        \r\n"
+				+ "	                         \r\n" + "	                         \r\n"
+				+ "	                         </script>"
+
 				+ "                            <div class=\"widget sidebar_widget widget_categorie mt_60\">\r\n"
 				+ "                                <div class=\"widget_title\">\r\n"
 				+ "                                    <h3 class=\"f_p f_size_20 t_color3\">Categories</h3>\r\n"
@@ -1896,12 +1937,12 @@ public class AdminController {
 				+ "                                    <img width = \"90px\" height = \"80\" th:src=\"@{/viewPagesAssets/img/userAddedFeaturedImages/{featuredImageName}(featuredImageName=${post.featuredImageName})}\" alt=\"\">\r\n"
 				+ "                                    \r\n"
 				+ "                                    <div class=\"media-body\">\r\n"
-				+ "                                        <a href=\"#\" th:href=\"@{/viewPost/{extractedFileName}(extractedFileName=${post.extractedFileName})}\" >\r\n"
+				+ "                                        <a href=\"#\" th:href=\"@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}\" >\r\n"
 				+ "                                            <h3 class=\"f_size_16 f_p f_400\"  th:text=\"${post.postTitle}\">Pro</h3>\r\n"
 				+ "                                        </a>\r\n"
 				+ "                                        <div class=\"entry_post_info\">\r\n"
 				+ "                                           \r\n"
-				+ "                                            <a th:href=\"@{/viewPost/{extractedFileName}(extractedFileName=${post.extractedFileName})}\" th:text=\"${post.dateOfPostCreation}\">March 14, 2020</a>\r\n"
+				+ "                                            <a th:href=\"@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}\" th:text=\"${post.dateOfPostCreation}\">March 14, 2020</a>\r\n"
 				+ "                                        </div>\r\n"
 				+ "                                    </div>\r\n" + "                                </div>"
 				+ "                            </div>\r\n" + "                            \r\n"
@@ -2250,14 +2291,14 @@ public class AdminController {
 		InstitutesCSVExporter exporter = new InstitutesCSVExporter();
 		exporter.export(listOfInstitutes, response);
 	}
-	
+
 	@Autowired
 	MediaService mediaService;
-	
+
 	@GetMapping("/admin/mediaLeads/csv")
 	public void exportMediaLeadsToCSV(HttpServletResponse response) throws IOException {
 		List<Media> listOfMediaLeads = mediaService.getAllMediaLeads();
-		
+
 		MediaLeadsCSVExporter exporter = new MediaLeadsCSVExporter();
 		exporter.export(listOfMediaLeads, response);
 	}

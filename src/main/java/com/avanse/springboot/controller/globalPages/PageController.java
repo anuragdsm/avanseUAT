@@ -135,7 +135,7 @@ public class PageController {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/blog");
 		System.out.println("testing.........searchkey : "+searchKey);
 		model.addAttribute("postCategories", postCategoryService.getAllPostCategories());
-		model.addAttribute("posts", postService.getAllPosts());
+		model.addAttribute("posts", postService.getTopFourLatestPosts());
 		model.addAttribute("searchKey", searchKey);
 		return modelAndView;
 	}

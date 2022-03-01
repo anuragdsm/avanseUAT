@@ -60,6 +60,9 @@ public class University implements Serializable {
 	private String applicationProcess;
 	
 	private Boolean isUniversityActive = true;
+	@Lob
+	@Basic
+	private String staticContent;
 	
 	@CreationTimestamp
 	private Date dateOfCreation;

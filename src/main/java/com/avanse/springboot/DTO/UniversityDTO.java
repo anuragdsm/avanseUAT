@@ -22,6 +22,8 @@ public class UniversityDTO {
 	private String intakePeriod;
 	private String applicationProcess;
 	private Boolean isUniversityActive;
+	
+	private String staticContent;
 
 
 }

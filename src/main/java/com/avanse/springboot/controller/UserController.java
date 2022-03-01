@@ -1,10 +1,17 @@
 package com.avanse.springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.avanse.springboot.DTO.UserDTO;
+import com.avanse.springboot.model.User;
 import com.avanse.springboot.repository.UserRepository;
 import com.avanse.springboot.service.CustomUserDetailService;
 
@@ -25,10 +32,26 @@ public class UserController {
 	private CustomUserDetailService customUserDetailService;
 	
 	
-	@GetMapping("/admin/update-password")
-	public String updatePassword() {
-		return "/update-password";
-	}
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
+	/*
+	 * @GetMapping("/admin/password") public String getUpdatePassword(Model model) {
+	 * model.addAttribute("userDTO", new UserDTO()); return "/update-password"; }
+	 * 
+	 * @PostMapping("/admin/update-password") public String postUpdatePassword(Model
+	 * model) { Long id = 1L; User user = userRepository.getById(id);
+	 * 
+	 * String password = userRepository.getById(id).getPassword();
+	 * 
+	 * user.setPassword(bCryptPasswordEncoder.encode(password));
+	 * 
+	 * userRepository.save(user);
+	 * 
+	 * return "redirect:/adminDashboard"; }
+	 */
+	
 	
 //	@RequestMapping("users")
 //	public List<User>getUsers(){	

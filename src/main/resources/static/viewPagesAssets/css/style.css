@@ -28457,12 +28457,10 @@ input[type=date]{color: #222d39; height:50px; background-color: white; -webkit-b
 }
 .coudetail{
   width: 100%;
-  position: absolute;
-  left: 0px;
-  background: rgb(255, 255, 255);
+  
   padding: 20px;
   display: block;
-  z-index: 1;
+  
   margin-top: 20px;
 }
 .press-release-list li {

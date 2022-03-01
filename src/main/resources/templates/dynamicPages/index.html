@@ -8,6 +8,10 @@
 
 	<!-- Content Wrapper -->
 	<div layout:fragment="contentPlus">
+	
+	
+	
+	
 		<section class="home_avanse_banner_area">
 
 			<div class="container">
@@ -377,7 +381,7 @@
 			                                			   let currenturlinpieces=window.location.href.split('/');
 			                                			   let selUniId = document.getElementById('university_id').value.split('UniversityID:')[1];
 					                                	   currenturlinpieces[currenturlinpieces.length-1]
-					                                	   ='courseDetail/' +'/'+document.getElementById('course_id').value.split('CourseID:')[1]
+					                                	   ='courseDetail' +'/'+document.getElementById('course_id').value.split('CourseID:')[1]
 					                              
 					                                	   console.log(currenturlinpieces);
 					                                	   let targeturl=currenturlinpieces[0]+'/';

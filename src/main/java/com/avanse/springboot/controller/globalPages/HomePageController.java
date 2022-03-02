@@ -25,56 +25,55 @@ import com.avanse.springboot.service.CourseService;
 import com.avanse.springboot.service.UniversityService;
 
 @Controller
-@RequestMapping(value = {"/public/api/homePage"})
+@RequestMapping(value = { "/public/api/homePage" })
 public class HomePageController {
-	
+
 	@Autowired
 	UniversityRepository universityRepository;
 
 	@Autowired
 	UniversityService universityService;
-	
+
 	@Autowired
 	CourseService courseService;
-	
+
 	@Autowired
 	CourseRepository courseRepository;
-	
+
 	@ResponseBody
-	@PostMapping(value = "/getUniversitesInfos",consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getUniversityInfo(
-			@RequestBody String[] country) {
-		System.out.println("REST API IS CALLED HOMEPAGECONTROLLER GETUNIVERSITYINFOS()"+country[0]);
-		List<University> filterList =universityService.getAllUniversity().stream()
-		.filter(uni -> 
-			uni.getLocation().toLowerCase().equals(country[0].toLowerCase())
-			).collect(Collectors.toList());
-		if(filterList==null) {
+	@PostMapping(value = "/getUniversitesInfos", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> getUniversityInfo(@RequestBody String[] country) {
+		System.out.println("REST API IS CALLED HOMEPAGECONTROLLER GETUNIVERSITYINFOS()" + country[0]);
+		List<University> filterList = universityService.getAllUniversity().stream()
+				.filter(uni -> uni.getLocation().toLowerCase().equals(country[0].toLowerCase()))
+				.collect(Collectors.toList());
+		if (filterList == null) {
 			return ResponseEntity.noContent().build();
 		} else {
 			return ResponseEntity.ok(filterList);
 		}
-		
 	}
-	
+
 	@ResponseBody
 	@PostMapping(value = "/getAllCourses")
 	public ResponseEntity<?> getAllCourses() {
 		ResponseEntity<List<Course>> ok = ResponseEntity.ok(courseService.getAllCourses());
 		return ok;
 	}
+
 	@ResponseBody
 	@PostMapping(value = "/getAllUniversites")
 	public ResponseEntity<?> getAllUniversities() {
 		ResponseEntity<List<University>> ok = ResponseEntity.ok(universityService.getAllUniversity());
 		return ok;
 	}
-	
+
 	@ResponseBody
-	@PostMapping(value="/getAllCoursesByUniversity")
-	public ResponseEntity<?> getAllCoursesByUniversity(){
-		ResponseEntity<List<Course>> ok = ResponseEntity.ok(courseService.getCoursesByUniversityId(19L));
+	@PostMapping(value = "/getAllCoursesByUniversity", consumes = MediaType.TEXT_PLAIN_VALUE)
+	public ResponseEntity<?> getAllCoursesByUniversity(@RequestBody String universityId) {
+		ResponseEntity<List<Course>> ok = ResponseEntity
+				.ok(courseService.getCoursesByUniversityId(Long.valueOf(universityId)));
 		return ok;
 	}
-	
+
 }

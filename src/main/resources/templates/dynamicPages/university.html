@@ -70,6 +70,18 @@
 				</div>
 			</div>
 		</section>
+		
+		<script>
+		let htmlForCourses = new XMLHttpRequest();
+		htmlForCourses.open('POST', window.location.origin+'/public/api/homePage/getAllCoursesByUniversity');
+		console.log('uni id-->',window.location.pathname.split('/')[window.location.pathname.split('/').length-1])
+		htmlForCourses.onloadend = ()=> {
+			let coursesData = JSON.parse(htmlForCourses.responseText);
+			console.log(coursesData);
+		}
+		htmlForCourses.send(window.location.pathname.split('/')[window.location.pathname.split('/').length-1]);
+		
+		</script>
 
 
 

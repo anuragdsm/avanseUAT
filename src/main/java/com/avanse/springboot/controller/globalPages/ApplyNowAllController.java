@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avanse.springboot.DTO.UniversityDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ApplyNowGeneralDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ETutoringDTO;
 import com.avanse.springboot.DTO.forms.applyNow.EducationInstitutionLoanDTO;
@@ -173,6 +174,41 @@ public class ApplyNowAllController {
 		return "dynamicPages/thankyou";
 		
 	}
+	
+	
+	
+	/*
+	 * For admin data display
+	*/
+	
+	@GetMapping("/admin/apply-now/e-tutoring")
+	public String applyNowETutoringGet(Model model) {
+		model.addAttribute("eTutoringLeads", eTutoringService.getAllETutoringLeads());
+//		model.addAttribute("university", new University());
+		return "apply-now-e-Tutoring";
+	} 
+	@GetMapping("/admin/apply-now/partner-with-us")
+	public String applyNowPartnerWithUsGet(Model model) {
+		model.addAttribute("partnerWithUsLeads",  partnerWithUsService.getPartnerWithUsLeads());
+//		model.addAttribute("university", new University());
+		return "apply-now-partner-with-us";
+	} 
+	
+	@GetMapping("/admin/apply-now/school-fee-financing")
+	public String applyNowSchoolFeeFinancingGet(Model model) {
+		model.addAttribute("schoolFeeFinancingLeads",  schoolFeeFinancingService.getSchoolFeeFinancingLeads());
+//		model.addAttribute("university", new University());
+		return "apply-now-school-fee-financing";
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

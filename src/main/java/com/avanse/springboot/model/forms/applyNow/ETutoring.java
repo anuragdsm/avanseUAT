@@ -25,7 +25,7 @@ public class ETutoring {
 	private String phoneNumber;
 	private String email;
 	private String city;
-	private String LoanAmount;
+	private String loanAmount;
 	private String courseName;
 	private String courseProvider;
 	

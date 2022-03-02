@@ -60,7 +60,7 @@ public class CourseService {
 	 * Creating a service to get the list of all the courses according to
 	 * the university id... 
 	*/
-	public List<Course> getUniversityByCourseId(long id){
+	public List<Course> getCoursesByUniversityId(long id){
 	
 		return courseRepository.findAllByUniversity_Id(id);
 	}

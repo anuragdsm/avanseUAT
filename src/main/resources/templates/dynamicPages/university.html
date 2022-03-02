@@ -7,72 +7,78 @@
 <title>Apply Now</title>
 <meta charset="utf-8">
 <style type="text/css">
-
-
-
 </style>
 <body id="page-top" onload="createCaptcha()">
 
 
 	<!-- Content Wrapper -->
 	<div layout:fragment="contentPlus">
-	
-	
-      <section class="bg_grey_light sec_pad">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-7 my-auto ml-auto">
-              <h2 th:text = "${university.name}" class="f_size_30 f_600 pb-3">
-                Acadia University</h2> 
-                <div>
-                	<span class="c_cyan f_size_20">Located in: </span>
-                	<span class="c_cyan f_size_20" th:text="${university.location}">- Canada</span>
-                
-                </div>
-                
-                
-                <span class="c_cyan f_size_20">Established in: </span>
-                <span class="c_cyan f_size_20" th:text="${university.establishedYear}">- 1988</span>
-                
-                
-                <!-- 	<br><span class="c_cyan f_size_20">Intake Period: </span>
+
+
+		<section class="bg_grey_light sec_pad">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7 my-auto ml-auto">
+						<h2 th:text="${university.name}" class="f_size_30 f_600 pb-3">
+							Acadia University</h2>
+						<div>
+							<span class="c_cyan f_size_20">Located in: </span> <span
+								class="c_cyan f_size_20" th:text="${university.location}">-
+								Canada</span>
+
+						</div>
+
+
+						<span class="c_cyan f_size_20">Established in: </span> <span
+							class="c_cyan f_size_20" th:text="${university.establishedYear}">-
+							1988</span>
+
+
+						<!-- 	<br><span class="c_cyan f_size_20">Intake Period: </span>
                 	<span class="c_cyan f_size_20" th:text="${university.intakePeriod}">- Summer 2020</span>
                  -->
-               
-              
-              <p th:text="${university.description}" class="f_400">
-                Established in 1838, Acadia University is a highly-ranked
-                liberal arts university in Nova Scotia, Canada. Initially
-                established as Horton Academy in 1828, the university served as
-                an extension of another institution based in Horton. Since then,
-                the institute's name has gone through several changes. These
-                include Queen's College in 1838 and Acadia College in 1841. The
-                college started operating at full capacity in 1839 with 21
-                students and two faculty members. Today, it has affiliations
-                with the Canadian University Society for Intercollegiate Debate
-                (CUSID) and the International Association of Universities
-                (IAU).It offers about 200 programs in business, education,
-                music, engineering, applied sciences, history, theology, gender
-                studies, theatre, and economics. The university has a separate
-                Division of Research and Graduate Studies that supervises the
-                research programs and graduate students. The University's
-                research environment encourages student and faculty researchers
-                to work closely together to answer important questions. Open
-                Acadia offers distance learning and correspondence courses for
-                working professionals.
-              </p>
-              <!-- <a href="" class="btn_six text-center slider_btn yello_btn">Read More</a> -->
-            </div>
 
-            <div class="col-lg-5 my-auto">
-              <img
-                th:src="@{${'/images/universityImages/' + university.imageName}}"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
+						<p th:text="${university.description}" class="f_400">
+							Established in 1838, Acadia University is a highly-ranked liberal
+							arts university in Nova Scotia, Canada. Initially established as
+							Horton Academy in 1828, the university served as an extension of
+							another institution based in Horton. Since then, the institute's
+							name has gone through several changes. These include Queen's
+							College in 1838 and Acadia College in 1841. The college started
+							operating at full capacity in 1839 with 21 students and two
+							faculty members. Today, it has affiliations with the Canadian
+							University Society for Intercollegiate Debate (CUSID) and the
+							International Association of Universities (IAU).It offers about
+							200 programs in business, education, music, engineering, applied
+							sciences, history, theology, gender studies, theatre, and
+							economics. The university has a separate Division of Research and
+							Graduate Studies that supervises the research programs and
+							graduate students. The University's research environment
+							encourages student and faculty researchers to work closely
+							together to answer important questions. Open Acadia offers
+							distance learning and correspondence courses for working
+							professionals.</p>
+						<!-- <a href="" class="btn_six text-center slider_btn yello_btn">Read More</a> -->
+					</div>
+
+					<div class="col-lg-5 my-auto">
+						<img
+							th:src="@{${'/images/universityImages/' + university.imageName}}"
+							class="img-fluid" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+
+		<!-- To be implemented dynamically -->
+
+		<!-- 
+      
+      
       <section class="job_listing_area sec_pad bg_grey">
         <div class="container">
           <div class="job_listing Cus_jobli">
@@ -110,8 +116,7 @@
                           <li>1st Year Tuition Fees- INR 10 lakhs</li>
                           <li>
                             <span class="c_yellow"
-                              >Exams Accepted- TOEFL: 90, IELTS: 6.5</span
-                            >
+                              >Exams Accepted- TOEFL: 90, IELTS: 6.5</span>
                           </li>
                         </ul>
                       </div>
@@ -338,8 +343,12 @@
             </div>
           </div>
         </div>
-      </section>
-      <section class="sec_pad">
+      </section> -->
+
+
+		<!-- This is the static content that will come from the CMS  -->
+
+		<!-- <section class="sec_pad">
         <div class="container">
           <div class="row mb-5">
             <div class="col-lg-12">
@@ -393,14 +402,12 @@
                   <tr>
                     <th>Courses</th>
                     <th>Exams</th>
-
                     <th>&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td><strong>MS</strong>(1 Course)</td>
-
                     <td><strong>TOEFL </strong> : 93</td>
                     <td><strong> IELTS </strong> : 6.5</td>
                   </tr>
@@ -430,5 +437,13 @@
             </div>
           </div>
         </div>
-      </section>
-    </div>
+        
+        
+				
+        
+        
+      </section> -->
+
+		<div th:utext="${university.staticContent}"
+			id="staticContentContainer"></div>
+	</div>

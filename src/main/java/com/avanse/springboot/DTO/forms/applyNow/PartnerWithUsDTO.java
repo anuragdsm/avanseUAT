@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class PartnerWithUsDTO {
-
 	private Long id;
 	private String nameOfFirm;
 	private String partnerType;

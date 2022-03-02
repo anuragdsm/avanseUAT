@@ -69,4 +69,12 @@ public class HomePageController {
 		ResponseEntity<List<University>> ok = ResponseEntity.ok(universityService.getAllUniversity());
 		return ok;
 	}
+	
+	@ResponseBody
+	@PostMapping(value="/getAllCoursesByUniversity")
+	public ResponseEntity<?> getAllCoursesByUniversity(){
+		ResponseEntity<List<Course>> ok = ResponseEntity.ok(courseService.getCoursesByUniversityId(19L));
+		return ok;
+	}
+	
 }

@@ -7,7 +7,6 @@
 	<!-- Page Wrapper -->
 	<div layout:fragment="content">
 
-
 		<!-- Begin Page Content -->
 		<div class="container-fluid">
 
@@ -24,7 +23,6 @@
 				</h6>
 			</div>
 
-
 			<!-- Content Row -->
 			<div class="row">
 				<div class="container-fluid">
@@ -36,42 +34,32 @@
 								<thead class="thead-light">
 									<tr>
 										<th scope="col">SN</th>
+										<th scope="col">Name Of Firm</th>
+										<th scope="col">Partner Type</th>
 										<th scope="col">First Name</th>
 										<th scope="col">Last Name</th>
-										<th scope="col">Contact Number</th>
-										<th scope="col">Email ID</th>
+										<th scope="col">Mobile Number</th>
+										<th scope="col">Email</th>
 										<th scope="col">City</th>
-										<th scope="col">Loan Amount</th>
-										<th scope="col">Course Name</th>
-										<th scope="col">Course Provider</th>
 									</tr>
 								</thead>
 								<tbody>
-
-									<tr th:each="eTutoring, iStat : ${eTutoringLeads}">
+									<tr th:each="partnerWithUs, iStat : ${partnerWithUsLeads}">
 										<th scope="row" th:text="${iStat.index+1}">1</th>
-										<td th:text="${eTutoring.firstName}">First Name</td>
-										<td th:text="${eTutoring.lastName}">Last Name</td>
-										<td th:text="${eTutoring.phoneNumber}">987321654</td>
-										<td th:text="${eTutoring.email}">anurag@abc.com</td>
-										<td th:text="${eTutoring.city}">Delhi</td>
-										<td th:text="${eTutoring.loanAmount}">200000</td>
-										<td th:text="${eTutoring.courseName}">Digital Course</td>
-										<td th:text="${eTutoring.courseProvider}">UpGrad</td>
+										<td th:text="${partnerWithUs.nameOfFirm}">Name Of Firm</td>
+										<td th:text="${partnerWithUs.partnerType}">Partner Type</td>
+										<td th:text="${partnerWithUs.firstName}">John</td>
+										<td th:text="${partnerWithUs.lastName}">Doe</td>
+										<td th:text="${partnerWithUs.mobileNumber}">Last Name</td>
+										<td th:text="${partnerWithUs.email}">simple@dimple.com</td>
+										<td th:text="${partnerWithUs.city}">Delhi</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</div>
-
 				</div>
 			</div>
-			
-
 		</div>
-
-
 		<!-- End of Content Wrapper -->
-
 	</div>
-

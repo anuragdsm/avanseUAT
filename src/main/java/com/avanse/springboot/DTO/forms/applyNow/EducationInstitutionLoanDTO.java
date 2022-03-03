@@ -15,7 +15,7 @@ public class EducationInstitutionLoanDTO {
 	private String loanAmount;
 	private String loanUsage;
 	private String institutionType;
-	private String CurriculumBoard;
+	private String curriculumBoard;
 	private String vintage;
 	private String studentStrength;
 

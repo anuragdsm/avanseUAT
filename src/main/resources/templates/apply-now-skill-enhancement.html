@@ -13,7 +13,7 @@
 			<!-- Page Heading -->
 			<div
 				class="d-sm-flex align-items-center justify-content-between mb-4">
-				<h1 class="h3 mb-0 text-gray-800">School Fee Financing leads</h1>
+				<h1 class="h3 mb-0 text-gray-800">Skill Enhancement leads </h1>
 				<h6 class="m-0 font-weight-bold text-primary">
 					<a href="javascript:history.back()"
 						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
@@ -39,20 +39,23 @@
 										<th scope="col">Phone Number</th>
 										<th scope="col">Email</th>
 										<th scope="col">City</th>
+										<th scope="col">Course Name</th>
+										<th scope="col">Course Provider</th>
 										<th scope="col">Loan Amount</th>
-										<th scope="col">School Name</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="schoolFeeFinancing, iStat : ${schoolFeeFinancingLeads}">
+									<tr th:each="skillEnhancement, iStat : ${skillEnhancementLeads}">
 										<th scope="row" th:text="${iStat.index+1}">1</th>
-										<td th:text="${schoolFeeFinancing.firstName}">John</td>
-										<td th:text="${schoolFeeFinancing.lastName}">Doe</td>
-										<td th:text="${schoolFeeFinancing.phoneNumber}">99999999</td>
-										<td th:text="${schoolFeeFinancing.email}">simple@dimple.com</td>
-										<td th:text="${schoolFeeFinancing.city}">Delhi</td>
-										<td th:text="${schoolFeeFinancing.loanAmount}">5Lac</td>
-										<td th:text="${schoolFeeFinancing.nameOfTheSchool}">Xaviers</td>
+										<td th:text="${skillEnhancement.firstName}">John</td>
+										<td th:text="${skillEnhancement.lastName}">Doe</td>
+										<td th:text="${skillEnhancement.phoneNumber}">99999999</td>
+										<td th:text="${skillEnhancement.email}">simple@dimple.com</td>
+										<td th:text="${skillEnhancement.city}">Delhi</td>
+										<td th:text="${skillEnhancement.courseName}">JAVA</td>
+										<td th:text="${skillEnhancement.courseProvider}">Upgrad</td>
+										<td th:text="${skillEnhancement.loanAmount}">5Lac</td>
+										
 									</tr>
 								</tbody>
 							</table>

@@ -202,13 +202,25 @@ public class ApplyNowAllController {
 	} 
 	
 	
+	@GetMapping("/admin/apply-now/skill-enhancement")
+	public String applyNowSkillEnhancementGet(Model model) {
+		model.addAttribute("skillEnhancementLeads",  skillEnhancementService.getAllSkillEnhancementsLeads());
+		return "apply-now-skill-enhancement";
+	} 
 	
 	
+	@GetMapping("/admin/apply-now/education-institution-loan")
+	public String applyNowEducationInstitutionLoanGet(Model model) {
+		model.addAttribute("educationInstitutionLoanLeads",  educationInstitutionLoanService.getAllEducationInstitutionLoanLeads());
+		return "apply-now-education-institution-loan";
+	} 
+	@GetMapping("/admin/apply-now/executive-education-loan")
+	public String applyNowExecutiveEducationLoanGet(Model model) {
+		model.addAttribute("executiveEducationLoanLeads", executiveEducationLoanService.getAllExecutiveEducationLoanLeads());
+		return "apply-now-executive-education-loan";
+	} 
 	
 	
-	
-	
-	
-	
+
 	
 }

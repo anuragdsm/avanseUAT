@@ -2,6 +2,8 @@ package com.avanse.springboot.controller.globalPages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -43,11 +45,23 @@ public class MiscellaneousFormsController {
 		csrLeads.setName(csrLeadsDTO.getName());
 		csrLeads.setSubject(csrLeadsDTO.getSubject());
 		csrLeadsService.addCSRLead(csrLeads);
-				
 		return "dynamicPages/thankyou";
-		
 	}
 	
-
+	@GetMapping("/admin/miscellaneous-forms/associate-with-us")
+	public String associateWithUsAdminGet(Model model) {
+		model.addAttribute("associateWithUsLeads", associateWithUsService.getAssociateWithUsLeads());
+		return "associate-with-us-leads";
+	} 
+	@GetMapping("/admin/miscellaneous-forms/csr")
+	public String csrAdminGet(Model model) {
+		model.addAttribute("csrLeads", csrLeadsService.getCSRLeads());
+		return "csr-leads";
+	} 
 	
+	
+	
+	
+	
+		
 }

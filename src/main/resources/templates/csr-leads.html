@@ -13,7 +13,7 @@
 			<!-- Page Heading -->
 			<div
 				class="d-sm-flex align-items-center justify-content-between mb-4">
-				<h1 class="h3 mb-0 text-gray-800">School Fee Financing leads</h1>
+				<h1 class="h3 mb-0 text-gray-800">CSR Page leads </h1>
 				<h6 class="m-0 font-weight-bold text-primary">
 					<a href="javascript:history.back()"
 						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
@@ -34,25 +34,21 @@
 								<thead class="thead-light">
 									<tr>
 										<th scope="col">SN</th>
-										<th scope="col">First Name</th>
-										<th scope="col">Last Name</th>
-										<th scope="col">Phone Number</th>
+										<th scope="col">Name</th>
+										<th scope="col">Contact Number</th>
 										<th scope="col">Email</th>
-										<th scope="col">City</th>
-										<th scope="col">Loan Amount</th>
-										<th scope="col">School Name</th>
+										<th scope="col">Subject</th>
+										<th scope="col">Message</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="schoolFeeFinancing, iStat : ${schoolFeeFinancingLeads}">
+									<tr th:each="csr, iStat : ${csrLeads}">
 										<th scope="row" th:text="${iStat.index+1}">1</th>
-										<td th:text="${schoolFeeFinancing.firstName}">John</td>
-										<td th:text="${schoolFeeFinancing.lastName}">Doe</td>
-										<td th:text="${schoolFeeFinancing.phoneNumber}">99999999</td>
-										<td th:text="${schoolFeeFinancing.email}">simple@dimple.com</td>
-										<td th:text="${schoolFeeFinancing.city}">Delhi</td>
-										<td th:text="${schoolFeeFinancing.loanAmount}">5Lac</td>
-										<td th:text="${schoolFeeFinancing.nameOfTheSchool}">Xaviers</td>
+										<td th:text="${csr.name}">John</td>
+										<td th:text="${csr.contactNumber}">99999999</td>
+										<td th:text="${csr.email}">simple@dimple.com</td>
+										<td th:text="${csr.subject}">My subject Line</td>
+										<td th:text="${csr.message}">My new Message</td>
 									</tr>
 								</tbody>
 							</table>

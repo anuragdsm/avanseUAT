@@ -8,10 +8,10 @@
 
 	<!-- Content Wrapper -->
 	<div layout:fragment="contentPlus">
-	
-	
-	
-	
+
+
+
+
 		<section class="home_avanse_banner_area">
 
 			<div class="container">
@@ -313,22 +313,23 @@
 									<div class="form-group ">
 										<div class="row">
 											<div class="col-11">
-												<select class="form-control" id="country_name" onchange="setCoursesAndUniversities()">
+												<select class="form-control" id="country_name"
+													onchange="setCoursesAndUniversities()">
 													<option value="">Select Country</option>
 													<option value="Australia">Australia</option>
 													<option value="Canada">Canada</option>
 													<option value="Germany">Germany</option>
-													<option value="New Zealand">New Zealand</option>	
+													<option value="New Zealand">New Zealand</option>
 													<option value="Singapore">Singapore</option>
 													<option value="United Kingdom">UK</option>
 													<option value="United States of America">USA</option>
 												</select>
 											</div>
-											
+
 										</div>
 									</div>
 								</div>
-								
+
 								<div class="col-lg-4 py-5 lg-border-right">
 									<!-- <form action="#" class="contact_form_box " method="post" id="contactForm"> -->
 									<div class="form-group ">
@@ -343,11 +344,10 @@
 												</select>
 												<button onclick="onCourseSearchButtonClick()"
 													class="btn btn-submit search-button-home" type="submit">
-													GO
-												</button>
-												
+													GO</button>
+
 											</div>
-											
+
 										</div>
 
 
@@ -421,11 +421,10 @@
 												</select>
 												<button onclick="universitySearchClicked()"
 													class="btn btn-submit search-button-home" type="submit">
-													GO
-												</button>
-												
+													GO</button>
+
 											</div>
-											
+
 										</div>
 
 
@@ -601,7 +600,7 @@
 
 					<div th:each="testimonial, iStat : ${testimonials}">
 						<div class="item">
-							<div class="feedback_item">
+							<div class="feedback_item testimonials-box">
 								<div class="feed_back_author">
 									<div class="media">
 										<div class="img">
@@ -618,20 +617,24 @@
 									</div>
 
 								</div>
-								<p class="w_color" th:text="${testimonial.message}">After
-									submitting all my documents, my education loan was sanctioned
-									within two days. Thank you Avanse Financial Services for such
-									an amazing and prompt service.</p>
-								<a href="#" class="learn_btn_two text-white">Read More <i
-									class="ti-arrow-right"></i></a>
-								<div class="shap_one"></div>
-								<div class="shap_two"></div>
+
+								<div class="testim_info">
+									<p class="w_color" th:text="${testimonial.message}">After
+										submitting all my documents, my education loan was sanctioned
+										within two days. Thank you Avanse Financial Services for such
+										an amazing and prompt service.</p>
+									<a href="/testimonials" class="learn_btn_two text-white">Read
+										More <i class="ti-arrow-right"></i>
+									</a>
+									<div class="shap_one"></div>
+									<div class="shap_two"></div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="text-center">
-					<a href="testimonials.html"
+					<a href="/testimonials"
 						class="btn_six text-center slider_btn yello_btn mt-5">Know
 						More</a>
 				</div>

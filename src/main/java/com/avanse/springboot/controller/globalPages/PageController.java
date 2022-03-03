@@ -74,6 +74,12 @@ public class PageController {
 	public String studyAbroadPage(Model model) {
 		return "dynamicPages/study-abroad";
 	}
+	@GetMapping(value={"/education-loan/study-india-loan"})
+	public String studyInIndiaPage(Model model) {
+		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
+
+		return "dynamicPages/study-in-india";
+	}
 	@GetMapping("/career")
 	public String careerPage() {
 		return "dynamicPages/career";
@@ -88,6 +94,14 @@ public class PageController {
 		return "about";
 	}
 	
+	
+	@GetMapping("/testimonials")
+	public String testimonialsPage(Model model) {
+		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
+
+		return "dynamicPages/testimonials";
+	}
+		
 	@GetMapping("/courseDetail/{courseId}")
 	public String courseDetailsPage(@PathVariable long courseId, Model model) {
 		model.addAttribute("course", courseService.getCourseById(courseId).get());

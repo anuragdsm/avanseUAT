@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<title>Testimonials</title>
+<meta charset="utf-8">
+<body id="page-top" onload="createCaptcha()">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+
+		<section class=" pt-3 pb-3" style="background: #02afb3">
+
+			<div class="container">
+				<div class="breadcrumb_content text-center">
+					<h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">We
+						Value what our customers say</h1>
+					<p class="f_400 w_color f_size_21 l_height28">While we
+						endeavour to deliver a rich and satisfying brand experience to all
+						our customers, we believe in listening to what they say, so as to
+						better our products and service. Read what a few of our customers
+						say about Brand Avanse</p>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="feedback_area  sec_pad">
+			<div class="container">
+
+				
+
+					<div class="row" >
+						<div class="col-lg-4 pb-3" th:each="testimonial, iStat : ${testimonials}">
+							<div class="feedback_item testimonials-box">
+								<div class="feed_back_author">
+									<div class="media">
+										<div class="img">
+											<img th:src="@{${'/images/testimonialImages/' + testimonial.picFileName}}"
+												alt="">
+										</div>
+										<div class="media-body">
+											<h5 class="w_color f_500" th:text="${testimonial.name}">Shradha Agarwal</h5>
+											<h6 class="w_color f_400 " th:text="${testimonial.info}">Master of Global Management
+												Royal Road University, British Columbia</h6>
+										</div>
+									</div>
+
+								</div>
+								<div class="testim_info">
+									<p class="w_color " th:text="${testimonial.message}">I was in the process of availing an
+										education loan to pursue my higher education in Canada. I got
+										in touch with Avanse Financial Services; the sales
+										representative got my loan sanctioned in no time and paid the
+										course fee to my college. It was a swift and hassle-free
+										process. I am very grateful to Avanse.</p>
+
+								</div>
+							</div>
+						
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+
+
+
+
+
+
+	</div>

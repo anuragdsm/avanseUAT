@@ -80,6 +80,15 @@ public class PageController {
 
 		return "dynamicPages/study-in-india";
 	}
+	
+	@GetMapping(value={"/education-loan-for-mba"})
+	public String educationLoanForMbaPage(Model model) {
+		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
+		
+		return "dynamicPages/education-loan-for-mba";
+	}
+	
+	
 	@GetMapping("/career")
 	public String careerPage() {
 		return "dynamicPages/career";
@@ -154,7 +163,6 @@ public class PageController {
 		return modelAndView;
 	}
 	
-	
 	@GetMapping("/contact-us")
 	public ModelAndView getContactUsCustomer(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/contactus");
@@ -165,23 +173,19 @@ public class PageController {
 		return modelAndView;
 	}
 	
-	
 	  @GetMapping("/apply-now") 
 	  public ModelAndView getApplyNowForm(Model model) {
 	  ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-now");
 	  model.addAttribute("applyNowGeneralDTO", new ApplyNowGeneralDTO()); 
-	  return modelAndView;
-	  
+	  return modelAndView;  
 	  }
 	 
 	@GetMapping("/apply-for-education-institution-loan")
 	public ModelAndView getEducationInstitutionLoan(Model model) {
 		ModelAndView modelAndView =  new ModelAndView("dynamicPages/education-institution-loan");
 		model.addAttribute("educationInstitutionLoanDTO", new EducationInstitutionLoanDTO());
-		return modelAndView;
-		
+		return modelAndView;	
 	}
-	
 	
 	@GetMapping("/apply-for-executive-education-loan")
 	public ModelAndView getExecutiveEducationLoan(Model model) {
@@ -189,8 +193,6 @@ public class PageController {
 		model.addAttribute("executiveEducationLoanDTO", new ExecutiveEducationLoanDTO());
 		return modelAndView;
 	}
-	
-	
 	
 	@GetMapping("/apply-for-e-tutoring")
 	public ModelAndView getApplyForEtutoringPage(Model model) {
@@ -235,19 +237,5 @@ public class PageController {
 	}
 	
 	
-	/*
-	 * @GetMapping("/viewDynamicPages/{extractedFileName}") public ModelAndView
-	 * getDynamicPage(@PathVariable("extractedFileName") String extractedFileName,
-	 * Model model) { ModelAndView modelAndView = new
-	 * ModelAndView("dynamicPages/"+extractedFileName);
-	 * 
-	 * // model.addAttribute("applyNowGeneralDTO", new ApplyNowGeneralDTO());
-	 * model.addAttribute("executiveEducationLoanDTO", new
-	 * ExecutiveEducationLoanDTO()); //
-	 * model.addAttribute("educationInstitutionLoanDTO", new
-	 * EducationInstitutionLoanDTO()); return modelAndView;
-	 * 
-	 * }
-	 * 
-	 */
+
 }

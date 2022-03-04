@@ -10,14 +10,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.forms.miscellaneous.AssociateWithUs;
 import com.avanse.springboot.model.forms.miscellaneous.CSRLeads;
 import com.avanse.springboot.model.forms.miscellaneous.ENach;
+import com.avanse.springboot.model.forms.miscellaneous.MoratoriumFacility;
 import com.avanse.springboot.model.forms.miscellaneous.RestructuringOfLoans;
 import com.avanse.springboot.service.forms.miscellaneous.AssociateWithUsService;
 import com.avanse.springboot.service.forms.miscellaneous.CSRLeadsService;
 import com.avanse.springboot.service.forms.miscellaneous.ENachService;
+import com.avanse.springboot.service.forms.miscellaneous.MoratoriumFacilityService;
 import com.avanse.springboot.service.forms.miscellaneous.RestructuringOfLoansService;
 
 @Controller
@@ -34,6 +37,9 @@ public class MiscellaneousFormsController {
 	
 	@Autowired
 	RestructuringOfLoansService restructuringOfLoansService;
+	
+	@Autowired
+	MoratoriumFacilityService moratoriumFacilityService ;
 	
 	
 	@PostMapping("/associate-with-us/add")
@@ -84,6 +90,19 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 
 	}
+	
+	@PostMapping("/moratorium-facility-2020/add")
+	public String MoratoriumFacilityPost(@ModelAttribute("moratoriumFacilityDTO") MoratoriumFacilityDTO moratoriumFacilityDTO ) {
+		MoratoriumFacility moratoriumFacility = new MoratoriumFacility();
+		moratoriumFacility.setAlternateMobileNumber(moratoriumFacilityDTO.getAlternateMobileNumber());
+		moratoriumFacility.setDateOfBirthOrIncorporation(moratoriumFacilityDTO.getDateOfBirthOrIncorporation());
+		moratoriumFacility.setLoanAccountNumber(moratoriumFacilityDTO.getLoanAccountNumber());
+		moratoriumFacility.setPanNumber(moratoriumFacilityDTO.getPanNumber());
+		moratoriumFacilityService.addMoratoriumFacility(moratoriumFacility);
+		return "dynamicPages/thankyou";
+	}
+	
+	
 	
 	@GetMapping("/admin/miscellaneous-forms/associate-with-us")
 	public String associateWithUsAdminGet(Model model) {

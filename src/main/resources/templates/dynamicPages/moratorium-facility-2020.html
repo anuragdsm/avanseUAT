@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+	<section class=" pt-3 pb-3" style="background: #02afb3">
+           
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">Moratorium Facility Registration </h1>
+                    <h4>As a response to COVID19 situation in India, RBI has issued directives permitting lending institutions to grant moratorium on loan instalments between 1st March 2020 and 31st May 2020. Eligible customers may register their request for the moratorium facility with respect to their loan with us, due to the economic fallout of the COVID 19 pandemic.</h4>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sec_pad bg_grey_light">
+            
+            <div class="container">
+               
+                <div class="row flex-row-reverse">
+                    
+                    <div class="col-lg-6  ml-auto my-auto">
+                           
+                            <div class="shadow  pl-4 pr-4 py-5">
+                                
+                                <form th:action="@{/moratorium-facility-2020/add}" th:object="${moratoriumFacilityDTO}" class="contact_form_box" method="post" id="" novalidate="novalidate">
+                                    <div class="row slr-s1">
+                                        
+                                        <div class="col-lg-12">
+                                            <p class="f_size_18">Please fill in the form below to register your request</p>
+                                            
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="accountnumber" class="form-tooltip" placeholder="Loan Account Number" th:field = "*{panNumber}" data-toggle="tooltip"  data-original-title="Sample PAN Number ABCDEXXXXXXXX or ABC/XXXXXX" onkeyup="this.value = this.value.toUpperCase();">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="pannumber" class="form-tooltip"   data-toggle="tooltip" th:field = "*{loanAccountNumber}"  data-original-title="For eg. AAAPL1234C" onkeyup="this.value = this.value.toUpperCase();" placeholder="PAN No." required="">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="number" maxlength="10" id="number" name="number" th:field = "*{alternateMobileNumber}"  placeholder="Alternate Mobile no." required="">
+                                            </div>
+                                        </div> 
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                               <label>Select Date of birth OR Date of incorporation</label>
+                                               <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <input type="date" id="dob" name="dob" th:field= "*{dateOfBirthOrIncorporation}">          
+                                                     </div>
+                                               </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-12">
+                                            <p> <span>Disclaimer: The grant of moratorium facility is subject to the internal policies and at the sole discretion of Avanse.</span></p>
+                                             <a href="/viewPagesAssets/img/pdf/moratorium-facility-tc.pdf"><i class="fa fa-file-pdf"></i> Terms & Conditions</a>
+                                        
+                                    </div>
+                                        <div class="col-lg-12 text-center pt-5"><button  class="btn_three f_size_22   slrs1-click">Submit</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <p class="pt-3">Please note - Customers will be Intimated over email/SMS once the request has been accepted.</p>
+                    </div>
+                    <div class="col-lg-5 my-auto">
+                        <img src="/viewPagesAssets/img/estimate-of-your-education-loan.png" />
+                 </div> 
+                </div>
+            </div>
+        </section>
+        <section class=" pt-5 pb-5 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-sm-12 "><h2 class="f_size_40 f_500 t_color3 l_height45 ">Now you can make payments towards your loan online </h2></div>
+                    <div class="col-lg-4 col-sm-12 text-center mb-5">
+                        <a href="https://www.avanse.com/emi-pay/" target="_blank" class="btn_six text-center slider_btn ">Click here</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+    </div>

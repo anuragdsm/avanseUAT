@@ -28,6 +28,7 @@ import com.avanse.springboot.DTO.forms.contactUs.MediaDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.Page;
 import com.avanse.springboot.model.Post;
@@ -250,4 +251,17 @@ public class PageController {
 		model.addAttribute("restructuringOfLoansDTO", new RestructuringOfLoansDTO());
 		return modelAndView;
 	}
+	
+	@GetMapping("/moratorium-facility-2020")
+	public ModelAndView getMoratoriumFacilityPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/moratorium-facility-2020");
+		model.addAttribute("moratoriumFacilityDTO", new MoratoriumFacilityDTO());
+		return modelAndView;
+	}
+	
+	
+	
+	
+	
+	
 }

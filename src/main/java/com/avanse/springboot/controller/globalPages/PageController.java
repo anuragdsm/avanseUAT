@@ -27,6 +27,8 @@ import com.avanse.springboot.DTO.forms.contactUs.InvestorDTO;
 import com.avanse.springboot.DTO.forms.contactUs.MediaDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.Page;
 import com.avanse.springboot.model.Post;
 import com.avanse.springboot.model.PostCategory;
@@ -235,7 +237,17 @@ public class PageController {
 		model.addAttribute("csrLeadsDTO", new CSRLeadsDTO());
 		return modelAndView;
 	}
-	
-	
+	@GetMapping("/e-nach")
+	public ModelAndView getENachPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/e-nach");
+		model.addAttribute("eNachDTO", new ENachDTO());
+		return modelAndView;
+	}
 
+	@GetMapping("/restructuring-of-loans-step1")
+	public ModelAndView getRestructuringOfLoansPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/restructuring-of-loans");
+		model.addAttribute("restructuringOfLoansDTO", new RestructuringOfLoansDTO());
+		return modelAndView;
+	}
 }

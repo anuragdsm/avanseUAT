@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+
+<head>
+<title>Apply Now</title>
+<meta charset="utf-8">
+<style type="text/css">
+</style>
+<body id="page-top">
+
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+<section class=" pt-3 pb-3" style="background: #02afb3">
+
+	<div class="container">
+		<div class="breadcrumb_content text-center">
+			<h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">Repayment
+				Mandate Cancellation Form</h1>
+		</div>
+	</div>
+</section>
+
+<section class="sec_pad bg_grey_light">
+
+	<div class="container">
+
+		<div class="row flex-row-reverse">
+
+			<div class="col-lg-6  ml-auto my-auto">
+
+				<div class="shadow  pl-4 pr-4 py-5">
+
+					<form th:action="@{/e-nach/add}" th:object = "${eNachDTO}" class="contact_form_box" method="post" id="myForm"
+						novalidate="novalidate">
+						<div class="row slr-s1">
+
+							<div class="col-lg-12">
+								<div class="form-group text_box">
+									<input type="text" id="accountnumber" name="accountnumber" th:field = "*{loanAccountNumber}"
+										class="form-tooltip" placeholder="Loan Account Number"
+										data-toggle="tooltip"
+										data-original-title="Sample PAN Number ABCDEXXXXXXXX or ABC/XXXXXX"
+										onkeyup="this.value = this.value.toUpperCase();">
+								</div>
+							</div>
+
+
+
+							<div class="col-lg-12">
+								<div class="form-group text_box">
+									<div class="monthly-emil">
+										<p>
+											<input type="radio" name="optionsRadios" id="optionsRadios1" 
+												value="larger" /> Authenticate by DOB / DOI & PAN
+										</p>
+										<div class="form-group position-relative radio-hide1">
+											<input type="text" class="form-control"  id="extraamt"
+												name="extraamt" th:field = "*{panNumber}"
+												placeholder="PAN Number (for eg. AAAPL1234C) " />
+										</div>
+									</div>
+									<div class="extra-payment">
+										<p>
+											<input type="radio" name="optionsRadios" id="optionsRadios1"
+												value="extra" /> Authenticate by DOB / DOI & registered
+											mobile no
+										</p>
+										<div class="form-group position-relative radio-hide2">
+											<input type="text" class="form-control" id="number" 
+												name="number" th:field = "*{mobileNumber}" placeholder="Enter registered mobile number">
+										</div>
+									</div>
+									<div class="extra-payment">
+										<p>
+											<input type="radio" name="optionsRadios" id="optionsRadios1"
+												value="quickly" /> Authenticate by DOB / DOI & registered
+											email id
+										</p>
+										<div class="form-group position-relative radio-hide3">
+											<input type="text" class="form-control " name="email" th:field = "*{email}"
+												id="email" placeholder="Enter registered Email ID">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-lg-12">
+								<div class="form-group text_box">
+									<label>Select Date of birth OR Date of incorporation</label>
+									<div class="row">
+										<div class="col-lg-12">
+											<input type="date" id="dob" name="dob" th:field = "*{dateOfBirthOrIncorporation}">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">
+								<div class="form-group ">
+									<div class=" ">
+										<span class="c_cyan">DOB = Date of birth</span><br /> <span
+											class="c_cyan">DOI = Date of incorporation (for non
+											individuals)</span><br /> <span class="c_cyan">PAN =
+											Permanent Account Number</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12 text-center pt-5">
+								<button type="submit" class="btn_three f_size_22   slrs1-click">Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-5 my-auto">
+				<img src="/viewPagesAssets/img/estimate-of-your-education-loan.png" />
+			</div>
+			<div class="col-lg-12 text-center pt-5">
+				<h4>
+					For any assistance please write to us at <a
+						href="mailto:wecare@avanse.com">wecare@avanse.com</a>
+				</h4>
+			</div>
+		</div>
+	</div>
+</section>
+
+</div>

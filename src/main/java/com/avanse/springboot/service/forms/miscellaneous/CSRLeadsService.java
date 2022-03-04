@@ -26,5 +26,4 @@ public class CSRLeadsService {
 		return csrLeadsRepository.count();
 	}
 	
-	
 }

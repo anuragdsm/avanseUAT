@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+
+
+		<section class=" pt-3 pb-3" style="background: #02afb3">
+
+			<div class="container">
+				<div class="breadcrumb_content text-center">
+					<h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">Moratorium
+						Facility Degistration</h1>
+					<h4>If you wish to deregister from the Moratorium Facility,
+						please submit the form below</h4>
+				</div>
+			</div>
+		</section>
+
+		<section class="sec_pad bg_grey_light">
+
+			<div class="container">
+
+				<div class="row flex-row-reverse">
+
+					<div class="col-lg-6  ml-auto my-auto">
+
+						<div class="shadow  pl-4 pr-4 py-5">
+
+							<form th:action="@{/moratorium-facility-deregister/add}" th:object="${moratoriumDeregisterDTO}" class="contact_form_box" method="post" id=""
+								novalidate="novalidate">
+								<div class="row slr-s1">
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<input type="text" name="name" th:field = "*{name}"
+												placeholder="First Name & Last Name" required>
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<input type="text" name="accountnumber" class="form-tooltip"
+												placeholder="Loan Account Number" th:field = "*{loanAccountNumber}" data-toggle="tooltip"
+												data-original-title="Sample PAN Number ABCDEXXXXXXXX or ABC/XXXXXX"
+												onkeyup="this.value = this.value.toUpperCase();">
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<input type="number" maxlength="10" id="number" th:field = "*{mobileNumber}" name="number"
+												placeholder="Registered Mobile No." required="">
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<input type="number" maxlength="10" id="number" th:field = "*{alternateNumber}" name="number"
+												placeholder="Alternate Mobile no." required="">
+										</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<input type="email" name="email" id="email"
+												th:field="*{email}" placeholder="Registered Email ID"
+												required="">
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<div class="form-group text_box">
+											<label>Select Date of birth OR Date of incorporation</label>
+											<div class="row">
+
+												<div class="col-lg-12">
+													<input type="date" id="dob" name="dob"
+														th:field="*{dateOfBirthOrIncorporation}">
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<input type="checkbox" required=""> <span
+											class="f_size_14 c_cyan">I authorize Avanse Financial
+											Services to connect with me over call and Whatsapp overriding
+											my registration with NDNC </span>
+
+
+									</div>
+									<div class="col-lg-12 text-center pt-5">
+										<button class="btn_three f_size_22   slrs1-click">Submit</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-lg-5 my-auto">
+						<img
+							src="/viewPagesAssets/img/estimate-of-your-education-loan.png" />
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>

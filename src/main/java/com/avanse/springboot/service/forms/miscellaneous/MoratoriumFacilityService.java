@@ -21,6 +21,4 @@ public class MoratoriumFacilityService {
 	public void addMoratoriumFacility(MoratoriumFacility moratoriumFacility) {
 		moratoriumFacilityRepository.save(moratoriumFacility);
 	}
-	
-	
 }

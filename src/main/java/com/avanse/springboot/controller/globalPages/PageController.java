@@ -28,6 +28,7 @@ import com.avanse.springboot.DTO.forms.contactUs.MediaDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.Page;
@@ -256,6 +257,13 @@ public class PageController {
 	public ModelAndView getMoratoriumFacilityPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/moratorium-facility-2020");
 		model.addAttribute("moratoriumFacilityDTO", new MoratoriumFacilityDTO());
+		return modelAndView;
+	}
+
+	@GetMapping("/moratorium-facility-deregister")
+	public ModelAndView getMoratoriumFacilityDeregisterPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/moratorium-facility-deregister");
+		model.addAttribute("moratoriumDeregisterDTO", new MoratoriumDeregisterDTO());
 		return modelAndView;
 	}
 	

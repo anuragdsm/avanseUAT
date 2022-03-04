@@ -5,7 +5,6 @@ import lombok.Data;
 public class CSRLeadsDTO {
 
 	private Long id;
-	
 	private String name;
 	private String contactNumber;
 	private String email;

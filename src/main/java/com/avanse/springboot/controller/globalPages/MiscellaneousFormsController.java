@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.forms.miscellaneous.AssociateWithUs;
 import com.avanse.springboot.model.forms.miscellaneous.CSRLeads;
 import com.avanse.springboot.model.forms.miscellaneous.ENach;
+import com.avanse.springboot.model.forms.miscellaneous.MoratoriumDeregister;
 import com.avanse.springboot.model.forms.miscellaneous.MoratoriumFacility;
 import com.avanse.springboot.model.forms.miscellaneous.RestructuringOfLoans;
 import com.avanse.springboot.service.forms.miscellaneous.AssociateWithUsService;
 import com.avanse.springboot.service.forms.miscellaneous.CSRLeadsService;
 import com.avanse.springboot.service.forms.miscellaneous.ENachService;
+import com.avanse.springboot.service.forms.miscellaneous.MoratoriumDeregisterService;
 import com.avanse.springboot.service.forms.miscellaneous.MoratoriumFacilityService;
 import com.avanse.springboot.service.forms.miscellaneous.RestructuringOfLoansService;
 
@@ -41,6 +44,9 @@ public class MiscellaneousFormsController {
 	@Autowired
 	MoratoriumFacilityService moratoriumFacilityService ;
 	
+	@Autowired
+	MoratoriumDeregisterService moratoriumDeregisterService;
+	
 	
 	@PostMapping("/associate-with-us/add")
 	public String associateWithUsPost(@ModelAttribute("associateWithUsDTO") AssociateWithUsDTO associateWithUsDTO ) {
@@ -54,6 +60,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 		
 	}
+	
 	@PostMapping("/csr/add")
 	public String csrPost(@ModelAttribute("csrLeadsDTO") CSRLeadsDTO csrLeadsDTO) {
 		CSRLeads csrLeads = new CSRLeads();
@@ -88,7 +95,6 @@ public class MiscellaneousFormsController {
 		restructuringOfLoans.setPanNumber(restructuringOfLoansDTO.getPanNumber().toUpperCase());
 		restructuringOfLoansService.addRestructuringOfLoans(restructuringOfLoans);
 		return "dynamicPages/thankyou";
-
 	}
 	
 	@PostMapping("/moratorium-facility-2020/add")
@@ -102,7 +108,18 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	
+	@PostMapping("/moratorium-facility-deregister/add")
+	public String moratoriumFacilityDeregister(@ModelAttribute("moratoriumDeregisterDTO") MoratoriumDeregisterDTO moratoriumDeregisterDTO ) {
+		MoratoriumDeregister moratoriumDeregister = new MoratoriumDeregister();
+		moratoriumDeregister.setAlternateNumber(moratoriumDeregisterDTO.getAlternateNumber());
+		moratoriumDeregister.setDateOfBirthOrIncorporation(moratoriumDeregisterDTO.getDateOfBirthOrIncorporation());
+		moratoriumDeregister.setEmail(moratoriumDeregisterDTO.getEmail());
+		moratoriumDeregister.setLoanAccountNumber(moratoriumDeregisterDTO.getLoanAccountNumber());
+		moratoriumDeregister.setMobileNumber(moratoriumDeregisterDTO.getMobileNumber());
+		moratoriumDeregister.setName(moratoriumDeregisterDTO.getName());
+		moratoriumDeregisterService.addMoratariumDeregister(moratoriumDeregister);
+		return "dynamicPages/thankyou";
+	}
 	
 	@GetMapping("/admin/miscellaneous-forms/associate-with-us")
 	public String associateWithUsAdminGet(Model model) {
@@ -115,10 +132,4 @@ public class MiscellaneousFormsController {
 		model.addAttribute("csrLeads", csrLeadsService.getCSRLeads());
 		return "csr-leads";
 	} 
-	
-	
-	
-	
-	
-		
 }

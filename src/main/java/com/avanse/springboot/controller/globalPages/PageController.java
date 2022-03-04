@@ -209,8 +209,7 @@ public class PageController {
 	public ModelAndView getApplyForEtutoringPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-for-e-tutoring");
 		model.addAttribute("eTutoringDTO", new ETutoringDTO());
-		model.addAttribute("awards", awardService.getAllAwards() );
-
+		model.addAttribute("awards", awardService.getAllAwards());
 		return modelAndView;
 	}
 	
@@ -219,6 +218,8 @@ public class PageController {
 	public ModelAndView getPartnerWithUsPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-for-partner-with-us");
 		model.addAttribute("partnerWithUsDTO", new PartnerWithUsDTO());
+		model.addAttribute("awards", awardService.getAllAwards() );
+
 		return modelAndView;
 	}
 	
@@ -226,6 +227,8 @@ public class PageController {
 	public ModelAndView getSchoolFeeFinancingPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-for-school-fee-financing");
 		model.addAttribute("schoolFeeFinancingDTO", new SchoolFeeFinancingDTO());
+		model.addAttribute("awards", awardService.getAllAwards() );
+
 		return modelAndView;
 	}
 	
@@ -233,6 +236,8 @@ public class PageController {
 	public ModelAndView getApplyForSkillEnhancementPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/apply-for-skill-enhancement");
 		model.addAttribute("skillEnhancementDTO", new SkillEnhancementDTO());
+		model.addAttribute("awards", awardService.getAllAwards() );
+
 		return modelAndView;
 	}
 	

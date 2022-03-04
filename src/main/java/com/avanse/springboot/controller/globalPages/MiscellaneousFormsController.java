@@ -47,7 +47,6 @@ public class MiscellaneousFormsController {
 	@Autowired
 	MoratoriumDeregisterService moratoriumDeregisterService;
 	
-	
 	@PostMapping("/associate-with-us/add")
 	public String associateWithUsPost(@ModelAttribute("associateWithUsDTO") AssociateWithUsDTO associateWithUsDTO ) {
 		AssociateWithUs associateWithUs = new AssociateWithUs();
@@ -131,5 +130,30 @@ public class MiscellaneousFormsController {
 	public String csrAdminGet(Model model) {
 		model.addAttribute("csrLeads", csrLeadsService.getCSRLeads());
 		return "csr-leads";
+	} 
+//	here is copy
+	
+	@GetMapping("/admin/miscellaneous-forms/e-nach")
+	public String eNachAdminGet(Model model) {
+		model.addAttribute("eNachDetails", eNachService.getEnachDetails());
+		return "eNach-details";
+	} 
+	
+	@GetMapping("/admin/miscellaneous-forms/restructuring-of-loans-step1")
+	public String restructuringOfLoansAdminGet(Model model) {
+		model.addAttribute("restructuringOfLoansDetails", restructuringOfLoansService.getRestructuringOfLoanDetails());
+		return "restructuring-of-loans-details";
+	} 
+	
+	@GetMapping("/admin/miscellaneous-forms/moratorium-facility-2020")
+	public String moratoriaumFacilityAdminGet(Model model) {
+		model.addAttribute("moratoriumFacilityDetails", moratoriumFacilityService.getMoratoriumFacilityDetails());
+		return "moratorium-facility-2020-details";
+	} 
+	
+	@GetMapping("/admin/miscellaneous-forms/moratorium-facility-deregister")
+	public String moratoriumFacilityDeregisterAdminGet(Model model) {
+		model.addAttribute("moratoriumFacilityDeregisterDetails", moratoriumDeregisterService.getMoratoriumDeregisterDetails());
+		return "moratorium-facility-deregister-details";
 	} 
 }

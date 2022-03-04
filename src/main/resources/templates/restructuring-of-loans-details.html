@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<meta charset="utf-8">
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div layout:fragment="content">
+
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div
+				class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-0 text-gray-800">Restructuring of Loans leads </h1>
+				<h6 class="m-0 font-weight-bold text-primary">
+					<a href="javascript:history.back()"
+						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+						class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+					</span> <span class="text">Back</span>
+					</a>
+				</h6>
+			</div>
+
+			<!-- Content Row -->
+			<div class="row">
+				<div class="container-fluid">
+
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">SN</th>
+										<th scope="col">Loan Account Number</th>
+										<th scope="col">PAN Number</th>
+										<th scope="col">Mobile Number</th>
+										<th scope="col">E-mail</th>
+										<th scope="col">Date of Birth/Incorporation</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="restructuringOfLoan, iStat : ${restructuringOfLoansDetails}">
+										<th scope="row" th:text="${iStat.index+1}">1</th>
+										<td th:text="${restructuringOfLoan.loanAccountNumber}">9876543</td>
+										<td th:text="${restructuringOfLoan.panNumber}">wer234as</td>
+										<td th:text="${restructuringOfLoan.mobileNumber}">987987987</td>
+										<td th:text="${restructuringOfLoan.email}">simple@dimple.com</td>
+										<td th:text="${restructuringOfLoan.dateOfBirthOrIncorporation}">DOB</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>

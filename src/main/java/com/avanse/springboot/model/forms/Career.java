@@ -32,10 +32,7 @@ public class Career {
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-	}
-	
-	
-	
+	}	
 }
 
 

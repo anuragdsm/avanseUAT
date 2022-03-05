@@ -28136,7 +28136,7 @@ a .h_head:hover {
 .cyan-bg{
   background: #02afb3 url(../img/cyan-bg.jpg) no-repeat;
   background-position: bottom center;
-  background-size: contain;
+  /* background-size: contain; */
 }
 @media (min-width:1400px){
   .cyan-bg{

@@ -1148,9 +1148,14 @@ public class AdminController {
 			try {
 				System.out.println(
 						"Testing------------>" + newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
-				File myBannerImageFile = new File(newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
-				myBannerImageFile.createNewFile();
-				bannerImageFile.transferTo(myBannerImageFile);
+//				File myBannerImageFile = new File(newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
+//				myBannerImageFile.createNewFile();
+//				bannerImageFile.transferTo(myBannerImageFile);
+				
+				Path fileNameAndPath = Paths.get(newBannerImageAddDir, bannerImageFile.getOriginalFilename());
+				Files.write(fileNameAndPath, bannerImageFile.getBytes());
+				
+//				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();

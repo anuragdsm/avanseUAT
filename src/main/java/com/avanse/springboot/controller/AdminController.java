@@ -37,6 +37,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -1133,7 +1134,7 @@ public class AdminController {
 	@PostMapping(path = "/admin/pages/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public String pagesAddPost(@ModelAttribute("pageDTO") PageDTO pageDTO, HttpServletRequest request,
 			@RequestParam(value = "pageUpdateCheck", required = false) String pageUpdateCheck,
-			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
+			@RequestPart(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
 
 		/*
 		 * Create a new time stamp and initialize the timestamp with null Check if the

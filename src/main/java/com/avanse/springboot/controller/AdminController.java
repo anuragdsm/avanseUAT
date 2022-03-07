@@ -484,17 +484,13 @@ public class AdminController {
 	 */
 
 	public void deleteImageFromStaticFolder(@PathVariable long id) {
-
 		University universityImageToBeDeleted = universityService.getUniversityById(id).get();
 //		UniversityDTO universityDTO = new UniversityDTO();
-
 		String myFile = universityImageToBeDeleted.getImageName();
-
 		/*
 		 * Give the exact path where the file is located followed by a slash and then
 		 * use the service method of get University by ID
 		 */
-
 		File file = new File(universityUploadDir + File.separator + myFile);
 //		System.out.println(file.getAbsolutePath());
 
@@ -1220,7 +1216,9 @@ public class AdminController {
 		String pagesLink = htmlFileName;
 		try {
 			Path fileNameAndPath = Paths.get(newPageAddDir, htmlFileName);
-			Files.createFile(fileNameAndPath);
+//			Files.createFile(fileNameAndPath);
+			Files.write(fileNameAndPath, htmlFileName.getBytes());
+			
 
 		} catch (IOException e) {
 			// TODO: handle exception
@@ -1281,11 +1279,10 @@ public class AdminController {
 		} else {
 
 			codeInFile = htmlBoilerPlateWithoutHeader(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(),
-					pageDTO.getMetaDescription(), pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode());
+			pageDTO.getMetaDescription(), pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode());
 			System.out.println("The following code will be there in the file " + codeInFile);
 			pageDTO.setConsolidatedHTMLCode(codeInFile);
 			page.setConsolidatedHTMLCode(pageDTO.getConsolidatedHTMLCode());
-
 		}
 
 		try {

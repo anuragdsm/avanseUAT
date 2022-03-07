@@ -37,7 +37,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -103,31 +102,24 @@ import lombok.AllArgsConstructor;
 public class AdminController {
 
 //	public static String imageUploadDir = System.getProperty("user.dir") + "\\src\\mainresources\\static\\images";
-	public static String universityUploadDir = System.getProperty("user.dir")
-			+ "/src/main/resources/static/images/universityImages";
+	public static String universityUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator +"static"+File.separator+"images"+File.separator+"universityImages";
 
-	public static String testimonialPersonUploadDir = System.getProperty("user.dir")
-			+ "/src/main/resources/static/images/testimonialImages";
+	public static String testimonialPersonUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"testimonialImages";
 
-	public static String newPageAddDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\templates\\addedPages";
-	public static String newPostAddDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\templates\\addedBlogPosts";
+	public static String newPageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedPages";
+	public static String newPostAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedBlogPosts";
 
-	public static String newFeaturedImageAddDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\viewPagesAssets\\img\\userAddedFeaturedImages";
-	public static String newBannerImageAddDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\viewPagesAssets\\img\\userAddedBannerImages";
-	public static String globalHeaderFilePath = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\viewPagesAssets\\js\\customGlobalHeader\\globalHeader.js";
+	public static String newFeaturedImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedFeaturedImages";
+	public static String newBannerImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedBannerImages";
+	public static String globalHeaderFilePath =  System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+ "viewPagesAssets" +File.separator+"js"+File.separator+"customGlobalHeader"+File.separator+"globalHeader.js";
 
-	public static String userAddedImagesDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\images\\userAddedImages";
-	public static String userAddedImagesJustPath = "/images/userAddedImages";
-	public static String cssCodeFileDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\viewPagesAssets\\css";
-	public static String jsCodeFileDir = System.getProperty("user.dir")
-			+ "\\src\\main\\resources\\static\\viewPagesAssets\\js";
+	public static String userAddedImagesDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
+	public static String userAddedImagesJustPath = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
+
+	public static String cssCodeFileDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"css";
+	public static String jsCodeFileDir =System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"js";
+
+	public static String currentProtocol = "http://";
 
 	@Autowired
 	AwardRepository awardRepository;
@@ -327,35 +319,6 @@ public class AdminController {
 		return "universities";
 	}
 
-	/*
-	 * Pagination code disabled
-	 */
-//	@GetMapping("/admin/universities/page/{pageNum}")
-//	public String listByPage(@PathVariable(name = "pageNum") int pageNum, Model model) {
-//		org.springframework.data.domain.Page<University> page = universityService.listByPageInDescending(pageNum);
-//
-//		List<University> universities = page.getContent();
-//
-//		System.out.println("PageNum =" + pageNum);
-//		System.out.println("Total elements= " + page.getNumberOfElements());
-//		System.out.println("Total Pages= " + page.getTotalPages());
-//
-//		long startCount = (pageNum - 1) * universityService.UNIVERSITTIES_PER_PAGE + 1;
-//		long endCount = startCount + universityService.UNIVERSITTIES_PER_PAGE - 1;
-//
-//		if (endCount > page.getTotalElements()) {
-//			endCount = page.getTotalElements();
-//		}
-//
-//		model.addAttribute("currentPage", pageNum);
-//		model.addAttribute("startCount", startCount);
-//		model.addAttribute("totalPages", page.getTotalPages());
-//		model.addAttribute("endCount", endCount);
-//		model.addAttribute("totalItems", page.getTotalElements());
-//		model.addAttribute("universities", universities);
-//		return "universities";
-//
-//	}
 
 	/*
 	 * Method to add a university Need both get and post mapping for adding the
@@ -532,7 +495,7 @@ public class AdminController {
 		 * use the service method of get University by ID
 		 */
 
-		File file = new File(universityUploadDir + "/" + myFile);
+		File file = new File(universityUploadDir + File.separator + myFile);
 //		System.out.println(file.getAbsolutePath());
 
 		/*
@@ -782,10 +745,8 @@ public class AdminController {
 																// present
 		for (MultipartFile mFile : imageList) {
 			try {
-
-				File newFile = new File(userAddedImagesDir + "\\" + mFile.getOriginalFilename());
-				newFile.createNewFile();
-				mFile.transferTo(newFile);
+				Path fileNameAndPath = Paths.get(userAddedImagesDir, mFile.getOriginalFilename());
+				Files.write(fileNameAndPath, mFile.getBytes());
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
@@ -798,9 +759,11 @@ public class AdminController {
 		for (MultipartFile mFile : imageList) {
 			Thread t1 = new Thread(() -> {
 				try {
+					
+					
 					InetAddress inetAddress = InetAddress.getLocalHost();
 					Image image = new Image(
-							mFile.getName(), mFile.getOriginalFilename(), "http://" + inetAddress.getHostAddress() + ":"
+							mFile.getName(), mFile.getOriginalFilename(), currentProtocol + inetAddress.getHostAddress() + ":"
 									+ activePortNumber + userAddedImagesJustPath + "/" + mFile.getOriginalFilename(),
 							mFile.getName(), mFile.getSize() / 1024);
 					System.out.println(image);
@@ -857,7 +820,7 @@ public class AdminController {
 
 		Image imageFileToBeDeleted = imageService.getImagebyId(id).get();
 		String theFile = imageFileToBeDeleted.getFileName();
-		File file = new File(userAddedImagesDir + "/" + theFile);
+		File file = new File(userAddedImagesDir + File.separator + theFile);
 		if (file.exists())
 			file.delete();
 	}
@@ -1134,7 +1097,7 @@ public class AdminController {
 	@PostMapping(path = "/admin/pages/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public String pagesAddPost(@ModelAttribute("pageDTO") PageDTO pageDTO, HttpServletRequest request,
 			@RequestParam(value = "pageUpdateCheck", required = false) String pageUpdateCheck,
-			@RequestPart(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
+			@RequestParam(name = "bannerImageFile", required = false) MultipartFile bannerImageFile) {
 
 		/*
 		 * Create a new time stamp and initialize the timestamp with null Check if the
@@ -1148,15 +1111,16 @@ public class AdminController {
 		if (bannerImageFile != null && !bannerImageFile.isEmpty()) {
 			try {
 				System.out.println(
-						"Testing------------>" + newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
-//				File myBannerImageFile = new File(newBannerImageAddDir + "\\" + bannerImageFile.getOriginalFilename());
+						"Testing------------>" + newBannerImageAddDir + File.separator + bannerImageFile.getOriginalFilename());
+//				File myBannerImageFile = new File(newBannerImageAddDir + File.separator + bannerImageFile.getOriginalFilename());
 //				myBannerImageFile.createNewFile();
 //				bannerImageFile.transferTo(myBannerImageFile);
 				
 				Path fileNameAndPath = Paths.get(newBannerImageAddDir, bannerImageFile.getOriginalFilename());
 				Files.write(fileNameAndPath, bannerImageFile.getBytes());
 				
-//				
+				
+				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
@@ -1431,7 +1395,7 @@ public class AdminController {
 
 			String theFile = htmlFileToBeDeleted.getFileName();
 
-			File file = new File(newPageAddDir + "/" + theFile);
+			File file = new File(newPageAddDir + File.separator + theFile);
 
 			if (file.exists())
 				file.delete();
@@ -1441,7 +1405,7 @@ public class AdminController {
 			Post htmlFileToBeDeleted = postService.getPostById(id).get();
 			String theFile = htmlFileToBeDeleted.getFileName();
 
-			File file = new File(newPostAddDir + "/" + theFile);
+			File file = new File(newPostAddDir + File.separator + theFile);
 
 			if (file.exists())
 				file.delete();
@@ -1569,7 +1533,7 @@ public class AdminController {
 		if (featuredImageFile != null && !featuredImageFile.isEmpty()) {
 			try {
 				File myFeaturedImageFile = new File(
-						newFeaturedImageAddDir + "\\" + featuredImageFile.getOriginalFilename());
+						newFeaturedImageAddDir + File.separator + featuredImageFile.getOriginalFilename());
 				myFeaturedImageFile.createNewFile();
 				featuredImageFile.transferTo(myFeaturedImageFile);
 
@@ -2242,7 +2206,7 @@ public class AdminController {
 		 * use the service method of get University by ID
 		 */
 
-		File file = new File(testimonialPersonUploadDir + "/" + myFile);
+		File file = new File(testimonialPersonUploadDir + File.separator + myFile);
 //		System.out.println(file.getAbsolutePath());
 
 		/*

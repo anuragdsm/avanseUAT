@@ -292,6 +292,10 @@
 				}
 			}
 		</script>
+		
+		
+		
+		
 
 
 		<!--Footer of the page  -->
@@ -447,5 +451,23 @@
 	<script src="/viewPagesAssets/js/jquery.form.js"></script>
 	<script src="/viewPagesAssets/js/jquery.validate.min.js"></script>
 	<script src="/viewPagesAssets/js/custom-form-validation.js"></script>
+	<script>
+		
+		$(function () {
+		    var maxL = 150;
+		    $('.stories_content').each(function () {
+		        var text = $(this).text();
+		        if(text.length > maxL) {
+		            var begin = text.substr(0, maxL),
+		                end = text.substr(maxL);
+		            $(this).html(begin)
+		        }
+		    });
+		})
+		
+		
+		</script>
+	
+	
 </body>
 </html>

@@ -292,13 +292,13 @@
 
 									<div class="media-body">
 										<a href="#"
-											th:href="@{/viewPost/{extractedFileName}(extractedFileName=${post.extractedFileName})}">
+											th:href="@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}">
 											<h3 class="f_size_16 f_p f_400" th:text="${post.postTitle}">Pro</h3>
 										</a>
 										<div class="entry_post_info">
 
 											<a
-												th:href="@{/viewPost/{extractedFileName}(extractedFileName=${post.extractedFileName})}"
+												th:href="@{/blog/{extractedFileName}(extractedFileName=${post.extractedFileName})}"
 												th:text="${post.dateOfPostCreation}">March 14, 2020</a>
 										</div>
 									</div>

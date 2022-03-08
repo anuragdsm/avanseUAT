@@ -92,8 +92,8 @@ public class PageController {
 		return "dynamicPages/education-loan-for-mba";
 	}
 	
-	
-	@GetMapping("/career")
+
+	@GetMapping("/about-avanse/career")
 	public String careerPage() {
 		return "dynamicPages/career";
 	}
@@ -106,12 +106,10 @@ public class PageController {
 	public String aboutPage() {
 		return "about";
 	}
-	
-	
+
 	@GetMapping("/testimonials")
 	public String testimonialsPage(Model model) {
 		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
-
 		return "dynamicPages/testimonials";
 	}
 		
@@ -120,6 +118,7 @@ public class PageController {
 		model.addAttribute("course", courseService.getCourseById(courseId).get());
 		return "dynamicPages/courseDetail";
 	}
+	
 	@GetMapping("/UID/{universityId}")
 	public String universityDetailsPage(@PathVariable long universityId, Model model) {
 		model.addAttribute("university", universityService.getUniversityById(universityId).get());

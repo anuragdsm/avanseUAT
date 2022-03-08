@@ -1529,11 +1529,10 @@ public class AdminController {
 
 		if (featuredImageFile != null && !featuredImageFile.isEmpty()) {
 			try {
-				File myFeaturedImageFile = new File(
-						newFeaturedImageAddDir + File.separator + featuredImageFile.getOriginalFilename());
-				myFeaturedImageFile.createNewFile();
-				featuredImageFile.transferTo(myFeaturedImageFile);
-
+							
+				Path fileNameAndPath = Paths.get(newFeaturedImageAddDir, featuredImageFile.getOriginalFilename());
+				Files.write(fileNameAndPath, featuredImageFile.getBytes());
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());

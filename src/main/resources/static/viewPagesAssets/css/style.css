@@ -1752,8 +1752,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   padding: 7px 41px;
 }
 .menu_four .event_btn:hover {
-  background: #1b8593;
-  border-color: #1b8593;
+  background: #fd475d;
+  border-color: #fd475d;
 }
 
 .menu_five {
@@ -2301,7 +2301,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   border-color: #2c2c51;
 }
 .header_area.navbar_fixed .menu_four .event_btn:hover {
-  border-color: #1b8593;
+  border-color: #fd475d;
   color: #fff;
 }
 .header_area.navbar_fixed .nav_right_btn .login_btn {
@@ -12422,7 +12422,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 .text_box {
   margin-bottom: 30px;
 }
-.text_box input[type=text], .text_box textarea, .text_box input[type=password], .text_box input[type=email], .text_box input[type=number] {
+.text_box input[type=text], .text_box textarea, .text_box input[type=password], .text_box input[type=email] {
   font: 400 15px/60px "Futura Bk BT", sans-serif;
   color: #222d39;
   height:51px;
@@ -17342,8 +17342,8 @@ input[type=text] {
 }
 
 /*================= hosting_banner_area css ==============*/
-/*================= avanse_search_area css ==============*/
-.avanse_search_area {
+/*================= domain_search_area css ==============*/
+.domain_search_area {
   background: #fffafa;
   position: relative;
   z-index: 1;
@@ -17359,26 +17359,26 @@ input[type=text] {
   z-index: -1;
 }
 
-.avanse_box_info {
-  max-width:700px;
+.domain_box_info {
+  max-width: 1030px;
   margin: 0 auto;
   text-align: center;
 }
-.avanse_box_info h3 {
+.domain_box_info h3 {
   font-size: 30px;
   color: #2c2c51;
   font-weight: 600;
   margin-bottom: 40px;
 }
 
-.avanse_form_inner {
+.domain_form_inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border-radius: 100px;
+  border-radius: 8px;
   background-color: white;
   -webkit-box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1);
           box-shadow: 0px 50px 100px 0px rgba(64, 1, 4, 0.1);
@@ -17388,37 +17388,38 @@ input[type=text] {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
+  border-left: 8px solid #f8636b;
 }
-.avanse_form_inner input {
-  width:90%;
+.domain_form_inner input {
+  width: 64%;
   border: 0px;
   border-radius: 0px;
   padding: 0px;
-  font-size:16px;
+  font-size: 20px;
   font-weight: 300;
-  padding-left: 15px;
+  padding-left: 40px;
 }
-.avanse_form_inner input.placeholder {
+.domain_form_inner input.placeholder {
   color: #9d9db0;
 }
-.avanse_form_inner input:-moz-placeholder {
+.domain_form_inner input:-moz-placeholder {
   color: #9d9db0;
 }
-.avanse_form_inner input::-moz-placeholder {
+.domain_form_inner input::-moz-placeholder {
   color: #9d9db0;
 }
-.avanse_form_inner input::-webkit-input-placeholder {
+.domain_form_inner input::-webkit-input-placeholder {
   color: #9d9db0;
 }
-.avanse_form_inner input:focus {
+.domain_form_inner input:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.avanse_form_inner .avanse_select {
+.domain_form_inner .domain_select {
   width: 15%;
 }
-.avanse_form_inner .avanse_select .selectpickers {
+.domain_form_inner .domain_select .selectpickers {
   border: 0px;
   width: 100%;
   padding: 0px;
@@ -17430,39 +17431,35 @@ input[type=text] {
   font-weight: 300;
   background: transparent;
 }
-.avanse_form_inner .avanse_select .selectpickers:after {
+.domain_form_inner .domain_select .selectpickers:after {
   border-bottom: 1px solid #9d9db0;
   border-right: 1px solid #9d9db0;
   right: 35px;
   width: 6px;
   height: 6px;
 }
-.avanse_form_inner .avanse_select .selectpickers ul {
+.domain_form_inner .domain_select .selectpickers ul {
   width: 100%;
 }
-.avanse_form_inner .avanse_select .selectpickers ul li {
+.domain_form_inner .domain_select .selectpickers ul li {
   color: #9d9db0;
 }
-.avanse_form_inner .avanse_select .selectpickers:focus {
+.domain_form_inner .domain_select .selectpickers:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.avanse_form_inner button {
-  width: 10%;
-    border: 0px;
-    padding: 5px 0px;
-    text-transform: uppercase;
-    cursor: pointer;
-    -webkit-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    border-radius: 100px;
-    color: #1b8593;
-    background: transparent;
-    font-size: 36px;
+.domain_form_inner button {
+  width: 21%;
+  border: 0px;
+  padding: 25px 32px;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
 }
-.avanse_form_inner button:before {
+.domain_form_inner button:before {
   content: "U";
   font-family: eleganticons;
   -webkit-transform: rotate(-90deg);
@@ -17471,33 +17468,28 @@ input[type=text] {
   display: inline-block;
   margin-right: 10px;
 }
-@media (max-width: 991px){
-  /* .avanse_form_inner input{    border-radius: 100px;border: 1px solid #e4a818;padding: 15px;}
-  .avanse_form_inner button {
-    width: 40%;margin-top: 20px;
-  } */
-}
-.avanse_price {
+
+.domain_price {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   margin-top: 45px;
 }
-.avanse_price li {
+.domain_price li {
   font-size: 18px;
   font-weight: 500;
   color: #231f20;
 }
-.avanse_price li + li {
+.domain_price li + li {
   margin-left: 50px;
 }
-.avanse_price li span {
+.domain_price li span {
   font-weight: 400;
   font-size: 16px;
   margin-left: 8px;
 }
 
-/*================= avanse_search_area css ==============*/
+/*================= domain_search_area css ==============*/
 .hosting_service_area {
   position: relative;
 }
@@ -20487,7 +20479,7 @@ a .h_head:hover {
 
 /*============ home_avanse_banner_area css ============*/
 .home_avanse_banner_area {
-  height: 90vh;
+  height: 70vh;
   min-height: 650px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20552,7 +20544,7 @@ a .h_head:hover {
 /*============ top_avanse_banner_area css ============*/
 
 .top_avanse_banner_area {
-  height: 90vh;
+  height: 70vh;
   min-height: 650px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23410,8 +23402,8 @@ a .h_head:hover {
   font-size: 16px;
   padding: 11px 51px;
   border-radius: 45px;
-  background: #1b8593;
-  border: 2px solid #1b8593;
+  background: #fd475d;
+  border: 2px solid #fd475d;
   color: #fff;
 }
 .event_btn i {
@@ -23431,9 +23423,9 @@ a .h_head:hover {
   background: transparent;
 }
 .event_btn_two:hover {
-  background: #1b8593;
+  background: #fd475d;
   color: #fff;
-  border-color: #1b8593;
+  border-color: #fd475d;
 }
 
 .event_counter_area {
@@ -23453,7 +23445,7 @@ a .h_head:hover {
 }
 .event_text h3 span {
   font-weight: 700;
-  color: #1b8593;
+  color: #fd475d;
 }
 
 .event_counter .redCountdownWrapper {
@@ -23478,7 +23470,7 @@ a .h_head:hover {
 }
 .event_counter .redCountdownWrapper .redCountdownDays .redCountdownValue div,
 .event_counter .redCountdownWrapper .redCountdownDays .redCountdownValue span {
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_counter .redCountdownWrapper .redCountdownHours .redCountdownValue div,
 .event_counter .redCountdownWrapper .redCountdownHours .redCountdownValue span {
@@ -23534,8 +23526,8 @@ a .h_head:hover {
 .event_about_img .about_bg {
   height: 330px;
   border-radius: 10px;
-  background-image: -o-linear-gradient(310deg, #1b8593 0%, #0e044b 100%);
-  background-image: linear-gradient(140deg, #1b8593 0%, #0e044b 100%);
+  background-image: -o-linear-gradient(310deg, #fd475d 0%, #0e044b 100%);
+  background-image: linear-gradient(140deg, #fd475d 0%, #0e044b 100%);
   position: absolute;
   left: 90px;
   right: -50px;
@@ -23555,7 +23547,7 @@ a .h_head:hover {
   background: #f2dcdf;
 }
 .event_team_area .owl-dots .owl-dot.active span {
-  background: #1b8593;
+  background: #fd475d;
 }
 
 .event_team_slider .item {
@@ -23567,8 +23559,8 @@ a .h_head:hover {
   z-index: 1;
   margin-bottom: 25px;
   border-radius: 6px;
-  background-image: -o-linear-gradient(30deg, #1b8593 0%, #0e044b 100%);
-  background-image: linear-gradient(60deg, #1b8593 0%, #0e044b 100%);
+  background-image: -o-linear-gradient(30deg, #fd475d 0%, #0e044b 100%);
+  background-image: linear-gradient(60deg, #fd475d 0%, #0e044b 100%);
   overflow: hidden;
 }
 .event_team_slider .item .e_team_img:before, .event_team_slider .item .e_team_img:after {
@@ -23631,7 +23623,7 @@ a .h_head:hover {
 }
 .event_team_slider .item .e_team_img ul li a:hover {
   background: #fff;
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_team_slider .item .e_team_img ul li:nth-child(1) a {
   -webkit-transition: all 0.3s, background 0.2s, color 0.2s linear;
@@ -23658,7 +23650,7 @@ a .h_head:hover {
   margin-bottom: 2px;
 }
 .event_team_slider .item h4:hover {
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_team_slider .item p {
   color: #231f20;
@@ -23724,7 +23716,7 @@ a .h_head:hover {
   display: block;
 }
 .event_features_item h5:hover {
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_features_item p {
   color: #231f20;
@@ -23740,7 +23732,7 @@ a .h_head:hover {
   margin-top: 20px;
 }
 .event_features_item .e_features_btn:hover {
-  color: #1b8593;
+  color: #fd475d;
 }
 
 .event_promotion_area {
@@ -23771,7 +23763,7 @@ a .h_head:hover {
   color: #fff;
   display: inline-block;
   border-radius: 4px;
-  background: #1b8593;
+  background: #fd475d;
 }
 .e_promo_text h3 {
   font-size: 34px;
@@ -23808,7 +23800,7 @@ a .h_head:hover {
 }
 .event_schedule_inner .event_tab .nav-item .nav-link {
   text-align: center;
-  border: 2px solid #1b8593;
+  border: 2px solid #fd475d;
   border-radius: 45px;
   padding: 6px 58px 8px;
   -webkit-transition: all 0.2s linear;
@@ -23819,7 +23811,7 @@ a .h_head:hover {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 0;
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_schedule_inner .event_tab .nav-item .nav-link h5 span {
   font-weight: 400;
@@ -23828,8 +23820,9 @@ a .h_head:hover {
   padding-top: 5px;
 }
 .event_schedule_inner .event_tab .nav-item .nav-link.active, .event_schedule_inner .event_tab .nav-item .nav-link:hover {
-  background: #1b8593;
-
+  background: #fd475d;
+  -webkit-box-shadow: 0px 10px 50px 0px rgba(195, 33, 52, 0.3);
+          box-shadow: 0px 10px 50px 0px rgba(195, 33, 52, 0.3);
 }
 .event_schedule_inner .event_tab .nav-item .nav-link.active h5, .event_schedule_inner .event_tab .nav-item .nav-link:hover h5 {
   color: #fff;
@@ -23871,7 +23864,7 @@ a .h_head:hover {
   margin-top: 6px;
 }
 .event_tab_content .media .media-left a i {
-  color: #1b8593;
+  color: #fd475d;
   padding-right: 8px;
 }
 .event_tab_content .media .media-body {
@@ -23958,7 +23951,7 @@ a .h_head:hover {
           box-shadow: 0px 50px 100px 0px rgba(64, 1, 9, 0.1);
 }
 .event_price_item.active .p_head .rate {
-  color: #1b8593;
+  color: #fd475d;
 }
 .event_price_item.active .p_body li {
   color: #231f20;
@@ -23984,8 +23977,8 @@ a .h_head:hover {
 }
 
 .event_gallery .portfolio_item .portfolio_img:hover .hover_content {
-  background-image: -o-linear-gradient(210deg, #1b8593 0%, #0e044b 100%);
-  background-image: linear-gradient(-120deg, #1b8593 0%, #0e044b 100%);
+  background-image: -o-linear-gradient(210deg, #fd475d 0%, #0e044b 100%);
+  background-image: linear-gradient(-120deg, #fd475d 0%, #0e044b 100%);
   opacity: 0.8;
 }
 
@@ -24053,7 +24046,7 @@ a .h_head:hover {
   color: #231f20;
 }
 .event_location .f_social_icon_two a:hover {
-  color: #1b8593;
+  color: #fd475d;
 }
 
 /*=========== tracking_banner_area css =============*/
@@ -27039,6 +27032,7 @@ a .h_head:hover {
   transition: color 0.2s linear;
   display: inline-block;
 }
+.f_widget.about-widget .f_list li a:hover{color: #000000;}
 .f_widget.about-widget .f_list li a:before {
   content: "";
   width: 0;
@@ -28136,7 +28130,7 @@ a .h_head:hover {
 .cyan-bg{
   background: #02afb3 url(../img/cyan-bg.jpg) no-repeat;
   background-position: bottom center;
-  /* background-size: contain; */
+  background-size: contain;
 }
 @media (min-width:1400px){
   .cyan-bg{
@@ -28282,11 +28276,11 @@ padding: 44px 0;
 .course_abroad_form select.form-control:not([size]):not([multiple]) {
   height: calc(2.25rem + 15px);
   border: 0;
-  border: 1px solid;
+  border-bottom: 1px solid;
   border-radius: 0;
 
 }
-.search-button-home{position: absolute; right: -63px; top: 0px; background-color: #fdc119; color: #000000; padding: 13px 25px; border: 1px solid;}
+.search-button-home{position: absolute; right: 25px; top: 11px; background-color: #fff; color: #01b1b2;}
 select.form-control:not([size]):not([multiple]) {
   height: calc(2.25rem + 15px);
   border: 0;
@@ -28395,9 +28389,7 @@ input[type=date]{color: #222d39; height:50px; background-color: white; -webkit-b
   background: url(../img/career-bg.jpg);
 }
 .abroad_top_bg{background:url(../img/study-abroad-bg.jpg);}
-.page_bg_top{
-  background: url(../img/career-bg.jpg);
-}
+
 /* Expense Calculators By Digi */
 #step2, #step3, #stepmn1, #stepmn2{display: none;}
 .calculator_form input[type=text] {
@@ -28457,51 +28449,11 @@ input[type=date]{color: #222d39; height:50px; background-color: white; -webkit-b
 }
 .coudetail{
   width: 100%;
-  
+  position: absolute;
+  left: 0px;
+  background: rgb(255, 255, 255);
   padding: 20px;
   display: block;
-  
+  z-index: 1;
   margin-top: 20px;
 }
-.press-release-list li {
-  list-style: none;
-  border-bottom: 1px solid #ccc;
-  padding: 20px 0px;
-  font-size: 16px;
-}
-.search-list-box{
-  border-radius: 6px;
-    background-color: #fff;
-    
-    padding: 20px 40px;
-    margin-bottom: 30px;
-    -webkit-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    transform: translateY(10px);
-    -webkit-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-}
-.search-list-box:hover{
-  -webkit-box-shadow: 0px 30px 60px 0px rgb(92 10 20 / 8%);
-  box-shadow: 0px 30px 60px 0px rgb(92 10 20 / 8%);
-}
-.modal-fullscreen-xl .modal-dialog {
-  width: 100%;
-  max-width: none;
-  height: 100%;
-  margin: 0;
-}
-.modal-fullscreen-xl .modal-content {
-  height: 100%;
-  border: 0;
-  border-radius: 0;
-}
-.modal-fullscreen-xl .modal-body {
-  overflow-y: auto;
-}
-.schedule-item { padding: 10px;    height: 155px;}
-.schedule-item:hover { background: #e4a818;}
-.schedule-item img{ max-width: 70px;width: 100%;}
-.table-responsive{display: inline-table;}
-.invster-asset-liability{max-height: 700px; overflow: hidden; overflow-y: scroll;}

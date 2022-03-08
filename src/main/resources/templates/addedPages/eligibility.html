@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<title></title>
+  <meta name="description"  content="   " />
+  <meta name="keywords"  content="   " />
+<script type="text/javascript" src="/viewPagesAssets/js/customGlobalHeader/globalHeader.js"></script><style>
+</style>
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+<section class="top_avanse_banner_area career_bg_top">
+            
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="h_avaneses_content">
+                            <h2 class="wow fadeInLeft" data-wow-delay="0.4s">Discover your <span>education loan</span> eligibility now! </h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="h_avanse_img">
+                            <img src="img/education-loan-eligibility.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec_pad bg_grey_light">
+            
+            <div class="container">
+               
+                <div class="row flex-row-reverse">
+                    
+                    <div class="col-lg-5  ml-auto my-auto">
+                           
+                            <div class="shadow bg-white pl-4 pr-4 py-5">
+                                <h4><span class="c_cyan">Eligibility Calculator</span></h4>
+                                <hr>
+                                
+                                 
+
+                                    <div class="form-group position-relative"><span class="input-rupes-symbol">₹</span>
+                                        <input type="hidden" name="per" value="12" id="per">
+                                        <input type="text" class="form-control test" name="net" id="net" data-parsley-trigger="change" required="" placeholder="Monthly Income">
+                                    </div>
+                                    <div class="form-group position-relative"><span class="input-rupes-symbol">₹</span>
+                                        <input type="hidden" size="20" name="fv" value="0">
+                                        <input type="text" class="form-control test" name="obl" id="obl" data-parsley-trigger="change" required="" placeholder="Monthly Obligations">
+                                    
+                                    </div>
+                                    <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-percentage"></i> </span>
+                                        <input type="text" class="form-control" name="rate" id="rate" data-parsley-trigger="change" required="" min="1" data-parsley-min="1" placeholder="Loan Interest Rate">
+                                    
+                                    </div>
+                                    <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-calendar-alt"></i> </span>
+                                        <input type="text" class="form-control" name="nper" id="nper" data-parsley-trigger="change" data-parsley-range="[12, 120]" required="" placeholder="Tenure (in months)">
+                                    
+                                    </div>
+                                    <div class="form-group text-center">
+                                        
+                                        <div onclick="document.pvform.pvfield.value=-pv(document.pvform.rate.value,document.pvform.per.value,document.pvform.nper.value,document.pvform.net.value,document.pvform.obl.value,document.pvform.fv.value);" class=" btn_six text-center slider_btn">Calculate</div>
+                                    </div>
+
+                                    
+                                
+
+                                <h5>Your Total Eligible Amount: <span class="c_cyan">₹</span><span class="c_cyan" id="totelamnt">35,112</span></h5>
+                            </div>
+                            
+                    </div>
+                    <div class="col-lg-6 my-auto">
+                        <img src="img/estimate-of-your-education-loan.png">
+                 </div>
+                    
+                   
+                </div>
+             
+                
+            </div>
+        </section>
+        <section class=" sec_pad">
+           
+            <div class="container">
+                 <div class="sec_title text-center mb_50">
+                    <h2 class="f_size_40 f_600 t_color3 l_height45 ">What Is an <span class="c_cyan">Education Loan <br>Eligibility  Calculator?</span></h2>
+                    
+                </div>
+                <div class="row flex-row-reverse ">
+                    <div class="col-lg-6  ml-auto my-auto">
+                        
+                        <p class="f_400 ">Deciding to opt for an education loan is often the first step in your education finance journey. Now you have to think about the amount of money you’d require and how you can pay the amount back within the loan tenure. An education loan eligibility calculator helps you understand your finances better. The eligibility calculator provides you with the approximate education loan amount you are eligible to borrow based on your current finances. You need to provide details about your monthly income, monthly obligations, the interest rate and estimated tenure of your loan. If you do not have a monthly income, you need to provide your co-borrower’s details instead. Based on the information provided, the eligibility calculator will provide you with an estimate of your education loan eligibility amount.</p>
+                    </div>
+                    <div class="col-lg-6  ">
+                        <img src="img/avanse-education-loan-emi-calculator.png" class="img-fluid">
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    <!-- Optional JavaScript -->
+
+ 	</body> 

@@ -101,6 +101,10 @@ public class PageController {
 	public String jobApplyPage() {
 		return "dynamicPages/career";
 	}
+	@GetMapping("/education-loan/eligibility-calculator1")
+	public String educationLoanEligibilityCalculatorPage() {
+		return "dynamicPages/calculatorPages/education-loan-eligibility-calculator";
+	}
 	
 	@GetMapping("/about")
 	public String aboutPage() {

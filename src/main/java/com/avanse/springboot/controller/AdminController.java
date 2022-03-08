@@ -101,18 +101,15 @@ import lombok.AllArgsConstructor;
 @Controller
 public class AdminController {
 
-//	public static String imageUploadDir = System.getProperty("user.dir") + "\\src\\mainresources\\static\\images";
 	public static String universityUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator +"static"+File.separator+"images"+File.separator+"universityImages";
 
 	public static String testimonialPersonUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"testimonialImages";
 
 	public static String newPageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedPages";
 	public static String newPostAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedBlogPosts";
-
 	public static String newFeaturedImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedFeaturedImages";
 	public static String newBannerImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedBannerImages";
 	public static String globalHeaderFilePath =  System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+ "viewPagesAssets" +File.separator+"js"+File.separator+"customGlobalHeader"+File.separator+"globalHeader.js";
-
 	public static String userAddedImagesDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
 	public static String userAddedImagesJustPath = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
 

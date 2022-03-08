@@ -58,7 +58,7 @@ public class ApplyNowAllController {
 	
 	
 
-	@PostMapping("/apply-now/add")
+	@PostMapping("/apply-now/thankyou")
 	public String applyNowGeneralAddPost(@ModelAttribute("applyNowGeneralDTO") ApplyNowGeneralDTO applyNowGeneralDTO) {
 		ApplyNowGeneral applyNowGeneral = new ApplyNowGeneral();
 		String name = applyNowGeneralDTO.getFirstName() + " " + applyNowGeneralDTO.getLastName();
@@ -77,7 +77,7 @@ public class ApplyNowAllController {
 	}
 	
 	
-	@PostMapping("/apply-for-e-tutoring/add")
+	@PostMapping("/apply-for-e-tutoring/thankyou")
 	public String eTutoringAddPost(@ModelAttribute("eTutoringDTO") ETutoringDTO eTutoringDTO) {
 		ETutoring eTutoring = new ETutoring();
 		eTutoring.setFirstName(eTutoringDTO.getFirstName());
@@ -93,7 +93,7 @@ public class ApplyNowAllController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/executive-education-loan/add")
+	@PostMapping("/executive-education-loan/thankyou")
 	public String executiveEducationLoanAddPost(@ModelAttribute("executiveEducationLoanDTO") ExecutiveEducationLoanDTO executiveEducationLoanDTO) {
 		ExecutiveEducationLoan executiveEducationLoan = new ExecutiveEducationLoan();
 		executiveEducationLoan.setFirstName(executiveEducationLoanDTO.getFirstName());
@@ -105,7 +105,7 @@ public class ApplyNowAllController {
 		executiveEducationLoanService.addExecutiveEducationLoan(executiveEducationLoan);
 		return "dynamicPages/thankyou";
 	}
-	@PostMapping("/education-institution-loan/add")
+	@PostMapping("/education-institution-loan/thankyou")
 	public String educationInstitutionLoanAddPost(@ModelAttribute("educationInstitutionLoanDTO") EducationInstitutionLoanDTO educationInstitutionLoanDTO) {
 		EducationInstitutionLoan educationInstitutionLoan= new EducationInstitutionLoan();
 		educationInstitutionLoan.setFirstName(educationInstitutionLoanDTO.getFirstName());
@@ -127,7 +127,7 @@ public class ApplyNowAllController {
 	}
 	
 	
-	@PostMapping("/apply-for-partner-with-us/add")
+	@PostMapping("/apply-for-partner-with-us/thankyou")
 	public String partnerWithUssAddPost(@ModelAttribute("partnerWithUsDTO") PartnerWithUsDTO partnerWithUsDTO) {
 		
 		PartnerWithUs partnerWithUs = new PartnerWithUs();
@@ -144,7 +144,7 @@ public class ApplyNowAllController {
 		
 	}
 	
-	@PostMapping("/apply-for-school-fee-financing/add")
+	@PostMapping("/apply-for-school-fee-financing/thankyou")
 	public String schoolFeeFinaningAddPost(@ModelAttribute("schoolFeeFinancingDTO") SchoolFeeFinancingDTO schoolFeeFinancingDTO ) {
 		SchoolFeeFinancing schoolFeeFinancing = new SchoolFeeFinancing();
 		schoolFeeFinancing.setFirstName(schoolFeeFinancingDTO.getFirstName());
@@ -159,7 +159,7 @@ public class ApplyNowAllController {
 		
 	}
 	
-	@PostMapping("/apply-for-skill-enhancement/add")
+	@PostMapping("/apply-for-skill-enhancement/thankyou")
 	public String skillEnhancementAddPost(@ModelAttribute("skillEnhancementDTO") SkillEnhancementDTO skillEnhancementDTO) {
 		SkillEnhancement skillEnhancement = new SkillEnhancement();
 		skillEnhancement.setCity(skillEnhancementDTO.getCity());

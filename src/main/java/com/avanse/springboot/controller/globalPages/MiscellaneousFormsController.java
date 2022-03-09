@@ -47,7 +47,7 @@ public class MiscellaneousFormsController {
 	@Autowired
 	MoratoriumDeregisterService moratoriumDeregisterService;
 	
-	@PostMapping("/associate-with-us/add")
+	@PostMapping("/associate-with-us/thankyou")
 	public String associateWithUsPost(@ModelAttribute("associateWithUsDTO") AssociateWithUsDTO associateWithUsDTO ) {
 		AssociateWithUs associateWithUs = new AssociateWithUs();
 		associateWithUs.setCity(associateWithUsDTO.getCity());
@@ -60,7 +60,7 @@ public class MiscellaneousFormsController {
 		
 	}
 	
-	@PostMapping("/csr/add")
+	@PostMapping("/corporatesocialresponsibility/thankyou")
 	public String csrPost(@ModelAttribute("csrLeadsDTO") CSRLeadsDTO csrLeadsDTO) {
 		CSRLeads csrLeads = new CSRLeads();
 		csrLeads.setContactNumber(csrLeadsDTO.getContactNumber());
@@ -72,7 +72,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/e-nach/add")
+	@PostMapping("/e-nach/thankyou")
 	public String eNachPost(@ModelAttribute("eNachDTO") ENachDTO eNachDTO) {
 		ENach eNach = new ENach();
 		eNach.setDateOfBirthOrIncorporation(eNachDTO.getDateOfBirthOrIncorporation());
@@ -84,7 +84,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/restructuring-of-loans-step1/add")
+	@PostMapping("/restructuring-of-loans-step/thankyou")
 	public String restructuringOfLoansPost(@ModelAttribute("restructuringOfLoansDTO") RestructuringOfLoansDTO restructuringOfLoansDTO ) {
 		RestructuringOfLoans restructuringOfLoans = new RestructuringOfLoans();
 		restructuringOfLoans.setDateOfBirthOrIncorporation(restructuringOfLoansDTO.getDateOfBirthOrIncorporation());
@@ -96,7 +96,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/moratorium-facility-2020/add")
+	@PostMapping("/moratorium-facility-2020/thankyou")
 	public String MoratoriumFacilityPost(@ModelAttribute("moratoriumFacilityDTO") MoratoriumFacilityDTO moratoriumFacilityDTO ) {
 		MoratoriumFacility moratoriumFacility = new MoratoriumFacility();
 		moratoriumFacility.setAlternateMobileNumber(moratoriumFacilityDTO.getAlternateMobileNumber());
@@ -107,7 +107,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/moratorium-facility-deregister/add")
+	@PostMapping("/moratorium-facility-deregister/thankyou")
 	public String moratoriumFacilityDeregister(@ModelAttribute("moratoriumDeregisterDTO") MoratoriumDeregisterDTO moratoriumDeregisterDTO ) {
 		MoratoriumDeregister moratoriumDeregister = new MoratoriumDeregister();
 		moratoriumDeregister.setAlternateNumber(moratoriumDeregisterDTO.getAlternateNumber());
@@ -131,7 +131,10 @@ public class MiscellaneousFormsController {
 		model.addAttribute("csrLeads", csrLeadsService.getCSRLeads());
 		return "csr-leads";
 	} 
+	
+	
 //	here is copy
+	
 	
 	@GetMapping("/admin/miscellaneous-forms/e-nach")
 	public String eNachAdminGet(Model model) {
@@ -139,7 +142,7 @@ public class MiscellaneousFormsController {
 		return "eNach-details";
 	} 
 	
-	@GetMapping("/admin/miscellaneous-forms/restructuring-of-loans-step1")
+	@GetMapping("/admin/miscellaneous-forms/restructuring-of-loans-step")
 	public String restructuringOfLoansAdminGet(Model model) {
 		model.addAttribute("restructuringOfLoansDetails", restructuringOfLoansService.getRestructuringOfLoanDetails());
 		return "restructuring-of-loans-details";

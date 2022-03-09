@@ -61,8 +61,7 @@ public class ApplyNowAllController {
 	@PostMapping("/apply-now/thankyou")
 	public String applyNowGeneralAddPost(@ModelAttribute("applyNowGeneralDTO") ApplyNowGeneralDTO applyNowGeneralDTO) {
 		ApplyNowGeneral applyNowGeneral = new ApplyNowGeneral();
-		String name = applyNowGeneralDTO.getFirstName() + " " + applyNowGeneralDTO.getLastName();
-		applyNowGeneral.setName(name);
+		applyNowGeneral.setName(applyNowGeneralDTO.getName());
 		applyNowGeneral.setCity(applyNowGeneralDTO.getCity());
 		applyNowGeneral.setEmailId(applyNowGeneralDTO.getEmailId());
 		applyNowGeneral.setContactNumber(applyNowGeneralDTO.getContactNumber());
@@ -175,11 +174,17 @@ public class ApplyNowAllController {
 		
 	}
 	
-	
-	
 	/*
 	 * For admin data display
 	*/
+	
+	@GetMapping("/admin/apply-now/general")
+	public String applyNowGeneralGet(Model model) {
+		model.addAttribute("applyNowGeneralLeads", applyNowGeneralService.getAllApplyNowGeneralLeads());
+//		model.addAttribute("university", new University());
+		return "apply-now-general";
+	} 
+	
 	
 	@GetMapping("/admin/apply-now/e-tutoring")
 	public String applyNowETutoringGet(Model model) {

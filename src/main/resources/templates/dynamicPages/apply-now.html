@@ -26,24 +26,19 @@
 				<h4 class="f_p   text-center wow fadeInUp mb_60">Fill in the
 					details and help us connect with you.</h4>
 					<div class="apply-now-form py-5 shadow pr-5 pl-5">
-						<form  onsubmit="validateCaptcha()"
-							th:action="@{/apply-now/add}"
+						<form  
+							th:action="@{/apply-now/thankyou}"
 							th:object="${applyNowGeneralDTO}" class="contact_form_box"
 							method="post" id="myForm" novalidate="novalidate">
 							<div class="row">
 	
 								<div class="col-lg-6">
 									<div class="form-group text_box">
-										<input type="text" id="fname" name="firstName"
-											th:field="*{firstName}" placeholder="First Name">
+										<input type="text" id="fname" name="name"
+											th:field="*{name}" placeholder="Full Name">
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<div class="form-group text_box">
-										<input type="text" id="lname" name="lname"
-											th:field="*{lastName}" placeholder="Last Name">
-									</div>
-								</div>
+								
 								<div class="col-lg-6">
 									<div class="form-group text_box">
 										<input type="number" maxlength="10"  id="number"  name="number"

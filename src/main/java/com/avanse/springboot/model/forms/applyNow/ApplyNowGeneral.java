@@ -22,9 +22,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table ( name =  "Student")
+@Table(name =  "Student")
 public class ApplyNowGeneral {
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

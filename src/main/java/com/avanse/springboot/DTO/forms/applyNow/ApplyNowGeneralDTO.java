@@ -8,8 +8,7 @@ import lombok.Data;
 public class ApplyNowGeneralDTO {
 	
 	private Integer id;
-	private String firstName;
-	private String lastName;
+	private String name;
 	private String contactNumber;
 	private String emailId;
 	private String city;

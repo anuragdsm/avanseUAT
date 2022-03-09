@@ -101,20 +101,40 @@ import lombok.AllArgsConstructor;
 @Controller
 public class AdminController {
 
-	public static String universityUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator +"static"+File.separator+"images"+File.separator+"universityImages";
+	public static String universityUploadDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images"
+			+ File.separator + "universityImages";
 
-	public static String testimonialPersonUploadDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"testimonialImages";
+	public static String testimonialPersonUploadDir = System.getProperty("user.dir") + File.separator + "src"
+			+ File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator
+			+ "images" + File.separator + "testimonialImages";
 
-	public static String newPageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedPages";
-	public static String newPostAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"templates"+File.separator+"addedBlogPosts";
-	public static String newFeaturedImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedFeaturedImages";
-	public static String newBannerImageAddDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"img"+File.separator+"userAddedBannerImages";
-	public static String globalHeaderFilePath =  System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+ "viewPagesAssets" +File.separator+"js"+File.separator+"customGlobalHeader"+File.separator+"globalHeader.js";
-	public static String userAddedImagesDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
-	public static String userAddedImagesJustPath = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"images"+File.separator+"userAddedImages";
+	public static String newPageAddDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "templates" + File.separator + "addedPages";
+	public static String newPostAddDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "templates" + File.separator + "addedBlogPosts";
+	public static String newFeaturedImageAddDir = System.getProperty("user.dir") + File.separator + "src"
+			+ File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator
+			+ "viewPagesAssets" + File.separator + "img" + File.separator + "userAddedFeaturedImages";
+	public static String newBannerImageAddDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "viewPagesAssets"
+			+ File.separator + "img" + File.separator + "userAddedBannerImages";
+	public static String globalHeaderFilePath = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "viewPagesAssets"
+			+ File.separator + "js" + File.separator + "customGlobalHeader" + File.separator + "globalHeader.js";
+	public static String userAddedImagesDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "images"
+			+ File.separator + "userAddedImages";
+	public static String userAddedImagesJustPath = System.getProperty("user.dir") + File.separator + "src"
+			+ File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator
+			+ "images" + File.separator + "userAddedImages";
 
-	public static String cssCodeFileDir = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"css";
-	public static String jsCodeFileDir =System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"+File.separator+"viewPagesAssets"+File.separator+"js";
+	public static String cssCodeFileDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "viewPagesAssets"
+			+ File.separator + "css";
+	public static String jsCodeFileDir = System.getProperty("user.dir") + File.separator + "src" + File.separator
+			+ "main" + File.separator + "resources" + File.separator + "static" + File.separator + "viewPagesAssets"
+			+ File.separator + "js";
 
 	public static String currentProtocol = "http://";
 
@@ -316,7 +336,6 @@ public class AdminController {
 		return "universities";
 	}
 
-
 	/*
 	 * Method to add a university Need both get and post mapping for adding the
 	 * university because the request could be of any type...
@@ -377,6 +396,7 @@ public class AdminController {
 		university.setApplicationProcess(universityDTO.getApplicationProcess());
 		university.setDescription(universityDTO.getDescription());
 		university.setImageName(universityDTO.getImageName());
+		university.setStaticContent(universityDTO.getStaticContent());
 
 		if (summer != null || winter != null || fall != null || spring != null) {
 
@@ -517,6 +537,7 @@ public class AdminController {
 		universityDTO.setApplicationProcess(university.getApplicationProcess());
 		universityDTO.setDescription(university.getDescription());
 		universityDTO.setImageName(university.getImageName());
+		universityDTO.setStaticContent(university.getStaticContent());
 
 		model.addAttribute("universityDTO", universityDTO);
 		model.addAttribute("updateUniversityCheck", "true");
@@ -752,12 +773,11 @@ public class AdminController {
 		for (MultipartFile mFile : imageList) {
 			Thread t1 = new Thread(() -> {
 				try {
-					
-					
+
 					InetAddress inetAddress = InetAddress.getLocalHost();
-					Image image = new Image(
-							mFile.getName(), mFile.getOriginalFilename(), currentProtocol + inetAddress.getHostAddress() + ":"
-									+ activePortNumber + userAddedImagesJustPath + "/" + mFile.getOriginalFilename(),
+					Image image = new Image(mFile.getName(), mFile.getOriginalFilename(),
+							
+									userAddedImagesJustPath + "/" + mFile.getOriginalFilename(),
 							mFile.getName(), mFile.getSize() / 1024);
 					System.out.println(image);
 					imageService.addImage(image);
@@ -1103,17 +1123,15 @@ public class AdminController {
 
 		if (bannerImageFile != null && !bannerImageFile.isEmpty()) {
 			try {
-				System.out.println(
-						"Testing------------>" + newBannerImageAddDir + File.separator + bannerImageFile.getOriginalFilename());
+				System.out.println("Testing------------>" + newBannerImageAddDir + File.separator
+						+ bannerImageFile.getOriginalFilename());
 //				File myBannerImageFile = new File(newBannerImageAddDir + File.separator + bannerImageFile.getOriginalFilename());
 //				myBannerImageFile.createNewFile();
 //				bannerImageFile.transferTo(myBannerImageFile);
-				
+
 				Path fileNameAndPath = Paths.get(newBannerImageAddDir, bannerImageFile.getOriginalFilename());
 				Files.write(fileNameAndPath, bannerImageFile.getBytes());
-				
-				
-				
+
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
@@ -1215,7 +1233,6 @@ public class AdminController {
 			Path fileNameAndPath = Paths.get(newPageAddDir, htmlFileName);
 //			Files.createFile(fileNameAndPath);
 			Files.write(fileNameAndPath, htmlFileName.getBytes());
-			
 
 		} catch (IOException e) {
 			// TODO: handle exception
@@ -1230,6 +1247,7 @@ public class AdminController {
 		/*
 		 * Write a code to create a page link.
 		 */
+		
 		System.out.println(pagesLink);
 
 		/*
@@ -1276,7 +1294,7 @@ public class AdminController {
 		} else {
 
 			codeInFile = htmlBoilerPlateWithoutHeader(pageDTO.getMetaTitle(), pageDTO.getMetaKeyword(),
-			pageDTO.getMetaDescription(), pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode());
+					pageDTO.getMetaDescription(), pageDTO.getMainSection(), pageDTO.getJsCode(), pageDTO.getCssCode());
 			System.out.println("The following code will be there in the file " + codeInFile);
 			pageDTO.setConsolidatedHTMLCode(codeInFile);
 			page.setConsolidatedHTMLCode(pageDTO.getConsolidatedHTMLCode());
@@ -1526,10 +1544,10 @@ public class AdminController {
 
 		if (featuredImageFile != null && !featuredImageFile.isEmpty()) {
 			try {
-							
+
 				Path fileNameAndPath = Paths.get(newFeaturedImageAddDir, featuredImageFile.getOriginalFilename());
 				Files.write(fileNameAndPath, featuredImageFile.getBytes());
-				
+
 			} catch (Exception e) {
 				// TODO: handle exception
 				System.out.println(e.getMessage());

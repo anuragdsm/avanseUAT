@@ -20547,7 +20547,7 @@ a .h_head:hover {
 .h_avaneses_content .er_btn_two:hover {
   color: #fff;
 }
-.home_avanse_banner_area .h_avanse_img img{margin-bottom: -30%;margin-left: -35%;}
+.home_avanse_banner_area .h_avanse_img img, .top_avanse_banner_area .h_avanse_img img{margin-bottom: -30%;margin-left: -35%;}
 
 /*============ top_avanse_banner_area css ============*/
 
@@ -28354,13 +28354,14 @@ input[type=date]{color: #414042; height:50px; background-color: white; -webkit-b
   }
 }
 @media (max-width:1381px) {
-  .home_avanse_banner_area .h_avanse_img img{margin-bottom: -10%;margin-left: -35%;}
+  .home_avanse_banner_area .h_avanse_img img, .top_avanse_banner_area .h_avanse_img img{margin-bottom: -10%;margin-left: -35%;}
 }
 @media (max-width:767px){
   .home_avanse_banner_area{height: 105vh;}
+  .top_avanse_banner_area{height: auto;}
   .contact_form_home{max-width: 100%;}
   .header_area_two + section, .header_area_three + section { margin-top: 20px; }
-  .home_avanse_banner_area .h_avanse_img img{margin-bottom:-25%; width: 100%;margin-left: 0;}
+  .home_avanse_banner_area .h_avanse_img img, .top_avanse_banner_area .h_avanse_img img{margin-bottom:-25%; width: 100%;margin-left: 0;}
   .h_avaneses_content h2{font-size: 36px;line-height: initial;}
   .emp_sp{
     background:transparent;

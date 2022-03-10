@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<title>E-Tutoring</title>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+	
+	       
+	     
+
+        <section class="top_avanse_banner_area career_bg_top">
+            
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="h_avaneses_content">
+                            <h2 class="wow fadeInLeft" data-wow-delay="0.4s">Your Education Loan   <span>Repayment Calculator</span></h2>
+                            <h3 class="wow fadeInLeft" data-wow-delay="0.6s"> The Smart Way to Repay Your Loan</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="h_avanse_img">
+                            <img src="/viewPagesAssets/img/repayment-laon-calculator.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sec_pad bg_grey_light">
+            
+            <div class="container">
+               
+                <div class="row">
+                    
+                    <div class="col-lg-8  ml-auto">
+                           
+                            <div class="shadow bg-white pl-4 pr-4 py-5">
+                                <h4>Education Loan <span class="c_cyan"> Repayment Calculator</span></h4>
+                                <p class="f_400 ">Want to understand your EMIs better? Let us know a few details and we’ll help you!</p>
+                                <hr class="bg_cyan">
+                                
+                                    <form class="contact_form_box calculator_form form4" name="prepaymentform" id="prepaymentform" data-parsley-validate>
+                                        <div class="row mb-5">
+                                    <div class="col-lg-4">
+                                            <div class="form-group position-relative"><span class="input-rupes-symbol">₹</span><input type="text" class="form-control" name="balance" placeholder="Current loan balance" /></div>
+                                            <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-percentage"></i> </span><input type="text" class="form-control" name="rate" placeholder=" Interest rate" min="1" data-parsley-min="1" data-parsley-trigger="change" /></div>
+                                            <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-calendar-alt"></i> </span><input type="text" class="form-control" name="months" placeholder=" Tenure left (in months)"  data-parsley-trigger="change" data-parsley-range="[12, 120]" required /></div>
+                                    </div>
+                                        <div class="col-lg-8">
+                                                    <p class="">Are you looking to make some payment adjustments? Select one of the options:</p>
+
+                                                <div class="monthly-emil">
+                                                    <p><input type="radio" name="optionsRadios" id="optionsRadios1" value="larger" /> I want to increase my monthly EMI amount.</p>
+                                                    <div class="form-group position-relative radio-hide1"><span class="input-rupes-symbol">₹</span> 
+                                                        <input type="text" class="form-control" id="extraamt" name="extraamt" placeholder=" I can afford to pay an additional every month." /></div>
+                                                </div>
+                                                <div class="extra-payment">
+                                                    <p><input type="radio" name="optionsRadios" id="optionsRadios1" value="extra" /> I can make one extra payment to reduce my principal balance.</p>
+                                                    <div class="form-group position-relative radio-hide2" ><span class="input-rupes-symbol">₹</span> 
+                                                        <input type="text" class="form-control" id="oneextraamt" name="oneextraamt" placeholder="I can afford to pay " /></div>
+                                                </div>
+                                                <div class="extra-payment">
+                                                    <p><input type="radio" name="optionsRadios" id="optionsRadios1" value="quickly" /> I’d like to pay off my loan as soon as possible.</p>
+                                                    <div class="form-group position-relative radio-hide3" ><span class="input-rupes-symbol"><i class="fa fa-calendar-alt"></i> </span>
+                                                        <input type="text" class="form-control " id="paybackmonths" name="paybackmonths" placeholder="I want to complete my student loan repayment in years" /></div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="form-group text-center">
+                                        <div class="btn_six text-center slider_btn" onclick="getpmt();">Calculate</div>
+                                        
+                                        <input class="btn_six text-center slider_btn" type="reset">
+                                    </div>
+                                    
+
+                                   
+                                </form>
+                                
+                            </div>
+                            
+                    </div>
+                    <div class="col-lg-4 ">
+                        <div class="shadow bg-white pl-4 pr-4 py-5">
+                                <h4>Your Loan Information</h4>
+                                <p>Prepaying your student loan is a smart way to reduce your loan costs.</p>
+                                <hr class="bg_cyan">
+                                <div id="ques">
+                                    <h5>For Any Questions?</h5>
+                                    Call us at 1800-266-0200<br />
+                                    
+                                    Send us an <a href="mailto:response@avanse.com">e-mail</a><br />
+                                    <a href="https://www.avanse.com/study-loan-faqs">Frequently Asked Questions</a>
+                                </div>
+                                <div class=" " id="larger">
+                                    <p class="c_dark" id="curremi">Current EMi : 100</p>
+                                    <p class="c_dark" id="totpay">Total Payment : 100</p>
+                                    <p class="c_dark" id="totintr">Total Interest : 100</p>
+                                    <p class="c_dark" id="payback">You could payback loan in months (APPROX) : 100</p>
+                                    <p class="c_dark" id="addammt">Total payment including additional amount: 100</p>
+                                    <p class="c_dark" id="totint">Total interest including additional amount: 100</p>
+                                    <p class="c_dark" id="estsav">Estimated savings in interest: 100</p>
+                                </div>
+                                <div class=" " id="extra">
+                                    <p class="c_dark" id="curremi1">Current EMi : 100</p>
+                                    <p class="c_dark" id="totpay1">Total Payment : 100</p>
+                                    <p class="c_dark" id="totintr1">Total Interest : 100</p>
+                                    <p class="c_dark" id="estprin">Estimated Pricipal : 100</p>
+                                    <p class="c_dark" id="payback1">You could payback loan in months (APPROX) : 100</p>
+                                    <p class="c_dark" id="addammt1">Total payment including additional amount: 100</p>
+                                    <p class="c_dark" id="totint1">Total interest including additional amount: 100</p>
+                                    <p class="c_dark" id="estsav1">Estimated savings in interest: 100</p>
+                                </div>
+                                
+                                <div class=" " id="quickly">
+                                    <p class="c_dark" id="curremi2">Current EMi : 100</p>
+                                    <p class="c_dark" id="totpay2">Total Payment : 100</p>
+                                    <p class="c_dark" id="totintr2">Total Interest : 100</p>
+                                    <p class="c_dark" id="newemi2">New EMI : 100</p>
+                                    <p class="c_dark" id="addemi2">Additional EMI : 100</p>
+                                
+                                    <p class="c_dark" id="addammt2">Total payment including additional amount: 100</p>
+                                    <p class="c_dark" id="totint2">Total interest including additional amount: 100</p>
+                                    <p class="c_dark" id="estsav2">Estimated savings in interest: 100</p>
+                                </div>
+                               
+                        </div>
+                 </div>
+                </div>
+            </div>
+        </section>
+        <section class=" sec_pad">
+           
+            <div class="container">
+                 <div class="sec_title text-center mb_50">
+                    <h2 class="f_size_40 f_600 t_color3 l_height45 ">What Is an <span class="c_cyan">Education Loan <br/>Repayment Calculator?</span></h2>
+                    
+                </div>
+                <div class="row flex-row-reverse ">
+                    <div class="col-lg-6  ml-auto my-auto">
+                        
+                        <p class="f_400 ">Opting for an education loan to pay for your higher education is a prudent decision. With your student loan, you can achieve your academic aspirations while being financially independent. Once you apply for a loan, you must have a plan in place to repay the loan as swiftly as possible. Understanding your education loan repayment amount can be difficult. To help you determine the amount, we have an education loan repayment calculator. You can use the online calculator to understand your student loan repayment amount.</p>
+                        <p>To use the calculator, you need to input some information about your loan. Based on the principal amount, loan tenure and interest rate, the calculator provides you with your monthly education loan repayment amount.</p>
+                    </div>
+                    <div class="col-lg-6  ">
+                        <img src="/viewPagesAssets/img/avanse-education-loan-emi-calculator.png" class="img-fluid"/>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+       
+        <section class="sec_pad ">
+            <div class="circel-bg"></div>
+            <div class="circel-yellow-bg"></div>
+            <div class="dot-bg"></div>
+            <div class="container">
+                <div class="row  service_details_item">
+                   
+                    <div class="col-lg-6 ">
+                        <div class="service_details ">
+                            <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">How Does the   <span class="c_cyan">Education Loan <br/>Repayment Calculator </span> Work?</h2>
+                            <p class="f_400 ">The educational loan repayment calculator helps you understand your potential monthly outgoings should you opt for student financing. You must provide a few basic details about your loan amount, interest rate and tenure to discover your potential monthly Equated Monthly Instalments (EMIs).</p>
+                            <p>Before you even apply for an education loan, you can use the calculator to discover what kind of loan tenure and interest rate work for your finances. You can provide various combinations of information until you arrive at an EMI amount that suits your budget.</p>
+                            <p>Once you enter the details in the calculator, it will provide you with your current EMI amount, the total payment due, total interest amount pending, and your new EMI, if you’d like to make a change to your existing repayment plan. Additionally, if you’re opting to pay a higher amount to finish repaying your student loan quicker, the calculator will also let you know your estimated savings on interest.</p>
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ml-auto my-auto">
+                        <div class="">
+                            <img src="/viewPagesAssets/img/loan-interest-rates.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+       
+        <section class="bg_cyan pt-5 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 text-center"><h2 class="f_size_40 f_500 t_color3 text-white l_height45 ">Are you ready to Apply? </h2></div>
+                    <div class="col-lg-6 col-sm-12 text-center mb-5">
+                        
+                        <a href="#" class="btn_six text-center slider_btn yello_btn">Apply Now</a>
+                    </div>
+                    </div>
+            </div>
+        </section>
+        
+        
+        
+        <section class="bg_grey_light sec_pad">
+            <div class="container">
+                <div class="sec_title text-center mb_90 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <h2 class="f_size_40 f_500 t_color3 l_height45">Important Facts About   <br/><span class="c_cyan"> Educational Loan Repayment Calculators</span></h2>
+                    <p>When you use an education loan interest calculator, you can plan your future finances with ease. <br/> Here’s a look at some crucial benefits you can enjoy when you opt to use the Avanse student loan repayment calculator:</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h5>Instant Answers</h5>
+                        <p>Our calculator provides an estimated EMI amount immediately after you provide the details of your outstanding loan amount. You do not have to wait for a consultant to call you or talk you through the details. Although the calculator may not give an accurate answer, it provides you with estimates that can bring clarity to your repayment strategy.</p><hr/>
+                        <h5>Various Permutations and Combinations</h5>
+                        <p>You can use the loan repayment calculator to understand how increasing your EMI or making one additional payment can affect your overall payment schedule. If you’d like to reduce your tenure, you can enter the new timeline you have in mind to understand the new EMI amount.</p>
+                        <h5 class="c_cyan mt-5 mb-3">While using the education loan interest calculator, you need to keep the following details in mind:</h5>
+                        <h5>Interest Rates</h5>
+                        <p>Our student loan repayment calculator works with a fixed rate of interest. If your financier works with a variable rate, the calculator may not provide accurate answers.</p><hr/>
+                        <h5>Prepayment Charges</h5>
+                        <p>Our education loan repayment calculator helps you find a way to repay your loan quicker. However, you must remember that certain lenders charge prepayment charges if you increase your EMI amount or make an additional payment to reduce your overall tenure. Our calculator will not be able to account for these additional charges.</p>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        
+        <section class=" sec_pad">
+            <div class="container">
+                <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <h2 class="f_size_40 f_500 t_color3 l_height45">What Are the Benefits of an  <br/> <span class="c_cyan"> Avanse Education Loan? </span></h2>
+                    <p>Avanse provides education loans for individuals who want to fund their own higher education. We provide you with hassle-free financing so you can follow your academic dreams and aspirations. When you partner with us for your education finances, you can benefit from:</p>
+                </div>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-4">
+                        <div class="text-center benefits_box"> 
+                            <h5 class="c_cyan_dark">Bridge Loans</h5>
+                            <p>Our partnership starts right from when you decide to get an education loan in India. Our bridge loans help you with the cost of entrance exam prep and fees, applications, living costs and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center benefits_box"> 
+                            <h5 class="c_cyan_dark">Score-Based Benefits</h5>
+                            <p>As an education-focused organisation, we recognise all the hard work you put into achieving your academic aspirations. We offer preferential interest rates and other special privileges to high merit students applying for our education loan.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center benefits_box"> 
+                            <h5 class="c_cyan_dark">Pre-Admission Loans</h5>
+                            <p>If you’re headed overseas, we’ll sanction your student loan so you can confirm your seat at your preferred university with ease.</p>
+                        </div>
+                    </div>
+               
+                    <div class="col-lg-4 ">
+                        <div class="text-center benefits_box"> 
+                            <h5 class="c_cyan_dark">Fast-Track Loans</h5>
+                            <p>Sometimes, you may need a quick loan to facilitate your admission process. That’s what our fast-track education loan provides.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center benefits_box"> 
+                            <h5 class="c_cyan_dark">Availability of Funds Certificate</h5>
+                            <p>Most universities abroad require you to prove you have the funds to pay for your tuition and living expenses. We’ll provide you with the funds and the certificate to show the availability of funds.</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </section>
+    </div>
+	     

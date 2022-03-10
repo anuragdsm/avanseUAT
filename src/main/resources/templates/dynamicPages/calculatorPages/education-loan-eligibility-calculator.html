@@ -9,350 +9,489 @@
 
 	<!-- Content Wrapper -->
 	<div layout:fragment="contentPlus">
-	
-	<section class="top_avanse_banner_area career_bg_top">
-            
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="h_avaneses_content">
-                            <h2 class="wow fadeInLeft" data-wow-delay="0.4s">Discover your <span>education loan</span> eligibility now! </h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="h_avanse_img">
-                            <img src="/viewPagesAssets/img/education-loan-eligibility.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="sec_pad bg_grey_light">
-            
-            <div class="container">
-               
-                <div class="row flex-row-reverse">
-                    
-                    <div class="col-lg-5  ml-auto my-auto">
-                           
-                            <div class="shadow bg-white pl-4 pr-4 py-5">
-                                <h4><span class="c_cyan">Eligibility Calculator</span></h4>
-                                <hr/>
-                                
-                                 <form method="POST" name="pvform" _lpchecked="1" class="contact_form_box calculator_form mt-3" id="elgform">
 
-                                    <div class="form-group position-relative"><span class="input-rupes-symbol">₹</span>
-                                        <input type="hidden" name="per" value="12" id="per">
-                                        <input type="text" class="form-control test" name="net" id="net" data-parsley-trigger="change" required placeholder="Monthly Income"/>
-                                    </div>
-                                    <div class="form-group position-relative"><span class="input-rupes-symbol">₹</span>
-                                        <input type="hidden" size="20" name="fv" value="0">
-                                        <input type="text" class="form-control test" name="obl" id="obl"  data-parsley-trigger="change" required placeholder="Monthly Obligations"/>
-                                    
-                                    </div>
-                                    <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-percentage"></i> </span>
-                                        <input type="text" class="form-control" name="rate" id="rate" data-parsley-trigger="change" required min="1"	data-parsley-min="1" placeholder="Loan Interest Rate"/>
-                                    
-                                    </div>
-                                    <div class="form-group position-relative"><span class="input-rupes-symbol"><i class="fa fa-calendar-alt"></i> </span>
-                                        <input type="text" class="form-control" name="nper"  id="nper"  data-parsley-trigger="change" data-parsley-range="[12, 120]" required placeholder="Tenure (in months)"/>
-                                    
-                                    </div>
-                                    <div class="form-group text-center">
-                                        
-                                        <div onClick="document.pvform.pvfield.value=-pv(document.pvform.rate.value,document.pvform.per.value,document.pvform.nper.value,document.pvform.net.value,document.pvform.obl.value,document.pvform.fv.value);" class=" btn_six text-center slider_btn" >Calculate</div>
-                                    </div>
+		<section class="top_avanse_banner_area career_bg_top">
 
-                                    
-                                </form>
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<div class="h_avaneses_content">
+							<h2 class="wow fadeInLeft" data-wow-delay="0.4s">
+								<span>Wondering how much college might cost?</span>
+							</h2>
+							<h3 class="wow fadeInLeft" data-wow-delay="0.6s">You’ve come
+								to the right place!</h3>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="h_avanse_img">
+							<img src="img/expense-calculator-banner.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="bg_grey_light sec_pad">
 
-                                <h5>Your Total Eligible Amount: <span class="c_cyan">₹</span><span class="c_cyan" id="totelamnt">35,112</span></h5>
-                            </div>
-                            
-                    </div>
-                    <div class="col-lg-6 my-auto">
-                        <img src="/viewPagesAssets/img/estimate-of-your-education-loan.png" />
-                 </div>
-                    
-                   
-                </div>
-             
-                
-            </div>
-        </section>
-        <section class=" sec_pad">
-           
-            <div class="container">
-                 <div class="sec_title text-center mb_50">
-                    <h2 class="f_size_40 f_600 t_color3 l_height45 ">What Is an <span class="c_cyan">Education Loan <br/>Eligibility  Calculator?</span></h2>
-                    
-                </div>
-                <div class="row flex-row-reverse ">
-                    <div class="col-lg-6  ml-auto my-auto">
-                        
-                        <p class="f_400 ">Deciding to opt for an education loan is often the first step in your education finance journey. Now you have to think about the amount of money you’d require and how you can pay the amount back within the loan tenure. An education loan eligibility calculator helps you understand your finances better. The eligibility calculator provides you with the approximate education loan amount you are eligible to borrow based on your current finances. You need to provide details about your monthly income, monthly obligations, the interest rate and estimated tenure of your loan. If you do not have a monthly income, you need to provide your co-borrower’s details instead. Based on the information provided, the eligibility calculator will provide you with an estimate of your education loan eligibility amount.</p>
-                    </div>
-                    <div class="col-lg-6  ">
-                        <img src="/viewPagesAssets/img/avanse-education-loan-emi-calculator.png" class="img-fluid"/>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-        <section class="bg_cyan pt-5 ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-sm-12 text-center"><h2 class="f_size_40 f_500 t_color3 text-white l_height45 ">Ready to discover your eligibility? </h2></div>
-                    <div class="col-lg-4 col-sm-12 text-center mb-5">
-                        
-                        <a href="#" class="btn_six text-center slider_btn yello_btn">Apply Now</a>
-                    </div>
-                    </div>
-            </div>
-        </section>
-        
-        <section class="sec_pad ">
-            <div class="circel-bg"></div>
-            <div class="circel-yellow-bg"></div>
-            <div class="dot-bg"></div>
-            <div class="container">
-                <div class="row  service_details_item">
-                   
-                    <div class="col-lg-6 ">
-                        <div class="service_details ">
-                            <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">What Is  <span class="c_cyan">Education Loan Eligibility  </span> Criteria?</h2>
-                            <p class="f_400 ">If you’re hoping to secure a loan for your higher studies in India or abroad, we can provide you with an education loan. Before you apply, you need to meet the following eligibility criteria.</p>
-                            <p>Students can apply if they:</p>
-                            <ul class="list-unstyled mb-30 pl-0 pr_20">
-                                <li><i class="ti-check c_cyan"></i> Are Indian citizens who are 18 or older</li>
-                                <li><i class="ti-check c_cyan"></i> Have a confirmed admission before the final disbursal</li>
-                                <li><i class="ti-check c_cyan"></i> Have a co-borrower who earns in India</li>
-                            </ul>
-                            <p>Co-borrowers also need to meet the following criteria:</p>
-                            <ul class="list-unstyled mb-30 pl-0 pr_20">
-                                <li><i class="ti-check c_cyan"></i> Must be an Indian citizen and should be a parent, legal guardian, sibling or other blood relative</li>
-                                <li><i class="ti-check c_cyan"></i> Must have a bank account in India that allows them to sign cheques</li>
-                                <li><i class="ti-check c_cyan"></i> Must be the primary debtor</li>
-                            </ul>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6 ml-auto my-auto">
-                        <div class="">
-                            <img src="/viewPagesAssets/img/loan-interest-rates.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <p>You can apply for a loan for graduate or post-graduate courses or other job-oriented professional or technical courses. The courses and the institute offering them must be approved by Avanse.</p>
-                            <p>If you meet the above criteria, you can go ahead and use the education loan calculator to understand your education loan eligibility in India. Your student loan eligibility in India depends on your monthly earnings and outgoings as well as your loan interest and tenure.</p>
-                    </div>
-                </div>
-                
-                
-            </div>
-        </section>
-        <section class="bg_grey_light sec_pad ">
-            <div class="circel-bg"></div>
-            <div class="circel-yellow-bg"></div>
-            <div class="dot-bg"></div>
-            <div class="container">
-                <div class="row flex-row-reverse">
-                   
-                    <div class="col-lg-6 ">
-                        <div class="service_details ">
-                            <h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">Why Use an <span class="c_cyan">Education Loan Eligibility Calculator? </span></h2>
-                            <p class="f_400 ">As a young adult, understanding your finances can seem difficult. You may require a certain amount to secure your seat at your preferred college, but your financial situation dictates the maximum amount a lender will provide as your education loan. Your student loan eligibility depends on your family’s current earnings and outgoings and your loan tenure and interest rate. Your lender will use this information to understand whether or not you are capable of repaying your loan on time. If you apply for a student loan in excess of your student loan eligibility, your application could get rejected. If this happens, it could dishearten you and affect your credit score in the future.</p>
-                            <p>When you opt to use the education loan eligibility calculator, you will gain a realistic understanding of your financial standing. You can use the information to apply for a loan amount that lenders can afford to provide you based on your education loan eligibility in India. You can use the education loan eligibility calculator to make informed decisions about your higher education and financial future.</p>
-                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6 ml-auto my-auto">
-                        <div class="">
-                            <img src="/viewPagesAssets/img/executive-education-loans-career.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class=" sec_pad">
-            <div class="container">
-                <div class="sec_title text-center mb_70 wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                    <h2 class="f_size_40 f_500 t_color3 l_height45">What Are the Benefits of Using an   <br/> <span class="c_cyan"> Educational Loan Eligibility Calculator? </span></h2>
-                    <p>When you use the Avanse student loan eligibility calculator, you benefit from:</p>
-                </div>
-                <div class="row justify-content-md-center">
-                    <div class="col-lg-4">
-                        <div class="text-center benefits_box"> 
-                            <h5 class="c_cyan_dark">Quick Answers</h5>
-                            <p>Our education loan calculator provides you with an instant eligibility amount. The amount will be an approximation, but it gives you an idea of how much you can afford to borrow from your education financing partner.</p><br/><br/><br/>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="text-center benefits_box"> 
-                            <h5 class="c_cyan_dark">Ease of Use</h5>
-                            <p>Our student loan eligibility calculator is very easy to use. You simply enter the required details and it will instantly provide you with your education loan eligibility amount. What’s more? You can use the calculator on our website for free!</p><br/><br/>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="text-center benefits_box"> 
-                            <h5 class="c_cyan_dark">Check Varying Combinations</h5>
-                            <p>When you’re checking your eligibility, you can use our student loan eligibility calculator to try different amount combinations. You can check your eligibility with various interest rates and loan tenures. You can find a rate and tenure that provides you with the highest eligibility and find a lender who offers you what you need.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="bg_grey_light sec_pad">
-            <div class="container">
-                <div class="sec_title text-center mb_90 wow fadeInUp" data-wow-delay="0.3s"
-                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                    <h2 class="f_size_40 f_500 t_color3 l_height45">What Are the Benefits of an  <br/><span class="c_cyan"> Avanse Education Loan?</span></h2>
-                    <p>Avanse provides education loans for individuals who want to fund their higher education independently. <br/>We provide you with hassle-free financing so you can follow your academic dreams and aspirations. <br/>When you partner with us for your education finances, you can benefit from:</p>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h5>Bridge Loans</h5>
-                        <p>Our partnership starts right from when you decide to get an education loan in India. Our bridge loans help you with the cost of entrance exam prep and fees, applications, living costs and more.</p><hr/>
-                        <h5>Score-Based Benefits</h5>
-                        <p>As an education-focused organisation, we recognise all the hard work you put into achieving your academic aspirations. We offer preferential interest rates and other special privileges to high merit students applying for our education loan.</p><hr/>
-                        <h5>Pre-Admission Loans</h5>
-                        <p>If you’re headed overseas, we’ll sanction your student loan so you can confirm your seat at your preferred university with ease.</p><hr/>
-                        <h5>Fast-Track Loans</h5>
-                        <p>Sometimes, you may need a quick loan to facilitate your admission process. That’s what our fast-track education loan provides.</p><hr/>
-                        <h5>Availability of Funds Certificate</h5>
-                        <p>Most universities abroad require you to prove you have the funds to pay for your tuition and living expenses. We’ll provide you with the funds and the certificate to show the availability of funds.</p>
-                    </div>
-                   
-                </div>
-            </div>
-        </section>
-        <section class=" sec_pad">
-            <div class="container">
-                
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="sec_title  wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                            <h2 class="f_size_40 f_500 t_color3 l_height45">What Documents Do I Need    <br/> <span class="c_cyan"> for an Education Loan? </span></h2>
-                            <p>To apply for an education loan for higher studies in India or abroad, you will have to provide the following documents:</p>
-                        </div>
-                        <ul class="list-unstyled mb-30 pl-0 pr_20">
-                            <li><i class="ti-check c_cyan"></i> Student KYC and educational documents</li>
-                            <li><i class="ti-check c_cyan"></i> Details regarding the course and fees</li>
-                            <li><i class="ti-check c_cyan"></i> Co-borrower KYC and income details</li>
-                            <li><i class="ti-check c_cyan"></i> Collateral documents</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="/viewPagesAssets/img/how-to-use-emi-loan-calculator.jpg" class="img-fluid">
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8">
-                        <h5 class=" mb_15">Here’s a quick document checklist that will help you get your papers in order</h5>
-                            <table class="table-responsive table-bordered table-hover" width="100%" cellspacing="0" cellpadding="5" style="border:0;">
-                                <thead>
-                                  <tr>  
-                                    <th><strong>Documents</strong></th>
-                                    <th><strong>Applicant</strong></th>
-                                    <th><strong>Co-Applicant</strong></th>
-                                    <th><strong>Additional Co-Applicant</strong></th>
-                                    <th><strong>Guarantor</strong></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>2 Colour Passport-sized Photos</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Photo ID</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Residence Proof</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Date of Birth Proof</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Signature Verification</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Academic Documents</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Proof of Admission</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Fee Structure</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Income Proof</td>
-                                    <td>&nbsp;</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>Collateral Documents</td>
-                                    <td>&nbsp;</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                  </tr>
-                                  <tr>
-                                    <td>8-month Bank Statement</td>
-                                    <td>&nbsp;</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  <tr>
-                                    <td>Relationship Proof</td>
-                                    <td>&nbsp;</td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                     <td class="text-center"><i class="ti-check c_cyan"></i></td>
-                                    <td>&nbsp;</td>
-                                  </tr>
-                                  
-                                </tbody>
-                              </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        
-        
-    </div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 ">
+						<h2 class="f_size_40 f_600 t_color3 l_height45 ">
+							What Is a <span class="c_cyan"> College Course <br />Expense
+								Calculator?
+							</span>
+						</h2>
+						<p class="f_400 ">So you’re about to head off to college.
+							You’ve found the ideal course and the perfect institution. But,
+							you need a little help in the form of an education loan. Deciding
+							how much money you should borrow can seem overwhelming. Most
+							students opt to take the maximum amount they can borrow, but this
+							leads to longer payment terms and higher interest rates. If you’d
+							like to take just the right amount, you need to understand your
+							potential college expenses. That’s where a college expense
+							calculator comes into the picture. You can use this calculator to
+							get an estimate of your overall course cost.</p>
+						<p class="f_400 ">To use the calculator, you need to provide
+							details regarding your current finances. You also need to provide
+							indicative costs of your tuition fee, living costs and other
+							expenses. Don’t forget to include the cost of buying your
+							textbooks and learning devices like laptops. Once you feed in the
+							information, the college course expense calculator will provide
+							an estimated cost for your entire study programme. The
+							approximate cost helps you understand how much money you need to
+							borrow from your financial partner.</p>
+					</div>
+					<div class="col-lg-5  ml-auto my-auto ">
+						<div class="shadow bg-white pl-3 pr-3">
+							<div class="pt-4">
+								<div class="" id="stepmn">
+									<h4 class="c_dark">Step - 1</h4>
+									<p>Use this course explanation calculator to determine what
+										you may need to borrow for the entire duration of your course:</p>
+									<hr />
+								</div>
+								<div class="" id="stepmn1">
+									<h4 class="c_dark">Step - 2</h4>
+									<p id="incstp1">How much Money you need to borrow to
+										complete your course : Use this course explanation calculator
+										to determine you may need to borrow for the entire duration of
+										the course: Complete the fields below using total figures</p>
+									<hr />
+								</div>
+								<div class="" id="stepmn2">
+									<h4 class="c_dark">Step3</h4>
+									<p>How much Money you need to borrow to complete your
+										course :</p>
+									<hr />
+								</div>
+							</div>
+							<!-- Step 1 -->
+
+							<div id="step1" class="expense-calculators-step1 pb-4">
+
+								<p class="c_dark">
+									<span>Complete the fields below using total figures</span>
+								</p>
+								<form class="contact_form_box calculator_form">
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="persav" name="persav"
+											placeholder="Personal Savings" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="helrel" name="helrel"
+											placeholder="Help from Relatives" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="scholar" name="scholar"
+											placeholder="Scholarships" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="grants" name="grants"
+											placeholder="Grants" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="familysav" name="familysav"
+											placeholder="Family Savings" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="otherinc" name="otherinc"
+											placeholder="Other Income" />
+									</div>
+
+									<div class="form-group text-center">
+										<div class="btn_six text-center slider_btn "
+											onClick="calculateme();">Submit</div>
+									</div>
+								</form>
+							</div>
+
+
+							<!-- Step 2 -->
+							<div id="step2" class="expense-calculators-step2 pb-4">
+								<p class="c_dark">
+									<span>Complete the fields below for the entire duration
+										of the course</span>
+								</p>
+								<form class="contact_form_box calculator_form">
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="tution" name="tution"
+											placeholder="Tution and Fee" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="room" name="room"
+											placeholder="Room and Board (On Campus)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="board" name="board"
+											placeholder="Room and Board (Off Campus)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="books" name="books"
+											placeholder="Books and Supplies (Including Laptop)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="trans" name="trans"
+											placeholder="Transportation (car or public)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="over" name="over"
+											placeholder="Overseas (Medical, Dental, Insurance)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="pers" name="pers"
+											placeholder="Personal (Phone,Entertainment, Clothing & etc.)" />
+									</div>
+									<div class="form-group position-relative">
+										<span class="input-rupes-symbol">₹</span><input type="text"
+											class="form-control" id="misc" name="misc"
+											placeholder="Miscllaneous" />
+									</div>
+									<div class="form-group text-center">
+										<div class="btn_six text-center slider_btn "
+											onClick="calculateexp();">Submit</div>
+										<div class=" btn_six text-center slider_btn"
+											onClick="$('#step2').hide(); $('#step1').show();$('#stepmn1').hide();$('#stepmn').show();$('#stepmn2').hide()">Preview</div>
+									</div>
+
+								</form>
+
+							</div>
+
+
+							<!-- Step 3 -->
+							<div id="step3" class="expense-calculators-step3 pb-5">
+								<p>The estimate is based on the information you provided and
+									intended for planning purpose only</p>
+								<h5 id="totinc" class="c_dark">Total income</h5>
+								<h5 id="totexp" class="c_dark">Total expense</h5>
+								<h5 id="diff" class="c_dark">Difference</h5>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sec_pad ">
+			<div class="circel-bg"></div>
+			<div class="circel-yellow-bg"></div>
+			<div class="dot-bg"></div>
+			<div class="container">
+				<div class="row flex-row-reverse service_details_item">
+
+					<div class="col-lg-6 ml-auto my-auto">
+						<div class="service_details ">
+							<h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">
+								Why Use a <span class="c_cyan">College Cost Calculator?</span>
+							</h2>
+							<p class="f_400 mb_40">Deciding to apply for an education
+								loan is never an easy decision. If you choose financial support,
+								you need to ensure that you have all the necessary information.
+								Borrowing too much or too little will only compound your future
+								financial troubles. To get a good estimate of how much you will
+								likely spend during the duration of your course, you can use a
+								college cost calculator. You need to provide the approximate
+								costs for your textbooks, living expenses and more. Once you
+								have an idea of how much money you will require, you can decide
+								how much to borrow. While using a college expense calculator,
+								you must remember to take inflation and potential emergencies
+								into account. If you forget to do this, you could be left
+								without a financial safety net to help you during difficult
+								times.</p>
+
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="">
+							<img src="img/cost-calculator.jpg" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+				<div class="row service_details_item">
+
+					<div class="col-lg-6 d-flex align-items-center">
+						<div class="service_details">
+							<h2 class="f_p f_600 f_size_30 t_color3 l_height40 mb-30">
+								What Documents Do I <span class="c_cyan">Need for an
+									Education Loan?</span>
+							</h2>
+							<p class="f_400 mb_40">To apply for an education loan for
+								higher studies in India or abroad, you will have to provide the
+								following documents:</p>
+							<ul class="list-unstyled mb-30 pl-0 pr_20">
+								<li><i class="ti-check"></i> Student KYC and educational
+									documents</li>
+								<li><i class="ti-check"></i> Details regarding the course
+									and fees</li>
+								<li><i class="ti-check"></i> Co-borrower KYC and income
+									details</li>
+								<li><i class="ti-check"></i> Collateral documents</li>
+							</ul>
+
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="">
+							<img src="img/documents-education-loan.jpg" alt=""
+								class="img-fluid">
+						</div>
+					</div>
+
+				</div>
+				<div class="row service_details_item">
+					<div class="col-lg-2"></div>
+					<div class="col-lg-8">
+						<h4 class="text-center pb-3">Here’s a document checklist that
+							will help you get your papers in order:</h4>
+						<table class="table-responsive table-bordered table-hover"
+							width="100%" cellspacing="0" cellpadding="5" style="border: 0;">
+							<thead>
+								<tr>
+									<th><strong>Documents</strong></th>
+									<th><strong>Applicant</strong></th>
+									<th><strong>Co-Applicant</strong></th>
+									<th><strong>Additional Co-Applicant</strong></th>
+									<th><strong>Guarantor</strong></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2 Colour Passport-sized Photos</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Photo ID</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Residence Proof</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Date of Birth Proof</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Signature Verification</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Academic Documents</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>Proof of Admission</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>Fee Structure</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>Income Proof</td>
+									<td>&nbsp;</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>Collateral Documents</td>
+									<td>&nbsp;</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+								</tr>
+								<tr>
+									<td>8-month Bank Statement</td>
+									<td>&nbsp;</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
+									<td>Relationship Proof</td>
+									<td>&nbsp;</td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td class="text-center"><i class="ti-check c_cyan"></i></td>
+									<td>&nbsp;</td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="get_started_three sec_pad bg_grey">
+			<div class="circel-bg"></div>
+			<div class="circel-yellow-bg"></div>
+			<div class="dot-bg"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 ">
+						<div class="sec_title text-center mb_70">
+							<h2 class="f_p f_size_40 l_height45 f_600 t_color3">
+								What Are the Benefits of <br />an Avanse Education Loan?
+							</h2>
+							<p>Avanse provides education loans for individuals who want
+								to fund their own higher education. We provide you with
+								hassle-free financing so you can follow your academic dreams and
+								aspirations. When you partner with us for your education
+								finances, you can benefit from:</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4  mb-5">
+						<div class="s_integration_item">
+							<img class="pillars_icon" src="img/icon/government.png">
+							<h4 class="pt-3 f_400">Bridge Loans</h4>
+							<p class="pl-3 pr-3">Our partnership starts right from when
+								you decide to get an education loan in India. Our bridge loans
+								help you with the cost of entrance exam prep and fees,
+								applications, living costs and more.</p>
+						</div>
+
+
+					</div>
+					<div class="col-lg-4  mb-5">
+						<div class="s_integration_item">
+							<img class="pillars_icon" src="img/icon/accountability.png">
+							<h4 class="pt-3 f_400">Score-Based Benefits</h4>
+							<p class="pl-3 pr-3">As an education-focused organisation, we
+								recognise all the hard work you put into achieving your academic
+								aspirations. We offer preferential interest rates and other
+								special privileges to high merit students applying for our
+								education loan.</p>
+						</div>
+					</div>
+					<div class="col-lg-4  mb-5">
+						<div class="s_integration_item">
+							<img class="pillars_icon" src="img/icon/value.png">
+							<h4 class="pt-3 f_400">Availability of Funds Certificate</h4>
+							<p class="pl-3 pr-3">Most universities abroad require you to
+								prove you have the funds to pay for your tuition and living
+								expenses. We’ll provide you with the funds and the certificate
+								to show the availability of funds.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-2  mb-5"></div>
+					<div class="col-lg-4  mb-5">
+						<div class="s_integration_item">
+							<img class="pillars_icon" src="img/icon/inclusivity.png">
+							<h4 class="pt-3 f_400">Pre-Admission Loans</h4>
+							<p class="pl-3 pr-3">If you’re headed overseas, we’ll
+								sanction your student loan so you can confirm your seat at your
+								preferred university with ease.</p>
+						</div>
+
+					</div>
+					<div class="col-lg-4  mb-5">
+						<div class="s_integration_item">
+							<img class="pillars_icon" src="img/icon/meritocracy.png">
+							<h4 class="pt-3 f_400">Fast-Track Loans</h4>
+							<p class="pl-3 pr-3">Sometimes, you may need a quick loan to
+								facilitate your admission process. That’s what our fast-track
+								education loan provides.</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+
+
+		<section class="sec_pad">
+			<div class="circel-bg"></div>
+			<div class="circel-yellow-bg"></div>
+			<div class="dot-bg"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="sec_title text-center mb_70">
+							<h2 class="f_p f_size_40 l_height45 f_600 t_color3">
+								What Are the Benefits of Using a </br>
+								<span class="c_cyan">College Course Expense Calculator?</span>
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6">
+						<img src="img/course-expense-benefits.jpg" alt=""
+							class="img-fluid">
+					</div>
+					<div class="col-lg-6 ml-auto my-auto">
+						<p>When you decide to use a college cost calculator, you can
+							benefit by making better financial decisions. The college expense
+							calculator gives you a rough idea of how much money you need to
+							sustain yourself while completing your education. Depending on
+							how much money you already have saved up, you can use the
+							calculator to decide the principal amount of your education loan.
+							By making prudent financial decisions today, you can safeguard
+							your financial future.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>

@@ -432,7 +432,7 @@
 							<div class="tab-content developer_tab_content mt-4">
                                 <div class="tab-pane fade active show" id="customer"
                                     role="tabpanel" aria-labelledby="customer-tab">
-                                    <form th:action="@{/thankyou}"
+                                    <form th:action="@{/contact-us/thankyou}"
                                         th:object="${customerDTO}" class="contact_form_box"
                                         name="customerDTO" value="customer" method="post" id="myForm"
                                         novalidate="novalidate">
@@ -492,11 +492,7 @@
                                                 </div>
                                             </div>
                             
-                                            <div class="col-lg-12  text-center ">
-                                                <div id="captcha"></div>
-                                                <input type="text" placeholder="Captcha" id="cpatchaTextBox" />
-                                            </div>
-                            
+                                                                        
                                             <div class="col-lg-12 text-center pt-5">
                                                 <button type="submit" class="btn_three">Submit</button>
                                             </div>
@@ -506,7 +502,7 @@
                                 <div class="tab-pane fade" id="eduinst" role="tabpanel"
                                     aria-labelledby="eduinst-tab">
                                     
-                                    <form th:action="@{/thankyou}" th:object="${instituteDTO}"
+                                    <form th:action="@{/contact-us/thankyou}" th:object="${instituteDTO}"
                                         class="contact_form_box" method="post" id="eduinstontactForm"
                                         novalidate="novalidate">
                                         <div class="row">
@@ -580,7 +576,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="media" role="tabpanel"
                                     aria-labelledby="media-tab">
-                                    <form th:action="@{/thankyou}" th:object="${mediaDTO}"
+                                    <form th:action="@{/contact-us/thankyou}" th:object="${mediaDTO}"
                                         class="contact_form_box" method="post" id="mediacontactForm"
                                         novalidate="novalidate">
                                         <div class="row">
@@ -637,7 +633,7 @@
                             
                                 <div class="tab-pane " id="investors" role="tabpanel"
                                     aria-labelledby="investors-tab">
-                                    <form th:action="@{/thankyou}" th:object="${investorDTO}"
+                                    <form th:action="@{/contact-us/thankyou}" th:object="${investorDTO}"
                                         class="contact_form_box" method="post"
                                         id="investorscontactForm" novalidate="novalidate">
                             

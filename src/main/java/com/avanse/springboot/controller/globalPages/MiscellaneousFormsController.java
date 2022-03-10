@@ -84,7 +84,7 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 	}
 	
-	@PostMapping("/restructuring-of-loans-step/thankyou")
+	@PostMapping("/restructuring-of-loans-step1/thankyou")
 	public String restructuringOfLoansPost(@ModelAttribute("restructuringOfLoansDTO") RestructuringOfLoansDTO restructuringOfLoansDTO ) {
 		RestructuringOfLoans restructuringOfLoans = new RestructuringOfLoans();
 		restructuringOfLoans.setDateOfBirthOrIncorporation(restructuringOfLoansDTO.getDateOfBirthOrIncorporation());

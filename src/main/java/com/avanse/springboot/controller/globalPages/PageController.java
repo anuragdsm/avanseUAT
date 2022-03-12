@@ -101,19 +101,19 @@ public class PageController {
 	public String jobApplyPage() {
 		return "dynamicPages/career";
 	}
-	@GetMapping("/education-loan/eligibility-calculator")
+	@GetMapping("/education-loan-calculators/eligibility-calculator")
 	public String educationLoanEligibilityCalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-eligibility-calculator";
 	}
-	@GetMapping("/education-loan/emi-calculator")
+	@GetMapping("/education-loan-calculators/emi-calculator")
 	public String educationLoanEMICalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-emi-calculator";
 	}
-	@GetMapping("/education-loan/education-loan-repayment-calculator")
+	@GetMapping("/education-loan-calculators/ repayment-calculator")
 	public String educationLoanRepaymentCalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-repayment-calculator";
 	}
-	@GetMapping("/education-loan/college-expense-calculator")
+	@GetMapping("/education-loan-calculators/college-expense-calculators")
 	public String collegeExpenseCalculatorPage() {
 		return "dynamicPages/calculatorPages/college-expense-calculator";
 	}

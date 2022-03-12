@@ -23912,7 +23912,7 @@ a .h_head:hover {
 }
 .event_price_item:before {
   content: "";
-  background: url("../img/home-event/price_shap.png") no-repeat scroll center bottom;
+  background: url("../img/price_shap.png") no-repeat scroll center bottom;
   position: absolute;
   bottom: -22px;
   left: 0;
@@ -23977,7 +23977,7 @@ a .h_head:hover {
   background: #fdfaf6;
 }
 .event_fact_area .seo_fact_info:before {
-  background: url("../img/home-event/dot.png") no-repeat center center;
+  background: url("../img/dot.png") no-repeat center center;
 }
 .event_fact_area .seo_fact_info .seo_fact_item {
   margin-top: 0;

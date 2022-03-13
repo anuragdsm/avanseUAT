@@ -4,6 +4,7 @@
 */
 
 package com.avanse.springboot.controller.globalPages;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.avanse.springboot.DTO.SearchResultDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ApplyNowGeneralDTO;
 import com.avanse.springboot.DTO.forms.applyNow.ETutoringDTO;
 import com.avanse.springboot.DTO.forms.applyNow.EducationInstitutionLoanDTO;
@@ -39,6 +43,7 @@ import com.avanse.springboot.service.CourseService;
 import com.avanse.springboot.service.PageService;
 import com.avanse.springboot.service.PostCategoryService;
 import com.avanse.springboot.service.PostService;
+import com.avanse.springboot.service.SearchService;
 import com.avanse.springboot.service.TestimonialService;
 import com.avanse.springboot.service.UniversityService;
 
@@ -67,6 +72,15 @@ public class PageController {
 	@Autowired
 	TestimonialService testimonialService;
 	
+	@Autowired
+	SearchService searchService;
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping(value={"/index","/"})
 	public String homePage(Model model) {
@@ -92,6 +106,17 @@ public class PageController {
 		return "dynamicPages/education-loan-for-mba";
 	}
 	
+
+	@GetMapping("/search")
+	public String searchPage() {
+		return "dynamicPages/search";
+	}
+	
+	@PostMapping(value = "/globalSearch/{searchKey}")
+	@ResponseBody
+	public List<SearchResultDTO> globalSearchAPI(@PathVariable String searchKey){
+		return searchService.getGlobalSearchResults(searchKey);
+	}
 
 	@GetMapping("/about-avanse/career")
 	public String careerPage() {

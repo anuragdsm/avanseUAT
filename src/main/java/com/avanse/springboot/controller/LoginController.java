@@ -70,8 +70,7 @@ public class LoginController {
 		String currentPassword=obj.getCurrentPassword();
 		String newPassword=obj.getNewPassword();
 		String confirmNewPassword=obj.getConfirmNewPassword();
-		System.out.println("cp : "+currentPassword+" np : "+newPassword+" conp : "+confirmNewPassword);
-		 User user = userRepository.findAll().get(0);
+		User user = userRepository.findAll().get(0);
 		if(bCryptPasswordEncoder.matches(currentPassword,user.getPassword())) {
 			if(newPassword.equals(confirmNewPassword)) {
 				user.setPassword(bCryptPasswordEncoder.encode(newPassword));

@@ -2,6 +2,7 @@ package com.avanse.springboot.repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,7 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 	
 	@Query(value = "Select P.id,P.customUri FROM Page P")
 	List<String[]> getAllUrisForPages();
+
+	Optional<List<Page>> findByConsolidatedHTMLCodeLike(String string);
 	
 }

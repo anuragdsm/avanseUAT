@@ -68,5 +68,10 @@ public class UniversityService {
 		return universityRepository.count();
 	}
 	
+	public List<University> getSearchResultsFromUniversities(String searchKey){
+		return universityRepository.findByNameLikeOrLocationLikeOrDescriptionLikeOrApplicationProcessLikeOrStaticContentLike
+				("%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%").get();
+	}
+	
 	
 }

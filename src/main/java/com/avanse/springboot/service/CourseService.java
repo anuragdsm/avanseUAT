@@ -72,5 +72,9 @@ public class CourseService {
 		return courseRepository.count();
 	}
 	
+	public List<Course> getSearchResultsForCourses(String searchKey){
+		return courseRepository.findByTitleLikeOrDescriptionLikeOrExamsEligibilityLikeOrStaticContentLikeOrDocumentsRequiredLikeOrAcademicDocumentsRequiredLike
+				("%"+searchKey+"%", "%"+searchKey+"%","%"+searchKey+"%","%"+searchKey+"%","%"+searchKey+"%","%"+searchKey+"%").get();
+	}
 	
 }

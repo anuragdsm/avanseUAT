@@ -28,7 +28,7 @@
 					<!-- <form action="#" method="post"> -->
 						<div class="avanse_form_inner">
 							<input id="searchBox" type="text" class="form-control"
-								placeholder="Search by keyword ">
+								placeholder="Search by keyword" onkeypress="onSearchClick(event)">
 							<button onclick="onSearchClick()" class=""></button>
 						</div>
 					<!-- </form> -->
@@ -43,7 +43,7 @@
 										<th scope="col">Search Results</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="searchResultTableBodyContainer">
 									<tr>
 										<td>
 											<div class="search-list-box">
@@ -148,13 +148,40 @@
 				<script type="text/javascript">
 					document.getElementById('topSearchResultContainer').hidden=true;
 					
-					function onSearchClick() {
-						let value = $('#searchBox').val();
-						console.log(value);
+					function onSearchClick(event) {
+						if(event == null || event.keyCode === 13) {
+							let value = $('#searchBox').val();
+							let http = new XMLHttpRequest();
+							let searchResultDtoList = [];
+							http.open('POST',window.location.origin+'/globalSearch/'+value);
+							http.onloadend = () => {
+								let resDto = JSON.parse(http.responseText);
+								searchResultDtoList = resDto;
+								let tBodEle = document.getElementById('searchResultTableBodyContainer');
+								document.getElementById('topSearchResultContainer').hidden=false;
+								tBodEle.innerHTML = ''
+								if(resDto.length>0) {
+									for(let dto of resDto) {
+										tBodEle.innerHTML = tBodEle.innerHTML + 
+										'<tr><td> <div class="search-list-box"><a href="'+window.location.origin+dto.url.replace(/ /g,'-')+'"> <h5>'+dto.heading+'</h5> <span class="c_dark">'+dto.descriptionContainingKey+'</span></a></div> </td></tr>';
+									}
+								} else {
+									tBodEle.innerHTML='<tr><td> <div class="search-list-box"><h5>No Results Found...</h5><span class="c_dark">Try Seaching Again with another keyword...</span></div> </td></tr>';
+								}
+								
+							}
+							http.send();	
+						} 
 					}
-					$(document).ready( function () {
-					    $('#dataTable').DataTable();
-					} );
+					
+					
+					
+					/* $(document).ready( function () {
+						$('#dataTable').DataTable();
+					} ); */
+					
+					
+					
 				</script>
 				<script type="text/javascript">
 					setTimeout(()=> {

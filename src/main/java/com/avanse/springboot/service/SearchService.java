@@ -131,7 +131,7 @@ public class SearchService {
 		  String genratedSubString = contentText.substring(beginStrip, endStrip);
 		  int begin = genratedSubString.toLowerCase().indexOf(searchKey.toLowerCase());
 		  int end = begin + searchKey.length();
-		  String finalSubString = "..." + genratedSubString.substring(0, begin-1) + "<b style=\"background-color:yellow;\">" + genratedSubString.substring(begin, end) + "</b>" + genratedSubString.substring(end+1, genratedSubString.length()) + "...";
+		  String finalSubString = "..." + genratedSubString.substring(0, begin) + "<b style=\"background-color:yellow;\">" + genratedSubString.substring(begin, end) + "</b>" + genratedSubString.substring(end, genratedSubString.length()) + "...";
 		  return finalSubString;
 	  }
 	 

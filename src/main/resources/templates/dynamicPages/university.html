@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <style type="text/css">
 </style>
-<body id="page-top" >
+<body id="page-top">
 
 
 	<!-- Content Wrapper -->
@@ -31,14 +31,13 @@
 
 						<span class="c_cyan f_size_20">Established in: </span> <span
 							class="c_cyan f_size_20" th:text="${university.establishedYear}">-
-							1988</span><br>
-						<span class="c_cyan f_size_20">Intake in: </span> <span
-							class="c_cyan f_size_20" th:text="${#strings.replace(#strings.replace(university.intakePeriod,',',', '),'Intake',' Intake')}"
-																	id="eligibility">February, June-
-							1988</span>
-							
-							
-							
+							1988</span><br> <span class="c_cyan f_size_20">Intake in: </span> <span
+							class="c_cyan f_size_20"
+							th:text="${#strings.replace(#strings.replace(university.intakePeriod,',',', '),'Intake',' Intake')}"
+							id="eligibility">February, June- 1988</span>
+
+
+
 
 
 						<!-- 	<br><span class="c_cyan f_size_20">Intake Period: </span>
@@ -77,7 +76,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<script>
 		let htmlForCourses = new XMLHttpRequest();
 		htmlForCourses.open('POST', window.location.origin+'/public/api/homePage/getAllCoursesByUniversity');
@@ -89,304 +88,272 @@
 		htmlForCourses.send(window.location.pathname.split('/')[window.location.pathname.split('/').length-1]);
 		
 		</script>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	<section class="job_listing_area sec_pad bg_grey">
-        <div class="container">
-          <div class="job_listing Cus_jobli">
-            <h3 class="f_p f_size_24 l_height28 f_500 t_color3 mb-30" th:text="'Browse By Courses ('+${#lists.size(university.courses)}+'courses available)'">
-              Browse by Courses (4 courses available)
-            </h3>
-            <div id="job_filter" class="job_list_tab">
-              <div data-filter="*" class="list_item_tab active">
-                All courses
-              </div>
-              <div data-filter=".mc" class="list_item_tab">Masters Courses</div>
-              <div data-filter=".bac" class="list_item_tab">
-                Bachelors courses
-              </div>
-              <div data-filter=".cc" class="list_item_tab">
-                Computers courses
-              </div>
-              <div data-filter=".bc" class="list_item_tab">
-                Business courses
-              </div>
-              <div data-filter=".bba" class="list_item_tab">BBA</div>
-              <div data-filter=".ms" class="list_item_tab">MS</div>
-              <div data-filter=".be" class="list_item_tab">BE/Btech</div>
-            </div>
-            <div class="listing_tab" id="tab_filter">
-              <div class="item bc bac bba new">
-                <div class="list_item">
-                  <figure></figure>
-                  <div class="joblisting_text">
-                    <div class="job_list_table">
-                      <div class="jobsearch-table-cell">
-                        <h4>Bachelor of Business Administration (BBA)</h4>
-                        <ul class="list-unstyled">
-                          <li class="p_color">Duration- 4 years</li>
-                          <li>1st Year Tuition Fees- INR 10 lakhs</li>
-                          <li>
-                            <span class="c_yellow"
-                              >Exams Accepted- TOEFL: 90, IELTS: 6.5</span
-                            >
-                          </li>
-                        </ul>
-                      </div>
 
-                      <div class="jobsearch-table-cell">
-                        <div class="jobsearch-job-userlist">
-                          <a class="apply_btn course_detail">View Detail</a>
-                          <div class="coudetail shadow" style="display: none">
-                            <h4>
-                              Some points you should remember while applying for
-                              admission at Acadia University are as listed
-                              below:
-                            </h4>
-                            <table
-                              width="100%"
-                              class="table table-bordered table-strip"
-                            >
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <strong> Eligibility </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    TOEFL: 90, IELTS: 6.5
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Documents Required </strong>
-                                  </td>
-                                  <td>
-                                    Transcripts, essay, passport, LOR, Resume,
-                                    medical insurance
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Application Process </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    online application, INR 2,510 non-refundable
-                                    fee
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Accommodation </strong>
-                                  </td>
-                                  <td id="eligibility">Available</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Intakes </strong>
-                                  </td>
-                                  <td id="eligibility">February, June</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item bc bac b new">
-                <div class="list_item">
-                  <figure></figure>
-                  <div class="joblisting_text">
-                    <div class="job_list_table">
-                      <div class="jobsearch-table-cell">
-                        <h4>Bachelor of Computer Science (BE)</h4>
-                        <ul class="list-unstyled">
-                          <li class="p_color">Duration- 4 years</li>
-                          <li>1st Year Tuition Fees- INR 10 lakhs</li>
-                          <li>
-                            <span class="c_yellow"
-                              >Exams Accepted- TOEFL: 90, IELTS: 6.5</span
-                            >
-                          </li>
-                        </ul>
-                      </div>
 
-                      <div class="jobsearch-table-cell">
-                        <div class="jobsearch-job-userlist">
-                          <a class="apply_btn course_detail">View Detail</a>
-                          <div class="coudetail shadow" style="display: none">
-                            <h4>
-                              Some points you should remember while applying for
-                              admission at Acadia University are as listed
-                              below:
-                            </h4>
-                            <table
-                              width="100%"
-                              class="table table-bordered table-strip"
-                            >
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <strong> Eligibility </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    TOEFL: 90, IELTS: 6.5
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Documents Required </strong>
-                                  </td>
-                                  <td>
-                                    Transcripts, essay, passport, LOR, Resume,
-                                    medical insurance
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Application Process </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    online application, INR 2,510 non-refundable
-                                    fee
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Accommodation </strong>
-                                  </td>
-                                  <td id="eligibility">Available</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Intakes </strong>
-                                  </td>
-                                  <td id="eligibility">February, June</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item mc new">
-                <div class="list_item">
-                  <figure></figure>
-                  <div class="joblisting_text">
-                    <div class="job_list_table">
-                      <div class="jobsearch-table-cell">
-                        <h4>Master of Science in Chemistry (MS)</h4>
-                        <ul class="list-unstyled">
-                          <li class="p_color">Duration- 2 years</li>
-                          <li>1st Year Tuition Fees- INR 7 lakhs</li>
-                          <li>
-                            <span class="c_yellow"
-                              >Exams Accepted- TOEFL: 93, IELTS: 6.5</span
-                            >
-                          </li>
-                        </ul>
-                      </div>
 
-                      <div class="jobsearch-table-cell">
-                        <div class="jobsearch-job-userlist">
-                          <a class="apply_btn course_detail">View Detail</a>
-                          <div class="coudetail shadow" style="display: none">
-                            <h4>
-                              Some points you should remember while applying for
-                              admission at Acadia University are as listed
-                              below:
-                            </h4>
-                            <table
-                              width="100%"
-                              class="table table-bordered table-strip"
-                            >
-                              <tbody>
-                                <tr>
-                                  <td>
-                                    <strong> Eligibility </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    TOEFL: 90, IELTS: 6.5
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Documents Required </strong>
-                                  </td>
-                                  <td>
-                                    Transcripts, essay, passport, LOR, Resume,
-                                    medical insurance
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Application Process </strong>
-                                  </td>
-                                  <td id="eligibility">
-                                    online application, INR 2,510 non-refundable
-                                    fee
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Accommodation </strong>
-                                  </td>
-                                  <td id="eligibility">Available</td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <strong> Intakes </strong>
-                                  </td>
-                                  <td id="eligibility">February, June</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+		<section class="job_listing_area sec_pad bg_grey">
+			<div class="container">
+				<div class="job_listing Cus_jobli">
+					<h3 class="f_p f_size_24 l_height28 f_500 t_color3 mb-30"
+						th:text="'Browse By Courses ('+${#lists.size(university.courses)}+'courses available)'">
+						Browse by Courses (4 courses available)</h3>
+					<div id="job_filter" class="job_list_tab">
+						<div data-filter="*" class="list_item_tab active">All
+							courses</div>
+						<div data-filter=".mc" class="list_item_tab">Masters Courses</div>
+						<div data-filter=".bac" class="list_item_tab">Bachelors
+							courses</div>
+						<div data-filter=".cc" class="list_item_tab">Computers
+							courses</div>
+						<div data-filter=".bc" class="list_item_tab">Business
+							courses</div>
+						<div data-filter=".bba" class="list_item_tab">BBA</div>
+						<div data-filter=".ms" class="list_item_tab">MS</div>
+						<div data-filter=".be" class="list_item_tab">BE/Btech</div>
+					</div>
+					<div class="listing_tab" id="tab_filter">
+						<div class="item bc bac bba new">
+							<div class="list_item">
+								<figure></figure>
+								<div class="joblisting_text">
+									<div class="job_list_table">
+										<div class="jobsearch-table-cell" id=allCourses>
+											<h4>Bachelor of Business Administration (BBA)</h4>
+											<ul class="list-unstyled">
+												<li class="p_color">Duration- 4 years</li>
+												<li>1st Year Tuition Fees- INR 10 lakhs</li>
+												<li><span class="c_yellow">Exams
+														Accepted- TOEFL: 90, IELTS: 6.5</span></li>
+											</ul>
+										</div>
+
+										<div class="jobsearch-table-cell">
+											<div class="jobsearch-job-userlist">
+												<a class="apply_btn course_detail">View Detail</a>
+												<div class="coudetail shadow" style="display: none">
+													<h4>Some points you should remember while applying for
+														admission at Acadia University are as listed below:</h4>
+													<table width="100%"
+														class="table table-bordered table-strip">
+														<tbody>
+															<tr>
+																<td><strong> Eligibility </strong></td>
+																<td id="eligibility">TOEFL: 90, IELTS: 6.5</td>
+															</tr>
+															<tr>
+																<td><strong> Documents Required </strong></td>
+																<td>Transcripts, essay, passport, LOR, Resume,
+																	medical insurance</td>
+															</tr>
+															<tr>
+																<td><strong> Application Process </strong></td>
+																<td id="eligibility">online application, INR 2,510
+																	non-refundable fee</td>
+															</tr>
+															<tr>
+																<td><strong> Accommodation </strong></td>
+																<td id="eligibility">Available</td>
+															</tr>
+															<tr>
+																<td><strong> Intakes </strong></td>
+																<td id="eligibility">February, June</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item bc bac b new">
+							<div class="list_item">
+								<figure></figure>
+								<div class="joblisting_text">
+									<div class="job_list_table">
+										<div class="jobsearch-table-cell">
+											<h4>Bachelor of Computer Science (BE)</h4>
+											<ul class="list-unstyled">
+												<li class="p_color">Duration- 4 years</li>
+												<li>1st Year Tuition Fees- INR 10 lakhs</li>
+												<li><span class="c_yellow">Exams
+														Accepted- TOEFL: 90, IELTS: 6.5</span></li>
+											</ul>
+										</div>
+
+										<div class="jobsearch-table-cell">
+											<div class="jobsearch-job-userlist">
+												<a class="apply_btn course_detail">View Detail</a>
+												<div class="coudetail shadow" style="display: none">
+													<h4>Some points you should remember while applying for
+														admission at Acadia University are as listed below:</h4>
+													<table width="100%"
+														class="table table-bordered table-strip">
+														<tbody>
+															<tr>
+																<td><strong> Eligibility </strong></td>
+																<td id="eligibility">TOEFL: 90, IELTS: 6.5</td>
+															</tr>
+															<tr>
+																<td><strong> Documents Required </strong></td>
+																<td>Transcripts, essay, passport, LOR, Resume,
+																	medical insurance</td>
+															</tr>
+															<tr>
+																<td><strong> Application Process </strong></td>
+																<td id="eligibility">online application, INR 2,510
+																	non-refundable fee</td>
+															</tr>
+															<tr>
+																<td><strong> Accommodation </strong></td>
+																<td id="eligibility">Available</td>
+															</tr>
+															<tr>
+																<td><strong> Intakes </strong></td>
+																<td id="eligibility">February, June</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item mc new">
+							<div class="list_item">
+								<figure></figure>
+								<div class="joblisting_text">
+									<div class="job_list_table">
+										<div class="jobsearch-table-cell">
+											<h4>Master of Science in Chemistry (MS)</h4>
+											<ul class="list-unstyled">
+												<li class="p_color">Duration- 2 years</li>
+												<li>1st Year Tuition Fees- INR 7 lakhs</li>
+												<li><span class="c_yellow">Exams
+														Accepted- TOEFL: 93, IELTS: 6.5</span></li>
+											</ul>
+										</div>
+
+										<div class="jobsearch-table-cell">
+											<div class="jobsearch-job-userlist">
+												<a class="apply_btn course_detail">View Detail</a>
+												<div class="coudetail shadow" style="display: none">
+													<h4>Some points you should remember while applying for
+														admission at Acadia University are as listed below:</h4>
+													<table width="100%"
+														class="table table-bordered table-strip">
+														<tbody>
+															<tr>
+																<td><strong> Eligibility </strong></td>
+																<td id="eligibility">TOEFL: 90, IELTS: 6.5</td>
+															</tr>
+															<tr>
+																<td><strong> Documents Required </strong></td>
+																<td>Transcripts, essay, passport, LOR, Resume,
+																	medical insurance</td>
+															</tr>
+															<tr>
+																<td><strong> Application Process </strong></td>
+																<td id="eligibility">online application, INR 2,510
+																	non-refundable fee</td>
+															</tr>
+															<tr>
+																<td><strong> Accommodation </strong></td>
+																<td id="eligibility">Available</td>
+															</tr>
+															<tr>
+																<td><strong> Intakes </strong></td>
+																<td id="eligibility">February, June</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<script type="text/javascript">
+	
+	
+	let id=window.location.pathname.replace('/UID/','');
+	console.log('My university Id->',id);
+		let http2 = new XMLHttpRequest();
+		http2.open('POST', window.location.origin+'/public/api/homePage/getAllCoursesByUniversity/'+id);
+		http2.onloadend = ()=>{
+			let universityData = JSON.parse(http2.responseText);
+			console.log('MY data',universityData);
+			
+			document.getElementById('job_filter').innerHTML="";
+			document.getElementById('job_filter').innerHTML='<div data-filter="*" class="list_item_tab active"> All courses</div>';	
+			
+			
+			
+			
+			let ctype = [];
+		 	for(let c of universityData.courses){
+         		for(let ct of c.types){
+           			if(!(ctype.indexOf(ct.name)>0)){
+               		ctype.push(ct.name);
+
+             		}
+         		}
+         		
+		 	}
+		 	
+		 	for(let t of ctype){
+				document.getElementById('job_filter').innerHTML=document.getElementById('job_filter').innerHTML+'<div data-filter=".'+t.replace(' ','')+'" class="list_item_tab">'+t+'</div>';			
+		 	}
+		 	
+	
+		}
+		
+		http2.send();
 		
 		
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
+	
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

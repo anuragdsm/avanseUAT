@@ -1,8 +1,6 @@
 package com.avanse.springboot.controller.globalPages;
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +8,13 @@ import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.avanse.springboot.model.Course;
 import com.avanse.springboot.model.University;
 import com.avanse.springboot.repository.CourseRepository;
@@ -74,6 +72,12 @@ public class HomePageController {
 		ResponseEntity<List<Course>> ok = ResponseEntity
 				.ok(courseService.getCoursesByUniversityId(Long.valueOf(universityId)));
 		return ok;
+	}
+	@ResponseBody
+	@PostMapping(value = "/getAllCoursesByUniversity/{id}")
+	public University getUniversityByUniversityId(@PathVariable Long id) {
+		
+		return universityService.getUniversityById(id).get();
 	}
 
 }

@@ -90,19 +90,6 @@
 		</script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<section class="job_listing_area sec_pad bg_grey">
 			<div class="container">
 				<div class="job_listing Cus_jobli">
@@ -327,7 +314,30 @@
 		 	for(let t of ctype){
 				document.getElementById('job_filter').innerHTML=document.getElementById('job_filter').innerHTML+'<div data-filter=".'+t.replace(' ','')+'" class="list_item_tab">'+t+'</div>';			
 		 	}
-		 	
+			
+		 	document.getElementById('tab_filter').innerHTML='';
+		 	for(let c of universityData.courses) {
+		 		let typform=''; for(let x of c.types) typform = typform +' '+x.name.replace(' ','');
+		 		document.getElementById('tab_filter').innerHTML=document.getElementById('tab_filter').innerHTML +
+		 		`<a href="${window.location.origin + '/courseDetail/' + c.id }"><div class="item ${typform} new">
+							<div class="list_item">
+								<figure></figure>
+								<div class="joblisting_text">
+									<div class="job_list_table">
+										<div class="jobsearch-table-cell">
+											<h4>${c.title}</h4>
+											<ul class="list-unstyled">
+												<li class="p_color">Duration- ${c.duration}</li>
+												<li>1st Year Tuition Fees- INR ${c.fees} lakhs</li>
+												<li><span class="c_yellow">Exams
+														Accepted- ${c.examsEligibility}</span></li>
+											</ul>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div></a>`;
+		 	}
 	
 		}
 		

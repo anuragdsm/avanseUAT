@@ -46,7 +46,4 @@ public class TypeDetailsCourseService {
 		return typeDetailsCourseRepository.count();
 	}
 	
-
-	
-
 }

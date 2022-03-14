@@ -621,7 +621,8 @@ public class AdminController {
 	@PostMapping("/admin/courses/add")
 	public String coursesAddPost(@ModelAttribute("courseDTO") CourseDTO courseDTO,
 			@RequestParam("university_id") long university_id, @RequestParam("typeCheckBox") String[] courseTypes,
-			@RequestParam("examCheckBox") String[] exams) {
+			@RequestParam("examCheckBox") String[] exams, @RequestParam("documentsRequired") String[] documentsRequired,
+			@RequestParam("academicDocumentsRequired") String[] academicDocumentsRequired) {
 
 		/*
 		 * Use the model attribute to transfer the data from course DTO to course object
@@ -630,13 +631,17 @@ public class AdminController {
 		String examsFromCheckBoxes = "";
 
 		if (exams != null) {
-			for (String ex : exams) {
-				System.out.println(ex);
-				examsFromCheckBoxes += ex + " ";
-			}
-			examsFromCheckBoxes.trim();
+			for (int i= 0; i<exams.length;i++) {
 
-			examsFromCheckBoxes.replaceAll(". .", " ,");
+				if(i==exams.length-1) {
+				examsFromCheckBoxes += exams[i];
+				}
+				
+				else {
+					examsFromCheckBoxes+=exams[i]+",";
+				}
+			}
+			
 		}
 		courseDTO.setExamsEligibility(examsFromCheckBoxes);
 
@@ -646,8 +651,41 @@ public class AdminController {
 		course.setTitle(courseDTO.getTitle());
 		course.setDescription(courseDTO.getDescription());
 		course.setDuration(courseDTO.getDuration());
+//		course.setDocumentsRequired(courseDTO.getDocumentsRequired());
+
+		String documentsRequiredCheckboxes = "";
+
+		if (documentsRequired != null) {
+			for (int i = 0; i < documentsRequired.length; i++) {
+
+				if (i == documentsRequired.length - 1) {
+					documentsRequiredCheckboxes += documentsRequired[i];
+				} else {
+					documentsRequiredCheckboxes += documentsRequired[i] + ",";
+
+				}
+			}
+		}
+
+		courseDTO.setDocumentsRequired(documentsRequiredCheckboxes);
 		course.setDocumentsRequired(courseDTO.getDocumentsRequired());
+
+		String academicDocumentsRequiredCheckBoxes = "";
+
+		if (academicDocumentsRequired != null) {
+			for (int i = 0; i < academicDocumentsRequired.length; i++) {
+				if (i == academicDocumentsRequired.length - 1) {
+					academicDocumentsRequiredCheckBoxes += academicDocumentsRequired[i];
+
+				} else {
+					academicDocumentsRequiredCheckBoxes += academicDocumentsRequired[i] + ",";
+				}
+			}
+		}
+
+		courseDTO.setAcademicDocumentsRequired(academicDocumentsRequiredCheckBoxes);
 		course.setAcademicDocumentsRequired(courseDTO.getAcademicDocumentsRequired());
+
 		course.setExamsEligibility(courseDTO.getExamsEligibility());
 		course.setFees(courseDTO.getFees());
 		course.setStaticContent(courseDTO.getStaticContent());
@@ -703,6 +741,7 @@ public class AdminController {
 			currentCoursesTypesString.add(cour.getName());
 		}
 		model.addAttribute("currentCourseTypes", currentCoursesTypesString);
+
 		/*
 		 * Pass the university list to the dropdown on courseAdd.html
 		 */
@@ -715,6 +754,9 @@ public class AdminController {
 		/*
 		 * Now use the course service to actually add the object
 		 */
+	
+		
+		
 		return "coursesAdd";
 	}
 
@@ -776,9 +818,9 @@ public class AdminController {
 
 					InetAddress inetAddress = InetAddress.getLocalHost();
 					Image image = new Image(mFile.getName(), mFile.getOriginalFilename(),
-							
-									userAddedImagesJustPath + "/" + mFile.getOriginalFilename(),
-							mFile.getName(), mFile.getSize() / 1024);
+
+							userAddedImagesJustPath + "/" + mFile.getOriginalFilename(), mFile.getName(),
+							mFile.getSize() / 1024);
 					System.out.println(image);
 					imageService.addImage(image);
 				} catch (Exception e) {
@@ -1247,7 +1289,7 @@ public class AdminController {
 		/*
 		 * Write a code to create a page link.
 		 */
-		
+
 		System.out.println(pagesLink);
 
 		/*

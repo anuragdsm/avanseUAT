@@ -112,7 +112,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 								</div>
 
 								<div class="form-group">
-									<label for="documentsRequired">Course Type </label> </br>
+									<label>Course Type </label> </br>
 									<div class="row">
 										<div th:if="${updateCourseCheck=='true'}">
 											<div class="col">
@@ -232,77 +232,438 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 								</div>
 
 
-								<div class="form-group">
-
-									<label for="documentsRequired">Documents Required</label> <select
-										class="form-control" required th:field="*{documentsRequired}"
-										name="documentsRequired" id="documentsRequired"
-										placeholder="Documents Required">
-
-										<option value="">Select Main Documents Required</option>
-										<option value="Passport">Passport</option>
-										<option value="Residence Proof">Residence Proof</option>
-										<option value="Date of Birth Proof">Date of Birth
-											Proof</option>
-										<option value="SOP">SOP</option>
-										<option value="LOR">LOR</option>
-										<option value="Entrance Exam Certificate">Entrance
-											Exam Certificate</option>
-
-									</select>
+								<div th:if="${updateCourseCheck=='true'}">
+									<div class="form-group">
+										<label for="documentsRequired">Documents Required</label>
+										<div class="row">
+											<div class="col">
 
 
-								</div>
-
-								<div class="form-group">
-
-									<label for="academicDocumentsRequired">Academic Documents
-										Multiple Required</label> <select class="form-control"
-										name="academicDocumentsRequired"
-										th:field="*{academicDocumentsRequired}" id="academicDocumentsRequired"
-										placeholder="Academic Documents Required">
-
-										<option value="">Select Academic Documents Multiple
-											Required</option>
-										<option value="Marksheet">Marksheet</option>
-										<option value="Provisional Certificate">Provisional
-											Certificate</option>
-										<option value="Character Certificate">Character
-											Certificate</option>
-										<option value="Migration Certificate">Migration Certificate</option>
-										<option value="Degree">Degree</option>
 
 
-									</select>
-
-								</div>
 
 
-								<div class="container">
-									<label for="examsEligibility">Exam Elibility Multiple
-										Required</label> </br>
-									<div class="row">
-										<div class="col">
+												<span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'Passport')}">
 
-											<input type="checkbox" name="examCheckBox" value="IELTS">
-											<label for="IELTS"> IELTS</label><br> <input
-												type="checkbox" name="examCheckBox" value="TOEFL"> <label
-												for="TOEFL"> TOEFL</label><br> <input type="checkbox"
-												name="examCheckBox" value="GMAT"> <label for="GMAT">
-												GMAT</label><br> <input type="checkbox" name="examCheckBox"
-												value="GRE"> <label for="GRE"> GRE</label><br>
+													<input type="checkbox" name="documentsRequired"
+													value="Passport" checked><label>Passport </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'Passport')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Passport"><label>Passport </label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'Residence Proof')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Residence Proof" checked><label>Residence
+														Proof </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'Residence Proof')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Residence Proof"><label>Residence
+														Proof </label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'Date Of Birth Proof')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Date Of Birth Proof" checked><label>Date
+														Of Birth Proof </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'Date Of Birth Proof')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Date Of Birth Proof"><label>Date Of
+														Birth Proof</label><br>
+												</span>
+
+
+											</div>
+
+
+											<div class="col">
+
+
+
+												<span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'SOP')}">
+
+													<input type="checkbox" name="documentsRequired" value="SOP"
+													checked><label>SOP </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'SOP')}">
+
+													<input type="checkbox" name="documentsRequired" value="SOP"><label>SOP</label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'LOR')}">
+
+													<input type="checkbox" name="documentsRequired" value="LOR"
+													checked><label>LOR </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'LOR')}">
+
+													<input type="checkbox" name="documentsRequired" value="LOR"><label>LOR</label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.documentsRequired,'Entrance Exam Ceritificate')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Entrance Exam Ceritificate" checked><label>Entrance
+														Exam Ceritificate </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.documentsRequired,'Entrance Exam Ceritificate')}">
+
+													<input type="checkbox" name="documentsRequired"
+													value="Entrance Exam Ceritificate"><label>Entrance
+														Exam Ceritificate</label><br>
+												</span>
+
+
+											</div>
+
 										</div>
-										<div class="col">
-											<input type="checkbox" name="examCheckBox" value="SAT">
-											<label for="SAT"> SAT</label><br> <input type="checkbox"
-												name="examCheckBox" value="MCAT"> <label for="MCAT">
-												MCAT</label><br> <input type="checkbox" name="examCheckBox"
-												value="LSAT"> <label for="LSAT"> LSAT</label><br>
+
+
+									</div>
+								</div>
+
+								<div th:if="${updateCourseCheck!='true'}">
+									<div class="form-group">
+										<label for="documentsRequired">Documents Required</label>
+										<div class="row">
+											<div class="col">
+
+												<input type="checkbox" id="passport"
+													name="documentsRequired" value="Passport"><label
+													for="passport">Passport </label><br> <input
+													type="checkbox" name="documentsRequired"
+													value="Residence Proof"> <label>Residence
+													Proof </label><br> <input type="checkbox"
+													name="documentsRequired" value="Date Of Birth Proof">
+												<label>Date Of Birth Proof </label><br>
+											</div>
+
+
+											<div class="col">
+												<input type="checkbox" name="documentsRequired" value="SOP">
+												<label>SOP </label><br> <input type="checkbox"
+													name="documentsRequired" value="LOR"> <label>LOR
+												</label><br> <input type="checkbox" name="documentsRequired"
+													value="Entrance Exam Ceritificate"> <label>Entrance
+													Exam Ceritificate </label><br>
+
+											</div>
 										</div>
 									</div>
-
-
 								</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+								<div th:if="${updateCourseCheck=='true'}">
+									<div class="form-group">
+										<label for="academicDocumentsRequired">Academic
+											Documents Required</label>
+
+										<div class="row">
+											<div class="col">
+
+
+												<span
+													th:if="${#strings.contains(courseDTO.academicDocumentsRequired,'Marksheet')}">
+													<input type="checkbox" id="marksheet"
+													name="academicDocumentsRequired" value="Marksheet" checked>
+													<label for="marksheet">Marksheet </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.academicDocumentsRequired,'Marksheet')}">
+													<input type="checkbox" id="marksheet"
+													name="academicDocumentsRequired" value="Marksheet">
+													<label for="marksheet">Marksheet </label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.academicDocumentsRequired,'Provisional Certificate')}">
+													<input type="checkbox" id="provisionalCertificate"
+													name="academicDocumentsRequired"
+													value="Provisional Certificate" checked> <label
+													for="provisionalCertificate">Provisional
+														Certificate </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.academicDocumentsRequired,'Provisional Certificate')}">
+													<input type="checkbox" id="provisionalCertificate"
+													name="academicDocumentsRequired"
+													value="Provisional Certificate"> <label
+													for="provisionalCertificate">Provisional
+														Certificate </label><br>
+
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.academicDocumentsRequired,'Character Certificate')}">
+													<input type="checkbox" id="characterCertificate"
+													name="academicDocumentsRequired"
+													value="Character Certificate" checked> <label
+													for="characterCertificate">Character Certificate </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.academicDocumentsRequired,'Character Certificate')}">
+													<input type="checkbox" id="characterCertificate"
+													name="academicDocumentsRequired"
+													value="Character Certificate"> <label
+													for="characterCertificate">Character Certificate </label><br>
+												</span>
+
+											</div>
+
+
+											<div class="col">
+
+
+												<span
+													th:if="${#strings.contains(courseDTO.academicDocumentsRequired,'Migration Certificate')}">
+													<input type="checkbox" id="migrationCertificate"
+													name="academicDocumentsRequired"
+													value="Migration Certificate" checked> <label
+													for="migrationCertificate">Migration Certificate </label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.academicDocumentsRequired,'Migration Certificate')}">
+													<input type="checkbox" id="migrationCertificate"
+													name="academicDocumentsRequired"
+													value="Migration Certificate"> <label
+													for="migrationCertificate">Migration Certificate </label><br>
+												</span> <span
+													th:if="${#strings.contains(courseDTO.academicDocumentsRequired,'Degree')}">
+													<input type="checkbox" id="degree"
+													name="academicDocumentsRequired" value="Degree" checked>
+													<label for="degree">Degree</label><br>
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.academicDocumentsRequired,'Degree')}">
+													<input type="checkbox" id="degree"
+													name="academicDocumentsRequired" value="Degree"> <label
+													for="degree">Degree </label><br>
+												</span>
+
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div th:if="${updateCourseCheck!='true'}">
+									<div class="form-group">
+										<label for="academicDocumentsRequired">Academic
+											Documents Required</label>
+
+										<div class="row">
+											<div class="col">
+
+
+
+												<input type="checkbox" id="marksheet"
+													name="academicDocumentsRequired" value="Marksheet">
+												<label for="marksheet">Marksheet </label><br> <input
+													type="checkbox" name="academicDocumentsRequired"
+													value="Provisional Certificate"><label>Provisional
+													Certificate </label><br> <input type="checkbox"
+													name="academicDocumentsRequired"
+													value="Character Certificate"><label>Character
+													Certificate </label><br>
+											</div>
+											<div class="col">
+												<input type="checkbox" name="academicDocumentsRequired"
+													value="Migration Certificate"> <label>Migration
+													Certificate </label><br> <input type="checkbox"
+													name="academicDocumentsRequired" value="Degree"> <label>Degree
+												</label><br>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+								<div th:if="${updateCourseCheck=='true'}">
+									<div class="container">
+										<label for="examsEligibility">Exam Elibility Multiple
+											Required</label> </br>
+										<div class="row">
+											<div class="col">
+												<span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'IELTS')}">
+
+													<input type="checkbox" id="ielts" name="examCheckBox"
+													value="IELTS" checked> <label for="ielts">
+														IELTS</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'IELTS')}">
+
+													<input type="checkbox" id="ielts" name="examCheckBox"
+													value="IELTS"> <label for="ielts"> IELTS</label><br>
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'TOEFL')}">
+
+													<input type="checkbox" id="toefl" name="examCheckBox"
+													value="TOEFL" checked> <label for="toefl">
+														TOEFL</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'TOEFL')}">
+
+													<input type="checkbox" id="toefl" name="examCheckBox"
+													value="TOEFL"> <label for="toefl"> TOEFL</label><br>
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'GMAT')}">
+
+													<input type="checkbox" id="gmat" name="examCheckBox"
+													value="GMAT" checked> <label for="gmat">
+														GMAT</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'GMAT')}">
+
+													<input type="checkbox" id="gmat" name="examCheckBox"
+													value="GMAT"> <label for="gmat"> GMAT</label><br>
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'GRE')}">
+
+													<input type="checkbox" id="gre" name="examCheckBox"
+													value="GRE" checked> <label for="gre"> GRE</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'GRE')}">
+
+													<input type="checkbox" id="gre" name="examCheckBox"
+													value="GRE"> <label for="gre"> GRE</label><br>
+
+												</span>
+
+
+											</div>
+											<div class="col">
+
+												<span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'SAT')}">
+
+													<input type="checkbox" id="sat" name="examCheckBox"
+													value="SAT" checked> <label for="sat"> SAT</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'SAT')}">
+
+													<input type="checkbox" id="sat" name="examCheckBox"
+													value="SAT"> <label for="sat"> SAT</label><br>
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'MCAT')}">
+
+													<input type="checkbox" id="mcat" name="examCheckBox"
+													value="MCAT" checked> <label for="mcat">
+														MCAT</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'MCAT')}">
+
+													<input type="checkbox" id="mcat" name="examCheckBox"
+													value="MCAT"> <label for="mcat"> MCAT</label><br>
+
+												</span> <span
+													th:if="${#strings.contains(courseDTO.examsEligibility,'LSAT')}">
+
+													<input type="checkbox" id="lsat" name="examCheckBox"
+													value="LSAT" checked> <label for="lsat">
+														LSAT</label><br>
+
+												</span> <span
+													th:if="${!#strings.contains(courseDTO.examsEligibility,'LSAT')}">
+
+													<input type="checkbox" id="lsat" name="examCheckBox"
+													value="LSAT"> <label for="lsat"> LSAT</label><br>
+
+												</span>
+
+
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+
+								<div th:if="${updateCourseCheck!='true'}">
+									<div class="container">
+										<label for="examsEligibility">Exam Elibility Multiple
+											Required</label> </br>
+										<div class="row">
+											<div class="col">
+
+												<input type="checkbox" name="examCheckBox" value="IELTS">
+												<label for="IELTS"> IELTS</label><br> <input
+													type="checkbox" name="examCheckBox" value="TOEFL">
+												<label for="TOEFL"> TOEFL</label><br> <input
+													type="checkbox" name="examCheckBox" value="GMAT"> <label
+													for="GMAT"> GMAT</label><br> <input type="checkbox"
+													name="examCheckBox" value="GRE"> <label for="GRE">
+													GRE</label><br>
+											</div>
+											<div class="col">
+												<input type="checkbox" name="examCheckBox" value="SAT">
+												<label for="SAT"> SAT</label><br> <input
+													type="checkbox" name="examCheckBox" value="MCAT"> <label
+													for="MCAT"> MCAT</label><br> <input type="checkbox"
+													name="examCheckBox" value="LSAT"> <label for="LSAT">
+													LSAT</label><br>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+
+
+
+
 
 								<div class="form-group">
 									​

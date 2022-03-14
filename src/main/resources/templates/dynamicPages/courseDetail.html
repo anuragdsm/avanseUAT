@@ -79,8 +79,10 @@
 															</tr>
 															<tr>
 																<td><strong> Intakes </strong></td>
-																<td th:text="${course.university.intakePeriod}"
+																<td th:text="${#strings.replace(#strings.replace(course.university.intakePeriod,',',', '),'Intake',' Intake')}"
 																	id="eligibility">February, June</td>
+ 																<!--<td th:text="${course.university.intakePeriod}"
+																	id="eligibility">February, June</td> -->
 															</tr>
 														</tbody>
 													</table>

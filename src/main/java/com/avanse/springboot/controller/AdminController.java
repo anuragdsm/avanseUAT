@@ -402,23 +402,26 @@ public class AdminController {
 
 			String insummer = "";
 			if (summer != null)
-				insummer = "summerIntake-" + summer;
+				insummer = "SummerIntake-" + summer;
 			String inwinter = "";
 			if (winter != null)
-				inwinter = "winterIntake-" + winter;
+				inwinter = "WinterIntake-" + winter;
 			String infall = "";
 			if (fall != null)
-				infall = "fallIntake-" + fall;
+				infall = "FallIntake-" + fall;
 			String inspring = "";
 			if (spring != null)
-				inspring = "springIntake-" + spring;
+				inspring = "SpringIntake-" + spring;
 			String finalIntakeString = insummer + "," + inwinter + "," + infall + "," + inspring;
+			int i=0;
 			while (finalIntakeString.endsWith(",")) {
-				finalIntakeString = finalIntakeString.substring(0, finalIntakeString.length() - 1);
+				finalIntakeString = finalIntakeString.substring(0, finalIntakeString.length() - 1	);
 			}
+			i=0;
 			while (finalIntakeString.startsWith(",")) {
-				finalIntakeString = finalIntakeString.substring(1, finalIntakeString.length() - 1);
+				finalIntakeString = finalIntakeString.substring(1);
 			}
+			i=0;
 			while (finalIntakeString.matches(".*?,,+.*")) {
 				finalIntakeString = finalIntakeString.replaceAll("[,][,]", ",");
 			}
@@ -1165,8 +1168,10 @@ public class AdminController {
 
 		if (bannerImageFile != null && !bannerImageFile.isEmpty()) {
 			try {
-				System.out.println("Testing------------>" + newBannerImageAddDir + File.separator
-						+ bannerImageFile.getOriginalFilename());
+				/*
+				 * System.out.println("Testing------------>" + newBannerImageAddDir +
+				 * File.separator + bannerImageFile.getOriginalFilename());
+				 */
 //				File myBannerImageFile = new File(newBannerImageAddDir + File.separator + bannerImageFile.getOriginalFilename());
 //				myBannerImageFile.createNewFile();
 //				bannerImageFile.transferTo(myBannerImageFile);
@@ -1610,7 +1615,7 @@ public class AdminController {
 
 		Date date = new Date();
 		String tempDate = new SimpleDateFormat("dd MMMM, yyyy").format(date);
-		System.out.println("TESTING ------------> " + isUpdating);
+//		System.out.println("TESTING ------------> " + isUpdating);
 		post.setId(postDTO.getId());
 		post.setPostTitle(postDTO.getPostTitle().strip());
 		post.setHeading(postDTO.getHeading());

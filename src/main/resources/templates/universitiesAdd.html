@@ -415,7 +415,7 @@
 															
 															function fun(monthStr) {
 																if(monthStr.toLowerCase()=='january'){return 0;}
-														        if(monthStr.toLowerCase()=='feburary'){return 1;}
+														        if(monthStr.toLowerCase()=='february'){return 1;}
 														        if(monthStr.toLowerCase()=='march'){return 2;}
 														        if(monthStr.toLowerCase()=='april'){return 3;}
 														        if(monthStr.toLowerCase()=='may'){return 4;}
@@ -428,10 +428,10 @@
 														        if(monthStr.toLowerCase()=='december'){return 11;}
 														        }
 															for(let intake of alreadySelIntakePerString) {
-																if(intake.startsWith('summerIntake')) {document.getElementById('summerInput').click();document.getElementById('summer').children[fun(intake.split('summerIntake-')[1])].selected=true;}
-																if(intake.startsWith('winterIntake')) {document.getElementById('winterInput').click();document.getElementById('winter').children[fun(intake.split('winterIntake-')[1])].selected=true;}
-																if(intake.startsWith('fallIntake')) {document.getElementById('fallInput').click();document.getElementById('fall').children[fun(intake.split('fallIntake-')[1])].selected=true;}
-																if(intake.startsWith('springIntake')) {document.getElementById('springInput').click();document.getElementById('spring').children[fun(intake.split('springIntake-')[1])].selected=true;}
+																if(intake.startsWith('SummerIntake')) {document.getElementById('summerInput').click();document.getElementById('summer').children[fun(intake.split('SummerIntake-')[1])].selected=true;}
+																if(intake.startsWith('WinterIntake')) {document.getElementById('winterInput').click();document.getElementById('winter').children[fun(intake.split('WinterIntake-')[1])].selected=true;}
+																if(intake.startsWith('FallIntake')) {document.getElementById('fallInput').click();document.getElementById('fall').children[fun(intake.split('FallIntake-')[1])].selected=true;}
+																if(intake.startsWith('SpringIntake')) {document.getElementById('springInput').click();document.getElementById('spring').children[fun(intake.split('SpringIntake-')[1])].selected=true;}
 															}
 											
 											</script>

@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+
+
+
+<section class="top_avanse_banner_area career_bg_top">
+            
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="h_avaneses_content">
+                            <h2 class="wow fadeInLeft" data-wow-delay="0.4s">The Student<span> Guide </span> Begin</h2>
+                            <h4>Best Education Loan for Students Country Wise<h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="h_avanse_img">
+                            <img src="/viewPagesAssets/img/city-banner.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg_grey_light sec_pad ">
+           
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-lg-7 my-auto ml-auto">
+                        <h2 class="f_size_30 f_600 ">Study in Canada - Colleges, Eligibility & Scholarship Country</h2>
+                        <p class="f_400 ">Canada is known to offer high-quality education at affordable tuition fees with degrees that are globally recognized. An excellent quality of life, immense post-study work and immigration opportunities - Canada stands out as a popular country to study among Indian students. One of the most important reasons why students choose to study in Canada is because of the high quality of education. When a student receives a degree from a Canadian university, it acts as a mark of trust and excellence. 26 of Canada's universities rank in the QS World University Rankings 2019 and 27 of them in THE World University Rankings 2019.</p>
+                        <p class="f_400 ">One of the biggest reasons why Canadian education stands unique is its strong focus on research and development. The government of Canada offers great support to research in the disciplines of medicine, telecommunication, agriculture, environmental science, and technology.The tuition fee in Canada, when compared to universities in other countries is fairly cheaper. You can also apply to a range of scholarships to cut down on your educational expenses. Canada provides all its international students with an opportunity to work for up to 20 hours every week during their semesters and full-time during the summer and winter breaks. To work on-campus or as an intern in any company, you would not require any additional work permit as your study permit is enough to help you find a part-time job</p>
+                        <!-- <a href="" class="btn_six text-center slider_btn yello_btn">Read More</a> -->
+                    </div>
+                     
+                    <div class="col-lg-5 my-auto">
+                        <img src="/viewPagesAssets/img/study-in-canada.jpg" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <input th:if="${courseIdCheck == 'courseIdIsPresent'}" id="courseIdCheck" type="text" th:value="${courseIdCheck}" hidden>
+        <input th:if="${universityIdCheck == 'universityIdIsPresent'}" id="universityIdCheck" type="text" th:value="${universityIdCheck}" hidden>
+        <section class="sec_pad">
+            <div class="container">
+                <!-- <form action="#" class="contact_form_box" method="post" id="contactForm"> -->
+                    <div class="row justify-content-center mb_90">
+                    <div class="col-lg-12 mb_50">
+                        <div class="text-center"><h2 class="f_size_40 f_600">Search <span class="c_cyan">University </span>& <span class="c_cyan">Courses</span> Across the World</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="form-group ">
+                            <div class="row">
+                                <div class="col-9">
+                                    <select id="universitySelected" onchange="universitySelectChanged()" class="form-control">
+                                        <option value="">Selecte University</option>
+                                        <option value="">Acadia University</option>
+                                        <option value="">Algoma University</option>
+                                        <option value="">Algonquin College</option>
+                                        <option value="">Brock University</option>
+                                        <option value="">Cape Breton University</option>
+                                    </select>
+                                </div>
+                                <div class="col-3"> <button class="btn btn-submit search-button-home" onclick="universitySearchClick()" type="submit"><i class="ti-search f_size_24"></i></button></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group ">
+                            <div class="row">
+                                <div class="col-9">
+                                    <select id="courseSelected" class="form-control" style="opacity: 40%;" disabled>
+                                        <option value="">Select Course</option>
+                                        <option value="">Applied Psychology</option>
+                                        <option value="">Associate of Science Diploma in Chemistry</option>
+                                        <option value="">Associate of Science in Biology (BSc)</option>
+                                        <option value="">Bachelor of Aerospace Engineering (BE)</option>
+                                    </select>
+                                </div>
+                                <div class="col-3"> <button onclick="courseSearchClick()" class="btn btn-submit search-button-home" type="submit"><i class="ti-search f_size_24"></i></button></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+            <!-- </form> -->
+                <div id="universityDetailSection" class="row mb-5">
+                    <div id="universityTextInfo" class="col-lg-7">
+                        <h4>Study in <span id="universityInfoUniversityName">Acadia University</span> - Colleges, Eligibility & Scholarship</h4>
+                        <p id="universityInfoUniversityDescription">Established in 1838, Acadia University is a highly-ranked liberal arts university in Nova Scotia, Canada. Initially established as Horton Academy in 1828, the university served as an extension of another institution based in Horton. Since then, the institute's name has gone through several changes. These include Queen's College in 1838 and Acadia College in 1841. The college started operating at full capacity in 1839 with 21 students and two faculty members. Today, it has affiliations with the Canadian University Society for Intercollegiate Debate (CUSID) and the International Association of Universities (IAU).It offers about 200 programs in business, education, music, engineering, applied sciences, history, theology, gender studies, theatre, and economics. The university has a separate Division of Research and Graduate Studies that supervises the research programs and graduate students. The University's research environment encourages student and faculty researchers to work closely together to answer important questions. Open Acadia offers distance learning and correspondence courses for working professionals.</p>
+                    </div>
+                    <div id="universityImageDiv" class="col-lg-5 my-auto">
+                        <img id="universityImage" src="/viewPagesAssets/img/acadia_university.jpg" class="img-fluid">
+                    </div>
+                </div>
+                <script type="text/javascript">
+                	let universityDetailSectionContent = document.getElementById('universityDetailSection').innerHTML;
+                	document.getElementById('universityDetailSection').innerHTML="";
+                </script>
+                
+                
+                <div id="courseCardsContainer" class="row mb-5">
+                	
+                    <div id="courseCard" class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Computer Science (BE)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Master of Science in Chemistry (MS)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>2 years</span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Master of Arts in Sociology (MA)</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>2 years</span></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="courses_item  bg-white">
+                            <a href="#" class="text-left"><h5>Bachelor of Computer Science</h5></a>
+                            <hr>
+                            <p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p>
+                            <p class="mb-0"><span>4 years</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <script type="text/javascript">
+		                let request = new XMLHttpRequest();
+		                let mylistOfUniversities;
+		                let url=window.location.origin+"/public/api/homePage/getUniversitesInfos";
+		                console.log(url);
+		                let x = ['Canada'];
+		                console.log(JSON.stringify(x));
+		                request.open('POST',url);
+		                request.setRequestHeader('Content-Type','application/json');
+		                request.onloadend = () => {
+		                    console.log(request.responseText);
+		                    let listOfUniversities = JSON.parse(request.responseText);
+		                    mylistOfUniversities = listOfUniversities;
+		                    let courseCardData = '<div id="courseCard" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="#" class="text-left"><h5>Bachelor of Business Administration (BBA)</h5></a><hr><p class="mb-0"><span class="c_cyan">Acadia University   - Canada</span></p><p class="mb-0"><span>4 years</span></p></div></div>';
+		                    let courseContainer = document.getElementById('courseCardsContainer');
+		                    courseContainer.innerHTML="";
+		                    
+		                    for(let u of listOfUniversities) {
+		                    	for (let course of u.courses) {
+		                    		courseContainer.innerHTML=courseContainer.innerHTML+
+		                    		'<div id="courseCard'+course.id+'" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="#" class="text-left"><h5>'+course.title+'</h5></a><hr><p class="mb-0"><span class="c_cyan">'+u.name+' - '+u.location+'</span></p><p class="mb-0"><span>'+course.duration+'</span></p></div></div>';
+		                    	}
+		                    }
+		                    
+		                    let optionCount=document.getElementById('universitySelected').childElementCount;
+		                    for(let i=1;i<optionCount;i++) {
+		                    	document.getElementById('universitySelected').lastElementChild.remove();
+		                    }
+		                    for(let uni of listOfUniversities) {
+		                    	document.getElementById('universitySelected').innerHTML=document.getElementById('universitySelected').innerHTML+
+		                    	'<option id="UniversityID:'+uni.id+'" value="UniversityID:'+uni.id+'">'+uni.name+'</option>';
+		                    }
+		                    
+		                }
+		                request.send(JSON.stringify(x));
+		                
+		               function universitySelectChanged() {
+		            	  if(document.getElementById('universitySelected').value!="") {
+		            		  document.getElementById('courseSelected').disabled=false;
+		            		  document.getElementById('courseSelected').style.opacity='100%';
+		            		  for(let uni of mylistOfUniversities) {
+		            			  if(document.getElementById('universitySelected').value.split(':')[1]==uni.id) {
+		            				  let opCount = document.getElementById('courseSelected').childElementCount;
+		            				  for(let i=1;i<opCount;i++) {
+		  		                    	document.getElementById('courseSelected').lastElementChild.remove();
+		  		                    	}
+		            				  for(let course of uni.courses) {
+		  		                    	document.getElementById('courseSelected').innerHTML=document.getElementById('courseSelected').innerHTML+
+		  		                    	'<option id="CourseID:'+course.id+'" value="CourseID:'+course.id+'">'+course.title+'</option>';
+		  		                    	}
+		            			  }
+		            		  }
+		            		  
+		            	  } else {
+		            		  document.getElementById('courseSelected').disabled=true;
+		            		  document.getElementById('courseSelected').style.opacity='40%';
+		            	  }
+		               }
+		               
+		               function universitySearchClick() {
+		            	   if(document.getElementById('universitySelected').value!="") {
+		            		   for(let university of mylistOfUniversities) {
+		            			   if(university.id==document.getElementById('universitySelected').value.split(':')[1]) {
+		            				   document.getElementById('universityDetailSection').innerHTML = universityDetailSectionContent;
+		            				   document.getElementById('universityInfoUniversityName').innerHTML=university.name;
+		            				   document.getElementById('universityInfoUniversityDescription').innerHTML=university.description;
+		            				   document.getElementById('universityImage').src=window.location.origin+'/images/universityImages/'+university.imageName;
+		            			   }
+		            		   }
+		            	   }
+		               }
+		               
+		               function courseSearchClick() {
+		            	   if(document.getElementById('courseSelected').value!='') {
+		            		   let value = document.getElementById('courseSelected').value;
+		            		   courseId = value.split("CourseID:")[1];
+		            		   url=window.location.origin+'/courseDetail/'+courseId;
+		            		   window.location.assign(url);
+		            	   }
+		               }
+                
+                </script>
+                
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <ul class="col-lg-12 list-unstyled page-numbers shop_page_number">
+                            <li><span aria-current="page" class="page-numbers current">1</span></li>
+                            <li><a class="page-numbers" href="#">2</a></li>
+                            <li><a class="page-numbers" href="#">3</a></li>
+                            <li><a class="next page-numbers" href="#"><i class="ti-arrow-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+        </section>
+   
+        </div>

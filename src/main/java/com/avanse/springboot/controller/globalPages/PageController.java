@@ -92,7 +92,7 @@ public class PageController {
 	public String studyAbroadPage(Model model) {
 		return "dynamicPages/study-abroad";
 	}
-	@GetMapping(value={"/education-loan/study-india-loan"})
+	@GetMapping(value={"/education-loan/study-in-india"})
 	public String studyInIndiaPage(Model model) {
 		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
 
@@ -122,10 +122,15 @@ public class PageController {
 	public String careerPage() {
 		return "dynamicPages/career";
 	}
-	@GetMapping("/career/apply")
+	@GetMapping("/about-avanse/career/jobsearch")
 	public String jobApplyPage() {
-		return "dynamicPages/career";
+		return "dynamicPages/jobsearch";
 	}
+	@GetMapping("/about-avanse/career/jobdetails")
+	public String jobDetailsPage() {
+		return "dynamicPages/jobdetails";
+	}
+	
 	@GetMapping("/education-loan-calculators/eligibility-calculator")
 	public String educationLoanEligibilityCalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-eligibility-calculator";
@@ -134,7 +139,7 @@ public class PageController {
 	public String educationLoanEMICalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-emi-calculator";
 	}
-	@GetMapping("/education-loan-calculators/ repayment-calculator")
+	@GetMapping("/education-loan-calculators/repayment-calculator")
 	public String educationLoanRepaymentCalculatorPage() {
 		return "dynamicPages/calculatorPages/education-loan-repayment-calculator";
 	}

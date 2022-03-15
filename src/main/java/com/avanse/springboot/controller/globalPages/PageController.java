@@ -76,12 +76,6 @@ public class PageController {
 	SearchService searchService;
 	
 	
-	
-	
-	
-	
-	
-	
 	@GetMapping(value={"/index","/"})
 	public String homePage(Model model) {
 		model.addAttribute("awards", awardService.getAllAwards() );
@@ -95,14 +89,12 @@ public class PageController {
 	@GetMapping(value={"/education-loan/study-in-india"})
 	public String studyInIndiaPage(Model model) {
 		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
-
 		return "dynamicPages/study-in-india";
 	}
 	
 	@GetMapping(value={"/education-loan-for-mba"})
 	public String educationLoanForMbaPage(Model model) {
 		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
-		
 		return "dynamicPages/education-loan-for-mba";
 	}
 	
@@ -110,6 +102,10 @@ public class PageController {
 	@GetMapping("/search")
 	public String searchPage() {
 		return "dynamicPages/search";
+	}
+	@GetMapping("/country")
+	public String countryPage() {
+		return "dynamicPages/country";
 	}
 	
 	@PostMapping(value = "/globalSearch/{searchKey}")

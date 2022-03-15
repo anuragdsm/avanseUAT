@@ -62,15 +62,16 @@
                             <div class="row">
                                 <div class="col-9">
                                     <select id="universitySelected" onchange="universitySelectChanged()" class="form-control">
-                                        <option value="">Selecte University</option>
+                                        <option value="">Selected University</option>
                                         <option value="">Acadia University</option>
                                         <option value="">Algoma University</option>
                                         <option value="">Algonquin College</option>
                                         <option value="">Brock University</option>
                                         <option value="">Cape Breton University</option>
                                     </select>
+                                       <button class="btn btn-submit search-button-home" onclick="universitySearchClick()" type="submit">GO</button>
+                                    
                                 </div>
-                                <div class="col-3"> <button class="btn btn-submit search-button-home" onclick="universitySearchClick()" type="submit"><i class="ti-search f_size_24"></i></button></div>
                             </div>
                         </div>
                         
@@ -86,11 +87,18 @@
                                         <option value="">Associate of Science in Biology (BSc)</option>
                                         <option value="">Bachelor of Aerospace Engineering (BE)</option>
                                     </select>
-                                </div>
-                                <div class="col-3"> <button onclick="courseSearchClick()" class="btn btn-submit search-button-home" type="submit"><i class="ti-search f_size_24"></i></button></div>
-                            </div>
+                                
+                               
+                                <button onclick="courseSearchClick()"
+													class="btn btn-submit search-button-home" type="submit">
+													GO</button>
+                                
+                                
+<!--                                  <button onclick="courseSearchClick()" class="btn btn-submit search-button-home" type="submit"><i class="ti-search f_size_24"></i></button></div>
+ -->                            </div>
                         </div>
                     </div>
+                </div>
                 
                 </div>
             <!-- </form> -->
@@ -195,7 +203,7 @@
 		                let mylistOfUniversities;
 		                let url=window.location.origin+"/public/api/homePage/getUniversitesInfos";
 		                console.log(url);
-		                let x = ['Canada'];
+		                let x = ['New Zealand'];
 		                console.log(JSON.stringify(x));
 		                request.open('POST',url);
 		                request.setRequestHeader('Content-Type','application/json');
@@ -210,7 +218,7 @@
 		                    for(let u of listOfUniversities) {
 		                    	for (let course of u.courses) {
 		                    		courseContainer.innerHTML=courseContainer.innerHTML+
-		                    		'<div id="courseCard'+course.id+'" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="#" class="text-left"><h5>'+course.title+'</h5></a><hr><p class="mb-0"><span class="c_cyan">'+u.name+' - '+u.location+'</span></p><p class="mb-0"><span>'+course.duration+'</span></p></div></div>';
+		                    		'<div id="courseCard'+course.id+'" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="/courseDetail/'+course.id+'" class="text-left"><h5>'+course.title+'</h5></a><hr><p class="mb-0"><span class="c_cyan">'+u.name+' - '+u.location+'</span></p><p class="mb-0"><span>'+course.duration+'</span></p></div></div>';
 		                    	}
 		                    }
 		                    
@@ -273,7 +281,7 @@
                 
                 </script>
                 
-                <div class="row">
+               <!--  <div class="row">
                     <div class="col-md-12 ">
                         <ul class="col-lg-12 list-unstyled page-numbers shop_page_number">
                             <li><span aria-current="page" class="page-numbers current">1</span></li>
@@ -282,7 +290,7 @@
                             <li><a class="next page-numbers" href="#"><i class="ti-arrow-right"></i></a></li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
         </section>
    
         </div>

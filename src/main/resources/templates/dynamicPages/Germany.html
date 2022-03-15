@@ -61,16 +61,18 @@
                         <div class="form-group ">
                             <div class="row">
                                 <div class="col-9">
-                                    <select id="universitySelected" onchange="universitySelectChanged()" class="form-control">
-                                        <option value="">Selecte University</option>
-                                        <option value="">Acadia University</option>
-                                        <option value="">Algoma University</option>
-                                        <option value="">Algonquin College</option>
-                                        <option value="">Brock University</option>
-                                        <option value="">Cape Breton University</option>
-                                    </select>
-                                </div>
-                                <div class="col-3"> <button class="btn btn-submit search-button-home" onclick="universitySearchClick()" type="submit"><i class="ti-search f_size_24"></i></button></div>
+												<select class="form-control" onchange="universitySelectChanged()" id="universitySelected">
+													<option value="">Select University</option>
+													<option value="">Academies Australasia Polytechnic</option>
+													<option value="">Asia Pacific International
+														College</option>
+													<option value="">Australian National University</option>
+												</select>
+												<button onclick="universitySearchClick()"
+													class="btn btn-submit search-button-home" type="submit">
+													GO</button>
+
+											</div>
                             </div>
                         </div>
                         
@@ -79,15 +81,19 @@
                         <div class="form-group ">
                             <div class="row">
                                 <div class="col-9">
-                                    <select id="courseSelected" class="form-control" style="opacity: 40%;" disabled>
-                                        <option value="">Select Course</option>
-                                        <option value="">Applied Psychology</option>
-                                        <option value="">Associate of Science Diploma in Chemistry</option>
-                                        <option value="">Associate of Science in Biology (BSc)</option>
-                                        <option value="">Bachelor of Aerospace Engineering (BE)</option>
-                                    </select>
-                                </div>
-                                <div class="col-3"> <button onclick="courseSearchClick()" class="btn btn-submit search-button-home" type="submit"><i class="ti-search f_size_24"></i></button></div>
+												<select class="form-control" id="courseSelected" style="opacity: 40%;" disabled>
+													<option value="">Select Course</option>
+													<option value="">Advanced Diploma of Business</option>
+													<option value="">B.Eng in Computer Systems
+														Engineering</option>
+													<option value="">Bachelor of Arts (Sociology)</option>
+												</select>
+												<button onclick="courseSearchClick()"
+													class="btn btn-submit search-button-home" type="submit">
+													GO</button>
+
+											</div>
+
                             </div>
                         </div>
                     </div>
@@ -195,7 +201,7 @@
 		                let mylistOfUniversities;
 		                let url=window.location.origin+"/public/api/homePage/getUniversitesInfos";
 		                console.log(url);
-		                let x = ['Canada'];
+		                let x = ['Germany'];
 		                console.log(JSON.stringify(x));
 		                request.open('POST',url);
 		                request.setRequestHeader('Content-Type','application/json');
@@ -210,7 +216,7 @@
 		                    for(let u of listOfUniversities) {
 		                    	for (let course of u.courses) {
 		                    		courseContainer.innerHTML=courseContainer.innerHTML+
-		                    		'<div id="courseCard'+course.id+'" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="#" class="text-left"><h5>'+course.title+'</h5></a><hr><p class="mb-0"><span class="c_cyan">'+u.name+' - '+u.location+'</span></p><p class="mb-0"><span>'+course.duration+'</span></p></div></div>';
+		                    		'<div id="courseCard'+course.id+'" class="col-lg-4 mb-4"><div class="courses_item  bg-white"><a href="/courseDetail/'+course.id+'" class="text-left"><h5>'+course.title+'</h5></a><hr><p class="mb-0"><span class="c_cyan">'+u.name+' - '+u.location+'</span></p><p class="mb-0"><span>'+course.duration+'</span></p></div></div>';
 		                    	}
 		                    }
 		                    
@@ -273,6 +279,7 @@
                 
                 </script>
                 
+                <!-- 
                 <div class="row">
                     <div class="col-md-12 ">
                         <ul class="col-lg-12 list-unstyled page-numbers shop_page_number">
@@ -283,6 +290,9 @@
                         </ul>
                     </div>
                 </div>
+                 -->
+                
+                
         </section>
    
         </div>

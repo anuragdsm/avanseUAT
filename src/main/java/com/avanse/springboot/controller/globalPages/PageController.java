@@ -37,6 +37,7 @@ import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumEILDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.UnsubscribeDTO;
 import com.avanse.springboot.model.Page;
 import com.avanse.springboot.model.Post;
 import com.avanse.springboot.model.PostCategory;
@@ -331,11 +332,13 @@ public class PageController {
 		model.addAttribute("moratoriumEILDTO", new MoratoriumEILDTO());
 		return modelAndView;
 	}
-	
 	@GetMapping("/unsubscribe")
-	public String getUnsubscribePage() {
-		return "dynamicPages/unsubscribe";
+	public ModelAndView getUnsubscribePage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/unsubscribe");
+		model.addAttribute("unsubscribeDTO", new UnsubscribeDTO());
+		return modelAndView;
 	}
+	
 
 	/*
 	 * Page for all forms

@@ -27,12 +27,12 @@
                            
                             <div class="apply-now-form py-5 shadow pr-5 pl-5">
                                 
-                                <form action="#" class="contact_form_box" method="post" id="" novalidate="novalidate">
+                                <form th:action="@{/unsubscribe/thankyou}" th:object="${unsubscribeDTO}" class="contact_form_box" method="post" id="" novalidate="novalidate">
                                     <div class="row slr-s1">
                                         
                                         <div class="col-lg-12">
                                             <div class="form-group text_box">
-                                                <select name="countryCode" class="form-control">
+                                                <select th:field="*{countryCode}" name="countryCode" class="form-control">
                                                     <option  value="" Selected>Select Country Code</option>
                                                     <option data-countryCode="GB" value="44" >UK (+44)</option>
                                                     <option data-countryCode="US" value="1">USA (+1)</option>
@@ -256,12 +256,12 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group text_box">
-                                                <input type="number" class="form-control"  name="number"  placeholder="Contact Number" required>
+                                                <input type="number" class="form-control"  name="number" th:field="*{contactNumber}" placeholder="Contact Number" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group text_box">
-                                                <input type="text" id="accountnumber" name="accountnumber" class="form-tooltip" placeholder="Loan Account Number"  data-toggle="tooltip"  data-original-title="Sample PAN Number ABCDEXXXXXXXX or ABC/XXXXXX" onkeyup="this.value = this.value.toUpperCase();">
+                                                <input type="text" id="accountnumber" name="accountnumber" th:field="*{loanAccountNumber}" class="form-tooltip" placeholder="Loan Account Number"  data-toggle="tooltip"  data-original-title="Sample PAN Number ABCDEXXXXXXXX or ABC/XXXXXX" onkeyup="this.value = this.value.toUpperCase();">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -270,7 +270,7 @@
                                         </div>
 
 
-                                        <div class="col-lg-12 text-center pt-5"><a  class="btn_three f_size_22   slrs1-click">Submit</a></div>
+                                        <div class="col-lg-12 text-center pt-5"><button  class="btn_three f_size_22   slrs1-click">Submit</button></div>
                                     </div>
                                    
                                 </form>

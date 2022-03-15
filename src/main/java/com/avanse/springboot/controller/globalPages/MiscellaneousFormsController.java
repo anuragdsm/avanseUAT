@@ -15,6 +15,7 @@ import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumEILDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.UnsubscribeDTO;
 import com.avanse.springboot.model.forms.miscellaneous.AssociateWithUs;
 import com.avanse.springboot.model.forms.miscellaneous.CSRLeads;
 import com.avanse.springboot.model.forms.miscellaneous.CrossSell;
@@ -23,6 +24,7 @@ import com.avanse.springboot.model.forms.miscellaneous.MoratoriumDeregister;
 import com.avanse.springboot.model.forms.miscellaneous.MoratoriumEilLead;
 import com.avanse.springboot.model.forms.miscellaneous.MoratoriumFacility;
 import com.avanse.springboot.model.forms.miscellaneous.RestructuringOfLoans;
+import com.avanse.springboot.model.forms.miscellaneous.Unsubscribe;
 import com.avanse.springboot.service.forms.miscellaneous.AssociateWithUsService;
 import com.avanse.springboot.service.forms.miscellaneous.CSRLeadsService;
 import com.avanse.springboot.service.forms.miscellaneous.CrossSellService;
@@ -31,6 +33,7 @@ import com.avanse.springboot.service.forms.miscellaneous.MoratoriumDeregisterSer
 import com.avanse.springboot.service.forms.miscellaneous.MoratoriumEilService;
 import com.avanse.springboot.service.forms.miscellaneous.MoratoriumFacilityService;
 import com.avanse.springboot.service.forms.miscellaneous.RestructuringOfLoansService;
+import com.avanse.springboot.service.forms.miscellaneous.UnsubscribeService;
 
 @Controller
 public class MiscellaneousFormsController {
@@ -59,6 +62,9 @@ public class MiscellaneousFormsController {
 	
 	@Autowired
 	CrossSellService crossSellService;
+	
+	@Autowired
+	UnsubscribeService unsubscribeService;
 	
 	@PostMapping("/associate-with-us/thankyou")
 	public String associateWithUsPost(@ModelAttribute("associateWithUsDTO") AssociateWithUsDTO associateWithUsDTO ) {
@@ -176,6 +182,24 @@ public class MiscellaneousFormsController {
 		return "dynamicPages/thankyou";
 		
 	}
+	
+	
+	@PostMapping("/unsubscribe/thankyou")
+	public String unsubscribeListAddPost(@ModelAttribute("unsubscribeDTO") UnsubscribeDTO unsubscribeDTO) {
+		
+		Unsubscribe unsubscribe = new Unsubscribe();
+		
+		unsubscribe.setContactNumber(unsubscribeDTO.getContactNumber());
+		unsubscribe.setCountryCode(unsubscribeDTO.getCountryCode());
+		unsubscribe.setLoanAccountNumber(unsubscribeDTO.getLoanAccountNumber());
+		
+		unsubscribeService.addToUnsubscribeList(unsubscribe);
+		return "dynamicPages/thankyou";
+
+	}
+	
+	
+	
 	
 	@GetMapping("/admin/miscellaneous-forms/associate-with-us")
 	public String associateWithUsAdminGet(Model model) {

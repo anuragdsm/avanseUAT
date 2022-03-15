@@ -331,9 +331,12 @@ public class PageController {
 		model.addAttribute("moratoriumEILDTO", new MoratoriumEILDTO());
 		return modelAndView;
 	}
+	
+	@GetMapping("/unsubscribe")
+	public String getUnsubscribePage() {
+		return "dynamicPages/unsubscribe";
+	}
 
-	
-	
 	/*
 	 * Page for all forms
 	*/

@@ -10002,7 +10002,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   padding:23px;
   position: relative;
   overflow: hidden;
-  min-height:315px;
+  min-height:400px;
 }
 .feedback_item .feed_back_author {
   display: -webkit-box;
@@ -10034,8 +10034,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 .feedback_item p {
   font-weight: 300;
-  margin-top: 34px;
-  margin-bottom: 25px;
+  /* margin-top: 34px;
+  margin-bottom: 25px; */
 }
 .feedback_item .post_date {
   font-size: 14px;
@@ -10071,7 +10071,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   color: #17c7bd;
 }
 .testimonials-box{    max-height: 370px;overflow: hidden;}
-.testim_info{    height: 240px;}
+.testim_info{    height: 240px;overflow: hidden; margin-top: 10px;}
 .testimonials-box:hover .testim_info{overflow: hidden;overflow-y: auto;}
 .testimonials-box ::-webkit-scrollbar {width: 5px;}
 .testimonials-boxr ::-webkit-scrollbar-track {background:#fff;}
@@ -10956,14 +10956,14 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .video_icon {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  background-color: white;
+  background-color: #ffffffde;
   -webkit-box-shadow: 0px 20px 40px 0px rgba(1, 16, 58, 0.14);
           box-shadow: 0px 20px 40px 0px rgba(1, 16, 58, 0.14);
   text-align: center;
-  line-height: 85px;
+  line-height: 75px;
   font-size: 30px;
   position: relative;
   -webkit-transition: all 0.3s linear;
@@ -10997,8 +10997,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
   position: relative;
 }
 .video_icon i:after {
-  width: 300%;
-  height: 300%;
+  width: 200%;
+  height: 200%;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -14516,8 +14516,8 @@ p span {
           transform: scale(1.5);
 }
 .blog_list_item_two .video_icon i {
-  color: #794afd;
-  text-shadow: 0px 6px 25px rgba(121, 74, 253, 0.9);
+  color: #17c7bd;
+    text-shadow: 0px 6px 25px rgb(16 147 140 / 90%);
 }
 .blog_list_item_two .blog_content {
   -webkit-box-shadow: none;
@@ -20553,7 +20553,7 @@ a .h_head:hover {
 
 .top_avanse_banner_area {
   height: 70vh;
-  min-height: 650px;
+  min-height: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23912,7 +23912,7 @@ a .h_head:hover {
 }
 .event_price_item:before {
   content: "";
-  background: url("../img/price_shap.png") no-repeat scroll center bottom;
+  background: url("../img/home-event/price_shap.png") no-repeat scroll center bottom;
   position: absolute;
   bottom: -22px;
   left: 0;
@@ -23977,7 +23977,7 @@ a .h_head:hover {
   background: #fdfaf6;
 }
 .event_fact_area .seo_fact_info:before {
-  background: url("../img/dot.png") no-repeat center center;
+  background: url("../img/home-event/dot.png") no-repeat center center;
 }
 .event_fact_area .seo_fact_info .seo_fact_item {
   margin-top: 0;
@@ -27002,7 +27002,7 @@ a .h_head:hover {
   -webkit-box-shadow: 0px -1px 0px 0px rgba(231, 236, 246, 0.004);
           box-shadow: 0px -1px 0px 0px rgba(231, 236, 246, 0.004);
 }
-.fcta_bg{background:#c1e4e4;padding: 35px 0px 10px 0px;}
+.fcta_bg{background:#c1e4e4;padding: 35px 0px 35px 0px;}
 .footer_top {
   border-bottom: 1px solid #e0e3ef;
   padding: 115px 0px 100px;
@@ -28259,8 +28259,8 @@ padding: 44px 0;
   border-color:transparent;
 }
 .yello_btn:hover {
-  background: #000;
-  color: #fdc119;
+  background: #fdc119;
+  color: #fff;
 }
 .dark_btn {
   background: #000;
@@ -28346,6 +28346,8 @@ input[type=date]{color: #414042; height:50px; background-color: white; -webkit-b
     padding: 40px 49px;
     text-align: center;
   }
+  .table-responsive{display: inline-table;}
+  .board_directors_info{max-height: 310px; overflow: hidden; overflow-y: scroll;}
 @media (min-width:1200px) {
   .bg_grey_light {
     background: #f8faf9 url(../img/gray-light-bg.jpg) no-repeat;
@@ -28362,7 +28364,7 @@ input[type=date]{color: #414042; height:50px; background-color: white; -webkit-b
   .contact_form_home{max-width: 100%;}
   .header_area_two + section, .header_area_three + section { margin-top: 20px; }
   .home_avanse_banner_area .h_avanse_img img, .top_avanse_banner_area .h_avanse_img img{margin-bottom:-25%; width: 100%;margin-left: 0;}
-  .h_avaneses_content h2{font-size: 36px;line-height: initial;}
+  .h_avaneses_content h2{font-size: 32px;line-height: initial;margin-bottom: 15px;}
   .emp_sp{
     background:transparent;
     background-position: center center;
@@ -28379,18 +28381,24 @@ input[type=date]{color: #414042; height:50px; background-color: white; -webkit-b
     transform: inherit;
     padding-top: 70px;
   }
-.software_service_tab{
+  .software_service_tab{
   overflow: hidden;
     overflow-x: scroll;
     height: 60px;
     margin-bottom: 30px;
     white-space: nowrap;
+   }
+  .award_section{background-position: center center;max-width: 100%;}
+  .award_section .award_info {
+    padding: 40px 100px;
+    text-align: center;
   }
+  .table-responsive{display: block;}
 
 }
 .circel-bg{background: url(../img/circel-bg.png) no-repeat; position: absolute; left: -75px; margin-top: 25%; width: 200px; height: 200px;}
 .circel-yellow-bg{background: url(../img/circel-yellow-bg.png) no-repeat; position: absolute; right: 0; margin-top: 20%; width: 50px; height: 112px;}
-.dot-bg{background:url(../img/dot-bg.png) no-repeat; position: absolute; right: -130px; margin-top: 15%; width: 200px; height: 200px;left: unset;}
+/* .dot-bg{background:url(../img/dot-bg.png) no-repeat; position: absolute; right: -130px; margin-top: 15%; width: 200px; height: 200px;left: unset;} */
 .lines-bg{background:url(../img/lines-bg.png) no-repeat; position: absolute; left:0px; margin-top: 25%; width: 300px; height: 50px;}
 
 .career_bg_top{
@@ -28505,5 +28513,5 @@ input[type=date]{color: #414042; height:50px; background-color: white; -webkit-b
 .schedule-item { padding: 10px;    height: 155px;}
 .schedule-item:hover { background: #e4a818;}
 .schedule-item img{ max-width: 70px;width: 100%;}
-.table-responsive{display: inline-table;}
+
 .invster-asset-liability{max-height: 700px; overflow: hidden; overflow-y: scroll;}

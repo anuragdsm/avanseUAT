@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_LivePagelayout">
+<head>
+<meta charset="utf-8">
+<body id="page-top">
+
+	<!-- Content Wrapper -->
+	<div layout:fragment="contentPlus">
+		<section class=" pt-3 pb-3" style="background: #02afb3">
+            <div class="container">
+                <div class="breadcrumb_content text-center">
+                    <h1 class="f_p f_500 f_size_40 w_color l_height50 mb_20">Please fill out the following details </h1>
+                </div>
+            </div>
+        </section>
+        <section class="sec_pad bg_grey_light">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-6 ">
+                           
+                            <div class="shadow  pl-4 pr-4 py-5">
+                                
+                                <form th:action="@{/moratorium-EIL/thankyou}" th:object="${moratoriumEILDTO}" class="contact_form_box" method="post" id="" novalidate="novalidate">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p>Type of Institution</p>
+                                            <label class="pr_20"><input type="radio" id="applied1" name="typeOfInstitution" checked value="Trust" required=""> Trust</label> 
+                                                
+                                                <label class="pr_20"><input type="radio" id="applied2"  name="typeOfInstitution" value= "Society" required="">
+                                                    Society </label>
+                                                <p><label for="typeInstitution" class="error" style="display:none;">This field is required.</label></p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{institutionName}" placeholder="Institution Name"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{loanAmount}" placeholder="Loan Amount"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{monthlyInstallment}" placeholder="Monthly Instalment"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <p>Was Moratorium availed in April/May?</p>
+                                            <label class="pr_20"><input type="radio" name="wasMoratoriumAvailedInAprilOrMay" id="appliedMoratorium1" value="Yes"  required=""> Yes</label> 
+                                                
+                                                <label class="pr_20"><input type="radio"  name="wasMoratoriumAvailedInAprilOrMay" id="appliedMoratorium1" value="No" required="">
+                                                    No </label>
+                                                <p><label for="moratoriumAvailed" class="error" style="display:none;">This field is required.</label></p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <p>In which zone does the school fall?</p>
+                                            <label class="pr_20"><input type="radio" name="schoolZone" value="Green Zone"  required=""> Green Zone</label> 
+                                                
+                                                <label class="pr_20"><input type="radio"  name="schoolZone" value="Orange Zone" required=""> Orange Zone</label>
+                                                <label class="pr_20"><input type="radio"  name="schoolZone" value="Red Zone" required=""> Red Zone</label>
+                                                <p><label for="schoolZone" class="error" style="display:none;">This field is required.</label></p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{schoolOpeningDate}" placeholder="When is the school expected to open as per Govt Notifications/circulars?"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <p>Did you start online/ digital classes?</p>
+                                            <label class="pr_20"><input type="radio" name="onlineDigitalClasses" value="Yes" required=""> Yes</label> 
+                                                
+                                                <label class="pr_20"><input type="radio"  name="onlineDigitalClasses" value="No" required="">
+                                                    No </label>
+                                                <p><label for="digitalclasses" class="error" style="display:none;">This field is required.</label></p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{feesReceievedTillDate}"  placeholder="Fees received till date for Current Year (INR)"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group text_box">
+                                                <input type="text"  name="" th:field="*{feesDue}" placeholder="Fees due but not received for previous year (FY19-20) (INR)"  required>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <p>Reason for registering for the moratorium facility</p>
+                                                <label class="pr_20"><input type="radio"  name="reasonForRegisteringMoratoriumFacility" required=""> Cash flow issue</label>
+                                                <label class="pr_20"><input type="radio"  name="reasonForRegisteringMoratoriumFacility" required=""> Fee not received</label>
+                                                <label class="pr_20"><input type="radio" name="reasonForRegisteringMoratoriumFacility"  required=""> Drop in number of students</label> 
+                                                <p><label for="registering" class="error" style="display:none;">This field is required.</label></p>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <a href="/pdf/moratorium-tc.pdf" target="_blank"><i class="fa fa-file-pdf  f_size_16"></i> Terms & Conditions</a>
+                                        </div>
+                                        <div class="col-lg-12 text-center pt-5"><button type="submit" class="btn_three f_size_22">Submit</button></div>
+                                    </div>
+                                   
+                                </form>
+                                 
+                            </div>
+                            
+                            
+                    </div>
+                    
+                  
+                </div>
+            </div>
+        </section>

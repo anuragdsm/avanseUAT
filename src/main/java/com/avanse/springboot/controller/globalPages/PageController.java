@@ -31,8 +31,10 @@ import com.avanse.springboot.DTO.forms.contactUs.InvestorDTO;
 import com.avanse.springboot.DTO.forms.contactUs.MediaDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.CrossSellDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumEILDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.Page;
@@ -316,6 +318,21 @@ public class PageController {
 		model.addAttribute("moratoriumDeregisterDTO", new MoratoriumDeregisterDTO());
 		return modelAndView;
 	}
+	
+	@GetMapping("/cross-sell")
+	public ModelAndView crossSellPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/cross-sell");
+		model.addAttribute("crossSellDTO", new CrossSellDTO());
+		return modelAndView;
+	}
+	@GetMapping("/moratorium-eil")
+	public ModelAndView moratoriumEILPage(Model model) {
+		ModelAndView modelAndView = new ModelAndView("dynamicPages/moratorium-eil");
+		model.addAttribute("moratoriumEILDTO", new MoratoriumEILDTO());
+		return modelAndView;
+	}
+
+	
 	
 	/*
 	 * Page for all forms

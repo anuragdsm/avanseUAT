@@ -9,20 +9,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.avanse.springboot.DTO.forms.miscellaneous.AssociateWithUsDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.CSRLeadsDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.CrossSellDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.ENachDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumDeregisterDTO;
+import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumEILDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.MoratoriumFacilityDTO;
 import com.avanse.springboot.DTO.forms.miscellaneous.RestructuringOfLoansDTO;
 import com.avanse.springboot.model.forms.miscellaneous.AssociateWithUs;
 import com.avanse.springboot.model.forms.miscellaneous.CSRLeads;
+import com.avanse.springboot.model.forms.miscellaneous.CrossSell;
 import com.avanse.springboot.model.forms.miscellaneous.ENach;
 import com.avanse.springboot.model.forms.miscellaneous.MoratoriumDeregister;
+import com.avanse.springboot.model.forms.miscellaneous.MoratoriumEilLead;
 import com.avanse.springboot.model.forms.miscellaneous.MoratoriumFacility;
 import com.avanse.springboot.model.forms.miscellaneous.RestructuringOfLoans;
 import com.avanse.springboot.service.forms.miscellaneous.AssociateWithUsService;
 import com.avanse.springboot.service.forms.miscellaneous.CSRLeadsService;
+import com.avanse.springboot.service.forms.miscellaneous.CrossSellService;
 import com.avanse.springboot.service.forms.miscellaneous.ENachService;
 import com.avanse.springboot.service.forms.miscellaneous.MoratoriumDeregisterService;
+import com.avanse.springboot.service.forms.miscellaneous.MoratoriumEilService;
 import com.avanse.springboot.service.forms.miscellaneous.MoratoriumFacilityService;
 import com.avanse.springboot.service.forms.miscellaneous.RestructuringOfLoansService;
 
@@ -46,6 +52,13 @@ public class MiscellaneousFormsController {
 	
 	@Autowired
 	MoratoriumDeregisterService moratoriumDeregisterService;
+	
+	@Autowired
+	MoratoriumEilService moratoriumEilService;
+	
+	
+	@Autowired
+	CrossSellService crossSellService;
 	
 	@PostMapping("/associate-with-us/thankyou")
 	public String associateWithUsPost(@ModelAttribute("associateWithUsDTO") AssociateWithUsDTO associateWithUsDTO ) {
@@ -118,6 +131,50 @@ public class MiscellaneousFormsController {
 		moratoriumDeregister.setName(moratoriumDeregisterDTO.getName());
 		moratoriumDeregisterService.addMoratariumDeregister(moratoriumDeregister);
 		return "dynamicPages/thankyou";
+	}
+
+	@PostMapping("/cross-sell/thankyou")
+	public String crossSellAddPost(@ModelAttribute("crossSellDTO") CrossSellDTO crossSellDTO) {
+
+		CrossSell crossSell = new CrossSell();
+		crossSell.setAdmissionOrStudentID(crossSellDTO.getAdmissionOrStudentID());
+		crossSell.setAnnualSchoolFees(crossSellDTO.getAnnualSchoolFees());
+		crossSell.setMobileNumber(crossSellDTO.getMobileNumber());
+		crossSell.setChildName(crossSellDTO.getChildName());
+		crossSell.setCity(crossSellDTO.getCity());
+		crossSell.setClassOfStudent(crossSellDTO.getClassOfStudent());
+		crossSell.setConsent(crossSellDTO.getConsent());
+		crossSell.setCustomerEmail(crossSellDTO.getCustomerEmail());
+		crossSell.setCustomerName(crossSellDTO.getCustomerName());
+		crossSell.setLoanAmount(crossSellDTO.getLoanAmount());
+		crossSell.setRollNo(crossSellDTO.getRollNo());
+		crossSell.setSchoolOrInstituteName(crossSellDTO.getSchoolOrInstituteName());		
+		crossSellService.addCrossSellLead(crossSell);
+		return "dynamicPages/thankyou";
+		
+	}
+	@PostMapping("/moratorium-EIL/thankyou")
+	public String moratoriumEILAddPost(@ModelAttribute("moratoriumEILDTO") MoratoriumEILDTO moratoriumEILDTO) {
+		
+		MoratoriumEilLead moratoriumEilLead = new MoratoriumEilLead();
+		moratoriumEilLead.setFeesDue(moratoriumEILDTO.getFeesDue());
+		moratoriumEilLead.setFeesReceievedTillDate(moratoriumEILDTO.getFeesReceievedTillDate());
+		moratoriumEilLead.setInstitutionName(moratoriumEILDTO.getInstitutionName());
+		moratoriumEilLead.setLoanAmount(moratoriumEILDTO.getLoanAmount());
+		moratoriumEilLead.setMonthlyInstallment(moratoriumEILDTO.getMonthlyInstallment());
+		moratoriumEilLead.setOnlineDigitalClasses(moratoriumEILDTO.getOnlineDigitalClasses());
+		moratoriumEilLead.setReasonForRegisteringMoratoriumFacility(moratoriumEILDTO.getReasonForRegisteringMoratoriumFacility());
+		moratoriumEilLead.setSchoolOpeningDate(moratoriumEILDTO.getSchoolOpeningDate());
+		moratoriumEilLead.setSchoolZone(moratoriumEILDTO.getSchoolZone());
+		moratoriumEilLead.setTypeOfInstitution(moratoriumEILDTO.getTypeOfInstitution());
+		moratoriumEilLead.setWasMoratoriumAvailedInAprilOrMay(moratoriumEILDTO.getWasMoratoriumAvailedInAprilOrMay());
+		
+		
+		moratoriumEilService.addMoratoriumEILLead(moratoriumEilLead);
+		
+		
+		return "dynamicPages/thankyou";
+		
 	}
 	
 	@GetMapping("/admin/miscellaneous-forms/associate-with-us")

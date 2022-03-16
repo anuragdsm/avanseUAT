@@ -484,6 +484,12 @@ public class AdminController {
 		 * database, otherwise we will never be able to access its name in future
 		 * 
 		 */
+		List<Course> coursesByUniversityId = courseService.getCoursesByUniversityId(id);
+		if(coursesByUniversityId != null && !coursesByUniversityId.isEmpty()) {
+			for(Course course : coursesByUniversityId) {
+				courseService.deleteCourse(course.getId());
+			}
+		}
 
 		if (universityRepository.findById(id).isPresent()) {
 			deleteImageFromStaticFolder(id);
@@ -492,7 +498,6 @@ public class AdminController {
 
 		else {
 			System.out.println("Cannot Delete the object, Later to be displayed over the page");
-
 		}
 
 		return "redirect:/admin/universities";
@@ -713,7 +718,27 @@ public class AdminController {
 	 */
 	@GetMapping("/admin/course/delete/{id}")
 	public String deleteCourse(@PathVariable long id) {
-		courseService.deleteCourse(id);
+		
+		if(universityService.getUniversityContainingCourseId(id).isPresent()) {
+			University university = universityService.getUniversityContainingCourseId(id).get();
+			List<Course> courses = university.getCourses();
+			int index = -1;
+			for(int i=0;i<courses.size();i++) {
+				if(courses.get(i).getId() == id) {
+					System.out.println("TESTING .................Index Found - " + i);
+					index = i;
+				}
+			}
+			if(index != -1) {
+				courses.remove(index);
+				System.out.println("TESTING .................saving university " + university);
+				System.out.println("Courses..............."+university.getCourses());
+				universityService.addUniversity(university);
+				courseService.deleteCourse(id);
+			}
+			
+		}
+		
 		return "redirect:/admin/courses";
 	}
 

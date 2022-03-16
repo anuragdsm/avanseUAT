@@ -68,7 +68,7 @@ public class University implements Serializable {
 	private Date dateOfCreation;
 	
 	@ToString.Exclude
-	@OneToMany(mappedBy = "university",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "university", fetch = FetchType.LAZY)
 	private List<Course> courses;
 	
 	

@@ -204,12 +204,18 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 
 								<div th:if="${updateCourseCheck=='true'}">
 									<div class="form-group">
-										<label for="university">University:</label> <select
+										<label for="university">University:</label> 
+										<select
 											class="form-control" name="university_id">
 											<option value="">--</option>
-											<option th:each="university : ${universities}"
-												th:value="${university.id}" th:utext="${university.name}"
-												th:selected="${#lists.contains(universities,courseDTO.university)}" />
+											<th:block th:each="university : ${universities}">
+												<th:block th:if="${ (university.name == courseDTO.university.name) }">
+														<option th:value="${university.id}" th:utext="${university.name}" selected></option>
+												</th:block>
+												<th:block th:if="${!(university.name == courseDTO.university.name)}">
+														<option th:value="${university.id}" th:utext="${university.name}"></option>
+												</th:block>
+											</th:block>
 										</select>
 									</div>
 								</div>

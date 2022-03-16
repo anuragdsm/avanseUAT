@@ -13,4 +13,6 @@ public interface UniversityRepository extends JpaRepository<University, Long> {
 
 	Optional<List<University>> findByNameLikeOrLocationLikeOrDescriptionLikeOrApplicationProcessLikeOrStaticContentLike(String s1, String s2, String s3, String s4, String s5);
 	
+	Optional<University> findByCourses_Id(Long courseId);
+	
 }

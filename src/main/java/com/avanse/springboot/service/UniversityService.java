@@ -73,5 +73,9 @@ public class UniversityService {
 				("%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%").get();
 	}
 	
+	public Optional<University> getUniversityContainingCourseId(Long courseId) {
+		return universityRepository.findByCourses_Id(courseId);
+	}
+	
 	
 }

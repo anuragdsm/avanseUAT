@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<meta charset="utf-8">
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div layout:fragment="content">
+
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div
+				class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-0 text-gray-800">Cross Sell </h1>
+				<h6 class="m-0 font-weight-bold text-primary">
+					<a href="javascript:history.back()"
+						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+						class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+					</span> <span class="text">Back</span>
+					</a>
+				</h6>
+			</div>
+
+			<!-- Content Row -->
+			<div class="row">
+				<div class="container-fluid">
+
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">SN</th>
+										<th scope="col">Customer Name</th>
+										<th scope="col">Customer Email</th>
+										<th scope="col">Mobile Number</th>
+										<th scope="col">City</th>
+										<th scope="col">Child Name</th>
+										<th scope="col">School/Institute</th>
+										<th scope="col">Student Class</th>
+										<th scope="col">Roll No.</th>
+										<th scope="col">Admission/Student ID</th>
+										<th scope="col">Annual Fees.</th>
+										<th scope="col">Loan Amount</th>
+										<th scope="col">Consent</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="crossSell, iStat : ${crossSellDetails}">
+										<th scope="row" th:text="${iStat.index+1}">1</th>
+										<td th:text="${crossSell.customerName}">John</td>
+										<td th:text="${crossSell.customerEmail}">simple@dimple.com</td>
+										<td th:text="${crossSell.mobileNumber}">98798798</td>
+										<td th:text="${crossSell.city}">Delhi</td>
+										<td th:text="${crossSell.childName}">Singh</td>
+										<td th:text="${crossSell.schoolOrInstituteName}">Xavier</td>
+										<td th:text="${crossSell.classOfStudent}">XII</td>
+										<td th:text="${crossSell.rollNo}">24</td>
+										<td th:text="${crossSell.admissionOrStudentID}">ID123</td>
+										<td th:text="${crossSell.annualSchoolFees}">23443</td>
+										<td th:text="${crossSell.loanAmount}">100000</td>
+										<td th:text="${crossSell.consent}">yes</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>

@@ -64,7 +64,7 @@
 								<label for="inputEmail3" class="col-sm-2 control-label">Page
 									Title (Required)</label>
 								<div class="col-sm-10">
-									<input type="text" required th:field="*{pageTitle}"
+									<input type="text" required th:field="*{pageTitle}" maxlength="240"
 										class="form-control get_url_name" id="page_title"
 										name="page_title">
 								</div>
@@ -77,7 +77,7 @@
 								<div class="row">
 									<div class="col-sm-5">
 										<input onkeyup="checkUriForAvailability()" type="text"
-											required th:field="*{customUri}"
+											required th:field="*{customUri}" maxlength="240"
 											class="form-control get_url_name" id="customURL"
 											name="page_title"> <span hidden
 											id="duplicateUriWarning" style="color: red;">URI
@@ -178,11 +178,11 @@
 							</script>
 							​
 							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">Heading
+								<label for="inputEmail3" maxlength="240" class="col-sm-2 control-label">Heading
 								</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="banner_heading"
-										name="sub_title" value="" th:field="*{bannerHeading}">
+										name="sub_title" value="" th:field="*{bannerHeading}" maxlength="240">
 								</div>
 							</div>
 							<div class="form-group">
@@ -190,7 +190,7 @@
 									Heading</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="sub_title"
-										name="sub_title" value="" th:field="*{bannerSubHeading}">
+										name="sub_title" value="" th:field="*{bannerSubHeading}" maxlength="240">
 								</div>
 							</div>
 
@@ -269,7 +269,7 @@
 									Image Alt</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="image_alt"
-										name="image_alt" value="" th:field="*{bannerImageAlt}">
+										name="image_alt" value="" th:field="*{bannerImageAlt}" maxlength="240">
 								</div>
 							</div>
 
@@ -343,7 +343,7 @@
 									Title</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="meta_title"
-										name="meta_title" value="" th:field="*{metaTitle}">
+										name="meta_title" value="" th:field="*{metaTitle}" maxlength="240">
 								</div>
 							</div>
 

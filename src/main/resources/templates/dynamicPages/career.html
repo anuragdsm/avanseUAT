@@ -132,132 +132,40 @@
 						who have achieved their educational aspiration.</p>
 				</div>
 				<div class="feedback_slider owl-carousel">
-					<div class="item">
-						<div class="feedback_item">
-							<div class="feed_back_author">
-								<div class="media">
-									<div class="img">
-										<img
-											src="/viewPagesAssets/img/testimonials/Nikhil-Walimbe.jpg"
-											alt="">
+
+					<div th:each="testimonial, iStat : ${testimonials}">
+						<div class="item">
+							<div class="feedback_item testimonials-box">
+								<div class="feed_back_author">
+									<div class="media">
+										<div class="img">
+											<img
+												th:src="@{${'/images/testimonialImages/' + testimonial.picFileName}}"
+												alt="">
+										</div>
+										<div class="media-body">
+											<h5 class="w_color f_500" th:text="${testimonial.name}">Nikhil
+												Walimbe</h5>
+											<h6 class="w_color f_400" th:text="${testimonial.info}">Management
+												MSc. Queen Mary University of London, England</h6>
+										</div>
 									</div>
-									<div class="media-body">
-										<h5 class="w_color f_500">Nikhil Walimbe</h5>
-										<h6 class="w_color f_400">Management MSc. Queen Mary
-											University of London, England</h6>
-									</div>
+
 								</div>
 
-							</div>
-							<p class="w_color">After submitting all my documents, my
-								education loan was sanctioned within two days. Thank you Avanse
-								Financial Services for such an amazing and prompt service.</p>
-							<a href="#" class="learn_btn_two text-white">Read More <i
-								class="ti-arrow-right"></i></a>
-							<div class="shap_one"></div>
-							<div class="shap_two"></div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="feedback_item">
-							<div class="feed_back_author">
-								<div class="media">
-									<div class="img">
-										<img
-											src="/viewPagesAssets/img/testimonials/Shradha-Agarwal.jpg"
-											alt="">
-									</div>
-									<div class="media-body">
-										<h5 class="w_color   f_500">Shradha Agarwal</h5>
-										<h6 class="w_color f_400">Master of Global Management
-											Royal Road University, British Columbia</h6>
+								<div>
+									<div class="testim_info">
+										<p class="w_color " th:text="${testimonial.message}">I was
+											in the process of availing an education loan to pursue my
+											higher education in Canada. I got in touch with Avanse
+											Financial Services; the sales representative got my loan
+											sanctioned in no time and paid the course fee to my college.
+											It was a swift and hassle-free process. I am very grateful to
+											Avanse.</p>
+
 									</div>
 								</div>
-
 							</div>
-							<p class="w_color">I was in the process of availing an
-								education loan to pursue my higher education in Canada. I got in
-								touch with Avanse Financial Services ....</p>
-							<a href="#" class="learn_btn_two text-white">Read More <i
-								class="ti-arrow-right"></i></a>
-							<div class="shap_one"></div>
-							<div class="shap_two"></div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="feedback_item">
-							<div class="feed_back_author">
-								<div class="media">
-									<div class="img">
-										<img src="/viewPagesAssets/img/testimonials/rayan-amal.jpg"
-											alt="">
-									</div>
-									<div class="media-body">
-										<h5 class="w_color   f_500">Rayan Amal</h5>
-										<h6 class="w_color f_400">International business
-											management Heriot-Watt University, Edinburgh</h6>
-									</div>
-								</div>
-
-							</div>
-							<p class="w_color">I approached Avanse Financial Services for
-								my study loan. A special shout out to the Sales Managers,
-								despite the challenging situation caused ....</p>
-							<a href="#" class="learn_btn_two text-white">Read More <i
-								class="ti-arrow-right"></i></a>
-							<div class="shap_one"></div>
-							<div class="shap_two"></div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="feedback_item">
-							<div class="feed_back_author">
-								<div class="media">
-									<div class="img">
-										<img src="/viewPagesAssets/img/testimonials/meet-shah.jpg"
-											alt="">
-									</div>
-									<div class="media-body">
-										<h5 class="w_color   f_500">Meet Shah</h5>
-										<h6 class="w_color f_400">M.Sc. in Strategic Management
-											Technological University Dublin (TU Dublin)</h6>
-									</div>
-								</div>
-
-							</div>
-							<p class="w_color">My education plans went through some last
-								minute change, so I had extremely limited time to go through the
-								whole process again. Hence, the lookout ....</p>
-							<a href="#" class="learn_btn_two text-white">Read More <i
-								class="ti-arrow-right"></i></a>
-							<div class="shap_one"></div>
-							<div class="shap_two"></div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="feedback_item">
-							<div class="feed_back_author">
-								<div class="media">
-									<div class="img">
-										<img
-											src="/viewPagesAssets/img/testimonials/monika-gwalani.jpg"
-											alt="">
-									</div>
-									<div class="media-body">
-										<h5 class="w_color   f_500">Monika Gwalani</h5>
-										<h6 class="w_color f_400">Master of Engineering in
-											Engineering Management, University of Ottawa, Canada</h6>
-									</div>
-								</div>
-
-							</div>
-							<p class="w_color">A very big thank you to Avanse Financial
-								Services. My experience with Avanse has been extremely smooth.
-								The disbursement of my loan was super quick.</p>
-							<a href="#" class="learn_btn_two text-white">Read More <i
-								class="ti-arrow-right"></i></a>
-							<div class="shap_one"></div>
-							<div class="shap_two"></div>
 						</div>
 					</div>
 				</div>
@@ -323,7 +231,8 @@
 								<div class="input-group subcribes">
 									<input type="text" name="EMAIL" class="form-control memail"
 										placeholder="Search for your city">
-									<button class="btn btn-submit search-button-home" type="submit">
+									<button class="btn btn-submit search-button-home" type="submit"
+										style="right: 0;">
 										<i class="ti-search f_size_24"></i>
 									</button>
 								</div>
@@ -333,12 +242,13 @@
 					</div>
 					<div class=" wow fadeInUp text-center" data-wow-delay="0.8s">
 						<ul class="job_opening">
-							<li class="city_list text-center"><a href="jobsearch.html"><img
+							<li class="city_list text-center"><a
+								href="/about-avanse/career/jobsearch"><img
 									src="/viewPagesAssets/img/icon/mumbai.png">
 									<p>Mumbai</p></a></li>
 							<li class="city_list text-center"><a href="#delhi"><img
 									src="/viewPagesAssets/img/icon/delhi-icon.png">
-								<p>Delhi</p></a></li>
+									<p>Delhi</p></a></li>
 							<li class="city_list text-center"><a href="#bengaluru"><img
 									src="/viewPagesAssets/img/icon/bengaluru.png">
 									<p>Bengaluru</p></a></li>
@@ -391,7 +301,6 @@
 							<div class="s_service_item wow latest_job_box fadeInLeft"
 								data-wow-delay="0.7s">
 								<div class="solid_overlay"></div>
-
 								<h5 class="f_p f_size_20 f_500 t_color">HR Business Partner</h5>
 								<p class="l_height28">As a Corporate HRBP, you will be
 									responsible for end to end employee life cycle and will be the
@@ -446,7 +355,7 @@
 					</div>
 				</div>
 			</div>
-
+			<!-- 
 			<script>
 		            function charOptimize(descText) {
 		                let size;
@@ -475,6 +384,8 @@
                 http.send();
                 
             </script>
+ -->
+
 		</section>
 
 
@@ -499,67 +410,25 @@
 							approach has helped us stay ahead of curve.</p>
 					</div>
 				</div>
+
 				<div class="row py-5">
 					<div class="col-lg-12">
 						<div class="recognition_carousel owl-carousel">
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
+							<div th:each="award, iStat : ${awards}">
+								<div class="item">
+									<div class="award_section">
+										<div class="award_info">
+											<span th:text="${award.description}">"Great Place to
+												Work®" 2021 a prestigious recognition based on employees
+												experience</span>
+										</div>
 									</div>
 								</div>
-
 							</div>
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
-									</div>
-								</div>
-
-							</div>
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
-									</div>
-								</div>
-
-							</div>
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
-									</div>
-								</div>
-
-							</div>
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
-									</div>
-								</div>
-
-							</div>
-							<div class="item">
-								<div class="award_section">
-									<div class="award_info">
-										<span>"Great Place to Work®" 2021 a prestigious
-											recognition based on employees experience</span>
-									</div>
-								</div>
-
-							</div>
-
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</section>
 

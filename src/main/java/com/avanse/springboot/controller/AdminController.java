@@ -1425,8 +1425,10 @@ public class AdminController {
 				+ "        </section>"
 
 				+ mainSection + "\r\n"
+				+ " 	</body> " + "\r\n"
+				+ " 	</html> " + "\r\n"
 
-				+ "    <!-- Optional JavaScript -->\r\n" + jsCode + "\r\n" + " 	</body> " + "\r\n";
+				+ "    <!-- Optional JavaScript -->\r\n" + jsCode + "\r\n" ;
 
 		return boilerPlate;
 	}

@@ -274,11 +274,79 @@
 								</div>
 								<ul th:each="postCategory, iStat : ${postCategories}"
 									class="list-unstyled">
-									<li><a href="#"><span th:href="${postCategory.name}"
-											th:text="${postCategory.name}">Education</span></a></li>
+									<li th:id="${'pcId' + postCategory.id}" th:onclick="'categoryClick('+${postCategory.id}+')'">
+										<a>
+											<span th:text="${postCategory.name}">Education</span>
+										</a>
+									</li>
 
 								</ul>
 							</div>
+							
+							<script type="text/javascript">
+								let selectedCategoriesIds = [];
+								let listOfAllthePosts = [];
+								let httpForList = new XMLHttpRequest();
+								httpForList.open('GET',window.location.origin + '/public/api/post/getAllPosts');
+								httpForList.onloadend = () => {
+									listOfAllthePosts = JSON.parse(httpForList.responseText);
+								}
+								httpForList.send();
+								function setSelectedCategoryPostsToDisplay() {
+										let postToBeShown = [];
+										for(let id of selectedCategoriesIds) {
+												postToBeShown = postToBeShown.concat(listOfAllthePosts.filter((post) => {
+												let check=0;
+												post.postCategoryList.forEach( pc => {
+													if(pc.id == id) check = 1;
+												});
+												if (check == 1) return true;
+												else return false;
+											}));
+										}
+										document.getElementById('blogPostsPannel').innerHTML = '';
+										console.log('testing.....................',postToBeShown);
+										for (let post of postToBeShown) {
+											document.getElementById('blogPostsPannel').innerHTML = 
+												document.getElementById('blogPostsPannel').innerHTML +
+											`<div id="blogPostItem${post.id}" class="blog_list_item mb_50">
+
+												<img id="blogPostImage${post.id}" class="img-fluid"
+													src="${'/viewPagesAssets/img/userAddedFeaturedImages/' + post.featuredImageName}"
+													alt="">
+												<div class="blog_content">
+													<div id="blogPostDate${post.id}" class="post_date">
+														<h2>
+															${post.dateOfPostCreation.split(' ')[0]} <span>${post.dateOfPostCreation.split(' ')[1].split(',')[0]}</span>
+														</h2>
+													</div>
+													<a id="blogPostLink${post.id}" href="${window.location.origin + '/blog/' +post.extractedFileName}">
+														<h5 id="blogPostHeading${post.id}"
+															class="f_p f_size_20 f_500 t_color mb_20">${post.heading}</h5>
+													</a>
+													<p id="blogPostContent${post.id}" class="f_400 mb_20">${setCharacterLimit(post.mainSection)}</p>
+													<a id="blogPostLinkReadMore${post.id}" href="${window.location.origin + '/blog/' +post.extractedFileName}"
+														class="learn_btn_two">Read More <i class="ti-arrow-right"></i></a>
+												</div>
+				
+											</div>`;
+										}
+										
+										
+								}
+								function categoryClick(postCategoryId) {
+									if(!(selectedCategoriesIds.indexOf(postCategoryId) >= 0)) {
+										selectedCategoriesIds=[];
+										selectedCategoriesIds.push(postCategoryId);
+										setSelectedCategoryPostsToDisplay();
+									} else {
+										selectedCategoriesIds = 
+											selectedCategoriesIds.filter(sci => sci==postCategoryId);
+											setSelectedCategoryPostsToDisplay();
+									}
+								}
+							</script>
+							
 							<div class="widget sidebar_widget widget_recent_post mt_60">
 								<div class="widget_title">
 									<h3 class="f_p f_size_20 t_color3">Recent posts</h3>

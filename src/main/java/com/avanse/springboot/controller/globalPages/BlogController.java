@@ -53,6 +53,12 @@ public class BlogController {
 	public List<Post> getPostSearchResults(@PathVariable("searchKey") String searchKey) {
 		return postService.getSearchResultsInBlogs(searchKey);
 	}
+	@GetMapping(path = "/public/api/post/getAllPosts")
+	@ResponseBody
+	@CrossOrigin("*")
+	public List<Post> getAllPosts() {
+		return postService.getAllPosts();
+	}
 	
 	
 	

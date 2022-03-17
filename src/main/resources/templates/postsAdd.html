@@ -111,7 +111,7 @@
 								<label for="inputEmail3" class="col-sm-2 control-label">Post
 									Title (Required)</label>
 								<div class="col-sm-10">
-									<input type="text" required th:field="*{postTitle}"
+									<input type="text" required th:field="*{postTitle}" maxlength="240"
 										class="form-control get_url_name" id="post_title"
 										name="post_title">
 								</div>
@@ -122,15 +122,15 @@
 								</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="heading"
-										name="heading" value="" th:field="*{heading}">
+										name="heading" value="" th:field="*{heading}" maxlength="240">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">Sub
-									Heading</label>
+								<label for="inputEmail3" class="col-sm-6 control-label">Sub
+									Heading (250 Character Limit)</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="subHeading"
-										name="sub_heading" value="" th:field="*{subHeading}">
+										name="sub_heading" value="" th:field="*{subHeading}" maxlength="240">
 								</div>
 							</div>
 
@@ -297,7 +297,7 @@
 									Image Alt</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="image_alt"
-										name="image_alt" value="" th:field="*{featuredImageAltText}">
+										name="image_alt" value="" th:field="*{featuredImageAltText}" maxlength="240">
 								</div>
 							</div>
 
@@ -342,7 +342,7 @@
 									Title</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control " id="meta_title"
-										name="meta_title" value="" th:field="*{metaTitle}">
+										name="meta_title" value="" th:field="*{metaTitle}" maxlength="240">
 								</div>
 							</div>
 
@@ -355,7 +355,7 @@
 
 								<div class="col-sm-10">
 									<textarea class="form-control" id="meta_description"
-										name="meta_description" th:field="*{metaDescription}"></textarea>
+										name="meta_description" th:field="*{metaDescription}" maxlength="240"></textarea>
 
 								</div>
 							</div>

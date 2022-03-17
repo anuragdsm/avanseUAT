@@ -87,6 +87,9 @@ public class PageController {
 	}
 	@GetMapping(value={"/study-abroad"})
 	public String studyAbroadPage(Model model) {
+		
+		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
+
 		return "dynamicPages/study-abroad";
 	}
 	@GetMapping(value={"/education-loan/study-in-india"})
@@ -118,7 +121,9 @@ public class PageController {
 	}
 
 	@GetMapping("/about-avanse/career")
-	public String careerPage() {
+	public String careerPage(Model model) {
+		model.addAttribute("testimonials", testimonialService.getAllTestimonials());
+		model.addAttribute("awards", awardService.getAllAwards() );
 		return "dynamicPages/career";
 	}
 	@GetMapping("/about-avanse/career/jobsearch")
@@ -326,12 +331,14 @@ public class PageController {
 		model.addAttribute("crossSellDTO", new CrossSellDTO());
 		return modelAndView;
 	}
+	
 	@GetMapping("/moratorium-eil")
 	public ModelAndView moratoriumEILPage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/moratorium-eil");
 		model.addAttribute("moratoriumEILDTO", new MoratoriumEILDTO());
 		return modelAndView;
 	}
+	
 	@GetMapping("/unsubscribe")
 	public ModelAndView getUnsubscribePage(Model model) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/unsubscribe");

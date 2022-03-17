@@ -240,4 +240,25 @@ public class MiscellaneousFormsController {
 		model.addAttribute("moratoriumFacilityDeregisterDetails", moratoriumDeregisterService.getMoratoriumDeregisterDetails());
 		return "moratorium-facility-deregister-details";
 	} 
+	
+	@GetMapping("/admin/miscellaneous-forms/cross-sell")
+	public String crossSellAdminGet(Model model) {
+		model.addAttribute("crossSellDetails",crossSellService.getCrossSellDetails());
+		return "cross-sell-details";
+		
+	}
+	
+	@GetMapping("/admin/miscellaneous-forms/moratorium-eil")
+	public String moratoriumEilAdminGet(Model model) {
+		model.addAttribute("moratoriumEilDetails",moratoriumEilService.getAllMoratoriumEILLeads());
+		return "moratorium-eil-details";
+		
+	}
+	
+	@GetMapping("/admin/miscellaneous-forms/unsubscribe")
+	public String unsubscribeAdminGet(Model model) {
+		model.addAttribute("unsubscribeDetails",unsubscribeService.getUnsubscribeList());
+		return "unsubscribe-details";
+		
+	}
 }

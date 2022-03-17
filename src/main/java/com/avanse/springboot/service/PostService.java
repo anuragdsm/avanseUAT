@@ -137,7 +137,9 @@ public class PostService {
 
 	public List<Post> getSearchResultsInBlogs(String searchKey) {
 		
-		return postRepository.findByHeadingLikeOrMainSectionLike("%"+searchKey+"%", "%"+searchKey+"%").get();
+//		return postRepository.findByHeadingLikeOrMainSectionLike("%"+searchKey+"%", "%"+searchKey+"%").get();
+		return postRepository.findByHeadingLikeOrPostTitleLikeOrSubHeadingLikeOrMetaDescriptionLike("%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%", "%"+searchKey+"%").get();
+				
 	}
 
 }

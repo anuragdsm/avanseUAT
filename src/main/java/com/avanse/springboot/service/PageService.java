@@ -73,7 +73,10 @@ public class PageService {
 
 	public List<Page> getSearchResultsInPages(String searchKey) {
 
-		return pageRepository.findByConsolidatedHTMLCodeLike("%" + searchKey + "%").get();
+//		return pageRepository.findByConsolidatedHTMLCodeLike("%" + searchKey + "%").get();
+	
+	return pageRepository.findByPageTitleLikeOrMetaDescriptionLikeOrMetaKeywordLike("%" + searchKey + "%", "%" + searchKey + "%", "%" + searchKey + "%").get();
+	
 	}
 
 	public List<String[]> getAllUrisForPages() {

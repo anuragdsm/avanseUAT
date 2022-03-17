@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="_layout">
+<meta charset="utf-8">
+
+<body id="page-top">
+	<!-- Page Wrapper -->
+	<div layout:fragment="content">
+
+		<!-- Begin Page Content -->
+		<div class="container-fluid">
+
+			<!-- Page Heading -->
+			<div
+				class="d-sm-flex align-items-center justify-content-between mb-4">
+				<h1 class="h3 mb-0 text-gray-800">Moratorium Eil leads </h1>
+				<h6 class="m-0 font-weight-bold text-primary">
+					<a href="javascript:history.back()"
+						class="btn btn-info btn-icon-split btn-sm float-right mr-3"> <span
+						class="icon text-white-50"> <i class="fas fa-arrow-left"></i>
+					</span> <span class="text">Back</span>
+					</a>
+				</h6>
+			</div>
+
+			<!-- Content Row -->
+			<div class="row">
+				<div class="container-fluid">
+
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-bordered" id="dataTable" width="100%"
+								cellspacing="0">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">SN</th>
+										<th scope="col">Type of Institution</th>
+										<th scope="col">Institution Name</th>
+										<th scope="col">Loan Amount</th>
+										<th scope="col">Monthly Installment</th>
+										<th scope="col">Moratorium in April or May</th>
+										<th scope="col">School Zone</th>
+										<th scope="col">School Opening Date</th>
+										<th scope="col">Online classes</th>
+										<th scope="col">Fees Received</th>
+										<th scope="col">Fees Due</th>
+										<th scope="col">Reason</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="moratoriumEil, iStat : ${moratoriumEilDetails}">
+										<th scope="row" th:text="${iStat.index+1}">1</th>
+										<td th:text="${moratoriumEil.typeOfInstitution}">study</td>
+										<td th:text="${moratoriumEil.institutionName}">xavier</td>
+										<td th:text="${moratoriumEil.loanAmount}">234234</td>
+										<td th:text="${moratoriumEil.monthlyInstallment}">1231</td>
+										<td th:text="${moratoriumEil.wasMoratoriumAvailedInAprilOrMay}">yes</td>
+										<td th:text="${moratoriumEil.schoolZone}">Green</td>
+										<td th:text="${moratoriumEil.schoolOpeningDate}">25/2/2000</td>
+										<td th:text="${moratoriumEil.onlineDigitalClasses}">Yes</td>
+										<td th:text="${moratoriumEil.feesReceievedTillDate}">234433</td>
+										<td th:text="${moratoriumEil.feesDue}">234433</td>
+										<td th:text="${moratoriumEil.reasonForRegisteringMoratoriumFacility}">My Reason</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End of Content Wrapper -->
+	</div>

@@ -41,7 +41,7 @@ public class HomePageController {
 	@ResponseBody
 	@PostMapping(value = "/getUniversitesInfos", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> getUniversityInfo(@RequestBody String[] country) {
-		System.out.println("REST API IS CALLED HOMEPAGECONTROLLER GETUNIVERSITYINFOS()" + country[0]);
+		//System.out.println("REST API IS CALLED HOMEPAGECONTROLLER GETUNIVERSITYINFOS()" + country[0]);
 		List<University> filterList = universityService.getAllUniversity().stream()
 				.filter(uni -> uni.getLocation().toLowerCase().equals(country[0].toLowerCase()))
 				.collect(Collectors.toList());

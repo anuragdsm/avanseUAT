@@ -26,7 +26,7 @@ public class CareerController {
 	  @CrossOrigin(origins = "*")
 	  @GetMapping("/public/api/getAllJobs") 
 	  public List<Job> getAllJobs() { 
-		  System.out.println("====Getting job===="); // return
+		  //System.out.println("====Getting job===="); // return
 		   return jobService.getAllJobs();
 	  
 	  }

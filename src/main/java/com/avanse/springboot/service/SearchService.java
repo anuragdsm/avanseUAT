@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,10 +45,13 @@ public class SearchService {
 		  searchResultDTO.setResultOrigin("page");
 		  searchResultDTO.setHeading(pr.getPageTitle());
 		  searchResultDTO.setUrl(pr.getCustomUri());
-		  String customDescription = pr.getMainSection();
+		  String customDescription = Jsoup.parse(pr.getMainSection()).text();
+		  //System.out.println("TESTING....................."+customDescription);
 		  if(customDescription.toLowerCase().contains(searchKey.toLowerCase())) {
+			  //System.out.println("if block");
 			  customDescription=getDescriptionSnipetWithSearchKeyHighlighted(customDescription, searchKey);
 		  } else {
+			  //System.out.println("else block");
 			 customDescription = customDescription.substring(0, (customDescription.length() >= 100)? 100 : customDescription.length());
 		  }
 		  searchResultDTO.setDescriptionContainingKey(customDescription);
@@ -62,7 +66,7 @@ public class SearchService {
 		  searchResultDTO.setResultOrigin("post");
 		  searchResultDTO.setHeading(psr.getPostTitle());
 		  searchResultDTO.setUrl("/blog/"+psr.getPostTitle());
-		  String customDescription = psr.getMainSection();
+		  String customDescription = Jsoup.parse(psr.getMainSection()).text();
 		  if(customDescription.toLowerCase().contains(searchKey.toLowerCase())) {
 			  customDescription=getDescriptionSnipetWithSearchKeyHighlighted(customDescription, searchKey);
 		  } else {
@@ -132,6 +136,7 @@ public class SearchService {
 		  int begin = genratedSubString.toLowerCase().indexOf(searchKey.toLowerCase());
 		  int end = begin + searchKey.length();
 		  String finalSubString = "..." + genratedSubString.substring(0, begin) + "<b style=\"background-color:yellow;\">" + genratedSubString.substring(begin, end) + "</b>" + genratedSubString.substring(end, genratedSubString.length()) + "...";
+		  
 		  return finalSubString;
 	  }
 	 

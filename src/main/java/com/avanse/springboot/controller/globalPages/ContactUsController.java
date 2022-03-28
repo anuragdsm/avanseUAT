@@ -54,9 +54,11 @@ public class ContactUsController {
 		Page<Customer> page = customerService.listCustomersByPage(pageNum);
 		List<Customer> customers = page.getContent();
 		
-		System.out.println("PageNum =" + pageNum);
-		System.out.println("Total elements= "+page.getNumberOfElements());
-		System.out.println("Total Pages= "+page.getTotalPages());
+		/*
+		 * //System.out.println("PageNum =" + pageNum);
+		 * //System.out.println("Total elements= "+page.getNumberOfElements());
+		 * //System.out.println("Total Pages= "+page.getTotalPages());
+		 */
 				
 		long startCount = (pageNum - 1) * customerService.CUSTOMERS_PER_PAGE + 1;
 		long endCount = startCount + customerService.CUSTOMERS_PER_PAGE- 1;
@@ -175,9 +177,11 @@ public class ContactUsController {
 									@ModelAttribute ("mediaDTO") MediaDTO mediaDTO,
 									@RequestParam("leadType") String leadType) {
 		
-		System.out.println(instituteDTO.toString());
-		System.out.println(investorDTO.toString());
-		System.out.println(mediaDTO.toString());
+		/*
+		 * //System.out.println(instituteDTO.toString());
+		 * //System.out.println(investorDTO.toString());
+		 * //System.out.println(mediaDTO.toString());
+		 */
 		switch (leadType) {
 		
 		case "customer" :
@@ -232,7 +236,7 @@ public class ContactUsController {
 			break;
 			
 		default: 
-			System.out.println("Couldn't find the lead Type");
+//			//System.out.println("Couldn't find the lead Type");
 		
 		}
 

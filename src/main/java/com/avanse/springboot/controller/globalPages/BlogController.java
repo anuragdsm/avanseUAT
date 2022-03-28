@@ -25,7 +25,7 @@ public class BlogController {
 
 	@GetMapping("/blog/{extractedFileName}")
 	public ModelAndView getAddedBlogPost(@PathVariable("extractedFileName") String extractedFileName, Model model) {
-		System.out.println("Into the getAddBlogPost Get");
+		//System.out.println("Into the getAddBlogPost Get");
 		ModelAndView modelAndView = new ModelAndView("addedBlogPosts/"+extractedFileName);
 		model.addAttribute("postCategories", postCategoryService.getAllPostCategories());
 		model.addAttribute("posts", postService.getTopFourLatestPosts());

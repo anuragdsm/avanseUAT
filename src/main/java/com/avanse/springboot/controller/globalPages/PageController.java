@@ -183,9 +183,11 @@ public class PageController {
 	  @PathVariable(name = "courseId",required = false) Long courseId,
 	  @PathVariable(name = "universityId",required = false) Long universityId) {
 	  
-	  System.out.println("Testing Country --- > "+countryName);
-	  System.out.println("Testing CourseId --- > "+courseId);
-	  System.out.println("Testing UniversityID --- > "+universityId);
+			/*
+			 * //System.out.println("Testing Country --- > "+countryName);
+			 * //System.out.println("Testing CourseId --- > "+courseId);
+			 * //System.out.println("Testing UniversityID --- > "+universityId);
+			 */
 	  
 	  if(courseId!=null) {
 		  model.addAttribute("courseIdCheck", "courseIdIsPresent");
@@ -209,7 +211,7 @@ public class PageController {
 	public ModelAndView getBlogPage(Model model, 
 			@RequestParam(value = "searchKey",required = false) String searchKey) {
 		ModelAndView modelAndView = new ModelAndView("dynamicPages/blog");
-		System.out.println("testing.........searchkey : "+searchKey);
+//		//System.out.println("testing.........searchkey : "+searchKey);
 		model.addAttribute("postCategories", postCategoryService.getAllPostCategories());
 		model.addAttribute("posts", postService.getTopFourLatestPosts());
 		model.addAttribute("searchKey", searchKey);

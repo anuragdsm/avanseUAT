@@ -75,7 +75,7 @@ public class PageService {
 
 //		return pageRepository.findByConsolidatedHTMLCodeLike("%" + searchKey + "%").get();
 	
-	return pageRepository.findByPageTitleLikeOrMetaDescriptionLikeOrMetaKeywordLike("%" + searchKey + "%", "%" + searchKey + "%", "%" + searchKey + "%").get();
+	return pageRepository.findByPageTitleLikeOrMetaDescriptionLikeOrMetaKeywordLikeOrMainSectionLike("%" + searchKey + "%", "%" + searchKey + "%", "%" + searchKey + "%", "%" + searchKey + "%").get();
 	
 	}
 

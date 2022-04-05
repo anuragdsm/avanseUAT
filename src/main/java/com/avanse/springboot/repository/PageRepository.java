@@ -18,6 +18,6 @@ public interface PageRepository extends JpaRepository<Page, Long> {
 	List<String[]> getAllUrisForPages();
 
 	Optional<List<Page>> findByConsolidatedHTMLCodeLike(String string);
-	Optional<List<Page>> findByPageTitleLikeOrMetaDescriptionLikeOrMetaKeywordLike(String string, String string2, String string3);
+	Optional<List<Page>> findByPageTitleLikeOrMetaDescriptionLikeOrMetaKeywordLikeOrMainSectionLike(String string, String string2, String string3, String string4);
 	
 }

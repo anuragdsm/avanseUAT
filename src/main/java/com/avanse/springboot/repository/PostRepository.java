@@ -26,7 +26,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 	Optional<List<Post>> findByHeadingLikeOrMainSectionLike(String searchKey, String searchKeyTwo);
 	
-	Optional<List<Post>>findByHeadingLikeOrPostTitleLikeOrSubHeadingLikeOrMetaDescriptionLike(String s1,String s2, String s3, String s4);
+	Optional<List<Post>>findByHeadingLikeOrPostTitleLikeOrSubHeadingLikeOrMetaDescriptionLikeOrMainSectionLike(String s1,String s2, String s3, String s4, String s5);
 
 
 }
